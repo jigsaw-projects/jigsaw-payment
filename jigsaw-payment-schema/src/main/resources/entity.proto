@@ -1,0 +1,178 @@
+/*
+ * Copyright 2017-2026 Web Payment Sig. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+option java_multiple_files = true;
+/*
+ * 该文件收录所有的实体对象。一般在实现上，实体对象会独立保存在一张数据库主表中，并且有自己的ID。 
+ * 在使用protobuf来表示对象时， 为了规范数据表示，我们预留了前面的20个field用来存放通用的字段。
+ * 预留字段参见PaymentEntity的定义
+ */
+import "dict.proto";
+import "property.proto";
+
+package org.jigsaw.payment;
+
+/**
+ * 预留字段定义
+ * 所有实体在定义时， 优先考虑使用预留字段中的属性。 实体其他属性编号从21开始。 
+**/
+message PaymentEntity {
+    required int64      id       = 1;  //科目代码，唯一识别码
+    optional string     title    = 2;  //名称
+    required Version    version  = 9; //版本信息  
+} 
+
+
+/**
+ * 会计科目
+ *
+ **/
+message AccountSubject{
+    required int64 id           = 1;  //科目代码，唯一识别码
+    required Version version    = 9; //版本信息
+
+    required int32 level        = 21;  //层级
+    required string title       = 22;  //科目名称，默认为中文
+    required AccountClassification classification = 23; //科目类别
+    required string description = 24;  //描述， 默认为中文
+    required bool is_detail     = 25; // 是否明细科目
+}
+
+/**
+ * 支付账户（外部）
+ * 
+ */
+message Account {
+    required int64 id           = 1;  //科目代码，唯一识别码
+    required Version version    = 9; //版本信息
+    
+    enum Status {
+        INITIALIZED = 1; //初始
+        ACTIVIED    = 2; //激活
+        FROZEN      = 3; //冻结
+        CLOSED      = 4; //关闭
+    }
+    required Status  status  = 21; //状态
+    required AccountSubject subject = 22; //会计科目
+
+    /**
+     * 账户余额信息
+     *
+     */
+    message Balance{
+        required Currency   currency    = 1; //货币单位，可以是ISO
+        required int64 rest_balance     = 2; //余额
+        required int64 total_balance    = 3; //充值金额
+        required int64 frozen_balance   = 4; //冻结金额
+    }
+
+    required Balance balance = 23; //余额信息
+    
+    /**
+     * 账户权限设置
+    **/
+    message Permission{
+        required bool enable_recharge = 1;  //是否允许充值；
+        required bool enable_withdraw = 2;  //是否允许提现；
+        required bool enable_overdraw = 3;  //是否允许透支；
+        required bool enable_payment  = 4;  //是否允许支付；
+        required bool enable_transfer_in  = 5; //是否允许转账进入；
+        required bool enable_transfer_out = 6; //是否允许转账转出；
+        required bool is_protected = 7; //是否有安全保障；
+        required bool is_actived   = 8; //是否激活；
+        required bool is_frozen    = 9; //是否冻；
+    }
+
+    required Permission permission = 24 ; //权限设置
+
+}
+
+/**
+ * 支付订单。支付订单指由业务方提交到支付系统执行支付的订单。在支付场景下，用户在收银台上选择了支付方式后，将订单提交到支付系统执行支付。 
+ *  一个业务订单可以对应多个支付订单。 比如用户在某个支付方式支付失败后，更换其他的支付方式。 目前暂不考虑将业务订单拆单支付的情况。 
+ * 支付订单也是记账的原始凭证。 支付订单号作为原始凭证号登记到记账凭证中。 
+**/
+
+message Payment {
+	required int64 id				= 1;	// 支付订单。必须以一定的规则来生成。注意，订单号必须唯一，不重复。 
+	required int64 order_id			= 21 ;	// 交易订单号，或者是商城订单号。这是由电商系统或者业务生成后，发送给支付系统。对一个业务订单，可以发起多次支付。
+
+  /**
+   * 支付订单状态
+   *
+  **/
+	enum Status {
+		UNPAID	 = 1 ; //未支付
+		PAID	 = 2 ;  //已支付
+		CANCELED = 3 ; //已取消， 指用户主动取消订单。
+		CLOSED   = 4 ; //已关闭，指由于系统原因关闭订单，比如超时。 
+	}
+	required Status	status		= 22;		// 支付状态
+
+	required int64	create_time = 23;		//创建时间；	
+
+	// 30~39 付款信息；
+	required int64	payer_id	= 31;		// 付款人
+	required string payer_name	= 32;		//付款人名称
+	required int64	payer_account_id= 33;	// 付款账户ID
+	required int64	pay_method_id	= 34;	//支付方式
+	required int64	pay_channel_id	= 35;	//支付渠道
+	optional int64	pay_route_id	= 36;	//支付路由
+	optional int64  pay_time		= 37;    //实际完成支付的时间
+	
+	// 40~49 费用信息
+	required Currency currency= 40;	// 货币单位
+	required int64  original_amount	= 41;	//原金额
+	required int64  pay_amount		= 42;	//实际支付费用
+	optional int64  fee_amount		= 43;	//手续费		
+
+	// 50~59 收款人信息
+	required int64  payee_id		= 50;	//收款人id
+	required string payee_name		= 51;   //收款人名称
+	required int64  payee_account_id= 52;   //收款账号ID  
+}
+
+
+/**
+ * 记账凭证
+ *
+**/
+message Voucher {
+    required int64 id				= 1  ; //凭证号， 这是记账凭证的标识， 反映经济活动发生的顺序，编号必须连续，不能有重号、漏号。
+    required int64 recording_time	= 21 ; //凭证登记时间，凭证日期必须随着凭证号增加而增加；
+    required int64 subject_id		= 22 ; //科目ID，这里必须是明细科目
+    required Currency currency		= 23 ; //货币单位 
+    required int64 debit_amount		= 24 ; // 贷方金额
+    required int64 credit_amount	= 25 ;  // 借方金额
+    required int64 original_id		= 26 ; // 原始凭证号，线上流水使用交易流水号作为原始凭证号；
+	
+	/**
+	 * 凭证状态
+	**/
+	enum Status {
+		RECORDED = 1; //已登记
+		CHECKED  = 2; //已对账
+
+	}
+}
