@@ -1,9 +1,11 @@
 package org.jigsaw.payment.rpc.hello.server;
 
-import org.apache.thrift.TException;
 import org.jigsaw.payment.Hello;
 import org.jigsaw.payment.Hello.HelloRequest;
 import org.jigsaw.payment.Hello.HelloResponse;
+import org.jigsaw.payment.rpc.NotFoundException;
+import org.jigsaw.payment.rpc.SystemException;
+import org.jigsaw.payment.rpc.UserException;
 import org.jigsaw.payment.rpc.server.Controller;
 import org.springframework.stereotype.Component;
 /**
@@ -17,7 +19,7 @@ public class HelloController  implements Controller<Hello.HelloRequest, Hello.He
 
 
 	@Override
-	public HelloResponse process(HelloRequest request) throws TException {
+	public HelloResponse process(HelloRequest request) throws NotFoundException,SystemException,UserException {
 		HelloResponse.Builder builder = HelloResponse.newBuilder();
 		builder.setMessage("Hello " + request.getUser().getName());
 		return builder.build();

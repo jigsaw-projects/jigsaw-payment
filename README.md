@@ -10,7 +10,7 @@ jigsaw payment 支付系统，面向互联网商户提供的支付系统。 支�
 
 ## 构建 
 
-你可以直接使用已发布的版本(http://repo.lixf.cn)。如果需要验证最新的版本，可以下载本项目的代码，使用JDK1.8，运行如下命令：
+你可以直接使用[已发布的版本](http://repo.lixf.cn)。如果需要验证最新的版本，可以下载本项目的代码，使用JDK1.8，运行如下命令：
 
 ```javascript
 mvn clean install
@@ -35,3 +35,8 @@ RPC引擎服务器端示例。 展示如何通过springframework的@Component标
 ### jigsaw-rpc-example-client
 
 RPC引擎客户端示例，和jigsaw-rpc-example-server配合使用。 
+
+### jigsaw-rpc-schema
+
+支付数据规范，使用Google Protocol Buffer格式来定义。 
+
