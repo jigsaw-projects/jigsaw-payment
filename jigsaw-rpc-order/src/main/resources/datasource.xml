@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans profile="dev">        
+	<bean id="dataSourceParent" abstract="true"
+		class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="true" />
+		<property name="testOnReturn" value="false" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="validationInterval" value="30000" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+		<property name="maxActive" value="100" />
+		<property name="minIdle" value="2" />
+		<property name="maxWait" value="10000" />
+		<property name="initialSize" value="4" />
+		<property name="removeAbandonedTimeout" value="60" />
+		<property name="removeAbandoned" value="true" />
+		<property name="logAbandoned" value="true" />
+		<property name="minEvictableIdleTimeMillis" value="30000" />
+		<property name="jmxEnabled" value="true" />
+	</bean>
+
+	<bean id="jdbcSharder" class="org.jigsaw.payment.order.mysql.MySQLJdbcSharder">
+		<property name="tableCount" value="10"/>
+		<property name="databaseCount" value="2"/>
+		<property name="tableNamePattern" value="pay_order_%01d"/>
+		<property name="dataSourceList">
+			<list>
+				<bean parent="dataSourceParent" primary="true">
+					<property name="url"
+						value="jdbc:mysql://localhost:3306/jigsaw_payment_0?useUnicode=true&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull&amp;serverTimezone=UTC&amp;useSSL=false" />
+					<property name="username" value="payment" />
+					<property name="password" value="123456" />
+				</bean>
+				<bean parent="dataSourceParent">
+					<property name="url"
+						value="jdbc:mysql://localhost:3306/jigsaw_payment_1?useUnicode=true&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull&amp;serverTimezone=UTC&amp;useSSL=false" />
+					<property name="username" value="payment" />
+					<property name="password" value="123456" />
+				</bean>		
+			</list>
+		</property>
+	</bean>
+</beans>
+
+<!-- 如果需要支持多机房（profile），可以参考上述格式定义不同的profile 
+<beans profile="test">
+
+</beans>
+-->
+</beans>        
