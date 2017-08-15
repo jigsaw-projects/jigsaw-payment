@@ -1,0 +1,148 @@
+syntax = "proto2";
+option java_package = "org.jigsaw.payment.rpc";
+import "entity.proto";
+import "taglib.proto";
+
+/**
+ * 创建订单
+ *
+**/
+message CreatePayOrderRequest {
+
+    optional string user_name	= 1;//用户名
+    optional string password	= 2;//密码
+
+    required PayOrder pay_order = 21;
+}
+
+/**
+ * 返回订单创建结果
+ *
+**/
+message CreatePayOrderResponse {
+    required PayOrder pay_order = 11;//创建成功后的订单，包含订单号
+}
+
+/**
+  * 根据订单号查询交易服务的输入
+ **/
+message GetPayOrderRequest {
+
+    optional string user_name = 1;//用户名
+    optional string password = 2;//密码
+
+    optional string code = 11;
+
+    optional int32 partner_id = 21; //接入方id
+    optional string partner_order_no = 22;  //接入方订单号
+
+    optional string third_trade_code = 31;
+    optional int32 dest_pay_type = 32;
+
+    optional int64 pay_index = 41;
+    optional int64 sub_id = 42;
+
+}
+
+/** 
+ *订单查询的输出
+**/
+message GetPayOrderResponse {	
+    optional PayOrder pay_order = 11;
+}
+
+
+/**
+ * 查询交易列表服务的输入
+ **/
+message QueryPayOrderRequest {
+
+    optional string user_name	= 1;//用户名
+    optional string password	= 2;//密码
+
+    required int32 offset	= 3;//分页offset参数
+    required int32 limit	= 4;//分页limit参数
+
+    required PayOrderFilter filter = 11; //过滤器
+    repeated int32 order_field_number =12; // 排序字段的message field号
+}
+/**
+ * 查询交易列表服务的输出
+**/
+message QueryPayOrderResponse {
+    required int64 total = 12;
+    repeated PayOrder pay_order = 11;
+}
+
+/*查询交易列表服务的输入*/
+message CountPayOrderRequest {
+
+    optional string user_name = 1;//用户名
+    optional string password = 2;//密码
+
+    required PayOrderFilter filter = 11; //过滤器
+
+}
+
+/*查询交易列表服务的输出*/
+message CountPayOrderResponse {
+    required int64 total = 11; //总数
+    optional int64 total_fee = 12; //总金额
+}
+
+
+
+/*准备交易的输入*/
+message PreparePayRequest {
+ 
+    optional string user_name = 1;//用户名
+    optional string password = 2;//密码
+
+    required string order_code = 11; //订单号
+    required int32 source_pay_type = 12; //支付服务
+    required int32 dest_pay_type = 13; //支付服务
+    optional int32 sign_corp_id = 14; //签约公司
+    optional int32 partner_account_id = 15; //路由的商户号ID
+    optional int64 sub_id = 16;// 用户ID,如果有尽量输入
+
+}
+/*准备交易的输出*/
+message PreparePayResponse {
+
+    optional PayOrder trade = 11;//更新后的订单
+}
+
+/*完成交易的输入，设置交易成功*/
+message FinishPayRequest {
+ 
+    optional string user_name = 1;//用户名
+    optional string password = 2;//密码
+
+    optional string order_code = 21; //订单号
+    required int64 real_fee = 22; //渠道支付金额
+    optional string third_order_code = 23; //渠道订单号
+    optional int64 third_pay_time = 24; //渠道支付时间
+    optional int64 third_create_time = 25; //渠道创建时间
+    optional string sub_account_id = 26;//用户账户,第三方账户id，或者 用户账户ID
+    optional int64 transaction_id =27;//支付流水ID
+}
+/*完成交易的输出*/
+message FinishPayResponse {
+    optional PayOrder pay_order = 11;//更新后的订单
+}
+
+/*完成交易的输入，设置交易成功*/
+message ClosePayRequest {
+ 
+    optional string user_name = 1;//用户名
+    optional string password = 2;//密码
+
+    required string order_code = 11; //订单号
+    optional int64 user_id = 12; //用户ID
+}
+/*完成交易的输出*/
+message ClosePayResponse {
+     optional string order_code = 11; //订单号
+    optional int64 user_id = 12; //用户ID
+    optional PayOrder.Status status = 13;//状态
+}

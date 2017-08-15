@@ -51,7 +51,8 @@ public class TProtobufProcessor implements org.apache.thrift.TProcessor,
 	private static final String UN_KNOWN_IP = "unknown_ip";
 
 	private BeanFactory beanFactory;
-
+	private JsonFormat format = new JsonFormat();
+	
 	public TProtobufProcessor() {
 	}
 
@@ -225,7 +226,7 @@ public class TProtobufProcessor implements org.apache.thrift.TProcessor,
 	 * 将message转换成string,并用空格取代回车符和引号.
 	 */
 	private String messageToString(Message message) {
-		String json = JsonFormat.printToString(message);
+		String json = format.printToString(message);
 
 		return StringUtils.replaceChars(StringUtils.replaceChars(
 				StringUtils.left(json, MAX_REQUEST_BYTES_LENGTH), '\n', ' '),

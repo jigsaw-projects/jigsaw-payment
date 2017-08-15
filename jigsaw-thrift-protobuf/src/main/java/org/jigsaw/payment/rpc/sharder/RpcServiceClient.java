@@ -23,11 +23,8 @@ public class RpcServiceClient {
 	 */
 	protected TransportManager transportManager;
 	public void setTransportManager( TransportManager transportManager){
-		this.transportManager = transportManager;
-		
+		this.transportManager = transportManager;		
 	}
-
-
 
 	/**
 	 * 调用RPC的通用方法。这里的实现方法是通过对BaseService的execute调用进行转换，这使得其他的RPC调用不需要再定义thrift 方法，仅需定义输入输出的protobuf message。

@@ -1,178 +1,233 @@
-/*
- * Copyright 2017-2026 Web Payment Sig. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
- * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
- * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-option java_multiple_files = true;
-/*
- * 该文件收录所有的实体对象。一般在实现上，实体对象会独立保存在一张数据库主表中，并且有自己的ID。 
- * 在使用protobuf来表示对象时， 为了规范数据表示，我们预留了前面的20个field用来存放通用的字段。
- * 预留字段参见PaymentEntity的定义
- */
-import "dict.proto";
-import "property.proto";
+syntax = "proto2";
+option java_package = "org.jigsaw.payment.model";
+option java_multiple_files = true;//指定生成多个类
+import "taglib.proto";
 
-package org.jigsaw.payment;
 
 /**
- * 预留字段定义
- * 所有实体在定义时， 优先考虑使用预留字段中的属性。 实体其他属性编号从21开始。 
+ * 状态码
 **/
-message PaymentEntity {
-    required int64      id       = 1;  //科目代码，唯一识别码
-    optional string     title    = 2;  //名称
-    required Version    version  = 9; //版本信息  
-} 
+enum StatusCode {
+    SUCCESS = 0;
+
+	//通用错误
+	  UNKNOWN = 1,
+	  BAD_DATA_FORMAT = 2,
+	  PERMISSION_DENIED = 3,
+	  INTERNAL_ERROR = 4,
+	  DATA_REQUIRED = 5,
+	  LIMIT_REACHED = 6,
+	  QUOTA_REACHED = 7,
+	  INVALID_AUTH = 8,
+	  AUTH_EXPIRED = 9,
+	  DATA_CONFLICT = 10,
+	  ENML_VALIDATION = 11,
+	  SHARD_UNAVAILABLE = 12,
+	  LEN_TOO_SHORT = 13,
+	  LEN_TOO_LONG = 14,
+	  TOO_FEW = 15,
+	  TOO_MANY = 16,
+	  UNSUPPORTED_OPERATION = 17,
+	  TAKEN_DOWN = 18,
+	  RATE_LIMIT_REACHED = 19,
+	  BUSINESS_SECURITY_LOGIN_REQUIRED = 20,
+	  DEVICE_LIMIT_REACHED = 21,
+
+	//优惠券相关错误代码
+    ERROR_COUPONS_FORMAT_INPUT = 101;
+    ERROR_COUPON_LOCK = 102;
+    ERROR_COUPON_USE_EXPIRED = 103;
+    ERROR_COUPON_USE_UNACTIVATED = 104;
+    ERROR_COUPON_USE_FROZEN = 105;
+    ERROR_COUPON_USE_USED = 106;
+    ERROR_COUPON_USE_LOCKED = 107;
+    ERROR_COUPON_USE_DESTROYED = 108;
+    ERROR_COUPON_TYPE_CANT_OP = 109;
+    ERROR_COUPON_TYPE_CANT_DIRECT_CONSUME = 110;
+    ERROR_COUPON_USE_UNSTARTED = 111;
+    ERROR_ORDER_COUPON_NULL = 112;
+    ERROR_ORDER_COUPON_NOT_ALL_LOCK = 113;
+    ERROR_COUPON_SEND_UNHAND = 114;
+    ERROR_COUPON_SEND_ACTIVATING = 115;
+    ERROR_COUPON_SEND_DESTROYED = 116;
+    ERROR_COUPON_SEND_LOCKED = 117;
+    ERROR_COUPON_SEND_NO_ENOUGH = 118;
+    ERROR_COUPON_SEND_TIME_EXPIRED = 119;
+    ERROR_COUPON_BATCH_UNAVAILABLE = 120;
+    ERROR_ORDER_COUPON_NOT_ALL_VALID = 121;
+    ERROR_COUPON_BATCH_SEND_UNAVAILABLE = 122;
+    ERROR_COUPON_BIND_LIMIT = 123;
+    ERROR_COUPON_BATCH_NULL = 124;
+    ERROR_COUPON_NULL = 125;
+    ERROR_COUPON_BIND_NOT_BELONG_PARTNER = 126;
+    ERROR_COUPON_BIND_IS_SENT = 127;
+    ERROR_COUPON_BIND_STATUS_NOT_UNUSED = 128;
+    ERROR_COUPON_CONSUME_ERROR = 129;
+    ERROR_COUPON_BIND_OVER_LIMIT = 130;
+
+	//安全相关的错误
+    ERROR_PASSWORD_NOT_SET = 201;
+    ERROR_PASSWORD_SAVE_FAIL = 202;
+    ERROR_PASSWORD_INVALID = 203;
+    ERROR_PASSWORD_FROZEN = 204;
+    ERROR_IDCARD_INVALID = 205;
+    ERROR_MOBILE_NOT_SET = 206;
+    ERROR_NAME_IDCARD_NOT_MATCH = 207;
+    ERROR_ACCOUNT_FROZEN = 208;
+    ERROR_ACCOUNT_INACTIVE = 209;
+    ERROR_PASSWORD_WRONG = 210;
 
 
-/**
- * 会计科目
- *
- **/
-message AccountSubject{
-    required int64 id           = 1;  //科目代码，唯一识别码
-    required Version version    = 9; //版本信息
+	//账户相关的错误
+    ERROR_ACCOUNT_UNAVAILABLE = 301;//账户不可用
+    ERROR_ACCOUNT_BALANCE_NOT_ENOUGH = 302;//账户余额不足
 
-    required int32 level        = 21;  //层级
-    required string title       = 22;  //科目名称，默认为中文
-    required AccountClassification classification = 23; //科目类别
-    required string description = 24;  //描述， 默认为中文
-    required bool is_detail     = 25; // 是否明细科目
-}
+	//订单相关的错误
+    ERROR_ORDER_ALREADY_PAID=401;//订单已经支付成功
 
-/**
- * 支付账户（外部）
- * 
- */
-message Account {
-    required int64 id           = 1;  //科目代码，唯一识别码
-    required Version version    = 9; //版本信息
-    
-    enum Status {
-        INITIALIZED = 1; //初始
-        ACTIVIED    = 2; //激活
-        FROZEN      = 3; //冻结
-        CLOSED      = 4; //关闭
-    }
-    required Status  status  = 21; //状态
-    required AccountSubject subject = 22; //会计科目
-
-    /**
-     * 账户余额信息
-     *
-     */
-    message Balance{
-        required Currency   currency    = 1; //货币单位，可以是ISO
-        required int64 rest_balance     = 2; //余额
-        required int64 total_balance    = 3; //充值金额
-        required int64 frozen_balance   = 4; //冻结金额
-    }
-
-    required Balance balance = 23; //余额信息
-    
-    /**
-     * 账户权限设置
-    **/
-    message Permission{
-        required bool enable_recharge = 1;  //是否允许充值；
-        required bool enable_withdraw = 2;  //是否允许提现；
-        required bool enable_overdraw = 3;  //是否允许透支；
-        required bool enable_payment  = 4;  //是否允许支付；
-        required bool enable_transfer_in  = 5; //是否允许转账进入；
-        required bool enable_transfer_out = 6; //是否允许转账转出；
-        required bool is_protected = 7; //是否有安全保障；
-        required bool is_actived   = 8; //是否激活；
-        required bool is_frozen    = 9; //是否冻；
-    }
-
-    required Permission permission = 24 ; //权限设置
 
 }
 
 /**
- * 支付订单。支付订单指由业务方提交到支付系统执行支付的订单。在支付场景下，用户在收银台上选择了支付方式后，将订单提交到支付系统执行支付。 
- *  一个业务订单可以对应多个支付订单。 比如用户在某个支付方式支付失败后，更换其他的支付方式。 目前暂不考虑将业务订单拆单支付的情况。 
- * 支付订单也是记账的原始凭证。 支付订单号作为原始凭证号登记到记账凭证中。 
+ * 账户涉及到的实体
+ *
 **/
+enum EntityType{
+    UNKNOWN_ENTITY_TYPE = 0;
+    USER = 1; //普通个人用户
+    MERCHANT = 2; //商户
+    CLEARING = 3; //结算户
+    CHANNEL = 4; //渠道
+}
 
-message Payment {
-	required int64 id				= 1;	// 支付订单。必须以一定的规则来生成。注意，订单号必须唯一，不重复。 
-	required int64 order_id			= 21 ;	// 交易订单号，或者是商城订单号。这是由电商系统或者业务生成后，发送给支付系统。对一个业务订单，可以发起多次支付。
-
-  /**
-   * 支付订单状态
-   *
-  **/
-	enum Status {
-		UNPAID	 = 1 ; //未支付
-		PAID	 = 2 ;  //已支付
-		CANCELED = 3 ; //已取消， 指用户主动取消订单。
-		CLOSED   = 4 ; //已关闭，指由于系统原因关闭订单，比如超时。 
+/* 货币类型*/
+enum FeeUnit {
+	CNY = 1;
+	USD = 2;
+	EUR = 3;
+	HKD = 4; 
+	TWD = 5; 
+	JPY = 6;
+}
+/**
+ * 支付订单， 指业务方提交到支付平台的订单。 一个支付订单可以通过多个渠道订单来完成支付。
+ *
+**/
+message PayOrder {
+	enum Status{
+    	UNKNOWN_PAY_ORDER_STATUS = 0;
+	    PAID = 1;
+	    UNPAID = 2;
+	    PENDING = 3;
+	    CANCEL = 4;
+	    SMS_SUCC = 5;
+	    FROZEN = 6;
+	    CLOSED = 7;
+	    EXCEPTION = 8;
+	    CLOSE_PAYED = 9;
 	}
-	required Status	status		= 22;		// 支付状态
+    optional int64 id			= 1;  //id，主键
+    optional string code		= 11; //支付订单号
+    optional int64 create_time	= 2[(column_option).column_type = DATETIME];//创建时间，本条记录在服务器上创建的时间。
+    optional int64 update_time	= 3[(column_option).column_type = DATETIME];//更新时间，本条记录最后修改时间；
+    optional int64 expire_time	= 4[(column_option).column_type = DATETIME];//过期时间，由业务方设定的支付有效期。超过这个时间，支付即被判定为过期。在过期时间后不能在发起支付。如果在过期时间前支付已发起但是未完成，
+    optional int64 pay_time		= 5[(column_option).column_type = DATETIME];//支付完成时间
+    optional Status status = 6;//状态
+    optional int32 version		= 7;//版本号
+    optional string error_code	= 8;//错误码
+    optional string error_detail= 9;//错误描述
 
-	required int64	create_time = 23;		//创建时间；	
-
-	// 30~39 付款信息；
-	required int64	payer_id	= 31;		// 付款人
-	required string payer_name	= 32;		//付款人名称
-	required int64	payer_account_id= 33;	// 付款账户ID
-	required int64	pay_method_id	= 34;	//支付方式
-	required int64	pay_channel_id	= 35;	//支付渠道
-	optional int64	pay_route_id	= 36;	//支付路由
-	optional int64  pay_time		= 37;    //实际完成支付的时间
+	// 支付上下文信息
+    optional int32 source_pay_type	= 16; //支付方式ID，用户选择的交易实体表的代码，与之前一致
+	optional int32 dest_pay_type	= 17; //支付服务ID，经过路由实际执行的交易渠道表的代码，与之前一致
+    optional int32 pay_mode			= 39;// 0:正常订单，1：测试订单
+    optional string app_id			= 49;//发起交易的app id
+    optional int32 pay_scenarios	= 50;//发起交易的场景，api，通用收银台，充值收银台，扫码支付
 	
-	// 40~49 费用信息
-	required Currency currency= 40;	// 货币单位
-	required int64  original_amount	= 41;	//原金额
-	required int64  pay_amount		= 42;	//实际支付费用
-	optional int64  fee_amount		= 43;	//手续费		
+	//费用信息
+    optional int64 fee		= 18;	//订单金额
+    optional int64 fee_real = 19;	//实际支付金额
+    optional int32 fee_unit = 20;	//订单计费单位
 
-	// 50~59 收款人信息
-	required int64  payee_id		= 50;	//收款人id
-	required string payee_name		= 51;   //收款人名称
-	required int64  payee_account_id= 52;   //收款账号ID  
+	//支付渠道信息；
+    optional string third_trade_code	= 12; //第三方交易号
+    optional int64	third_create_time	= 13 [(column_option).column_type = DATETIME];//第三方创建时间
+    optional int64	third_pay_time		= 14 [(column_option).column_type = DATETIME];//第三方支付时间
+    optional int64	current_key			= 44; //当前密钥ID
+    
+    optional string notify_url			= 47;//异步回调URL
+    optional string return_url			= 48;//同步回调URL
+
+
+	//商品订单信息
+	optional string order_id		= 21;//商品订单号，由商户在请求支付的时候提交， 可以查询到商品信息。
+    optional string order_title		= 22;//商品的名称
+    optional string order_detail	= 23;//商品描述
+    optional string order_show_url	= 24;//订单显示的url地址
+
+	//交易主体信息；
+    optional int64	sub_id			= 25;//主体ID：用户ID;也可以是商户ID
+    optional EntityType sub_type	= 26;//主体类型
+    optional string sub_name		= 27;//主体名称
+    optional string sub_account_id	= 28;//主体帐号
+    optional int32	sub_account_type = 29;//主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
+    optional string sub_ip			= 30;// 主体使用的IP
+    optional string sub_mobile		= 31;//主体使用的手机号
+    optional string sub_client_code = 32;//发起交易的客户端代码
+    optional string sub_device_id	= 33;//交易主体实使用的设备号
+    optional string sub_email		= 34;//交易主体的邮箱，预留
+    optional string sub_location	= 35;//交易主体的地理位置，预留
+    optional string sub_country_code = 36;//交易主体的国别，预留，默认为中国
+
+
+	//交易对手信息
+    optional int64 partner_id			= 40;//交易对手的ID，接入方系统ID
+    optional EntityType partner_type	= 41;//交易对手的类型
+    optional int64 partner_account_id	= 42;//交易对手的帐号,商户号ID
+    optional string partner_name		= 43;//交易对手的名称
+
 }
-
 
 /**
- * 记账凭证
- *
+ * 订单查询过滤器
 **/
-message Voucher {
-    required int64 id				= 1  ; //凭证号， 这是记账凭证的标识， 反映经济活动发生的顺序，编号必须连续，不能有重号、漏号。
-    required int64 recording_time	= 21 ; //凭证登记时间，凭证日期必须随着凭证号增加而增加；
-    required int64 subject_id		= 22 ; //科目ID，这里必须是明细科目
-    required Currency currency		= 23 ; //货币单位 
-    required int64 debit_amount		= 24 ; // 贷方金额
-    required int64 credit_amount	= 25 ;  // 借方金额
-    required int64 original_id		= 26 ; // 原始凭证号，线上流水使用交易流水号作为原始凭证号；
-	
-	/**
-	 * 凭证状态
-	**/
-	enum Status {
-		RECORDED = 1; //已登记
-		CHECKED  = 2; //已对账
+message PayOrderFilter {
+   optional PayOrder.Status status = 5;
 
-	}
+    optional int64 create_time_begin = 6;
+    optional int64 create_time_end = 7;
+    optional int64 pay_time_begin = 8;
+    optional int64 pay_time_end = 9;
+
+    optional EntityType sub_type = 10;
+    optional int64 sub_id = 11;
+
+    repeated int32 partner_id = 12[packed=true];
+    repeated int32 partner_account_id = 13[packed=true];
+
+    repeated int32 source_pay_type = 14[packed=true];
+    repeated int32 dest_pay_type = 15[packed=true];
+
+    optional string app_id = 16;
+    optional int32 pay_scenarios = 17;
+    optional int32 gateway = 18;
+    optional int32 pay_mode = 19;
+    optional string order_id = 20;
+
+    optional int32 sub_mobile_status = 21;// for sms trade
+    optional string sub_account_id = 22;
+    optional int32 sub_account_type = 23;
+
+    optional string sub_client_code = 24;
+
+    optional int64 parent_id = 26;
+    optional string sub_mobile = 27;
+    optional string third_trade_code = 28;
+    optional string partner_order_no = 29;
+
 }
+
+
+
+
+

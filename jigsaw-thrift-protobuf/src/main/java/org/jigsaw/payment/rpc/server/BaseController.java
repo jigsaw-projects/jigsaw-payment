@@ -1,6 +1,5 @@
 package org.jigsaw.payment.rpc.server;
 
-import org.apache.thrift.TException;
 import org.jigsaw.payment.rpc.NotFoundException;
 import org.jigsaw.payment.rpc.SystemException;
 import org.jigsaw.payment.rpc.UserException;

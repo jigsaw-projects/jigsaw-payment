@@ -1,6 +1,8 @@
 package org.jigsaw.payment.rpc.register;
 
 import org.apache.commons.lang3.StringUtils;
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import org.codehaus.jackson.map.annotate.JsonRootName;
 
 
 /**
@@ -10,7 +12,8 @@ import org.apache.commons.lang3.StringUtils;
  * @author shamphone@gmail.com
  * @version 1.0.0
  **/
-
+@JsonRootName("rpc")
+@JsonAutoDetect
 public class RpcPayload implements java.io.Serializable {
 
 	/**

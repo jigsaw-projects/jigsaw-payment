@@ -18,9 +18,9 @@ public class ServerRunner {
 	private static final Logger LOG = LoggerFactory.getLogger(ServerRunner.class);
 
 	public static class Builder {
-		// 在server完全启动后注册到zookeeper上；
+		// 在server完全启动后注册到zookeeper上的时间延迟
 		private int zookeeperDeferRegisterPeriod = 2000;
-		// 在server关闭提前从zookeeper上注销
+		// 在server关闭提前从zookeeper上注销的时间间隔
 		private int zookeeperUnregisterPeriod = 5000;
 		// 连接到zookeeper
 		private CuratorFramework framework = null;
