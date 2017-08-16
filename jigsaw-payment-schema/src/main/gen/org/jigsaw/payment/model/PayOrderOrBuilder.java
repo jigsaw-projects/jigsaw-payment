@@ -9,7 +9,7 @@ public interface PayOrderOrBuilder extends
 
   /**
    * <pre>
-   *id，主键
+   *id，主键， 数据中自增
    * </pre>
    *
    * <code>optional int64 id = 1;</code>
@@ -17,7 +17,7 @@ public interface PayOrderOrBuilder extends
   boolean hasId();
   /**
    * <pre>
-   *id，主键
+   *id，主键， 数据中自增
    * </pre>
    *
    * <code>optional int64 id = 1;</code>
@@ -257,7 +257,7 @@ public interface PayOrderOrBuilder extends
 
   /**
    * <pre>
-   *发起交易的appid
+   *发起交易的app id
    * </pre>
    *
    * <code>optional string app_id = 49;</code>
@@ -265,7 +265,7 @@ public interface PayOrderOrBuilder extends
   boolean hasAppId();
   /**
    * <pre>
-   *发起交易的appid
+   *发起交易的app id
    * </pre>
    *
    * <code>optional string app_id = 49;</code>
@@ -273,7 +273,7 @@ public interface PayOrderOrBuilder extends
   java.lang.String getAppId();
   /**
    * <pre>
-   *发起交易的appid
+   *发起交易的app id
    * </pre>
    *
    * <code>optional string app_id = 49;</code>

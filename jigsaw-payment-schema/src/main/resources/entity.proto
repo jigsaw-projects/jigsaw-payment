@@ -11,27 +11,27 @@ enum StatusCode {
     SUCCESS = 0;
 
 	//通用错误
-	  UNKNOWN = 1,
-	  BAD_DATA_FORMAT = 2,
-	  PERMISSION_DENIED = 3,
-	  INTERNAL_ERROR = 4,
-	  DATA_REQUIRED = 5,
-	  LIMIT_REACHED = 6,
-	  QUOTA_REACHED = 7,
-	  INVALID_AUTH = 8,
-	  AUTH_EXPIRED = 9,
-	  DATA_CONFLICT = 10,
-	  ENML_VALIDATION = 11,
-	  SHARD_UNAVAILABLE = 12,
-	  LEN_TOO_SHORT = 13,
-	  LEN_TOO_LONG = 14,
-	  TOO_FEW = 15,
-	  TOO_MANY = 16,
-	  UNSUPPORTED_OPERATION = 17,
-	  TAKEN_DOWN = 18,
-	  RATE_LIMIT_REACHED = 19,
-	  BUSINESS_SECURITY_LOGIN_REQUIRED = 20,
-	  DEVICE_LIMIT_REACHED = 21,
+	  UNKNOWN = 1;
+	  BAD_DATA_FORMAT = 2;
+	  PERMISSION_DENIED = 3;
+	  INTERNAL_ERROR = 4;
+	  DATA_REQUIRED = 5;
+	  LIMIT_REACHED = 6;
+	  QUOTA_REACHED = 7;
+	  INVALID_AUTH = 8;
+	  AUTH_EXPIRED = 9;
+	  DATA_CONFLICT = 10;
+	  ENML_VALIDATION = 11;
+	  SHARD_UNAVAILABLE = 12;
+	  LEN_TOO_SHORT = 13;
+	  LEN_TOO_LONG = 14;
+	  TOO_FEW = 15;
+	  TOO_MANY = 16;
+	  UNSUPPORTED_OPERATION = 17;
+	  TAKEN_DOWN = 18;
+	  RATE_LIMIT_REACHED = 19;
+	  BUSINESS_SECURITY_LOGIN_REQUIRED = 20;
+	  DEVICE_LIMIT_REACHED = 21;
 
 	//优惠券相关错误代码
     ERROR_COUPONS_FORMAT_INPUT = 101;
@@ -126,7 +126,7 @@ message PayOrder {
 	    EXCEPTION = 8;
 	    CLOSE_PAYED = 9;
 	}
-    optional int64 id			= 1;  //id，主键
+    optional int64 id			= 1;  //id，主键， 数据中自增
     optional string code		= 11; //支付订单号
     optional int64 create_time	= 2[(column_option).column_type = DATETIME];//创建时间，本条记录在服务器上创建的时间。
     optional int64 update_time	= 3[(column_option).column_type = DATETIME];//更新时间，本条记录最后修改时间；
@@ -227,7 +227,51 @@ message PayOrderFilter {
 
 }
 
+/**
+ * 账户
+ *
+**/
+message Account {
+  /*账户状态*/
+    enum Status {
+        INITIALIZED = 0;//创建
+        ACTIVATED = 1;//激活
+        FROZEN = 2;//冻结
+        DESTROYED = 3;//销毁
+    }
+    /*账户类型*/
+    enum Type {
+        TYPE_WALLET = 1;//零钱
+        TYPE_VC	 =2; //虚币
+    }
+    /*沙盒类型*/
+    enum Sandbox {
+        NO = 0;
+        YES = 1;
+    }
+    optional string id  = 1;// 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+    optional int64 user_id  = 2;// 用户ID
+    optional Type type  = 3;// 账户类型：1：奇豆；2：奇点；3：零钱。同一用户同一类型只允许开一个账户
+    optional FeeUnit fee_unit  = 4;// 货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币
+    optional int64 balance  = 5;// 余额
+    optional int64 frozen  = 6;// 冻结金额
+    optional int64 income  = 7;// 入账总额
+    optional int64 outcome  = 8;// 出账总额
+    optional Status status  = 9;// 状态：0：创建；1、激活；2：冻结；3：销毁
+    optional int32 rank  = 10;// 账户等级
+    optional int32 notice  = 11;// 通知方式：mobile(1)+email(1)
+    optional int64 attr  = 12;// 账户属性，可以bit位扩展
+    optional int32 security_level  = 13;// 安全等级
+    optional Sandbox sandbox  = 14;// 沙盒账户：0：否；1：是
+    optional string version  = 15;// 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
+    optional int64 create_time  = 16 [(column_option).column_type = DATETIME];// 创建时间
+    optional int64 update_time  = 17 [(column_option).column_type = DATETIME];// 更新时间
+    optional int32 third_type = 18;//第三方渠道ID，pay_partner表维护
+    optional string third_account  = 19;// 第三方的用户账户
+    optional string trird_param  = 20;// 第三方凭证信息，通用字段，每个渠道区别维护
 
+  
+}
 
 
 

@@ -98,17 +98,13 @@ public enum StatusCode
    */
   RATE_LIMIT_REACHED(19),
   /**
-   * <code>DATA_NOT_FOUND = 20;</code>
+   * <code>BUSINESS_SECURITY_LOGIN_REQUIRED = 20;</code>
    */
-  DATA_NOT_FOUND(20),
+  BUSINESS_SECURITY_LOGIN_REQUIRED(20),
   /**
-   * <code>REPOSITORY_INIT_ERROR = 21;</code>
+   * <code>DEVICE_LIMIT_REACHED = 21;</code>
    */
-  REPOSITORY_INIT_ERROR(21),
-  /**
-   * <code>INVALID_PARAM = 22;</code>
-   */
-  INVALID_PARAM(22),
+  DEVICE_LIMIT_REACHED(21),
   /**
    * <pre>
    *优惠券相关错误代码
@@ -388,17 +384,13 @@ public enum StatusCode
    */
   public static final int RATE_LIMIT_REACHED_VALUE = 19;
   /**
-   * <code>DATA_NOT_FOUND = 20;</code>
+   * <code>BUSINESS_SECURITY_LOGIN_REQUIRED = 20;</code>
    */
-  public static final int DATA_NOT_FOUND_VALUE = 20;
+  public static final int BUSINESS_SECURITY_LOGIN_REQUIRED_VALUE = 20;
   /**
-   * <code>REPOSITORY_INIT_ERROR = 21;</code>
+   * <code>DEVICE_LIMIT_REACHED = 21;</code>
    */
-  public static final int REPOSITORY_INIT_ERROR_VALUE = 21;
-  /**
-   * <code>INVALID_PARAM = 22;</code>
-   */
-  public static final int INVALID_PARAM_VALUE = 22;
+  public static final int DEVICE_LIMIT_REACHED_VALUE = 21;
   /**
    * <pre>
    *优惠券相关错误代码
@@ -627,9 +619,8 @@ public enum StatusCode
       case 17: return UNSUPPORTED_OPERATION;
       case 18: return TAKEN_DOWN;
       case 19: return RATE_LIMIT_REACHED;
-      case 20: return DATA_NOT_FOUND;
-      case 21: return REPOSITORY_INIT_ERROR;
-      case 22: return INVALID_PARAM;
+      case 20: return BUSINESS_SECURITY_LOGIN_REQUIRED;
+      case 21: return DEVICE_LIMIT_REACHED;
       case 101: return ERROR_COUPONS_FORMAT_INPUT;
       case 102: return ERROR_COUPON_LOCK;
       case 103: return ERROR_COUPON_USE_EXPIRED;

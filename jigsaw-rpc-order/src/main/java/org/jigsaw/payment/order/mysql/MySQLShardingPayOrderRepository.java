@@ -61,5 +61,5 @@ public class MySQLShardingPayOrderRepository implements PayOrderRepository {
 		this.sharder.getTemplateByUserId(order.getSubId()).insert(order, tableName);
 		return order.getId();
 	}
-
+	
 }

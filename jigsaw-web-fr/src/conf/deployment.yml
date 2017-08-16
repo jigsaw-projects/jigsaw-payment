@@ -1,0 +1,33 @@
+##################################################
+# 部署环境信息
+#   name    ：项目名称,示例： name: pay-web-frontend
+#   hosts   ：部署服务器IP/hostname列表， 示例：
+#                                  hosts:
+#                                     - 10.10.0.1
+#                                     - 10.10.0.2
+#   app_type：应用类型，可选值：
+#           java: java 应用,无需容器,直接使用java -cp classpath xxx运行
+#           web : 需要依赖web容器如tomcat运行
+#           jar : 组件,会部署到maven仓库中
+#           pom : 组件,会部署到maven仓库中
+#       缺省值：web，示例： app_type: web
+#   context_path：部署运行contextpath,当app_type=web需要,必须以/开头，缺省为：/${name}，示例： context_path: /pay-web-frontend
+##################################################
+name: pay-web-frontend
+context_path: /pay-web-frontend
+app_type: web
+
+################
+# 生产环境
+################
+prod:
+  hosts:
+   - 10.110.23.61
+   - 10.110.23.62
+
+################
+# 测试环境
+################
+test:
+  hosts:
+    - 10.110.28.69

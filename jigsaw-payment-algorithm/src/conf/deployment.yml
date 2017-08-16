@@ -1,0 +1,45 @@
+##################################################
+# 部署环境信息
+#   name    ：项目名称,示例： name: pay-web-frontend
+#   hosts   ：部署服务器IP/hostname列表， 示例：
+#                                  hosts:
+#                                     - 10.10.0.1
+#                                     - 10.10.0.2
+#   app_type：应用类型，可选值：
+#           java: java 应用,无需容器,直接使用java -cp classpath xxx运行
+#           web : 需要依赖web容器如tomcat运行
+#           jar : 组件,会部署到maven仓库中
+#           pom : 组件,会部署到maven仓库中
+#       缺省值：web，示例： app_type: web
+#   context_path：部署运行contextpath,当app_type=web需要,必须以/开头，缺省为：/${name}，示例： context_path: /pay-web-frontend
+#
+#   main_class: 运行的main方法的类class名称，选填，app_type为java时填写，如果填写了该值，将在部署时添加自动启动相关脚本 bootstrap.sh/startup.sh/shutdown.sh,程序可以不用在再添加
+#               示例：  main_class: com.iqiyi.pay.account.Server
+##################################################
+name: pay-service-uuid
+context_path: /pay-service-uuid
+app_type: java
+
+main_class: com.iqiyi.pay.uuid.UUIDServer
+
+################
+# 生产环境
+################
+prod:
+  hosts:
+   - 10.110.24.28
+   - 10.110.24.29
+
+################
+# 测试环境
+################
+test:
+  hosts:
+    - 10.110.28.169
+
+################
+# 开发环境
+################
+dev:
+  hosts:
+    - 10.110.28.169

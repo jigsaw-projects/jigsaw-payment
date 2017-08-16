@@ -16,6 +16,7 @@
 package org.jigsaw.payment.order;
 
 import org.jigsaw.payment.order.mysql.MySQLShardingPayOrderRepository;
+import org.jigsaw.payment.rpc.server.RpcServerConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -28,9 +29,9 @@ import org.springframework.context.annotation.ImportResource;
  * @date 2017年8月14日
  */
 
-@Configuration()
+@Configuration
 @ImportResource("classpath:datasource.xml")
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class,RpcServerConfiguration.class})
 public class TestConfiguration {
 
 	@Bean("payOrderRepository")

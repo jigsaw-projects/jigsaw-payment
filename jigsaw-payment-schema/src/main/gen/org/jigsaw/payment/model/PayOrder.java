@@ -546,7 +546,7 @@ public  final class PayOrder extends
   private long id_;
   /**
    * <pre>
-   *id，主键
+   *id，主键， 数据中自增
    * </pre>
    *
    * <code>optional int64 id = 1;</code>
@@ -556,7 +556,7 @@ public  final class PayOrder extends
   }
   /**
    * <pre>
-   *id，主键
+   *id，主键， 数据中自增
    * </pre>
    *
    * <code>optional int64 id = 1;</code>
@@ -939,7 +939,7 @@ public  final class PayOrder extends
   private volatile java.lang.Object appId_;
   /**
    * <pre>
-   *发起交易的appid
+   *发起交易的app id
    * </pre>
    *
    * <code>optional string app_id = 49;</code>
@@ -949,7 +949,7 @@ public  final class PayOrder extends
   }
   /**
    * <pre>
-   *发起交易的appid
+   *发起交易的app id
    * </pre>
    *
    * <code>optional string app_id = 49;</code>
@@ -970,7 +970,7 @@ public  final class PayOrder extends
   }
   /**
    * <pre>
-   *发起交易的appid
+   *发起交易的app id
    * </pre>
    *
    * <code>optional string app_id = 49;</code>
@@ -3622,7 +3622,7 @@ public  final class PayOrder extends
     private long id_ ;
     /**
      * <pre>
-     *id，主键
+     *id，主键， 数据中自增
      * </pre>
      *
      * <code>optional int64 id = 1;</code>
@@ -3632,7 +3632,7 @@ public  final class PayOrder extends
     }
     /**
      * <pre>
-     *id，主键
+     *id，主键， 数据中自增
      * </pre>
      *
      * <code>optional int64 id = 1;</code>
@@ -3642,7 +3642,7 @@ public  final class PayOrder extends
     }
     /**
      * <pre>
-     *id，主键
+     *id，主键， 数据中自增
      * </pre>
      *
      * <code>optional int64 id = 1;</code>
@@ -3655,7 +3655,7 @@ public  final class PayOrder extends
     }
     /**
      * <pre>
-     *id，主键
+     *id，主键， 数据中自增
      * </pre>
      *
      * <code>optional int64 id = 1;</code>
@@ -4406,7 +4406,7 @@ public  final class PayOrder extends
     private java.lang.Object appId_ = "";
     /**
      * <pre>
-     *发起交易的appid
+     *发起交易的app id
      * </pre>
      *
      * <code>optional string app_id = 49;</code>
@@ -4416,7 +4416,7 @@ public  final class PayOrder extends
     }
     /**
      * <pre>
-     *发起交易的appid
+     *发起交易的app id
      * </pre>
      *
      * <code>optional string app_id = 49;</code>
@@ -4437,7 +4437,7 @@ public  final class PayOrder extends
     }
     /**
      * <pre>
-     *发起交易的appid
+     *发起交易的app id
      * </pre>
      *
      * <code>optional string app_id = 49;</code>
@@ -4457,7 +4457,7 @@ public  final class PayOrder extends
     }
     /**
      * <pre>
-     *发起交易的appid
+     *发起交易的app id
      * </pre>
      *
      * <code>optional string app_id = 49;</code>
@@ -4474,7 +4474,7 @@ public  final class PayOrder extends
     }
     /**
      * <pre>
-     *发起交易的appid
+     *发起交易的app id
      * </pre>
      *
      * <code>optional string app_id = 49;</code>
@@ -4487,7 +4487,7 @@ public  final class PayOrder extends
     }
     /**
      * <pre>
-     *发起交易的appid
+     *发起交易的app id
      * </pre>
      *
      * <code>optional string app_id = 49;</code>

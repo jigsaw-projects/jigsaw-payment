@@ -1,14 +1,17 @@
 package org.jigsaw.payment.rpc.server;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.curator.RetryPolicy;
+import org.apache.curator.framework.AuthInfo;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.api.ACLProvider;
 import org.apache.curator.retry.BoundedExponentialBackoffRetry;
-import org.apache.curator.x.discovery.ServiceDiscovery;
 import org.apache.curator.x.discovery.ServiceDiscoveryBuilder;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.apache.curator.x.discovery.ServiceInstanceBuilder;
@@ -21,12 +24,16 @@ import org.apache.thrift.server.TThreadPoolServer;
 import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportFactory;
+import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.data.ACL;
+import org.jigsaw.payment.rpc.register.DigestAuthInfo;
 import org.jigsaw.payment.rpc.register.JsonSerializer;
 import org.jigsaw.payment.rpc.register.RpcPayload;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
+import org.springframework.core.Ordered;
 
 /**
  * Rpc Server 配置文件
@@ -34,34 +41,85 @@ import org.springframework.core.env.Environment;
  * @author shamphone@gmail.com
  *
  */
+
 @Configuration
+@AutoConfigureOrder(Ordered.LOWEST_PRECEDENCE)
 public class RpcServerConfiguration {
 
-	@Autowired
-	private Environment env;
+	@Value("${rpc.server.service.path}")
+	private String zkBasePath;
 
-	@Bean
-	public TProcessor processor() {
-		return new TProtobufProcessor();
-	}
+	@Value("${rpc.server.max.qps:1000}")
+	private long maxQps = 1000l;
 
-	public InstanceSerializer<RpcPayload> serializer() {
-		return new JsonSerializer();
-	}
+	@Value("${rpc.service.protocol.type:binary}")
+	private String protocol = "binary";
 
-	public RpcPayload payload() {
+	@Value("${rpc.service.transport.type:transport}")
+	private String transport = "transport";
+
+	@Value("${rpc.server.zookeeper.username}")
+	private String zkUsername;
+
+	@Value("${rpc.server.zookeeper.password}")
+	private String zkPassword;
+
+	@Value("${rpc.server.zookeeper.base.sleep.time.ms:1000}")
+	private int baseSleepTimeMs = 1000;
+
+	@Value("${rpc.server.zookeeper.max.sleep.time.ms:5000}")
+	private int maxSleepTimeMs = 5000;
+
+	@Value("${rpc.server.zookeeper.max.retries:29}")
+	private int maxRetries = 29;
+
+	@Value("${rpc.server.zookeeper.connect.string}")
+	private String connectString;
+
+	@Value("${rpc.server.zookeeper.session.timeout.ms:1000}")
+	private int sessionTimeoutMs = 1000;
+
+	@Value("${rpc.server.zookeeper.connection.timeout.ms:1000}")
+	private int connectionTimeoutMs = 1000;
+
+	@Value("${rpc.server.port:7777}")
+	private int port = 7777;
+
+	@Value("${rpc.server.ip:#{null}}")
+	private String ip = null;
+
+	@Value("${rpc.server.min.worker.threads:512}")
+	private int minTheads = 512;
+
+	@Value("${rpc.server.max.worker.threads:3000}")
+	private int maxTheads = 3000;
+
+	@Value("${rpc.server.thread.keep.alive.time:600}")
+	private long keepAliveTime = 600l;
+
+	@Value("${rpc.server.service.name}")
+	private String serviceName = "RPCService";
+
+	@Value("${rpc.server.uri.spec}")
+	private String uriSpec = "";
+	
+	@Value("${rpc.server.zookeeper.register.delay:2000}")
+	private int zookeeperDeferRegisterPeriod = 2000;
+	
+	@Value("${rpc.server.zookeeper.unregister.before:5000}")
+	private int zookeeperUnregisterPeriod = 5000;
+
+	
+
+	private RpcPayload payload() {
 		RpcPayload payload = new RpcPayload();
-		payload.setMaxQps(env.getProperty("rpc.server.max.qps", Long.class,
-				1000l));
-		payload.setProtocol(env.getProperty("rpc.service.protocol.type",
-				"binary"));
-		payload.setTransport(env.getProperty("rpc.service.transport.type",
-				"transport"));
+		payload.setMaxQps(this.maxQps);
+		payload.setProtocol(this.protocol);
+		payload.setTransport(this.transport);
 		return payload;
 	}
 
-	/**
-	public ACLProvider aclProvider() {
+	private ACLProvider aclProvider() {
 		return new ACLProvider() {
 			@Override
 			public List<ACL> getDefaultAcl() {
@@ -75,109 +133,73 @@ public class RpcServerConfiguration {
 		};
 	}
 
-	public List<AuthInfo> authInfo() {
-		String username = env.getProperty("rpc.server.zookeeper.username");
-		String password = env.getProperty("rpc.server.zookeeper.password");
+	private List<AuthInfo> authInfo() {
 		List<AuthInfo> info = new ArrayList<AuthInfo>();
-		info.add(new DigestAuthInfo(username, password));
+		info.add(new DigestAuthInfo(this.zkUsername, this.zkPassword));
 		return info;
 	}
-	**/
 
-	public RetryPolicy retryPolicy() {
-		int baseSleepTimeMs = Integer.parseInt(env.getProperty(
-				"rpc.server.zookeeper.base.sleep.time.ms", "1000"));
-		int maxSleepTimeMs = Integer.parseInt(env.getProperty(
-				"rpc.server.zookeeper.max.sleep.time.ms", "5000"));
-		int maxRetries = Integer.parseInt(env.getProperty(
-				"rpc.server.zookeeper.max.retries", "50"));
+	private RetryPolicy retryPolicy() {
 		return new BoundedExponentialBackoffRetry(baseSleepTimeMs,
 				maxSleepTimeMs, maxRetries);
 	}
 
-	@Bean(name = "curator-framework")
-	public CuratorFramework curatorFramework() {
-		return CuratorFrameworkFactory
-				.builder()
-				.connectString(
-						env.getProperty("rpc.server.zookeeper.connect.string"))
-				.sessionTimeoutMs(
-						Integer.parseInt(env.getProperty(
-								"rpc.server.zookeeper.session.timeout.ms",
-								"10000")))
-				.connectionTimeoutMs(
-						Integer.parseInt(env.getProperty(
-								"rpc.server.zookeeper.connection.timeout.ms",
-								"10000"))).retryPolicy(this.retryPolicy())
-				//.aclProvider(this.aclProvider()).authorization(this.authInfo())
+
+	/**
+	 * 这个bean启动后会独占线程，导致其他的bean无法执行。所以必须保证这个bean在最后才能够执行。
+	 * @return
+	 * @throws Exception
+	 */
+	@Bean(initMethod = "start", destroyMethod = "stop")
+	public ServerRunner serverRunner()
+			throws Exception {
+		String ip = this.ip;
+		if (ip == null)
+			ip = new IpPortResolver().getIpV4Address();
+
+		String instanceId = this.ip + ":" + this.port;
+		
+		CuratorFramework curatorFramework =CuratorFrameworkFactory.builder()
+				.connectString(this.connectString)
+				.sessionTimeoutMs(this.sessionTimeoutMs)
+				.connectionTimeoutMs(this.connectionTimeoutMs)
+				.retryPolicy(this.retryPolicy())
+				.aclProvider(this.aclProvider()).authorization(this.authInfo())
 				.build();
-	}
+		InstanceSerializer<RpcPayload> serializer = new JsonSerializer();
 
-	@Bean(name = "service-instance")
-	public ServiceInstance<RpcPayload> serviceInstance() throws Exception {
-		ServiceInstanceBuilder<RpcPayload> instance = ServiceInstance.builder();
-		instance.name(env.getProperty("rpc.server.service.name"))
-				.uriSpec(new UriSpec(env.getProperty("rpc.server.uri.spec")))
-				.payload(this.payload()).port(this.port())
-				.id(this.instanceId()).address(this.ip());
-		return instance.build();
-	}
-
-	public int port() {
-		return env.getProperty("rpc.server.port", Integer.class);
-	}
-
-	public String ip() {
-		return (env.getProperty("rpc.server.ip") == null) ? new IpPortResolver()
-				.getIpV4Address() : env.getProperty("rpc.server.ip");
-	}
-
-	public String instanceId() {
-		return this.ip() + ":" + this.port();
-	}
-
-	@Bean(name = "pool-server")
-	public TServer poolServer() throws Exception {
-		TServerTransport transport = new TServerSocket(this.port());
+		TServerTransport transport = new TServerSocket(this.port);
 
 		TThreadPoolServer.Args args = new TThreadPoolServer.Args(transport);
 		args.transportFactory(new TTransportFactory());
 		args.protocolFactory(new TBinaryProtocol.Factory());
 
-		args.processor(this.processor());
-		args.executorService(new ThreadPoolExecutor(env.getProperty(
-				"rpc.server.min.worker.threads", Integer.class, 512), env
-				.getProperty("rpc.server.max.worker.threads", Integer.class,
-						65535), env.getProperty(
-				"rpc.server.thread.keep.alive.time", Long.class, 600l),
-				TimeUnit.SECONDS, new SynchronousQueue<Runnable>()));
+		TProcessor processor= new TProtobufProcessor();		
+		args.processor(processor);
+		
+		args.executorService(new ThreadPoolExecutor(this.minTheads,
+				this.maxTheads, this.keepAliveTime, TimeUnit.SECONDS,
+				new SynchronousQueue<Runnable>()));
 
-		return new TThreadPoolServer(args);
-	}
+		TServer server = new TThreadPoolServer(args);
 
-	@Bean(name = "rpc-register")
-	public ServiceDiscovery<RpcPayload> serviceDiscovery() throws Exception {
-		ServiceDiscoveryBuilder<RpcPayload> builder = ServiceDiscoveryBuilder
+		ServiceInstanceBuilder<RpcPayload> instanceBuilder = ServiceInstance
+				.builder();
+		instanceBuilder.name(this.serviceName)
+				.uriSpec(new UriSpec(this.uriSpec)).payload(this.payload())
+				.port(port).id(instanceId).address(ip);
+
+		ServiceDiscoveryBuilder<RpcPayload> discoveryBuilder = ServiceDiscoveryBuilder
 				.builder(RpcPayload.class);
-		return builder.client(this.curatorFramework())
-				.basePath(env.getProperty("rpc.server.service.path"))
-				.serializer(this.serializer())
-				.thisInstance(this.serviceInstance()).build();
-	}
-
-	@Bean(name = "server-runner", destroyMethod = "stop")
-	public ServerRunner serverRunner() throws Exception {
+		discoveryBuilder.client(curatorFramework).basePath(zkBasePath)
+				.serializer(serializer).thisInstance(instanceBuilder.build())
+				.build();
 		return ServerRunner
 				.newBuilder()
-				.server(this.poolServer())
-				.curatorFramework(this.curatorFramework())
-				.serviceDiscovery(this.serviceDiscovery())
-				.zookeeperDeferRegisterPeriod(
-						env.getProperty("rpc.server.zookeeper.register.delay",
-								Integer.class, 2000))
-				.zookeeperUnregisterPeriod(
-						env.getProperty(
-								"rpc.server.zookeeper.unregister.before",
-								Integer.class, 5000)).build();
+				.server(server)
+				.curatorFramework(curatorFramework)
+				.serviceDiscovery(discoveryBuilder.build())
+				.zookeeperDeferRegisterPeriod(this.zookeeperDeferRegisterPeriod)
+				.zookeeperUnregisterPeriod(this.zookeeperUnregisterPeriod).build();
 	}
 }

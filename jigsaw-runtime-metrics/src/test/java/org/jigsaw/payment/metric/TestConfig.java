@@ -16,16 +16,11 @@
 package org.jigsaw.payment.metric;
 
 import org.mockito.Mockito;
-import org.springframework.boot.actuate.autoconfigure.MetricRepositoryAutoConfiguration;
 import org.springframework.boot.actuate.metrics.CounterService;
-import org.springframework.boot.actuate.metrics.GaugeService;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Primary;
 
 /**
@@ -34,24 +29,22 @@ import org.springframework.context.annotation.Primary;
  * @date 2017年8月14日
  */
 @Configuration
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 public class TestConfig {
-    @Bean
-    public TestBean testBean() {
-        return new TestBean();
-    }
+	@Bean
+	public TestBean testBean() {
+		return new TestBean();
+	}
 
-    @Bean
-    public TestInterface testBeanWithInterface() {
-        return new TestBeanWithInterface();
-    }
+	@Bean
+	public TestInterface testBeanWithInterface() {
+		return new TestBeanWithInterface();
+	}
 
-    @Bean
-    @Primary
-    public CounterService counterService() {
-        return Mockito.mock(CounterService.class);
-    }
-   
+	@Bean
+	@Primary
+	public CounterService counterService() {
+		return Mockito.mock(CounterService.class);
+	}
 
 }
-
