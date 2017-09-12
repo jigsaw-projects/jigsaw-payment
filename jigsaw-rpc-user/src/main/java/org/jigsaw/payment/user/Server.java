@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class Server{
 
 	/**
-	 * main function
+	 * 主函数
 	 * @param args
 	 * @throws Exception
 	 */
