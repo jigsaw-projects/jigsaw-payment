@@ -9,78 +9,206 @@ public interface AccountOrBuilder extends
 
   /**
    * <pre>
-   * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+   *内部主键
    * </pre>
    *
-   * <code>optional string id = 1;</code>
+   * <code>optional int64 key = 1;</code>
+   */
+  boolean hasKey();
+  /**
+   * <pre>
+   *内部主键
+   * </pre>
+   *
+   * <code>optional int64 key = 1;</code>
+   */
+  long getKey();
+
+  /**
+   * <pre>
+   *业务主键    	
+   * </pre>
+   *
+   * <code>optional int64 id = 2;</code>
    */
   boolean hasId();
   /**
    * <pre>
-   * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+   *业务主键    	
    * </pre>
    *
-   * <code>optional string id = 1;</code>
+   * <code>optional int64 id = 2;</code>
    */
-  java.lang.String getId();
+  long getId();
+
   /**
    * <pre>
-   * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+   *创建时间
    * </pre>
    *
-   * <code>optional string id = 1;</code>
+   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+   */
+  boolean hasCreateTime();
+  /**
+   * <pre>
+   *创建时间
+   * </pre>
+   *
+   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+   */
+  long getCreateTime();
+
+  /**
+   * <pre>
+   *创建用户姓名
+   * </pre>
+   *
+   * <code>optional string create_user = 4;</code>
+   */
+  boolean hasCreateUser();
+  /**
+   * <pre>
+   *创建用户姓名
+   * </pre>
+   *
+   * <code>optional string create_user = 4;</code>
+   */
+  java.lang.String getCreateUser();
+  /**
+   * <pre>
+   *创建用户姓名
+   * </pre>
+   *
+   * <code>optional string create_user = 4;</code>
    */
   com.google.protobuf.ByteString
-      getIdBytes();
+      getCreateUserBytes();
 
   /**
    * <pre>
-   * 用户ID
+   *更新时间
    * </pre>
    *
-   * <code>optional int64 user_id = 2;</code>
+   * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
    */
-  boolean hasUserId();
+  boolean hasUpdateTime();
   /**
    * <pre>
-   * 用户ID
+   *更新时间
    * </pre>
    *
-   * <code>optional int64 user_id = 2;</code>
+   * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
    */
-  long getUserId();
+  long getUpdateTime();
 
   /**
    * <pre>
-   * 账户类型：1：奇豆；2：奇点；3：零钱。同一用户同一类型只允许开一个账户
+   *更新用户姓名
    * </pre>
    *
-   * <code>optional .Account.Type type = 3;</code>
+   * <code>optional string update_user = 6;</code>
+   */
+  boolean hasUpdateUser();
+  /**
+   * <pre>
+   *更新用户姓名
+   * </pre>
+   *
+   * <code>optional string update_user = 6;</code>
+   */
+  java.lang.String getUpdateUser();
+  /**
+   * <pre>
+   *更新用户姓名
+   * </pre>
+   *
+   * <code>optional string update_user = 6;</code>
+   */
+  com.google.protobuf.ByteString
+      getUpdateUserBytes();
+
+  /**
+   * <pre>
+   *状态：1有效 0无效
+   * </pre>
+   *
+   * <code>optional .Account.Status status = 7 [default = INITIALIZED];</code>
+   */
+  boolean hasStatus();
+  /**
+   * <pre>
+   *状态：1有效 0无效
+   * </pre>
+   *
+   * <code>optional .Account.Status status = 7 [default = INITIALIZED];</code>
+   */
+  org.jigsaw.payment.model.Account.Status getStatus();
+
+  /**
+   * <pre>
+   *版本号
+   * </pre>
+   *
+   * <code>optional int32 version = 8 [default = 0];</code>
+   */
+  boolean hasVersion();
+  /**
+   * <pre>
+   *版本号
+   * </pre>
+   *
+   * <code>optional int32 version = 8 [default = 0];</code>
+   */
+  int getVersion();
+
+  /**
+   * <pre>
+   * 所有者的id
+   * </pre>
+   *
+   * <code>optional int64 owner_id = 10;</code>
+   */
+  boolean hasOwnerId();
+  /**
+   * <pre>
+   * 所有者的id
+   * </pre>
+   *
+   * <code>optional int64 owner_id = 10;</code>
+   */
+  long getOwnerId();
+
+  /**
+   * <pre>
+   *账户类型
+   * </pre>
+   *
+   * <code>optional .AccountType type = 12 [default = FOR_PERSONAL];</code>
    */
   boolean hasType();
   /**
    * <pre>
-   * 账户类型：1：奇豆；2：奇点；3：零钱。同一用户同一类型只允许开一个账户
+   *账户类型
    * </pre>
    *
-   * <code>optional .Account.Type type = 3;</code>
+   * <code>optional .AccountType type = 12 [default = FOR_PERSONAL];</code>
    */
-  org.jigsaw.payment.model.Account.Type getType();
+  org.jigsaw.payment.model.AccountType getType();
 
   /**
    * <pre>
-   * 货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币
+   * 货币类型
    * </pre>
    *
-   * <code>optional .FeeUnit fee_unit = 4;</code>
+   * <code>optional .FeeUnit fee_unit = 14;</code>
    */
   boolean hasFeeUnit();
   /**
    * <pre>
-   * 货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币
+   * 货币类型
    * </pre>
    *
-   * <code>optional .FeeUnit fee_unit = 4;</code>
+   * <code>optional .FeeUnit fee_unit = 14;</code>
    */
   org.jigsaw.payment.model.FeeUnit getFeeUnit();
 
@@ -89,7 +217,7 @@ public interface AccountOrBuilder extends
    * 余额
    * </pre>
    *
-   * <code>optional int64 balance = 5;</code>
+   * <code>optional int64 balance = 15;</code>
    */
   boolean hasBalance();
   /**
@@ -97,7 +225,7 @@ public interface AccountOrBuilder extends
    * 余额
    * </pre>
    *
-   * <code>optional int64 balance = 5;</code>
+   * <code>optional int64 balance = 15;</code>
    */
   long getBalance();
 
@@ -106,7 +234,7 @@ public interface AccountOrBuilder extends
    * 冻结金额
    * </pre>
    *
-   * <code>optional int64 frozen = 6;</code>
+   * <code>optional int64 frozen = 16;</code>
    */
   boolean hasFrozen();
   /**
@@ -114,7 +242,7 @@ public interface AccountOrBuilder extends
    * 冻结金额
    * </pre>
    *
-   * <code>optional int64 frozen = 6;</code>
+   * <code>optional int64 frozen = 16;</code>
    */
   long getFrozen();
 
@@ -123,7 +251,7 @@ public interface AccountOrBuilder extends
    * 入账总额
    * </pre>
    *
-   * <code>optional int64 income = 7;</code>
+   * <code>optional int64 income = 17;</code>
    */
   boolean hasIncome();
   /**
@@ -131,7 +259,7 @@ public interface AccountOrBuilder extends
    * 入账总额
    * </pre>
    *
-   * <code>optional int64 income = 7;</code>
+   * <code>optional int64 income = 17;</code>
    */
   long getIncome();
 
@@ -140,7 +268,7 @@ public interface AccountOrBuilder extends
    * 出账总额
    * </pre>
    *
-   * <code>optional int64 outcome = 8;</code>
+   * <code>optional int64 outcome = 18;</code>
    */
   boolean hasOutcome();
   /**
@@ -148,238 +276,109 @@ public interface AccountOrBuilder extends
    * 出账总额
    * </pre>
    *
-   * <code>optional int64 outcome = 8;</code>
+   * <code>optional int64 outcome = 18;</code>
    */
   long getOutcome();
 
   /**
    * <pre>
-   * 状态：0：创建；1、激活；2：冻结；3：销毁
+   * 账户等级，按照权限根据公司的业务来设置。
    * </pre>
    *
-   * <code>optional .Account.Status status = 9;</code>
-   */
-  boolean hasStatus();
-  /**
-   * <pre>
-   * 状态：0：创建；1、激活；2：冻结；3：销毁
-   * </pre>
-   *
-   * <code>optional .Account.Status status = 9;</code>
-   */
-  org.jigsaw.payment.model.Account.Status getStatus();
-
-  /**
-   * <pre>
-   * 账户等级
-   * </pre>
-   *
-   * <code>optional int32 rank = 10;</code>
+   * <code>optional int32 rank = 20;</code>
    */
   boolean hasRank();
   /**
    * <pre>
-   * 账户等级
+   * 账户等级，按照权限根据公司的业务来设置。
    * </pre>
    *
-   * <code>optional int32 rank = 10;</code>
+   * <code>optional int32 rank = 20;</code>
    */
   int getRank();
 
   /**
    * <pre>
-   * 通知方式：mobile(1)+email(1)
+   * 通知方式：
    * </pre>
    *
-   * <code>optional int32 notice = 11;</code>
+   * <code>optional .Account.AccountNotification notification = 21;</code>
    */
-  boolean hasNotice();
+  boolean hasNotification();
   /**
    * <pre>
-   * 通知方式：mobile(1)+email(1)
+   * 通知方式：
    * </pre>
    *
-   * <code>optional int32 notice = 11;</code>
+   * <code>optional .Account.AccountNotification notification = 21;</code>
    */
-  int getNotice();
+  org.jigsaw.payment.model.Account.AccountNotification getNotification();
 
   /**
    * <pre>
    * 账户属性，可以bit位扩展
    * </pre>
    *
-   * <code>optional int64 attr = 12;</code>
+   * <code>optional uint64 permissions = 22;</code>
    */
-  boolean hasAttr();
+  boolean hasPermissions();
   /**
    * <pre>
    * 账户属性，可以bit位扩展
    * </pre>
    *
-   * <code>optional int64 attr = 12;</code>
+   * <code>optional uint64 permissions = 22;</code>
    */
-  long getAttr();
+  long getPermissions();
 
   /**
    * <pre>
    * 安全等级
    * </pre>
    *
-   * <code>optional int32 security_level = 13;</code>
+   * <code>optional .Account.RiskLevel risk_level = 23;</code>
    */
-  boolean hasSecurityLevel();
+  boolean hasRiskLevel();
   /**
    * <pre>
    * 安全等级
    * </pre>
    *
-   * <code>optional int32 security_level = 13;</code>
+   * <code>optional .Account.RiskLevel risk_level = 23;</code>
    */
-  int getSecurityLevel();
+  org.jigsaw.payment.model.Account.RiskLevel getRiskLevel();
 
   /**
    * <pre>
-   * 沙盒账户：0：否；1：是
+   *是否沙盒账户
    * </pre>
    *
-   * <code>optional .Account.Sandbox sandbox = 14;</code>
+   * <code>optional bool sandbox = 24 [default = false];</code>
    */
   boolean hasSandbox();
   /**
    * <pre>
-   * 沙盒账户：0：否；1：是
+   *是否沙盒账户
    * </pre>
    *
-   * <code>optional .Account.Sandbox sandbox = 14;</code>
+   * <code>optional bool sandbox = 24 [default = false];</code>
    */
-  org.jigsaw.payment.model.Account.Sandbox getSandbox();
+  boolean getSandbox();
 
   /**
    * <pre>
-   * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
+   *会计科目
    * </pre>
    *
-   * <code>optional string version = 15;</code>
+   * <code>optional int64 account_title = 25 [default = 2203001];</code>
    */
-  boolean hasVersion();
+  boolean hasAccountTitle();
   /**
    * <pre>
-   * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
+   *会计科目
    * </pre>
    *
-   * <code>optional string version = 15;</code>
+   * <code>optional int64 account_title = 25 [default = 2203001];</code>
    */
-  java.lang.String getVersion();
-  /**
-   * <pre>
-   * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
-   * </pre>
-   *
-   * <code>optional string version = 15;</code>
-   */
-  com.google.protobuf.ByteString
-      getVersionBytes();
-
-  /**
-   * <pre>
-   * 创建时间
-   * </pre>
-   *
-   * <code>optional int64 create_time = 16 [(.column_option) = { ... }</code>
-   */
-  boolean hasCreateTime();
-  /**
-   * <pre>
-   * 创建时间
-   * </pre>
-   *
-   * <code>optional int64 create_time = 16 [(.column_option) = { ... }</code>
-   */
-  long getCreateTime();
-
-  /**
-   * <pre>
-   * 更新时间
-   * </pre>
-   *
-   * <code>optional int64 update_time = 17 [(.column_option) = { ... }</code>
-   */
-  boolean hasUpdateTime();
-  /**
-   * <pre>
-   * 更新时间
-   * </pre>
-   *
-   * <code>optional int64 update_time = 17 [(.column_option) = { ... }</code>
-   */
-  long getUpdateTime();
-
-  /**
-   * <pre>
-   *第三方渠道ID，pay_partner表维护
-   * </pre>
-   *
-   * <code>optional int32 third_type = 18;</code>
-   */
-  boolean hasThirdType();
-  /**
-   * <pre>
-   *第三方渠道ID，pay_partner表维护
-   * </pre>
-   *
-   * <code>optional int32 third_type = 18;</code>
-   */
-  int getThirdType();
-
-  /**
-   * <pre>
-   * 第三方的用户账户
-   * </pre>
-   *
-   * <code>optional string third_account = 19;</code>
-   */
-  boolean hasThirdAccount();
-  /**
-   * <pre>
-   * 第三方的用户账户
-   * </pre>
-   *
-   * <code>optional string third_account = 19;</code>
-   */
-  java.lang.String getThirdAccount();
-  /**
-   * <pre>
-   * 第三方的用户账户
-   * </pre>
-   *
-   * <code>optional string third_account = 19;</code>
-   */
-  com.google.protobuf.ByteString
-      getThirdAccountBytes();
-
-  /**
-   * <pre>
-   * 第三方凭证信息，通用字段，每个渠道区别维护
-   * </pre>
-   *
-   * <code>optional string trird_param = 20;</code>
-   */
-  boolean hasTrirdParam();
-  /**
-   * <pre>
-   * 第三方凭证信息，通用字段，每个渠道区别维护
-   * </pre>
-   *
-   * <code>optional string trird_param = 20;</code>
-   */
-  java.lang.String getTrirdParam();
-  /**
-   * <pre>
-   * 第三方凭证信息，通用字段，每个渠道区别维护
-   * </pre>
-   *
-   * <code>optional string trird_param = 20;</code>
-   */
-  com.google.protobuf.ByteString
-      getTrirdParamBytes();
+  long getAccountTitle();
 }

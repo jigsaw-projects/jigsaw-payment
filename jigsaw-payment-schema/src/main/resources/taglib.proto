@@ -10,6 +10,8 @@ import "google/protobuf/descriptor.proto";
 message TableMessageOption {
     //标识数据库中的表名
     required string table_name = 1;
+    //标识id的后缀，三位后缀，从001开始。
+    optional int32 id_no = 2;
 }
 
 extend google.protobuf.MessageOptions {

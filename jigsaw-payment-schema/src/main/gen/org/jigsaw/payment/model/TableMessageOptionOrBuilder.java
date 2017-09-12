@@ -32,4 +32,21 @@ public interface TableMessageOptionOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTableNameBytes();
+
+  /**
+   * <pre>
+   *标识id的后缀，三位后缀，从001开始。
+   * </pre>
+   *
+   * <code>optional int32 id_no = 2;</code>
+   */
+  boolean hasIdNo();
+  /**
+   * <pre>
+   *标识id的后缀，三位后缀，从001开始。
+   * </pre>
+   *
+   * <code>optional int32 id_no = 2;</code>
+   */
+  int getIdNo();
 }

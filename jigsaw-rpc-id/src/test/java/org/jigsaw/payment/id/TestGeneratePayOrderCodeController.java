@@ -16,9 +16,9 @@
 package org.jigsaw.payment.id;
 
 
-import org.jigsaw.payment.id.rpc.GeneratePayOrderCodeController;
-import org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest;
-import org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse;
+import org.jigsaw.payment.id.rpc.GeneratePayOrderIdController;
+import org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest;
+import org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,21 +40,20 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class TestGeneratePayOrderCodeController {
 
 	@Autowired
-	@Qualifier("generatePayOrderCode")
-	private GeneratePayOrderCodeController controller;
+	@Qualifier("generatePayOrderId")
+	private GeneratePayOrderIdController controller;
 
 	@Test
 	public void testGen() throws Exception {		
-		long uid = 1223324523;
-		GeneratePayOrderCodeRequest.Builder request = GeneratePayOrderCodeRequest
+		long uid = System.currentTimeMillis();
+		GeneratePayOrderIdRequest.Builder request = GeneratePayOrderIdRequest
 				.newBuilder();
 		request.setUserName("payment");
 		request.setPassword("123456");
 		request.setSubId(uid);
-		GeneratePayOrderCodeResponse response = controller.process(request
+		GeneratePayOrderIdResponse response = controller.process(request
 				.build());
-		Assert.assertEquals(response.getCode().length(), 19);
-		Assert.assertEquals(Long.parseLong(response.getCode()) /10 %10, uid % 10);
-		Assert.assertEquals(Long.parseLong(response.getCode()) /100 % 128, uid /10 % 128);
+		Assert.assertEquals(response.getId() /10 %10, uid % 10);
+		Assert.assertEquals(response.getId() /100 % 128, uid /10 % 128);
 	}
 }

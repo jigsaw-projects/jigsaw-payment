@@ -12,50 +12,41 @@ public interface PayOrderOrBuilder extends
    *id，主键， 数据中自增
    * </pre>
    *
-   * <code>optional int64 id = 1;</code>
+   * <code>optional int64 key = 1;</code>
    */
-  boolean hasId();
+  boolean hasKey();
   /**
    * <pre>
    *id，主键， 数据中自增
    * </pre>
    *
-   * <code>optional int64 id = 1;</code>
+   * <code>optional int64 key = 1;</code>
    */
-  long getId();
+  long getKey();
 
   /**
    * <pre>
-   *支付订单号
+   *支付订单号， 外部主键
    * </pre>
    *
-   * <code>optional string code = 11;</code>
+   * <code>optional int64 id = 2;</code>
    */
-  boolean hasCode();
+  boolean hasId();
   /**
    * <pre>
-   *支付订单号
+   *支付订单号， 外部主键
    * </pre>
    *
-   * <code>optional string code = 11;</code>
+   * <code>optional int64 id = 2;</code>
    */
-  java.lang.String getCode();
-  /**
-   * <pre>
-   *支付订单号
-   * </pre>
-   *
-   * <code>optional string code = 11;</code>
-   */
-  com.google.protobuf.ByteString
-      getCodeBytes();
+  long getId();
 
   /**
    * <pre>
    *创建时间，本条记录在服务器上创建的时间。
    * </pre>
    *
-   * <code>optional int64 create_time = 2 [(.column_option) = { ... }</code>
+   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
    */
   boolean hasCreateTime();
   /**
@@ -63,7 +54,7 @@ public interface PayOrderOrBuilder extends
    *创建时间，本条记录在服务器上创建的时间。
    * </pre>
    *
-   * <code>optional int64 create_time = 2 [(.column_option) = { ... }</code>
+   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
    */
   long getCreateTime();
 
@@ -72,7 +63,7 @@ public interface PayOrderOrBuilder extends
    *更新时间，本条记录最后修改时间；
    * </pre>
    *
-   * <code>optional int64 update_time = 3 [(.column_option) = { ... }</code>
+   * <code>optional int64 update_time = 4 [(.column_option) = { ... }</code>
    */
   boolean hasUpdateTime();
   /**
@@ -80,7 +71,7 @@ public interface PayOrderOrBuilder extends
    *更新时间，本条记录最后修改时间；
    * </pre>
    *
-   * <code>optional int64 update_time = 3 [(.column_option) = { ... }</code>
+   * <code>optional int64 update_time = 4 [(.column_option) = { ... }</code>
    */
   long getUpdateTime();
 
@@ -89,7 +80,7 @@ public interface PayOrderOrBuilder extends
    *过期时间，由业务方设定的支付有效期。超过这个时间，支付即被判定为过期。在过期时间后不能在发起支付。如果在过期时间前支付已发起但是未完成，
    * </pre>
    *
-   * <code>optional int64 expire_time = 4 [(.column_option) = { ... }</code>
+   * <code>optional int64 expire_time = 5 [(.column_option) = { ... }</code>
    */
   boolean hasExpireTime();
   /**
@@ -97,7 +88,7 @@ public interface PayOrderOrBuilder extends
    *过期时间，由业务方设定的支付有效期。超过这个时间，支付即被判定为过期。在过期时间后不能在发起支付。如果在过期时间前支付已发起但是未完成，
    * </pre>
    *
-   * <code>optional int64 expire_time = 4 [(.column_option) = { ... }</code>
+   * <code>optional int64 expire_time = 5 [(.column_option) = { ... }</code>
    */
   long getExpireTime();
 
@@ -106,7 +97,7 @@ public interface PayOrderOrBuilder extends
    *支付完成时间
    * </pre>
    *
-   * <code>optional int64 pay_time = 5 [(.column_option) = { ... }</code>
+   * <code>optional int64 pay_time = 6 [(.column_option) = { ... }</code>
    */
   boolean hasPayTime();
   /**
@@ -114,7 +105,7 @@ public interface PayOrderOrBuilder extends
    *支付完成时间
    * </pre>
    *
-   * <code>optional int64 pay_time = 5 [(.column_option) = { ... }</code>
+   * <code>optional int64 pay_time = 6 [(.column_option) = { ... }</code>
    */
   long getPayTime();
 
@@ -123,7 +114,7 @@ public interface PayOrderOrBuilder extends
    *状态
    * </pre>
    *
-   * <code>optional .PayOrder.Status status = 6;</code>
+   * <code>optional .PayOrder.Status status = 7;</code>
    */
   boolean hasStatus();
   /**
@@ -131,7 +122,7 @@ public interface PayOrderOrBuilder extends
    *状态
    * </pre>
    *
-   * <code>optional .PayOrder.Status status = 6;</code>
+   * <code>optional .PayOrder.Status status = 7;</code>
    */
   org.jigsaw.payment.model.PayOrder.Status getStatus();
 
@@ -140,7 +131,7 @@ public interface PayOrderOrBuilder extends
    *版本号
    * </pre>
    *
-   * <code>optional int32 version = 7;</code>
+   * <code>optional int32 version = 8;</code>
    */
   boolean hasVersion();
   /**
@@ -148,68 +139,16 @@ public interface PayOrderOrBuilder extends
    *版本号
    * </pre>
    *
-   * <code>optional int32 version = 7;</code>
+   * <code>optional int32 version = 8;</code>
    */
   int getVersion();
-
-  /**
-   * <pre>
-   *错误码
-   * </pre>
-   *
-   * <code>optional string error_code = 8;</code>
-   */
-  boolean hasErrorCode();
-  /**
-   * <pre>
-   *错误码
-   * </pre>
-   *
-   * <code>optional string error_code = 8;</code>
-   */
-  java.lang.String getErrorCode();
-  /**
-   * <pre>
-   *错误码
-   * </pre>
-   *
-   * <code>optional string error_code = 8;</code>
-   */
-  com.google.protobuf.ByteString
-      getErrorCodeBytes();
-
-  /**
-   * <pre>
-   *错误描述
-   * </pre>
-   *
-   * <code>optional string error_detail = 9;</code>
-   */
-  boolean hasErrorDetail();
-  /**
-   * <pre>
-   *错误描述
-   * </pre>
-   *
-   * <code>optional string error_detail = 9;</code>
-   */
-  java.lang.String getErrorDetail();
-  /**
-   * <pre>
-   *错误描述
-   * </pre>
-   *
-   * <code>optional string error_detail = 9;</code>
-   */
-  com.google.protobuf.ByteString
-      getErrorDetailBytes();
 
   /**
    * <pre>
    * 支付上下文信息
    * </pre>
    *
-   * <code>optional int32 source_pay_type = 16;</code>
+   * <code>optional int32 source_pay_type = 11;</code>
    */
   boolean hasSourcePayType();
   /**
@@ -217,7 +156,7 @@ public interface PayOrderOrBuilder extends
    * 支付上下文信息
    * </pre>
    *
-   * <code>optional int32 source_pay_type = 16;</code>
+   * <code>optional int32 source_pay_type = 11;</code>
    */
   int getSourcePayType();
 
@@ -226,7 +165,7 @@ public interface PayOrderOrBuilder extends
    *支付服务ID，经过路由实际执行的交易渠道表的代码，与之前一致
    * </pre>
    *
-   * <code>optional int32 dest_pay_type = 17;</code>
+   * <code>optional int32 dest_pay_type = 12;</code>
    */
   boolean hasDestPayType();
   /**
@@ -234,7 +173,7 @@ public interface PayOrderOrBuilder extends
    *支付服务ID，经过路由实际执行的交易渠道表的代码，与之前一致
    * </pre>
    *
-   * <code>optional int32 dest_pay_type = 17;</code>
+   * <code>optional int32 dest_pay_type = 12;</code>
    */
   int getDestPayType();
 
@@ -243,7 +182,7 @@ public interface PayOrderOrBuilder extends
    * 0:正常订单，1：测试订单
    * </pre>
    *
-   * <code>optional int32 pay_mode = 39;</code>
+   * <code>optional int32 pay_mode = 13;</code>
    */
   boolean hasPayMode();
   /**
@@ -251,7 +190,7 @@ public interface PayOrderOrBuilder extends
    * 0:正常订单，1：测试订单
    * </pre>
    *
-   * <code>optional int32 pay_mode = 39;</code>
+   * <code>optional int32 pay_mode = 13;</code>
    */
   int getPayMode();
 
@@ -260,7 +199,7 @@ public interface PayOrderOrBuilder extends
    *发起交易的app id
    * </pre>
    *
-   * <code>optional string app_id = 49;</code>
+   * <code>optional string app_id = 14;</code>
    */
   boolean hasAppId();
   /**
@@ -268,7 +207,7 @@ public interface PayOrderOrBuilder extends
    *发起交易的app id
    * </pre>
    *
-   * <code>optional string app_id = 49;</code>
+   * <code>optional string app_id = 14;</code>
    */
   java.lang.String getAppId();
   /**
@@ -276,7 +215,7 @@ public interface PayOrderOrBuilder extends
    *发起交易的app id
    * </pre>
    *
-   * <code>optional string app_id = 49;</code>
+   * <code>optional string app_id = 14;</code>
    */
   com.google.protobuf.ByteString
       getAppIdBytes();
@@ -286,7 +225,7 @@ public interface PayOrderOrBuilder extends
    *发起交易的场景，api，通用收银台，充值收银台，扫码支付
    * </pre>
    *
-   * <code>optional int32 pay_scenarios = 50;</code>
+   * <code>optional int32 pay_scenarios = 15;</code>
    */
   boolean hasPayScenarios();
   /**
@@ -294,7 +233,7 @@ public interface PayOrderOrBuilder extends
    *发起交易的场景，api，通用收银台，充值收银台，扫码支付
    * </pre>
    *
-   * <code>optional int32 pay_scenarios = 50;</code>
+   * <code>optional int32 pay_scenarios = 15;</code>
    */
   int getPayScenarios();
 
@@ -303,7 +242,7 @@ public interface PayOrderOrBuilder extends
    *费用信息
    * </pre>
    *
-   * <code>optional int64 fee = 18;</code>
+   * <code>optional int64 fee = 21;</code>
    */
   boolean hasFee();
   /**
@@ -311,7 +250,7 @@ public interface PayOrderOrBuilder extends
    *费用信息
    * </pre>
    *
-   * <code>optional int64 fee = 18;</code>
+   * <code>optional int64 fee = 21;</code>
    */
   long getFee();
 
@@ -320,7 +259,7 @@ public interface PayOrderOrBuilder extends
    *实际支付金额
    * </pre>
    *
-   * <code>optional int64 fee_real = 19;</code>
+   * <code>optional int64 fee_real = 22;</code>
    */
   boolean hasFeeReal();
   /**
@@ -328,7 +267,7 @@ public interface PayOrderOrBuilder extends
    *实际支付金额
    * </pre>
    *
-   * <code>optional int64 fee_real = 19;</code>
+   * <code>optional int64 fee_real = 22;</code>
    */
   long getFeeReal();
 
@@ -337,7 +276,7 @@ public interface PayOrderOrBuilder extends
    *订单计费单位
    * </pre>
    *
-   * <code>optional int32 fee_unit = 20;</code>
+   * <code>optional int32 fee_unit = 23;</code>
    */
   boolean hasFeeUnit();
   /**
@@ -345,7 +284,7 @@ public interface PayOrderOrBuilder extends
    *订单计费单位
    * </pre>
    *
-   * <code>optional int32 fee_unit = 20;</code>
+   * <code>optional int32 fee_unit = 23;</code>
    */
   int getFeeUnit();
 
@@ -354,7 +293,7 @@ public interface PayOrderOrBuilder extends
    *支付渠道信息；
    * </pre>
    *
-   * <code>optional string third_trade_code = 12;</code>
+   * <code>optional string third_trade_code = 31;</code>
    */
   boolean hasThirdTradeCode();
   /**
@@ -362,7 +301,7 @@ public interface PayOrderOrBuilder extends
    *支付渠道信息；
    * </pre>
    *
-   * <code>optional string third_trade_code = 12;</code>
+   * <code>optional string third_trade_code = 31;</code>
    */
   java.lang.String getThirdTradeCode();
   /**
@@ -370,7 +309,7 @@ public interface PayOrderOrBuilder extends
    *支付渠道信息；
    * </pre>
    *
-   * <code>optional string third_trade_code = 12;</code>
+   * <code>optional string third_trade_code = 31;</code>
    */
   com.google.protobuf.ByteString
       getThirdTradeCodeBytes();
@@ -380,7 +319,7 @@ public interface PayOrderOrBuilder extends
    *第三方创建时间
    * </pre>
    *
-   * <code>optional int64 third_create_time = 13 [(.column_option) = { ... }</code>
+   * <code>optional int64 third_create_time = 32 [(.column_option) = { ... }</code>
    */
   boolean hasThirdCreateTime();
   /**
@@ -388,7 +327,7 @@ public interface PayOrderOrBuilder extends
    *第三方创建时间
    * </pre>
    *
-   * <code>optional int64 third_create_time = 13 [(.column_option) = { ... }</code>
+   * <code>optional int64 third_create_time = 32 [(.column_option) = { ... }</code>
    */
   long getThirdCreateTime();
 
@@ -397,7 +336,7 @@ public interface PayOrderOrBuilder extends
    *第三方支付时间
    * </pre>
    *
-   * <code>optional int64 third_pay_time = 14 [(.column_option) = { ... }</code>
+   * <code>optional int64 third_pay_time = 33 [(.column_option) = { ... }</code>
    */
   boolean hasThirdPayTime();
   /**
@@ -405,7 +344,7 @@ public interface PayOrderOrBuilder extends
    *第三方支付时间
    * </pre>
    *
-   * <code>optional int64 third_pay_time = 14 [(.column_option) = { ... }</code>
+   * <code>optional int64 third_pay_time = 33 [(.column_option) = { ... }</code>
    */
   long getThirdPayTime();
 
@@ -414,7 +353,7 @@ public interface PayOrderOrBuilder extends
    *当前密钥ID
    * </pre>
    *
-   * <code>optional int64 current_key = 44;</code>
+   * <code>optional int64 current_key = 34;</code>
    */
   boolean hasCurrentKey();
   /**
@@ -422,7 +361,7 @@ public interface PayOrderOrBuilder extends
    *当前密钥ID
    * </pre>
    *
-   * <code>optional int64 current_key = 44;</code>
+   * <code>optional int64 current_key = 34;</code>
    */
   long getCurrentKey();
 
@@ -431,7 +370,7 @@ public interface PayOrderOrBuilder extends
    *异步回调URL
    * </pre>
    *
-   * <code>optional string notify_url = 47;</code>
+   * <code>optional string notify_url = 35;</code>
    */
   boolean hasNotifyUrl();
   /**
@@ -439,7 +378,7 @@ public interface PayOrderOrBuilder extends
    *异步回调URL
    * </pre>
    *
-   * <code>optional string notify_url = 47;</code>
+   * <code>optional string notify_url = 35;</code>
    */
   java.lang.String getNotifyUrl();
   /**
@@ -447,7 +386,7 @@ public interface PayOrderOrBuilder extends
    *异步回调URL
    * </pre>
    *
-   * <code>optional string notify_url = 47;</code>
+   * <code>optional string notify_url = 35;</code>
    */
   com.google.protobuf.ByteString
       getNotifyUrlBytes();
@@ -457,7 +396,7 @@ public interface PayOrderOrBuilder extends
    *同步回调URL
    * </pre>
    *
-   * <code>optional string return_url = 48;</code>
+   * <code>optional string return_url = 36;</code>
    */
   boolean hasReturnUrl();
   /**
@@ -465,7 +404,7 @@ public interface PayOrderOrBuilder extends
    *同步回调URL
    * </pre>
    *
-   * <code>optional string return_url = 48;</code>
+   * <code>optional string return_url = 36;</code>
    */
   java.lang.String getReturnUrl();
   /**
@@ -473,7 +412,7 @@ public interface PayOrderOrBuilder extends
    *同步回调URL
    * </pre>
    *
-   * <code>optional string return_url = 48;</code>
+   * <code>optional string return_url = 36;</code>
    */
   com.google.protobuf.ByteString
       getReturnUrlBytes();
@@ -483,7 +422,7 @@ public interface PayOrderOrBuilder extends
    *商品订单信息
    * </pre>
    *
-   * <code>optional string order_id = 21;</code>
+   * <code>optional string order_id = 41;</code>
    */
   boolean hasOrderId();
   /**
@@ -491,7 +430,7 @@ public interface PayOrderOrBuilder extends
    *商品订单信息
    * </pre>
    *
-   * <code>optional string order_id = 21;</code>
+   * <code>optional string order_id = 41;</code>
    */
   java.lang.String getOrderId();
   /**
@@ -499,7 +438,7 @@ public interface PayOrderOrBuilder extends
    *商品订单信息
    * </pre>
    *
-   * <code>optional string order_id = 21;</code>
+   * <code>optional string order_id = 41;</code>
    */
   com.google.protobuf.ByteString
       getOrderIdBytes();
@@ -509,7 +448,7 @@ public interface PayOrderOrBuilder extends
    *商品的名称
    * </pre>
    *
-   * <code>optional string order_title = 22;</code>
+   * <code>optional string order_title = 42;</code>
    */
   boolean hasOrderTitle();
   /**
@@ -517,7 +456,7 @@ public interface PayOrderOrBuilder extends
    *商品的名称
    * </pre>
    *
-   * <code>optional string order_title = 22;</code>
+   * <code>optional string order_title = 42;</code>
    */
   java.lang.String getOrderTitle();
   /**
@@ -525,7 +464,7 @@ public interface PayOrderOrBuilder extends
    *商品的名称
    * </pre>
    *
-   * <code>optional string order_title = 22;</code>
+   * <code>optional string order_title = 42;</code>
    */
   com.google.protobuf.ByteString
       getOrderTitleBytes();
@@ -535,7 +474,7 @@ public interface PayOrderOrBuilder extends
    *商品描述
    * </pre>
    *
-   * <code>optional string order_detail = 23;</code>
+   * <code>optional string order_detail = 43;</code>
    */
   boolean hasOrderDetail();
   /**
@@ -543,7 +482,7 @@ public interface PayOrderOrBuilder extends
    *商品描述
    * </pre>
    *
-   * <code>optional string order_detail = 23;</code>
+   * <code>optional string order_detail = 43;</code>
    */
   java.lang.String getOrderDetail();
   /**
@@ -551,7 +490,7 @@ public interface PayOrderOrBuilder extends
    *商品描述
    * </pre>
    *
-   * <code>optional string order_detail = 23;</code>
+   * <code>optional string order_detail = 43;</code>
    */
   com.google.protobuf.ByteString
       getOrderDetailBytes();
@@ -561,7 +500,7 @@ public interface PayOrderOrBuilder extends
    *订单显示的url地址
    * </pre>
    *
-   * <code>optional string order_show_url = 24;</code>
+   * <code>optional string order_show_url = 44;</code>
    */
   boolean hasOrderShowUrl();
   /**
@@ -569,7 +508,7 @@ public interface PayOrderOrBuilder extends
    *订单显示的url地址
    * </pre>
    *
-   * <code>optional string order_show_url = 24;</code>
+   * <code>optional string order_show_url = 44;</code>
    */
   java.lang.String getOrderShowUrl();
   /**
@@ -577,7 +516,7 @@ public interface PayOrderOrBuilder extends
    *订单显示的url地址
    * </pre>
    *
-   * <code>optional string order_show_url = 24;</code>
+   * <code>optional string order_show_url = 44;</code>
    */
   com.google.protobuf.ByteString
       getOrderShowUrlBytes();
@@ -587,7 +526,7 @@ public interface PayOrderOrBuilder extends
    *交易主体信息；
    * </pre>
    *
-   * <code>optional int64 sub_id = 25;</code>
+   * <code>optional int64 sub_id = 51;</code>
    */
   boolean hasSubId();
   /**
@@ -595,7 +534,7 @@ public interface PayOrderOrBuilder extends
    *交易主体信息；
    * </pre>
    *
-   * <code>optional int64 sub_id = 25;</code>
+   * <code>optional int64 sub_id = 51;</code>
    */
   long getSubId();
 
@@ -604,7 +543,7 @@ public interface PayOrderOrBuilder extends
    *主体类型
    * </pre>
    *
-   * <code>optional .EntityType sub_type = 26;</code>
+   * <code>optional .EntityType sub_type = 52;</code>
    */
   boolean hasSubType();
   /**
@@ -612,7 +551,7 @@ public interface PayOrderOrBuilder extends
    *主体类型
    * </pre>
    *
-   * <code>optional .EntityType sub_type = 26;</code>
+   * <code>optional .EntityType sub_type = 52;</code>
    */
   org.jigsaw.payment.model.EntityType getSubType();
 
@@ -621,7 +560,7 @@ public interface PayOrderOrBuilder extends
    *主体名称
    * </pre>
    *
-   * <code>optional string sub_name = 27;</code>
+   * <code>optional string sub_name = 53;</code>
    */
   boolean hasSubName();
   /**
@@ -629,7 +568,7 @@ public interface PayOrderOrBuilder extends
    *主体名称
    * </pre>
    *
-   * <code>optional string sub_name = 27;</code>
+   * <code>optional string sub_name = 53;</code>
    */
   java.lang.String getSubName();
   /**
@@ -637,7 +576,7 @@ public interface PayOrderOrBuilder extends
    *主体名称
    * </pre>
    *
-   * <code>optional string sub_name = 27;</code>
+   * <code>optional string sub_name = 53;</code>
    */
   com.google.protobuf.ByteString
       getSubNameBytes();
@@ -647,7 +586,7 @@ public interface PayOrderOrBuilder extends
    *主体帐号
    * </pre>
    *
-   * <code>optional string sub_account_id = 28;</code>
+   * <code>optional string sub_account_id = 54;</code>
    */
   boolean hasSubAccountId();
   /**
@@ -655,7 +594,7 @@ public interface PayOrderOrBuilder extends
    *主体帐号
    * </pre>
    *
-   * <code>optional string sub_account_id = 28;</code>
+   * <code>optional string sub_account_id = 54;</code>
    */
   java.lang.String getSubAccountId();
   /**
@@ -663,7 +602,7 @@ public interface PayOrderOrBuilder extends
    *主体帐号
    * </pre>
    *
-   * <code>optional string sub_account_id = 28;</code>
+   * <code>optional string sub_account_id = 54;</code>
    */
   com.google.protobuf.ByteString
       getSubAccountIdBytes();
@@ -673,7 +612,7 @@ public interface PayOrderOrBuilder extends
    *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
    * </pre>
    *
-   * <code>optional int32 sub_account_type = 29;</code>
+   * <code>optional int32 sub_account_type = 55;</code>
    */
   boolean hasSubAccountType();
   /**
@@ -681,7 +620,7 @@ public interface PayOrderOrBuilder extends
    *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
    * </pre>
    *
-   * <code>optional int32 sub_account_type = 29;</code>
+   * <code>optional int32 sub_account_type = 55;</code>
    */
   int getSubAccountType();
 
@@ -690,7 +629,7 @@ public interface PayOrderOrBuilder extends
    * 主体使用的IP
    * </pre>
    *
-   * <code>optional string sub_ip = 30;</code>
+   * <code>optional string sub_ip = 56;</code>
    */
   boolean hasSubIp();
   /**
@@ -698,7 +637,7 @@ public interface PayOrderOrBuilder extends
    * 主体使用的IP
    * </pre>
    *
-   * <code>optional string sub_ip = 30;</code>
+   * <code>optional string sub_ip = 56;</code>
    */
   java.lang.String getSubIp();
   /**
@@ -706,7 +645,7 @@ public interface PayOrderOrBuilder extends
    * 主体使用的IP
    * </pre>
    *
-   * <code>optional string sub_ip = 30;</code>
+   * <code>optional string sub_ip = 56;</code>
    */
   com.google.protobuf.ByteString
       getSubIpBytes();
@@ -716,7 +655,7 @@ public interface PayOrderOrBuilder extends
    *主体使用的手机号
    * </pre>
    *
-   * <code>optional string sub_mobile = 31;</code>
+   * <code>optional string sub_mobile = 57;</code>
    */
   boolean hasSubMobile();
   /**
@@ -724,7 +663,7 @@ public interface PayOrderOrBuilder extends
    *主体使用的手机号
    * </pre>
    *
-   * <code>optional string sub_mobile = 31;</code>
+   * <code>optional string sub_mobile = 57;</code>
    */
   java.lang.String getSubMobile();
   /**
@@ -732,7 +671,7 @@ public interface PayOrderOrBuilder extends
    *主体使用的手机号
    * </pre>
    *
-   * <code>optional string sub_mobile = 31;</code>
+   * <code>optional string sub_mobile = 57;</code>
    */
   com.google.protobuf.ByteString
       getSubMobileBytes();
@@ -742,7 +681,7 @@ public interface PayOrderOrBuilder extends
    *发起交易的客户端代码
    * </pre>
    *
-   * <code>optional string sub_client_code = 32;</code>
+   * <code>optional string sub_client_code = 58;</code>
    */
   boolean hasSubClientCode();
   /**
@@ -750,7 +689,7 @@ public interface PayOrderOrBuilder extends
    *发起交易的客户端代码
    * </pre>
    *
-   * <code>optional string sub_client_code = 32;</code>
+   * <code>optional string sub_client_code = 58;</code>
    */
   java.lang.String getSubClientCode();
   /**
@@ -758,7 +697,7 @@ public interface PayOrderOrBuilder extends
    *发起交易的客户端代码
    * </pre>
    *
-   * <code>optional string sub_client_code = 32;</code>
+   * <code>optional string sub_client_code = 58;</code>
    */
   com.google.protobuf.ByteString
       getSubClientCodeBytes();
@@ -768,7 +707,7 @@ public interface PayOrderOrBuilder extends
    *交易主体实使用的设备号
    * </pre>
    *
-   * <code>optional string sub_device_id = 33;</code>
+   * <code>optional string sub_device_id = 59;</code>
    */
   boolean hasSubDeviceId();
   /**
@@ -776,7 +715,7 @@ public interface PayOrderOrBuilder extends
    *交易主体实使用的设备号
    * </pre>
    *
-   * <code>optional string sub_device_id = 33;</code>
+   * <code>optional string sub_device_id = 59;</code>
    */
   java.lang.String getSubDeviceId();
   /**
@@ -784,7 +723,7 @@ public interface PayOrderOrBuilder extends
    *交易主体实使用的设备号
    * </pre>
    *
-   * <code>optional string sub_device_id = 33;</code>
+   * <code>optional string sub_device_id = 59;</code>
    */
   com.google.protobuf.ByteString
       getSubDeviceIdBytes();
@@ -794,7 +733,7 @@ public interface PayOrderOrBuilder extends
    *交易主体的邮箱，预留
    * </pre>
    *
-   * <code>optional string sub_email = 34;</code>
+   * <code>optional string sub_email = 60;</code>
    */
   boolean hasSubEmail();
   /**
@@ -802,7 +741,7 @@ public interface PayOrderOrBuilder extends
    *交易主体的邮箱，预留
    * </pre>
    *
-   * <code>optional string sub_email = 34;</code>
+   * <code>optional string sub_email = 60;</code>
    */
   java.lang.String getSubEmail();
   /**
@@ -810,7 +749,7 @@ public interface PayOrderOrBuilder extends
    *交易主体的邮箱，预留
    * </pre>
    *
-   * <code>optional string sub_email = 34;</code>
+   * <code>optional string sub_email = 60;</code>
    */
   com.google.protobuf.ByteString
       getSubEmailBytes();
@@ -820,7 +759,7 @@ public interface PayOrderOrBuilder extends
    *交易主体的地理位置，预留
    * </pre>
    *
-   * <code>optional string sub_location = 35;</code>
+   * <code>optional string sub_location = 61;</code>
    */
   boolean hasSubLocation();
   /**
@@ -828,7 +767,7 @@ public interface PayOrderOrBuilder extends
    *交易主体的地理位置，预留
    * </pre>
    *
-   * <code>optional string sub_location = 35;</code>
+   * <code>optional string sub_location = 61;</code>
    */
   java.lang.String getSubLocation();
   /**
@@ -836,7 +775,7 @@ public interface PayOrderOrBuilder extends
    *交易主体的地理位置，预留
    * </pre>
    *
-   * <code>optional string sub_location = 35;</code>
+   * <code>optional string sub_location = 61;</code>
    */
   com.google.protobuf.ByteString
       getSubLocationBytes();
@@ -846,7 +785,7 @@ public interface PayOrderOrBuilder extends
    *交易主体的国别，预留，默认为中国
    * </pre>
    *
-   * <code>optional string sub_country_code = 36;</code>
+   * <code>optional string sub_country_code = 62;</code>
    */
   boolean hasSubCountryCode();
   /**
@@ -854,7 +793,7 @@ public interface PayOrderOrBuilder extends
    *交易主体的国别，预留，默认为中国
    * </pre>
    *
-   * <code>optional string sub_country_code = 36;</code>
+   * <code>optional string sub_country_code = 62;</code>
    */
   java.lang.String getSubCountryCode();
   /**
@@ -862,7 +801,7 @@ public interface PayOrderOrBuilder extends
    *交易主体的国别，预留，默认为中国
    * </pre>
    *
-   * <code>optional string sub_country_code = 36;</code>
+   * <code>optional string sub_country_code = 62;</code>
    */
   com.google.protobuf.ByteString
       getSubCountryCodeBytes();
@@ -872,7 +811,7 @@ public interface PayOrderOrBuilder extends
    *交易对手信息
    * </pre>
    *
-   * <code>optional int64 partner_id = 40;</code>
+   * <code>optional int64 partner_id = 71;</code>
    */
   boolean hasPartnerId();
   /**
@@ -880,7 +819,7 @@ public interface PayOrderOrBuilder extends
    *交易对手信息
    * </pre>
    *
-   * <code>optional int64 partner_id = 40;</code>
+   * <code>optional int64 partner_id = 71;</code>
    */
   long getPartnerId();
 
@@ -889,7 +828,7 @@ public interface PayOrderOrBuilder extends
    *交易对手的类型
    * </pre>
    *
-   * <code>optional .EntityType partner_type = 41;</code>
+   * <code>optional .EntityType partner_type = 72;</code>
    */
   boolean hasPartnerType();
   /**
@@ -897,7 +836,7 @@ public interface PayOrderOrBuilder extends
    *交易对手的类型
    * </pre>
    *
-   * <code>optional .EntityType partner_type = 41;</code>
+   * <code>optional .EntityType partner_type = 72;</code>
    */
   org.jigsaw.payment.model.EntityType getPartnerType();
 
@@ -906,7 +845,7 @@ public interface PayOrderOrBuilder extends
    *交易对手的帐号,商户号ID
    * </pre>
    *
-   * <code>optional int64 partner_account_id = 42;</code>
+   * <code>optional int64 partner_account_id = 73;</code>
    */
   boolean hasPartnerAccountId();
   /**
@@ -914,7 +853,7 @@ public interface PayOrderOrBuilder extends
    *交易对手的帐号,商户号ID
    * </pre>
    *
-   * <code>optional int64 partner_account_id = 42;</code>
+   * <code>optional int64 partner_account_id = 73;</code>
    */
   long getPartnerAccountId();
 
@@ -923,7 +862,7 @@ public interface PayOrderOrBuilder extends
    *交易对手的名称
    * </pre>
    *
-   * <code>optional string partner_name = 43;</code>
+   * <code>optional string partner_name = 74;</code>
    */
   boolean hasPartnerName();
   /**
@@ -931,7 +870,7 @@ public interface PayOrderOrBuilder extends
    *交易对手的名称
    * </pre>
    *
-   * <code>optional string partner_name = 43;</code>
+   * <code>optional string partner_name = 74;</code>
    */
   java.lang.String getPartnerName();
   /**
@@ -939,8 +878,60 @@ public interface PayOrderOrBuilder extends
    *交易对手的名称
    * </pre>
    *
-   * <code>optional string partner_name = 43;</code>
+   * <code>optional string partner_name = 74;</code>
    */
   com.google.protobuf.ByteString
       getPartnerNameBytes();
+
+  /**
+   * <pre>
+   *错误码
+   * </pre>
+   *
+   * <code>optional string error_code = 91;</code>
+   */
+  boolean hasErrorCode();
+  /**
+   * <pre>
+   *错误码
+   * </pre>
+   *
+   * <code>optional string error_code = 91;</code>
+   */
+  java.lang.String getErrorCode();
+  /**
+   * <pre>
+   *错误码
+   * </pre>
+   *
+   * <code>optional string error_code = 91;</code>
+   */
+  com.google.protobuf.ByteString
+      getErrorCodeBytes();
+
+  /**
+   * <pre>
+   *错误描述
+   * </pre>
+   *
+   * <code>optional string error_detail = 92;</code>
+   */
+  boolean hasErrorDetail();
+  /**
+   * <pre>
+   *错误描述
+   * </pre>
+   *
+   * <code>optional string error_detail = 92;</code>
+   */
+  java.lang.String getErrorDetail();
+  /**
+   * <pre>
+   *错误描述
+   * </pre>
+   *
+   * <code>optional string error_detail = 92;</code>
+   */
+  com.google.protobuf.ByteString
+      getErrorDetailBytes();
 }

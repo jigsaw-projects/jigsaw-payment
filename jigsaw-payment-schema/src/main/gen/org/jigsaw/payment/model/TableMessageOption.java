@@ -15,12 +15,14 @@ public  final class TableMessageOption extends
     com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:TableMessageOption)
     TableMessageOptionOrBuilder {
+private static final long serialVersionUID = 0L;
   // Use TableMessageOption.newBuilder() to construct.
   private TableMessageOption(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
   private TableMessageOption() {
     tableName_ = "";
+    idNo_ = 0;
   }
 
   @java.lang.Override
@@ -45,8 +47,8 @@ public  final class TableMessageOption extends
             done = true;
             break;
           default: {
-            if (!parseUnknownField(input, unknownFields,
-                                   extensionRegistry, tag)) {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
               done = true;
             }
             break;
@@ -55,6 +57,11 @@ public  final class TableMessageOption extends
             com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000001;
             tableName_ = bs;
+            break;
+          }
+          case 16: {
+            bitField0_ |= 0x00000002;
+            idNo_ = input.readInt32();
             break;
           }
         }
@@ -136,6 +143,29 @@ public  final class TableMessageOption extends
     }
   }
 
+  public static final int ID_NO_FIELD_NUMBER = 2;
+  private int idNo_;
+  /**
+   * <pre>
+   *标识id的后缀，三位后缀，从001开始。
+   * </pre>
+   *
+   * <code>optional int32 id_no = 2;</code>
+   */
+  public boolean hasIdNo() {
+    return ((bitField0_ & 0x00000002) == 0x00000002);
+  }
+  /**
+   * <pre>
+   *标识id的后缀，三位后缀，从001开始。
+   * </pre>
+   *
+   * <code>optional int32 id_no = 2;</code>
+   */
+  public int getIdNo() {
+    return idNo_;
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -155,6 +185,9 @@ public  final class TableMessageOption extends
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tableName_);
     }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      output.writeInt32(2, idNo_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -166,12 +199,15 @@ public  final class TableMessageOption extends
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tableName_);
     }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, idNo_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
@@ -188,6 +224,11 @@ public  final class TableMessageOption extends
       result = result && getTableName()
           .equals(other.getTableName());
     }
+    result = result && (hasIdNo() == other.hasIdNo());
+    if (hasIdNo()) {
+      result = result && (getIdNo()
+          == other.getIdNo());
+    }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -202,6 +243,10 @@ public  final class TableMessageOption extends
     if (hasTableName()) {
       hash = (37 * hash) + TABLE_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getTableName().hashCode();
+    }
+    if (hasIdNo()) {
+      hash = (37 * hash) + ID_NO_FIELD_NUMBER;
+      hash = (53 * hash) + getIdNo();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -339,6 +384,8 @@ public  final class TableMessageOption extends
       super.clear();
       tableName_ = "";
       bitField0_ = (bitField0_ & ~0x00000001);
+      idNo_ = 0;
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -367,6 +414,10 @@ public  final class TableMessageOption extends
         to_bitField0_ |= 0x00000001;
       }
       result.tableName_ = tableName_;
+      if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        to_bitField0_ |= 0x00000002;
+      }
+      result.idNo_ = idNo_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -377,7 +428,7 @@ public  final class TableMessageOption extends
     }
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.setField(field, value);
     }
     public Builder clearField(
@@ -390,12 +441,12 @@ public  final class TableMessageOption extends
     }
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, Object value) {
+        int index, java.lang.Object value) {
       return (Builder) super.setRepeatedField(field, index, value);
     }
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -413,6 +464,9 @@ public  final class TableMessageOption extends
         bitField0_ |= 0x00000001;
         tableName_ = other.tableName_;
         onChanged();
+      }
+      if (other.hasIdNo()) {
+        setIdNo(other.getIdNo());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -541,6 +595,54 @@ public  final class TableMessageOption extends
   }
   bitField0_ |= 0x00000001;
       tableName_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int idNo_ ;
+    /**
+     * <pre>
+     *标识id的后缀，三位后缀，从001开始。
+     * </pre>
+     *
+     * <code>optional int32 id_no = 2;</code>
+     */
+    public boolean hasIdNo() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <pre>
+     *标识id的后缀，三位后缀，从001开始。
+     * </pre>
+     *
+     * <code>optional int32 id_no = 2;</code>
+     */
+    public int getIdNo() {
+      return idNo_;
+    }
+    /**
+     * <pre>
+     *标识id的后缀，三位后缀，从001开始。
+     * </pre>
+     *
+     * <code>optional int32 id_no = 2;</code>
+     */
+    public Builder setIdNo(int value) {
+      bitField0_ |= 0x00000002;
+      idNo_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *标识id的后缀，三位后缀，从001开始。
+     * </pre>
+     *
+     * <code>optional int32 id_no = 2;</code>
+     */
+    public Builder clearIdNo() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      idNo_ = 0;
       onChanged();
       return this;
     }

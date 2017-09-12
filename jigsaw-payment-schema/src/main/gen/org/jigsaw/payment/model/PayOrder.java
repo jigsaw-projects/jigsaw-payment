@@ -15,21 +15,20 @@ public  final class PayOrder extends
     com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:PayOrder)
     PayOrderOrBuilder {
+private static final long serialVersionUID = 0L;
   // Use PayOrder.newBuilder() to construct.
   private PayOrder(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
   private PayOrder() {
+    key_ = 0L;
     id_ = 0L;
-    code_ = "";
     createTime_ = 0L;
     updateTime_ = 0L;
     expireTime_ = 0L;
     payTime_ = 0L;
     status_ = 0;
     version_ = 0;
-    errorCode_ = "";
-    errorDetail_ = "";
     sourcePayType_ = 0;
     destPayType_ = 0;
     payMode_ = 0;
@@ -64,6 +63,8 @@ public  final class PayOrder extends
     partnerType_ = 0;
     partnerAccountId_ = 0L;
     partnerName_ = "";
+    errorCode_ = "";
+    errorDetail_ = "";
   }
 
   @java.lang.Override
@@ -89,269 +90,268 @@ public  final class PayOrder extends
             done = true;
             break;
           default: {
-            if (!parseUnknownField(input, unknownFields,
-                                   extensionRegistry, tag)) {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
               done = true;
             }
             break;
           }
           case 8: {
             bitField0_ |= 0x00000001;
-            id_ = input.readInt64();
+            key_ = input.readInt64();
             break;
           }
           case 16: {
+            bitField0_ |= 0x00000002;
+            id_ = input.readInt64();
+            break;
+          }
+          case 24: {
             bitField0_ |= 0x00000004;
             createTime_ = input.readInt64();
             break;
           }
-          case 24: {
+          case 32: {
             bitField0_ |= 0x00000008;
             updateTime_ = input.readInt64();
             break;
           }
-          case 32: {
+          case 40: {
             bitField0_ |= 0x00000010;
             expireTime_ = input.readInt64();
             break;
           }
-          case 40: {
+          case 48: {
             bitField0_ |= 0x00000020;
             payTime_ = input.readInt64();
             break;
           }
-          case 48: {
+          case 56: {
             int rawValue = input.readEnum();
             org.jigsaw.payment.model.PayOrder.Status value = org.jigsaw.payment.model.PayOrder.Status.valueOf(rawValue);
             if (value == null) {
-              unknownFields.mergeVarintField(6, rawValue);
+              unknownFields.mergeVarintField(7, rawValue);
             } else {
               bitField0_ |= 0x00000040;
               status_ = rawValue;
             }
             break;
           }
-          case 56: {
+          case 64: {
             bitField0_ |= 0x00000080;
             version_ = input.readInt32();
             break;
           }
-          case 66: {
-            com.google.protobuf.ByteString bs = input.readBytes();
+          case 88: {
             bitField0_ |= 0x00000100;
-            errorCode_ = bs;
-            break;
-          }
-          case 74: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00000200;
-            errorDetail_ = bs;
-            break;
-          }
-          case 90: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00000002;
-            code_ = bs;
-            break;
-          }
-          case 98: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00040000;
-            thirdTradeCode_ = bs;
-            break;
-          }
-          case 104: {
-            bitField0_ |= 0x00080000;
-            thirdCreateTime_ = input.readInt64();
-            break;
-          }
-          case 112: {
-            bitField0_ |= 0x00100000;
-            thirdPayTime_ = input.readInt64();
-            break;
-          }
-          case 128: {
-            bitField0_ |= 0x00000400;
             sourcePayType_ = input.readInt32();
             break;
           }
-          case 136: {
-            bitField0_ |= 0x00000800;
+          case 96: {
+            bitField0_ |= 0x00000200;
             destPayType_ = input.readInt32();
             break;
           }
-          case 144: {
-            bitField0_ |= 0x00008000;
+          case 104: {
+            bitField0_ |= 0x00000400;
+            payMode_ = input.readInt32();
+            break;
+          }
+          case 114: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x00000800;
+            appId_ = bs;
+            break;
+          }
+          case 120: {
+            bitField0_ |= 0x00001000;
+            payScenarios_ = input.readInt32();
+            break;
+          }
+          case 168: {
+            bitField0_ |= 0x00002000;
             fee_ = input.readInt64();
             break;
           }
-          case 152: {
-            bitField0_ |= 0x00010000;
+          case 176: {
+            bitField0_ |= 0x00004000;
             feeReal_ = input.readInt64();
             break;
           }
-          case 160: {
-            bitField0_ |= 0x00020000;
+          case 184: {
+            bitField0_ |= 0x00008000;
             feeUnit_ = input.readInt32();
-            break;
-          }
-          case 170: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x01000000;
-            orderId_ = bs;
-            break;
-          }
-          case 178: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x02000000;
-            orderTitle_ = bs;
-            break;
-          }
-          case 186: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x04000000;
-            orderDetail_ = bs;
-            break;
-          }
-          case 194: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x08000000;
-            orderShowUrl_ = bs;
-            break;
-          }
-          case 200: {
-            bitField0_ |= 0x10000000;
-            subId_ = input.readInt64();
-            break;
-          }
-          case 208: {
-            int rawValue = input.readEnum();
-            org.jigsaw.payment.model.EntityType value = org.jigsaw.payment.model.EntityType.valueOf(rawValue);
-            if (value == null) {
-              unknownFields.mergeVarintField(26, rawValue);
-            } else {
-              bitField0_ |= 0x20000000;
-              subType_ = rawValue;
-            }
-            break;
-          }
-          case 218: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x40000000;
-            subName_ = bs;
-            break;
-          }
-          case 226: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x80000000;
-            subAccountId_ = bs;
-            break;
-          }
-          case 232: {
-            bitField1_ |= 0x00000001;
-            subAccountType_ = input.readInt32();
-            break;
-          }
-          case 242: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField1_ |= 0x00000002;
-            subIp_ = bs;
             break;
           }
           case 250: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField1_ |= 0x00000004;
-            subMobile_ = bs;
+            bitField0_ |= 0x00010000;
+            thirdTradeCode_ = bs;
             break;
           }
-          case 258: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField1_ |= 0x00000008;
-            subClientCode_ = bs;
+          case 256: {
+            bitField0_ |= 0x00020000;
+            thirdCreateTime_ = input.readInt64();
             break;
           }
-          case 266: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField1_ |= 0x00000010;
-            subDeviceId_ = bs;
+          case 264: {
+            bitField0_ |= 0x00040000;
+            thirdPayTime_ = input.readInt64();
             break;
           }
-          case 274: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField1_ |= 0x00000020;
-            subEmail_ = bs;
+          case 272: {
+            bitField0_ |= 0x00080000;
+            currentKey_ = input.readInt64();
             break;
           }
           case 282: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField1_ |= 0x00000040;
-            subLocation_ = bs;
+            bitField0_ |= 0x00100000;
+            notifyUrl_ = bs;
             break;
           }
           case 290: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField1_ |= 0x00000080;
-            subCountryCode_ = bs;
+            bitField0_ |= 0x00200000;
+            returnUrl_ = bs;
             break;
           }
-          case 312: {
-            bitField0_ |= 0x00001000;
-            payMode_ = input.readInt32();
+          case 330: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x00400000;
+            orderId_ = bs;
             break;
           }
-          case 320: {
-            bitField1_ |= 0x00000100;
-            partnerId_ = input.readInt64();
-            break;
-          }
-          case 328: {
-            int rawValue = input.readEnum();
-            org.jigsaw.payment.model.EntityType value = org.jigsaw.payment.model.EntityType.valueOf(rawValue);
-            if (value == null) {
-              unknownFields.mergeVarintField(41, rawValue);
-            } else {
-              bitField1_ |= 0x00000200;
-              partnerType_ = rawValue;
-            }
-            break;
-          }
-          case 336: {
-            bitField1_ |= 0x00000400;
-            partnerAccountId_ = input.readInt64();
+          case 338: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x00800000;
+            orderTitle_ = bs;
             break;
           }
           case 346: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField1_ |= 0x00000800;
+            bitField0_ |= 0x01000000;
+            orderDetail_ = bs;
+            break;
+          }
+          case 354: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x02000000;
+            orderShowUrl_ = bs;
+            break;
+          }
+          case 408: {
+            bitField0_ |= 0x04000000;
+            subId_ = input.readInt64();
+            break;
+          }
+          case 416: {
+            int rawValue = input.readEnum();
+            org.jigsaw.payment.model.EntityType value = org.jigsaw.payment.model.EntityType.valueOf(rawValue);
+            if (value == null) {
+              unknownFields.mergeVarintField(52, rawValue);
+            } else {
+              bitField0_ |= 0x08000000;
+              subType_ = rawValue;
+            }
+            break;
+          }
+          case 426: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x10000000;
+            subName_ = bs;
+            break;
+          }
+          case 434: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x20000000;
+            subAccountId_ = bs;
+            break;
+          }
+          case 440: {
+            bitField0_ |= 0x40000000;
+            subAccountType_ = input.readInt32();
+            break;
+          }
+          case 450: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x80000000;
+            subIp_ = bs;
+            break;
+          }
+          case 458: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField1_ |= 0x00000001;
+            subMobile_ = bs;
+            break;
+          }
+          case 466: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField1_ |= 0x00000002;
+            subClientCode_ = bs;
+            break;
+          }
+          case 474: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField1_ |= 0x00000004;
+            subDeviceId_ = bs;
+            break;
+          }
+          case 482: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField1_ |= 0x00000008;
+            subEmail_ = bs;
+            break;
+          }
+          case 490: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField1_ |= 0x00000010;
+            subLocation_ = bs;
+            break;
+          }
+          case 498: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField1_ |= 0x00000020;
+            subCountryCode_ = bs;
+            break;
+          }
+          case 568: {
+            bitField1_ |= 0x00000040;
+            partnerId_ = input.readInt64();
+            break;
+          }
+          case 576: {
+            int rawValue = input.readEnum();
+            org.jigsaw.payment.model.EntityType value = org.jigsaw.payment.model.EntityType.valueOf(rawValue);
+            if (value == null) {
+              unknownFields.mergeVarintField(72, rawValue);
+            } else {
+              bitField1_ |= 0x00000080;
+              partnerType_ = rawValue;
+            }
+            break;
+          }
+          case 584: {
+            bitField1_ |= 0x00000100;
+            partnerAccountId_ = input.readInt64();
+            break;
+          }
+          case 594: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField1_ |= 0x00000200;
             partnerName_ = bs;
             break;
           }
-          case 352: {
-            bitField0_ |= 0x00200000;
-            currentKey_ = input.readInt64();
-            break;
-          }
-          case 378: {
+          case 730: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00400000;
-            notifyUrl_ = bs;
+            bitField1_ |= 0x00000400;
+            errorCode_ = bs;
             break;
           }
-          case 386: {
+          case 738: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00800000;
-            returnUrl_ = bs;
-            break;
-          }
-          case 394: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00002000;
-            appId_ = bs;
-            break;
-          }
-          case 400: {
-            bitField0_ |= 0x00004000;
-            payScenarios_ = input.readInt32();
+            bitField1_ |= 0x00000800;
+            errorDetail_ = bs;
             break;
           }
         }
@@ -542,16 +542,16 @@ public  final class PayOrder extends
 
   private int bitField0_;
   private int bitField1_;
-  public static final int ID_FIELD_NUMBER = 1;
-  private long id_;
+  public static final int KEY_FIELD_NUMBER = 1;
+  private long key_;
   /**
    * <pre>
    *id，主键， 数据中自增
    * </pre>
    *
-   * <code>optional int64 id = 1;</code>
+   * <code>optional int64 key = 1;</code>
    */
-  public boolean hasId() {
+  public boolean hasKey() {
     return ((bitField0_ & 0x00000001) == 0x00000001);
   }
   /**
@@ -559,74 +559,43 @@ public  final class PayOrder extends
    *id，主键， 数据中自增
    * </pre>
    *
-   * <code>optional int64 id = 1;</code>
+   * <code>optional int64 key = 1;</code>
+   */
+  public long getKey() {
+    return key_;
+  }
+
+  public static final int ID_FIELD_NUMBER = 2;
+  private long id_;
+  /**
+   * <pre>
+   *支付订单号， 外部主键
+   * </pre>
+   *
+   * <code>optional int64 id = 2;</code>
+   */
+  public boolean hasId() {
+    return ((bitField0_ & 0x00000002) == 0x00000002);
+  }
+  /**
+   * <pre>
+   *支付订单号， 外部主键
+   * </pre>
+   *
+   * <code>optional int64 id = 2;</code>
    */
   public long getId() {
     return id_;
   }
 
-  public static final int CODE_FIELD_NUMBER = 11;
-  private volatile java.lang.Object code_;
-  /**
-   * <pre>
-   *支付订单号
-   * </pre>
-   *
-   * <code>optional string code = 11;</code>
-   */
-  public boolean hasCode() {
-    return ((bitField0_ & 0x00000002) == 0x00000002);
-  }
-  /**
-   * <pre>
-   *支付订单号
-   * </pre>
-   *
-   * <code>optional string code = 11;</code>
-   */
-  public java.lang.String getCode() {
-    java.lang.Object ref = code_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      if (bs.isValidUtf8()) {
-        code_ = s;
-      }
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *支付订单号
-   * </pre>
-   *
-   * <code>optional string code = 11;</code>
-   */
-  public com.google.protobuf.ByteString
-      getCodeBytes() {
-    java.lang.Object ref = code_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      code_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CREATE_TIME_FIELD_NUMBER = 2;
+  public static final int CREATE_TIME_FIELD_NUMBER = 3;
   private long createTime_;
   /**
    * <pre>
    *创建时间，本条记录在服务器上创建的时间。
    * </pre>
    *
-   * <code>optional int64 create_time = 2 [(.column_option) = { ... }</code>
+   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
    */
   public boolean hasCreateTime() {
     return ((bitField0_ & 0x00000004) == 0x00000004);
@@ -636,20 +605,20 @@ public  final class PayOrder extends
    *创建时间，本条记录在服务器上创建的时间。
    * </pre>
    *
-   * <code>optional int64 create_time = 2 [(.column_option) = { ... }</code>
+   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
    */
   public long getCreateTime() {
     return createTime_;
   }
 
-  public static final int UPDATE_TIME_FIELD_NUMBER = 3;
+  public static final int UPDATE_TIME_FIELD_NUMBER = 4;
   private long updateTime_;
   /**
    * <pre>
    *更新时间，本条记录最后修改时间；
    * </pre>
    *
-   * <code>optional int64 update_time = 3 [(.column_option) = { ... }</code>
+   * <code>optional int64 update_time = 4 [(.column_option) = { ... }</code>
    */
   public boolean hasUpdateTime() {
     return ((bitField0_ & 0x00000008) == 0x00000008);
@@ -659,20 +628,20 @@ public  final class PayOrder extends
    *更新时间，本条记录最后修改时间；
    * </pre>
    *
-   * <code>optional int64 update_time = 3 [(.column_option) = { ... }</code>
+   * <code>optional int64 update_time = 4 [(.column_option) = { ... }</code>
    */
   public long getUpdateTime() {
     return updateTime_;
   }
 
-  public static final int EXPIRE_TIME_FIELD_NUMBER = 4;
+  public static final int EXPIRE_TIME_FIELD_NUMBER = 5;
   private long expireTime_;
   /**
    * <pre>
    *过期时间，由业务方设定的支付有效期。超过这个时间，支付即被判定为过期。在过期时间后不能在发起支付。如果在过期时间前支付已发起但是未完成，
    * </pre>
    *
-   * <code>optional int64 expire_time = 4 [(.column_option) = { ... }</code>
+   * <code>optional int64 expire_time = 5 [(.column_option) = { ... }</code>
    */
   public boolean hasExpireTime() {
     return ((bitField0_ & 0x00000010) == 0x00000010);
@@ -682,20 +651,20 @@ public  final class PayOrder extends
    *过期时间，由业务方设定的支付有效期。超过这个时间，支付即被判定为过期。在过期时间后不能在发起支付。如果在过期时间前支付已发起但是未完成，
    * </pre>
    *
-   * <code>optional int64 expire_time = 4 [(.column_option) = { ... }</code>
+   * <code>optional int64 expire_time = 5 [(.column_option) = { ... }</code>
    */
   public long getExpireTime() {
     return expireTime_;
   }
 
-  public static final int PAY_TIME_FIELD_NUMBER = 5;
+  public static final int PAY_TIME_FIELD_NUMBER = 6;
   private long payTime_;
   /**
    * <pre>
    *支付完成时间
    * </pre>
    *
-   * <code>optional int64 pay_time = 5 [(.column_option) = { ... }</code>
+   * <code>optional int64 pay_time = 6 [(.column_option) = { ... }</code>
    */
   public boolean hasPayTime() {
     return ((bitField0_ & 0x00000020) == 0x00000020);
@@ -705,20 +674,20 @@ public  final class PayOrder extends
    *支付完成时间
    * </pre>
    *
-   * <code>optional int64 pay_time = 5 [(.column_option) = { ... }</code>
+   * <code>optional int64 pay_time = 6 [(.column_option) = { ... }</code>
    */
   public long getPayTime() {
     return payTime_;
   }
 
-  public static final int STATUS_FIELD_NUMBER = 6;
+  public static final int STATUS_FIELD_NUMBER = 7;
   private int status_;
   /**
    * <pre>
    *状态
    * </pre>
    *
-   * <code>optional .PayOrder.Status status = 6;</code>
+   * <code>optional .PayOrder.Status status = 7;</code>
    */
   public boolean hasStatus() {
     return ((bitField0_ & 0x00000040) == 0x00000040);
@@ -728,21 +697,21 @@ public  final class PayOrder extends
    *状态
    * </pre>
    *
-   * <code>optional .PayOrder.Status status = 6;</code>
+   * <code>optional .PayOrder.Status status = 7;</code>
    */
   public org.jigsaw.payment.model.PayOrder.Status getStatus() {
     org.jigsaw.payment.model.PayOrder.Status result = org.jigsaw.payment.model.PayOrder.Status.valueOf(status_);
     return result == null ? org.jigsaw.payment.model.PayOrder.Status.UNKNOWN_PAY_ORDER_STATUS : result;
   }
 
-  public static final int VERSION_FIELD_NUMBER = 7;
+  public static final int VERSION_FIELD_NUMBER = 8;
   private int version_;
   /**
    * <pre>
    *版本号
    * </pre>
    *
-   * <code>optional int32 version = 7;</code>
+   * <code>optional int32 version = 8;</code>
    */
   public boolean hasVersion() {
     return ((bitField0_ & 0x00000080) == 0x00000080);
@@ -752,207 +721,99 @@ public  final class PayOrder extends
    *版本号
    * </pre>
    *
-   * <code>optional int32 version = 7;</code>
+   * <code>optional int32 version = 8;</code>
    */
   public int getVersion() {
     return version_;
   }
 
-  public static final int ERROR_CODE_FIELD_NUMBER = 8;
-  private volatile java.lang.Object errorCode_;
-  /**
-   * <pre>
-   *错误码
-   * </pre>
-   *
-   * <code>optional string error_code = 8;</code>
-   */
-  public boolean hasErrorCode() {
-    return ((bitField0_ & 0x00000100) == 0x00000100);
-  }
-  /**
-   * <pre>
-   *错误码
-   * </pre>
-   *
-   * <code>optional string error_code = 8;</code>
-   */
-  public java.lang.String getErrorCode() {
-    java.lang.Object ref = errorCode_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      if (bs.isValidUtf8()) {
-        errorCode_ = s;
-      }
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *错误码
-   * </pre>
-   *
-   * <code>optional string error_code = 8;</code>
-   */
-  public com.google.protobuf.ByteString
-      getErrorCodeBytes() {
-    java.lang.Object ref = errorCode_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      errorCode_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int ERROR_DETAIL_FIELD_NUMBER = 9;
-  private volatile java.lang.Object errorDetail_;
-  /**
-   * <pre>
-   *错误描述
-   * </pre>
-   *
-   * <code>optional string error_detail = 9;</code>
-   */
-  public boolean hasErrorDetail() {
-    return ((bitField0_ & 0x00000200) == 0x00000200);
-  }
-  /**
-   * <pre>
-   *错误描述
-   * </pre>
-   *
-   * <code>optional string error_detail = 9;</code>
-   */
-  public java.lang.String getErrorDetail() {
-    java.lang.Object ref = errorDetail_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      if (bs.isValidUtf8()) {
-        errorDetail_ = s;
-      }
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *错误描述
-   * </pre>
-   *
-   * <code>optional string error_detail = 9;</code>
-   */
-  public com.google.protobuf.ByteString
-      getErrorDetailBytes() {
-    java.lang.Object ref = errorDetail_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      errorDetail_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int SOURCE_PAY_TYPE_FIELD_NUMBER = 16;
+  public static final int SOURCE_PAY_TYPE_FIELD_NUMBER = 11;
   private int sourcePayType_;
   /**
    * <pre>
    * 支付上下文信息
    * </pre>
    *
-   * <code>optional int32 source_pay_type = 16;</code>
+   * <code>optional int32 source_pay_type = 11;</code>
    */
   public boolean hasSourcePayType() {
-    return ((bitField0_ & 0x00000400) == 0x00000400);
+    return ((bitField0_ & 0x00000100) == 0x00000100);
   }
   /**
    * <pre>
    * 支付上下文信息
    * </pre>
    *
-   * <code>optional int32 source_pay_type = 16;</code>
+   * <code>optional int32 source_pay_type = 11;</code>
    */
   public int getSourcePayType() {
     return sourcePayType_;
   }
 
-  public static final int DEST_PAY_TYPE_FIELD_NUMBER = 17;
+  public static final int DEST_PAY_TYPE_FIELD_NUMBER = 12;
   private int destPayType_;
   /**
    * <pre>
    *支付服务ID，经过路由实际执行的交易渠道表的代码，与之前一致
    * </pre>
    *
-   * <code>optional int32 dest_pay_type = 17;</code>
+   * <code>optional int32 dest_pay_type = 12;</code>
    */
   public boolean hasDestPayType() {
-    return ((bitField0_ & 0x00000800) == 0x00000800);
+    return ((bitField0_ & 0x00000200) == 0x00000200);
   }
   /**
    * <pre>
    *支付服务ID，经过路由实际执行的交易渠道表的代码，与之前一致
    * </pre>
    *
-   * <code>optional int32 dest_pay_type = 17;</code>
+   * <code>optional int32 dest_pay_type = 12;</code>
    */
   public int getDestPayType() {
     return destPayType_;
   }
 
-  public static final int PAY_MODE_FIELD_NUMBER = 39;
+  public static final int PAY_MODE_FIELD_NUMBER = 13;
   private int payMode_;
   /**
    * <pre>
    * 0:正常订单，1：测试订单
    * </pre>
    *
-   * <code>optional int32 pay_mode = 39;</code>
+   * <code>optional int32 pay_mode = 13;</code>
    */
   public boolean hasPayMode() {
-    return ((bitField0_ & 0x00001000) == 0x00001000);
+    return ((bitField0_ & 0x00000400) == 0x00000400);
   }
   /**
    * <pre>
    * 0:正常订单，1：测试订单
    * </pre>
    *
-   * <code>optional int32 pay_mode = 39;</code>
+   * <code>optional int32 pay_mode = 13;</code>
    */
   public int getPayMode() {
     return payMode_;
   }
 
-  public static final int APP_ID_FIELD_NUMBER = 49;
+  public static final int APP_ID_FIELD_NUMBER = 14;
   private volatile java.lang.Object appId_;
   /**
    * <pre>
    *发起交易的app id
    * </pre>
    *
-   * <code>optional string app_id = 49;</code>
+   * <code>optional string app_id = 14;</code>
    */
   public boolean hasAppId() {
-    return ((bitField0_ & 0x00002000) == 0x00002000);
+    return ((bitField0_ & 0x00000800) == 0x00000800);
   }
   /**
    * <pre>
    *发起交易的app id
    * </pre>
    *
-   * <code>optional string app_id = 49;</code>
+   * <code>optional string app_id = 14;</code>
    */
   public java.lang.String getAppId() {
     java.lang.Object ref = appId_;
@@ -973,7 +834,7 @@ public  final class PayOrder extends
    *发起交易的app id
    * </pre>
    *
-   * <code>optional string app_id = 49;</code>
+   * <code>optional string app_id = 14;</code>
    */
   public com.google.protobuf.ByteString
       getAppIdBytes() {
@@ -989,116 +850,116 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int PAY_SCENARIOS_FIELD_NUMBER = 50;
+  public static final int PAY_SCENARIOS_FIELD_NUMBER = 15;
   private int payScenarios_;
   /**
    * <pre>
    *发起交易的场景，api，通用收银台，充值收银台，扫码支付
    * </pre>
    *
-   * <code>optional int32 pay_scenarios = 50;</code>
+   * <code>optional int32 pay_scenarios = 15;</code>
    */
   public boolean hasPayScenarios() {
-    return ((bitField0_ & 0x00004000) == 0x00004000);
+    return ((bitField0_ & 0x00001000) == 0x00001000);
   }
   /**
    * <pre>
    *发起交易的场景，api，通用收银台，充值收银台，扫码支付
    * </pre>
    *
-   * <code>optional int32 pay_scenarios = 50;</code>
+   * <code>optional int32 pay_scenarios = 15;</code>
    */
   public int getPayScenarios() {
     return payScenarios_;
   }
 
-  public static final int FEE_FIELD_NUMBER = 18;
+  public static final int FEE_FIELD_NUMBER = 21;
   private long fee_;
   /**
    * <pre>
    *费用信息
    * </pre>
    *
-   * <code>optional int64 fee = 18;</code>
+   * <code>optional int64 fee = 21;</code>
    */
   public boolean hasFee() {
-    return ((bitField0_ & 0x00008000) == 0x00008000);
+    return ((bitField0_ & 0x00002000) == 0x00002000);
   }
   /**
    * <pre>
    *费用信息
    * </pre>
    *
-   * <code>optional int64 fee = 18;</code>
+   * <code>optional int64 fee = 21;</code>
    */
   public long getFee() {
     return fee_;
   }
 
-  public static final int FEE_REAL_FIELD_NUMBER = 19;
+  public static final int FEE_REAL_FIELD_NUMBER = 22;
   private long feeReal_;
   /**
    * <pre>
    *实际支付金额
    * </pre>
    *
-   * <code>optional int64 fee_real = 19;</code>
+   * <code>optional int64 fee_real = 22;</code>
    */
   public boolean hasFeeReal() {
-    return ((bitField0_ & 0x00010000) == 0x00010000);
+    return ((bitField0_ & 0x00004000) == 0x00004000);
   }
   /**
    * <pre>
    *实际支付金额
    * </pre>
    *
-   * <code>optional int64 fee_real = 19;</code>
+   * <code>optional int64 fee_real = 22;</code>
    */
   public long getFeeReal() {
     return feeReal_;
   }
 
-  public static final int FEE_UNIT_FIELD_NUMBER = 20;
+  public static final int FEE_UNIT_FIELD_NUMBER = 23;
   private int feeUnit_;
   /**
    * <pre>
    *订单计费单位
    * </pre>
    *
-   * <code>optional int32 fee_unit = 20;</code>
+   * <code>optional int32 fee_unit = 23;</code>
    */
   public boolean hasFeeUnit() {
-    return ((bitField0_ & 0x00020000) == 0x00020000);
+    return ((bitField0_ & 0x00008000) == 0x00008000);
   }
   /**
    * <pre>
    *订单计费单位
    * </pre>
    *
-   * <code>optional int32 fee_unit = 20;</code>
+   * <code>optional int32 fee_unit = 23;</code>
    */
   public int getFeeUnit() {
     return feeUnit_;
   }
 
-  public static final int THIRD_TRADE_CODE_FIELD_NUMBER = 12;
+  public static final int THIRD_TRADE_CODE_FIELD_NUMBER = 31;
   private volatile java.lang.Object thirdTradeCode_;
   /**
    * <pre>
    *支付渠道信息；
    * </pre>
    *
-   * <code>optional string third_trade_code = 12;</code>
+   * <code>optional string third_trade_code = 31;</code>
    */
   public boolean hasThirdTradeCode() {
-    return ((bitField0_ & 0x00040000) == 0x00040000);
+    return ((bitField0_ & 0x00010000) == 0x00010000);
   }
   /**
    * <pre>
    *支付渠道信息；
    * </pre>
    *
-   * <code>optional string third_trade_code = 12;</code>
+   * <code>optional string third_trade_code = 31;</code>
    */
   public java.lang.String getThirdTradeCode() {
     java.lang.Object ref = thirdTradeCode_;
@@ -1119,7 +980,7 @@ public  final class PayOrder extends
    *支付渠道信息；
    * </pre>
    *
-   * <code>optional string third_trade_code = 12;</code>
+   * <code>optional string third_trade_code = 31;</code>
    */
   public com.google.protobuf.ByteString
       getThirdTradeCodeBytes() {
@@ -1135,93 +996,93 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int THIRD_CREATE_TIME_FIELD_NUMBER = 13;
+  public static final int THIRD_CREATE_TIME_FIELD_NUMBER = 32;
   private long thirdCreateTime_;
   /**
    * <pre>
    *第三方创建时间
    * </pre>
    *
-   * <code>optional int64 third_create_time = 13 [(.column_option) = { ... }</code>
+   * <code>optional int64 third_create_time = 32 [(.column_option) = { ... }</code>
    */
   public boolean hasThirdCreateTime() {
-    return ((bitField0_ & 0x00080000) == 0x00080000);
+    return ((bitField0_ & 0x00020000) == 0x00020000);
   }
   /**
    * <pre>
    *第三方创建时间
    * </pre>
    *
-   * <code>optional int64 third_create_time = 13 [(.column_option) = { ... }</code>
+   * <code>optional int64 third_create_time = 32 [(.column_option) = { ... }</code>
    */
   public long getThirdCreateTime() {
     return thirdCreateTime_;
   }
 
-  public static final int THIRD_PAY_TIME_FIELD_NUMBER = 14;
+  public static final int THIRD_PAY_TIME_FIELD_NUMBER = 33;
   private long thirdPayTime_;
   /**
    * <pre>
    *第三方支付时间
    * </pre>
    *
-   * <code>optional int64 third_pay_time = 14 [(.column_option) = { ... }</code>
+   * <code>optional int64 third_pay_time = 33 [(.column_option) = { ... }</code>
    */
   public boolean hasThirdPayTime() {
-    return ((bitField0_ & 0x00100000) == 0x00100000);
+    return ((bitField0_ & 0x00040000) == 0x00040000);
   }
   /**
    * <pre>
    *第三方支付时间
    * </pre>
    *
-   * <code>optional int64 third_pay_time = 14 [(.column_option) = { ... }</code>
+   * <code>optional int64 third_pay_time = 33 [(.column_option) = { ... }</code>
    */
   public long getThirdPayTime() {
     return thirdPayTime_;
   }
 
-  public static final int CURRENT_KEY_FIELD_NUMBER = 44;
+  public static final int CURRENT_KEY_FIELD_NUMBER = 34;
   private long currentKey_;
   /**
    * <pre>
    *当前密钥ID
    * </pre>
    *
-   * <code>optional int64 current_key = 44;</code>
+   * <code>optional int64 current_key = 34;</code>
    */
   public boolean hasCurrentKey() {
-    return ((bitField0_ & 0x00200000) == 0x00200000);
+    return ((bitField0_ & 0x00080000) == 0x00080000);
   }
   /**
    * <pre>
    *当前密钥ID
    * </pre>
    *
-   * <code>optional int64 current_key = 44;</code>
+   * <code>optional int64 current_key = 34;</code>
    */
   public long getCurrentKey() {
     return currentKey_;
   }
 
-  public static final int NOTIFY_URL_FIELD_NUMBER = 47;
+  public static final int NOTIFY_URL_FIELD_NUMBER = 35;
   private volatile java.lang.Object notifyUrl_;
   /**
    * <pre>
    *异步回调URL
    * </pre>
    *
-   * <code>optional string notify_url = 47;</code>
+   * <code>optional string notify_url = 35;</code>
    */
   public boolean hasNotifyUrl() {
-    return ((bitField0_ & 0x00400000) == 0x00400000);
+    return ((bitField0_ & 0x00100000) == 0x00100000);
   }
   /**
    * <pre>
    *异步回调URL
    * </pre>
    *
-   * <code>optional string notify_url = 47;</code>
+   * <code>optional string notify_url = 35;</code>
    */
   public java.lang.String getNotifyUrl() {
     java.lang.Object ref = notifyUrl_;
@@ -1242,7 +1103,7 @@ public  final class PayOrder extends
    *异步回调URL
    * </pre>
    *
-   * <code>optional string notify_url = 47;</code>
+   * <code>optional string notify_url = 35;</code>
    */
   public com.google.protobuf.ByteString
       getNotifyUrlBytes() {
@@ -1258,24 +1119,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int RETURN_URL_FIELD_NUMBER = 48;
+  public static final int RETURN_URL_FIELD_NUMBER = 36;
   private volatile java.lang.Object returnUrl_;
   /**
    * <pre>
    *同步回调URL
    * </pre>
    *
-   * <code>optional string return_url = 48;</code>
+   * <code>optional string return_url = 36;</code>
    */
   public boolean hasReturnUrl() {
-    return ((bitField0_ & 0x00800000) == 0x00800000);
+    return ((bitField0_ & 0x00200000) == 0x00200000);
   }
   /**
    * <pre>
    *同步回调URL
    * </pre>
    *
-   * <code>optional string return_url = 48;</code>
+   * <code>optional string return_url = 36;</code>
    */
   public java.lang.String getReturnUrl() {
     java.lang.Object ref = returnUrl_;
@@ -1296,7 +1157,7 @@ public  final class PayOrder extends
    *同步回调URL
    * </pre>
    *
-   * <code>optional string return_url = 48;</code>
+   * <code>optional string return_url = 36;</code>
    */
   public com.google.protobuf.ByteString
       getReturnUrlBytes() {
@@ -1312,24 +1173,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int ORDER_ID_FIELD_NUMBER = 21;
+  public static final int ORDER_ID_FIELD_NUMBER = 41;
   private volatile java.lang.Object orderId_;
   /**
    * <pre>
    *商品订单信息
    * </pre>
    *
-   * <code>optional string order_id = 21;</code>
+   * <code>optional string order_id = 41;</code>
    */
   public boolean hasOrderId() {
-    return ((bitField0_ & 0x01000000) == 0x01000000);
+    return ((bitField0_ & 0x00400000) == 0x00400000);
   }
   /**
    * <pre>
    *商品订单信息
    * </pre>
    *
-   * <code>optional string order_id = 21;</code>
+   * <code>optional string order_id = 41;</code>
    */
   public java.lang.String getOrderId() {
     java.lang.Object ref = orderId_;
@@ -1350,7 +1211,7 @@ public  final class PayOrder extends
    *商品订单信息
    * </pre>
    *
-   * <code>optional string order_id = 21;</code>
+   * <code>optional string order_id = 41;</code>
    */
   public com.google.protobuf.ByteString
       getOrderIdBytes() {
@@ -1366,24 +1227,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int ORDER_TITLE_FIELD_NUMBER = 22;
+  public static final int ORDER_TITLE_FIELD_NUMBER = 42;
   private volatile java.lang.Object orderTitle_;
   /**
    * <pre>
    *商品的名称
    * </pre>
    *
-   * <code>optional string order_title = 22;</code>
+   * <code>optional string order_title = 42;</code>
    */
   public boolean hasOrderTitle() {
-    return ((bitField0_ & 0x02000000) == 0x02000000);
+    return ((bitField0_ & 0x00800000) == 0x00800000);
   }
   /**
    * <pre>
    *商品的名称
    * </pre>
    *
-   * <code>optional string order_title = 22;</code>
+   * <code>optional string order_title = 42;</code>
    */
   public java.lang.String getOrderTitle() {
     java.lang.Object ref = orderTitle_;
@@ -1404,7 +1265,7 @@ public  final class PayOrder extends
    *商品的名称
    * </pre>
    *
-   * <code>optional string order_title = 22;</code>
+   * <code>optional string order_title = 42;</code>
    */
   public com.google.protobuf.ByteString
       getOrderTitleBytes() {
@@ -1420,24 +1281,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int ORDER_DETAIL_FIELD_NUMBER = 23;
+  public static final int ORDER_DETAIL_FIELD_NUMBER = 43;
   private volatile java.lang.Object orderDetail_;
   /**
    * <pre>
    *商品描述
    * </pre>
    *
-   * <code>optional string order_detail = 23;</code>
+   * <code>optional string order_detail = 43;</code>
    */
   public boolean hasOrderDetail() {
-    return ((bitField0_ & 0x04000000) == 0x04000000);
+    return ((bitField0_ & 0x01000000) == 0x01000000);
   }
   /**
    * <pre>
    *商品描述
    * </pre>
    *
-   * <code>optional string order_detail = 23;</code>
+   * <code>optional string order_detail = 43;</code>
    */
   public java.lang.String getOrderDetail() {
     java.lang.Object ref = orderDetail_;
@@ -1458,7 +1319,7 @@ public  final class PayOrder extends
    *商品描述
    * </pre>
    *
-   * <code>optional string order_detail = 23;</code>
+   * <code>optional string order_detail = 43;</code>
    */
   public com.google.protobuf.ByteString
       getOrderDetailBytes() {
@@ -1474,24 +1335,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int ORDER_SHOW_URL_FIELD_NUMBER = 24;
+  public static final int ORDER_SHOW_URL_FIELD_NUMBER = 44;
   private volatile java.lang.Object orderShowUrl_;
   /**
    * <pre>
    *订单显示的url地址
    * </pre>
    *
-   * <code>optional string order_show_url = 24;</code>
+   * <code>optional string order_show_url = 44;</code>
    */
   public boolean hasOrderShowUrl() {
-    return ((bitField0_ & 0x08000000) == 0x08000000);
+    return ((bitField0_ & 0x02000000) == 0x02000000);
   }
   /**
    * <pre>
    *订单显示的url地址
    * </pre>
    *
-   * <code>optional string order_show_url = 24;</code>
+   * <code>optional string order_show_url = 44;</code>
    */
   public java.lang.String getOrderShowUrl() {
     java.lang.Object ref = orderShowUrl_;
@@ -1512,7 +1373,7 @@ public  final class PayOrder extends
    *订单显示的url地址
    * </pre>
    *
-   * <code>optional string order_show_url = 24;</code>
+   * <code>optional string order_show_url = 44;</code>
    */
   public com.google.protobuf.ByteString
       getOrderShowUrlBytes() {
@@ -1528,71 +1389,71 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int SUB_ID_FIELD_NUMBER = 25;
+  public static final int SUB_ID_FIELD_NUMBER = 51;
   private long subId_;
   /**
    * <pre>
    *交易主体信息；
    * </pre>
    *
-   * <code>optional int64 sub_id = 25;</code>
+   * <code>optional int64 sub_id = 51;</code>
    */
   public boolean hasSubId() {
-    return ((bitField0_ & 0x10000000) == 0x10000000);
+    return ((bitField0_ & 0x04000000) == 0x04000000);
   }
   /**
    * <pre>
    *交易主体信息；
    * </pre>
    *
-   * <code>optional int64 sub_id = 25;</code>
+   * <code>optional int64 sub_id = 51;</code>
    */
   public long getSubId() {
     return subId_;
   }
 
-  public static final int SUB_TYPE_FIELD_NUMBER = 26;
+  public static final int SUB_TYPE_FIELD_NUMBER = 52;
   private int subType_;
   /**
    * <pre>
    *主体类型
    * </pre>
    *
-   * <code>optional .EntityType sub_type = 26;</code>
+   * <code>optional .EntityType sub_type = 52;</code>
    */
   public boolean hasSubType() {
-    return ((bitField0_ & 0x20000000) == 0x20000000);
+    return ((bitField0_ & 0x08000000) == 0x08000000);
   }
   /**
    * <pre>
    *主体类型
    * </pre>
    *
-   * <code>optional .EntityType sub_type = 26;</code>
+   * <code>optional .EntityType sub_type = 52;</code>
    */
   public org.jigsaw.payment.model.EntityType getSubType() {
     org.jigsaw.payment.model.EntityType result = org.jigsaw.payment.model.EntityType.valueOf(subType_);
     return result == null ? org.jigsaw.payment.model.EntityType.UNKNOWN_ENTITY_TYPE : result;
   }
 
-  public static final int SUB_NAME_FIELD_NUMBER = 27;
+  public static final int SUB_NAME_FIELD_NUMBER = 53;
   private volatile java.lang.Object subName_;
   /**
    * <pre>
    *主体名称
    * </pre>
    *
-   * <code>optional string sub_name = 27;</code>
+   * <code>optional string sub_name = 53;</code>
    */
   public boolean hasSubName() {
-    return ((bitField0_ & 0x40000000) == 0x40000000);
+    return ((bitField0_ & 0x10000000) == 0x10000000);
   }
   /**
    * <pre>
    *主体名称
    * </pre>
    *
-   * <code>optional string sub_name = 27;</code>
+   * <code>optional string sub_name = 53;</code>
    */
   public java.lang.String getSubName() {
     java.lang.Object ref = subName_;
@@ -1613,7 +1474,7 @@ public  final class PayOrder extends
    *主体名称
    * </pre>
    *
-   * <code>optional string sub_name = 27;</code>
+   * <code>optional string sub_name = 53;</code>
    */
   public com.google.protobuf.ByteString
       getSubNameBytes() {
@@ -1629,24 +1490,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int SUB_ACCOUNT_ID_FIELD_NUMBER = 28;
+  public static final int SUB_ACCOUNT_ID_FIELD_NUMBER = 54;
   private volatile java.lang.Object subAccountId_;
   /**
    * <pre>
    *主体帐号
    * </pre>
    *
-   * <code>optional string sub_account_id = 28;</code>
+   * <code>optional string sub_account_id = 54;</code>
    */
   public boolean hasSubAccountId() {
-    return ((bitField0_ & 0x80000000) == 0x80000000);
+    return ((bitField0_ & 0x20000000) == 0x20000000);
   }
   /**
    * <pre>
    *主体帐号
    * </pre>
    *
-   * <code>optional string sub_account_id = 28;</code>
+   * <code>optional string sub_account_id = 54;</code>
    */
   public java.lang.String getSubAccountId() {
     java.lang.Object ref = subAccountId_;
@@ -1667,7 +1528,7 @@ public  final class PayOrder extends
    *主体帐号
    * </pre>
    *
-   * <code>optional string sub_account_id = 28;</code>
+   * <code>optional string sub_account_id = 54;</code>
    */
   public com.google.protobuf.ByteString
       getSubAccountIdBytes() {
@@ -1683,47 +1544,47 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int SUB_ACCOUNT_TYPE_FIELD_NUMBER = 29;
+  public static final int SUB_ACCOUNT_TYPE_FIELD_NUMBER = 55;
   private int subAccountType_;
   /**
    * <pre>
    *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
    * </pre>
    *
-   * <code>optional int32 sub_account_type = 29;</code>
+   * <code>optional int32 sub_account_type = 55;</code>
    */
   public boolean hasSubAccountType() {
-    return ((bitField1_ & 0x00000001) == 0x00000001);
+    return ((bitField0_ & 0x40000000) == 0x40000000);
   }
   /**
    * <pre>
    *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
    * </pre>
    *
-   * <code>optional int32 sub_account_type = 29;</code>
+   * <code>optional int32 sub_account_type = 55;</code>
    */
   public int getSubAccountType() {
     return subAccountType_;
   }
 
-  public static final int SUB_IP_FIELD_NUMBER = 30;
+  public static final int SUB_IP_FIELD_NUMBER = 56;
   private volatile java.lang.Object subIp_;
   /**
    * <pre>
    * 主体使用的IP
    * </pre>
    *
-   * <code>optional string sub_ip = 30;</code>
+   * <code>optional string sub_ip = 56;</code>
    */
   public boolean hasSubIp() {
-    return ((bitField1_ & 0x00000002) == 0x00000002);
+    return ((bitField0_ & 0x80000000) == 0x80000000);
   }
   /**
    * <pre>
    * 主体使用的IP
    * </pre>
    *
-   * <code>optional string sub_ip = 30;</code>
+   * <code>optional string sub_ip = 56;</code>
    */
   public java.lang.String getSubIp() {
     java.lang.Object ref = subIp_;
@@ -1744,7 +1605,7 @@ public  final class PayOrder extends
    * 主体使用的IP
    * </pre>
    *
-   * <code>optional string sub_ip = 30;</code>
+   * <code>optional string sub_ip = 56;</code>
    */
   public com.google.protobuf.ByteString
       getSubIpBytes() {
@@ -1760,24 +1621,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int SUB_MOBILE_FIELD_NUMBER = 31;
+  public static final int SUB_MOBILE_FIELD_NUMBER = 57;
   private volatile java.lang.Object subMobile_;
   /**
    * <pre>
    *主体使用的手机号
    * </pre>
    *
-   * <code>optional string sub_mobile = 31;</code>
+   * <code>optional string sub_mobile = 57;</code>
    */
   public boolean hasSubMobile() {
-    return ((bitField1_ & 0x00000004) == 0x00000004);
+    return ((bitField1_ & 0x00000001) == 0x00000001);
   }
   /**
    * <pre>
    *主体使用的手机号
    * </pre>
    *
-   * <code>optional string sub_mobile = 31;</code>
+   * <code>optional string sub_mobile = 57;</code>
    */
   public java.lang.String getSubMobile() {
     java.lang.Object ref = subMobile_;
@@ -1798,7 +1659,7 @@ public  final class PayOrder extends
    *主体使用的手机号
    * </pre>
    *
-   * <code>optional string sub_mobile = 31;</code>
+   * <code>optional string sub_mobile = 57;</code>
    */
   public com.google.protobuf.ByteString
       getSubMobileBytes() {
@@ -1814,24 +1675,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int SUB_CLIENT_CODE_FIELD_NUMBER = 32;
+  public static final int SUB_CLIENT_CODE_FIELD_NUMBER = 58;
   private volatile java.lang.Object subClientCode_;
   /**
    * <pre>
    *发起交易的客户端代码
    * </pre>
    *
-   * <code>optional string sub_client_code = 32;</code>
+   * <code>optional string sub_client_code = 58;</code>
    */
   public boolean hasSubClientCode() {
-    return ((bitField1_ & 0x00000008) == 0x00000008);
+    return ((bitField1_ & 0x00000002) == 0x00000002);
   }
   /**
    * <pre>
    *发起交易的客户端代码
    * </pre>
    *
-   * <code>optional string sub_client_code = 32;</code>
+   * <code>optional string sub_client_code = 58;</code>
    */
   public java.lang.String getSubClientCode() {
     java.lang.Object ref = subClientCode_;
@@ -1852,7 +1713,7 @@ public  final class PayOrder extends
    *发起交易的客户端代码
    * </pre>
    *
-   * <code>optional string sub_client_code = 32;</code>
+   * <code>optional string sub_client_code = 58;</code>
    */
   public com.google.protobuf.ByteString
       getSubClientCodeBytes() {
@@ -1868,24 +1729,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int SUB_DEVICE_ID_FIELD_NUMBER = 33;
+  public static final int SUB_DEVICE_ID_FIELD_NUMBER = 59;
   private volatile java.lang.Object subDeviceId_;
   /**
    * <pre>
    *交易主体实使用的设备号
    * </pre>
    *
-   * <code>optional string sub_device_id = 33;</code>
+   * <code>optional string sub_device_id = 59;</code>
    */
   public boolean hasSubDeviceId() {
-    return ((bitField1_ & 0x00000010) == 0x00000010);
+    return ((bitField1_ & 0x00000004) == 0x00000004);
   }
   /**
    * <pre>
    *交易主体实使用的设备号
    * </pre>
    *
-   * <code>optional string sub_device_id = 33;</code>
+   * <code>optional string sub_device_id = 59;</code>
    */
   public java.lang.String getSubDeviceId() {
     java.lang.Object ref = subDeviceId_;
@@ -1906,7 +1767,7 @@ public  final class PayOrder extends
    *交易主体实使用的设备号
    * </pre>
    *
-   * <code>optional string sub_device_id = 33;</code>
+   * <code>optional string sub_device_id = 59;</code>
    */
   public com.google.protobuf.ByteString
       getSubDeviceIdBytes() {
@@ -1922,24 +1783,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int SUB_EMAIL_FIELD_NUMBER = 34;
+  public static final int SUB_EMAIL_FIELD_NUMBER = 60;
   private volatile java.lang.Object subEmail_;
   /**
    * <pre>
    *交易主体的邮箱，预留
    * </pre>
    *
-   * <code>optional string sub_email = 34;</code>
+   * <code>optional string sub_email = 60;</code>
    */
   public boolean hasSubEmail() {
-    return ((bitField1_ & 0x00000020) == 0x00000020);
+    return ((bitField1_ & 0x00000008) == 0x00000008);
   }
   /**
    * <pre>
    *交易主体的邮箱，预留
    * </pre>
    *
-   * <code>optional string sub_email = 34;</code>
+   * <code>optional string sub_email = 60;</code>
    */
   public java.lang.String getSubEmail() {
     java.lang.Object ref = subEmail_;
@@ -1960,7 +1821,7 @@ public  final class PayOrder extends
    *交易主体的邮箱，预留
    * </pre>
    *
-   * <code>optional string sub_email = 34;</code>
+   * <code>optional string sub_email = 60;</code>
    */
   public com.google.protobuf.ByteString
       getSubEmailBytes() {
@@ -1976,24 +1837,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int SUB_LOCATION_FIELD_NUMBER = 35;
+  public static final int SUB_LOCATION_FIELD_NUMBER = 61;
   private volatile java.lang.Object subLocation_;
   /**
    * <pre>
    *交易主体的地理位置，预留
    * </pre>
    *
-   * <code>optional string sub_location = 35;</code>
+   * <code>optional string sub_location = 61;</code>
    */
   public boolean hasSubLocation() {
-    return ((bitField1_ & 0x00000040) == 0x00000040);
+    return ((bitField1_ & 0x00000010) == 0x00000010);
   }
   /**
    * <pre>
    *交易主体的地理位置，预留
    * </pre>
    *
-   * <code>optional string sub_location = 35;</code>
+   * <code>optional string sub_location = 61;</code>
    */
   public java.lang.String getSubLocation() {
     java.lang.Object ref = subLocation_;
@@ -2014,7 +1875,7 @@ public  final class PayOrder extends
    *交易主体的地理位置，预留
    * </pre>
    *
-   * <code>optional string sub_location = 35;</code>
+   * <code>optional string sub_location = 61;</code>
    */
   public com.google.protobuf.ByteString
       getSubLocationBytes() {
@@ -2030,24 +1891,24 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int SUB_COUNTRY_CODE_FIELD_NUMBER = 36;
+  public static final int SUB_COUNTRY_CODE_FIELD_NUMBER = 62;
   private volatile java.lang.Object subCountryCode_;
   /**
    * <pre>
    *交易主体的国别，预留，默认为中国
    * </pre>
    *
-   * <code>optional string sub_country_code = 36;</code>
+   * <code>optional string sub_country_code = 62;</code>
    */
   public boolean hasSubCountryCode() {
-    return ((bitField1_ & 0x00000080) == 0x00000080);
+    return ((bitField1_ & 0x00000020) == 0x00000020);
   }
   /**
    * <pre>
    *交易主体的国别，预留，默认为中国
    * </pre>
    *
-   * <code>optional string sub_country_code = 36;</code>
+   * <code>optional string sub_country_code = 62;</code>
    */
   public java.lang.String getSubCountryCode() {
     java.lang.Object ref = subCountryCode_;
@@ -2068,7 +1929,7 @@ public  final class PayOrder extends
    *交易主体的国别，预留，默认为中国
    * </pre>
    *
-   * <code>optional string sub_country_code = 36;</code>
+   * <code>optional string sub_country_code = 62;</code>
    */
   public com.google.protobuf.ByteString
       getSubCountryCodeBytes() {
@@ -2084,94 +1945,94 @@ public  final class PayOrder extends
     }
   }
 
-  public static final int PARTNER_ID_FIELD_NUMBER = 40;
+  public static final int PARTNER_ID_FIELD_NUMBER = 71;
   private long partnerId_;
   /**
    * <pre>
    *交易对手信息
    * </pre>
    *
-   * <code>optional int64 partner_id = 40;</code>
+   * <code>optional int64 partner_id = 71;</code>
    */
   public boolean hasPartnerId() {
-    return ((bitField1_ & 0x00000100) == 0x00000100);
+    return ((bitField1_ & 0x00000040) == 0x00000040);
   }
   /**
    * <pre>
    *交易对手信息
    * </pre>
    *
-   * <code>optional int64 partner_id = 40;</code>
+   * <code>optional int64 partner_id = 71;</code>
    */
   public long getPartnerId() {
     return partnerId_;
   }
 
-  public static final int PARTNER_TYPE_FIELD_NUMBER = 41;
+  public static final int PARTNER_TYPE_FIELD_NUMBER = 72;
   private int partnerType_;
   /**
    * <pre>
    *交易对手的类型
    * </pre>
    *
-   * <code>optional .EntityType partner_type = 41;</code>
+   * <code>optional .EntityType partner_type = 72;</code>
    */
   public boolean hasPartnerType() {
-    return ((bitField1_ & 0x00000200) == 0x00000200);
+    return ((bitField1_ & 0x00000080) == 0x00000080);
   }
   /**
    * <pre>
    *交易对手的类型
    * </pre>
    *
-   * <code>optional .EntityType partner_type = 41;</code>
+   * <code>optional .EntityType partner_type = 72;</code>
    */
   public org.jigsaw.payment.model.EntityType getPartnerType() {
     org.jigsaw.payment.model.EntityType result = org.jigsaw.payment.model.EntityType.valueOf(partnerType_);
     return result == null ? org.jigsaw.payment.model.EntityType.UNKNOWN_ENTITY_TYPE : result;
   }
 
-  public static final int PARTNER_ACCOUNT_ID_FIELD_NUMBER = 42;
+  public static final int PARTNER_ACCOUNT_ID_FIELD_NUMBER = 73;
   private long partnerAccountId_;
   /**
    * <pre>
    *交易对手的帐号,商户号ID
    * </pre>
    *
-   * <code>optional int64 partner_account_id = 42;</code>
+   * <code>optional int64 partner_account_id = 73;</code>
    */
   public boolean hasPartnerAccountId() {
-    return ((bitField1_ & 0x00000400) == 0x00000400);
+    return ((bitField1_ & 0x00000100) == 0x00000100);
   }
   /**
    * <pre>
    *交易对手的帐号,商户号ID
    * </pre>
    *
-   * <code>optional int64 partner_account_id = 42;</code>
+   * <code>optional int64 partner_account_id = 73;</code>
    */
   public long getPartnerAccountId() {
     return partnerAccountId_;
   }
 
-  public static final int PARTNER_NAME_FIELD_NUMBER = 43;
+  public static final int PARTNER_NAME_FIELD_NUMBER = 74;
   private volatile java.lang.Object partnerName_;
   /**
    * <pre>
    *交易对手的名称
    * </pre>
    *
-   * <code>optional string partner_name = 43;</code>
+   * <code>optional string partner_name = 74;</code>
    */
   public boolean hasPartnerName() {
-    return ((bitField1_ & 0x00000800) == 0x00000800);
+    return ((bitField1_ & 0x00000200) == 0x00000200);
   }
   /**
    * <pre>
    *交易对手的名称
    * </pre>
    *
-   * <code>optional string partner_name = 43;</code>
+   * <code>optional string partner_name = 74;</code>
    */
   public java.lang.String getPartnerName() {
     java.lang.Object ref = partnerName_;
@@ -2192,7 +2053,7 @@ public  final class PayOrder extends
    *交易对手的名称
    * </pre>
    *
-   * <code>optional string partner_name = 43;</code>
+   * <code>optional string partner_name = 74;</code>
    */
   public com.google.protobuf.ByteString
       getPartnerNameBytes() {
@@ -2202,6 +2063,114 @@ public  final class PayOrder extends
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       partnerName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ERROR_CODE_FIELD_NUMBER = 91;
+  private volatile java.lang.Object errorCode_;
+  /**
+   * <pre>
+   *错误码
+   * </pre>
+   *
+   * <code>optional string error_code = 91;</code>
+   */
+  public boolean hasErrorCode() {
+    return ((bitField1_ & 0x00000400) == 0x00000400);
+  }
+  /**
+   * <pre>
+   *错误码
+   * </pre>
+   *
+   * <code>optional string error_code = 91;</code>
+   */
+  public java.lang.String getErrorCode() {
+    java.lang.Object ref = errorCode_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (bs.isValidUtf8()) {
+        errorCode_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *错误码
+   * </pre>
+   *
+   * <code>optional string error_code = 91;</code>
+   */
+  public com.google.protobuf.ByteString
+      getErrorCodeBytes() {
+    java.lang.Object ref = errorCode_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      errorCode_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ERROR_DETAIL_FIELD_NUMBER = 92;
+  private volatile java.lang.Object errorDetail_;
+  /**
+   * <pre>
+   *错误描述
+   * </pre>
+   *
+   * <code>optional string error_detail = 92;</code>
+   */
+  public boolean hasErrorDetail() {
+    return ((bitField1_ & 0x00000800) == 0x00000800);
+  }
+  /**
+   * <pre>
+   *错误描述
+   * </pre>
+   *
+   * <code>optional string error_detail = 92;</code>
+   */
+  public java.lang.String getErrorDetail() {
+    java.lang.Object ref = errorDetail_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (bs.isValidUtf8()) {
+        errorDetail_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *错误描述
+   * </pre>
+   *
+   * <code>optional string error_detail = 92;</code>
+   */
+  public com.google.protobuf.ByteString
+      getErrorDetailBytes() {
+    java.lang.Object ref = errorDetail_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      errorDetail_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -2221,136 +2190,136 @@ public  final class PayOrder extends
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
-      output.writeInt64(1, id_);
-    }
-    if (((bitField0_ & 0x00000004) == 0x00000004)) {
-      output.writeInt64(2, createTime_);
-    }
-    if (((bitField0_ & 0x00000008) == 0x00000008)) {
-      output.writeInt64(3, updateTime_);
-    }
-    if (((bitField0_ & 0x00000010) == 0x00000010)) {
-      output.writeInt64(4, expireTime_);
-    }
-    if (((bitField0_ & 0x00000020) == 0x00000020)) {
-      output.writeInt64(5, payTime_);
-    }
-    if (((bitField0_ & 0x00000040) == 0x00000040)) {
-      output.writeEnum(6, status_);
-    }
-    if (((bitField0_ & 0x00000080) == 0x00000080)) {
-      output.writeInt32(7, version_);
-    }
-    if (((bitField0_ & 0x00000100) == 0x00000100)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, errorCode_);
-    }
-    if (((bitField0_ & 0x00000200) == 0x00000200)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, errorDetail_);
+      output.writeInt64(1, key_);
     }
     if (((bitField0_ & 0x00000002) == 0x00000002)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, code_);
+      output.writeInt64(2, id_);
     }
-    if (((bitField0_ & 0x00040000) == 0x00040000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, thirdTradeCode_);
+    if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      output.writeInt64(3, createTime_);
     }
-    if (((bitField0_ & 0x00080000) == 0x00080000)) {
-      output.writeInt64(13, thirdCreateTime_);
+    if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      output.writeInt64(4, updateTime_);
     }
-    if (((bitField0_ & 0x00100000) == 0x00100000)) {
-      output.writeInt64(14, thirdPayTime_);
+    if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      output.writeInt64(5, expireTime_);
+    }
+    if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      output.writeInt64(6, payTime_);
+    }
+    if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      output.writeEnum(7, status_);
+    }
+    if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      output.writeInt32(8, version_);
+    }
+    if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      output.writeInt32(11, sourcePayType_);
+    }
+    if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      output.writeInt32(12, destPayType_);
     }
     if (((bitField0_ & 0x00000400) == 0x00000400)) {
-      output.writeInt32(16, sourcePayType_);
+      output.writeInt32(13, payMode_);
     }
     if (((bitField0_ & 0x00000800) == 0x00000800)) {
-      output.writeInt32(17, destPayType_);
-    }
-    if (((bitField0_ & 0x00008000) == 0x00008000)) {
-      output.writeInt64(18, fee_);
-    }
-    if (((bitField0_ & 0x00010000) == 0x00010000)) {
-      output.writeInt64(19, feeReal_);
-    }
-    if (((bitField0_ & 0x00020000) == 0x00020000)) {
-      output.writeInt32(20, feeUnit_);
-    }
-    if (((bitField0_ & 0x01000000) == 0x01000000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 21, orderId_);
-    }
-    if (((bitField0_ & 0x02000000) == 0x02000000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 22, orderTitle_);
-    }
-    if (((bitField0_ & 0x04000000) == 0x04000000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 23, orderDetail_);
-    }
-    if (((bitField0_ & 0x08000000) == 0x08000000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 24, orderShowUrl_);
-    }
-    if (((bitField0_ & 0x10000000) == 0x10000000)) {
-      output.writeInt64(25, subId_);
-    }
-    if (((bitField0_ & 0x20000000) == 0x20000000)) {
-      output.writeEnum(26, subType_);
-    }
-    if (((bitField0_ & 0x40000000) == 0x40000000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 27, subName_);
-    }
-    if (((bitField0_ & 0x80000000) == 0x80000000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 28, subAccountId_);
-    }
-    if (((bitField1_ & 0x00000001) == 0x00000001)) {
-      output.writeInt32(29, subAccountType_);
-    }
-    if (((bitField1_ & 0x00000002) == 0x00000002)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 30, subIp_);
-    }
-    if (((bitField1_ & 0x00000004) == 0x00000004)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 31, subMobile_);
-    }
-    if (((bitField1_ & 0x00000008) == 0x00000008)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 32, subClientCode_);
-    }
-    if (((bitField1_ & 0x00000010) == 0x00000010)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 33, subDeviceId_);
-    }
-    if (((bitField1_ & 0x00000020) == 0x00000020)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 34, subEmail_);
-    }
-    if (((bitField1_ & 0x00000040) == 0x00000040)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 35, subLocation_);
-    }
-    if (((bitField1_ & 0x00000080) == 0x00000080)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 36, subCountryCode_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 14, appId_);
     }
     if (((bitField0_ & 0x00001000) == 0x00001000)) {
-      output.writeInt32(39, payMode_);
-    }
-    if (((bitField1_ & 0x00000100) == 0x00000100)) {
-      output.writeInt64(40, partnerId_);
-    }
-    if (((bitField1_ & 0x00000200) == 0x00000200)) {
-      output.writeEnum(41, partnerType_);
-    }
-    if (((bitField1_ & 0x00000400) == 0x00000400)) {
-      output.writeInt64(42, partnerAccountId_);
-    }
-    if (((bitField1_ & 0x00000800) == 0x00000800)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 43, partnerName_);
-    }
-    if (((bitField0_ & 0x00200000) == 0x00200000)) {
-      output.writeInt64(44, currentKey_);
-    }
-    if (((bitField0_ & 0x00400000) == 0x00400000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 47, notifyUrl_);
-    }
-    if (((bitField0_ & 0x00800000) == 0x00800000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 48, returnUrl_);
+      output.writeInt32(15, payScenarios_);
     }
     if (((bitField0_ & 0x00002000) == 0x00002000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 49, appId_);
+      output.writeInt64(21, fee_);
     }
     if (((bitField0_ & 0x00004000) == 0x00004000)) {
-      output.writeInt32(50, payScenarios_);
+      output.writeInt64(22, feeReal_);
+    }
+    if (((bitField0_ & 0x00008000) == 0x00008000)) {
+      output.writeInt32(23, feeUnit_);
+    }
+    if (((bitField0_ & 0x00010000) == 0x00010000)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 31, thirdTradeCode_);
+    }
+    if (((bitField0_ & 0x00020000) == 0x00020000)) {
+      output.writeInt64(32, thirdCreateTime_);
+    }
+    if (((bitField0_ & 0x00040000) == 0x00040000)) {
+      output.writeInt64(33, thirdPayTime_);
+    }
+    if (((bitField0_ & 0x00080000) == 0x00080000)) {
+      output.writeInt64(34, currentKey_);
+    }
+    if (((bitField0_ & 0x00100000) == 0x00100000)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 35, notifyUrl_);
+    }
+    if (((bitField0_ & 0x00200000) == 0x00200000)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 36, returnUrl_);
+    }
+    if (((bitField0_ & 0x00400000) == 0x00400000)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 41, orderId_);
+    }
+    if (((bitField0_ & 0x00800000) == 0x00800000)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 42, orderTitle_);
+    }
+    if (((bitField0_ & 0x01000000) == 0x01000000)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 43, orderDetail_);
+    }
+    if (((bitField0_ & 0x02000000) == 0x02000000)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 44, orderShowUrl_);
+    }
+    if (((bitField0_ & 0x04000000) == 0x04000000)) {
+      output.writeInt64(51, subId_);
+    }
+    if (((bitField0_ & 0x08000000) == 0x08000000)) {
+      output.writeEnum(52, subType_);
+    }
+    if (((bitField0_ & 0x10000000) == 0x10000000)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 53, subName_);
+    }
+    if (((bitField0_ & 0x20000000) == 0x20000000)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 54, subAccountId_);
+    }
+    if (((bitField0_ & 0x40000000) == 0x40000000)) {
+      output.writeInt32(55, subAccountType_);
+    }
+    if (((bitField0_ & 0x80000000) == 0x80000000)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 56, subIp_);
+    }
+    if (((bitField1_ & 0x00000001) == 0x00000001)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 57, subMobile_);
+    }
+    if (((bitField1_ & 0x00000002) == 0x00000002)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 58, subClientCode_);
+    }
+    if (((bitField1_ & 0x00000004) == 0x00000004)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 59, subDeviceId_);
+    }
+    if (((bitField1_ & 0x00000008) == 0x00000008)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 60, subEmail_);
+    }
+    if (((bitField1_ & 0x00000010) == 0x00000010)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 61, subLocation_);
+    }
+    if (((bitField1_ & 0x00000020) == 0x00000020)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 62, subCountryCode_);
+    }
+    if (((bitField1_ & 0x00000040) == 0x00000040)) {
+      output.writeInt64(71, partnerId_);
+    }
+    if (((bitField1_ & 0x00000080) == 0x00000080)) {
+      output.writeEnum(72, partnerType_);
+    }
+    if (((bitField1_ & 0x00000100) == 0x00000100)) {
+      output.writeInt64(73, partnerAccountId_);
+    }
+    if (((bitField1_ & 0x00000200) == 0x00000200)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 74, partnerName_);
+    }
+    if (((bitField1_ & 0x00000400) == 0x00000400)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 91, errorCode_);
+    }
+    if (((bitField1_ & 0x00000800) == 0x00000800)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 92, errorDetail_);
     }
     unknownFields.writeTo(output);
   }
@@ -2362,165 +2331,165 @@ public  final class PayOrder extends
     size = 0;
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, id_);
+        .computeInt64Size(1, key_);
+    }
+    if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(2, id_);
     }
     if (((bitField0_ & 0x00000004) == 0x00000004)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, createTime_);
+        .computeInt64Size(3, createTime_);
     }
     if (((bitField0_ & 0x00000008) == 0x00000008)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(3, updateTime_);
+        .computeInt64Size(4, updateTime_);
     }
     if (((bitField0_ & 0x00000010) == 0x00000010)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(4, expireTime_);
+        .computeInt64Size(5, expireTime_);
     }
     if (((bitField0_ & 0x00000020) == 0x00000020)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(5, payTime_);
+        .computeInt64Size(6, payTime_);
     }
     if (((bitField0_ & 0x00000040) == 0x00000040)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(6, status_);
+        .computeEnumSize(7, status_);
     }
     if (((bitField0_ & 0x00000080) == 0x00000080)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(7, version_);
+        .computeInt32Size(8, version_);
     }
     if (((bitField0_ & 0x00000100) == 0x00000100)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, errorCode_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(11, sourcePayType_);
     }
     if (((bitField0_ & 0x00000200) == 0x00000200)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, errorDetail_);
-    }
-    if (((bitField0_ & 0x00000002) == 0x00000002)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, code_);
-    }
-    if (((bitField0_ & 0x00040000) == 0x00040000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, thirdTradeCode_);
-    }
-    if (((bitField0_ & 0x00080000) == 0x00080000)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(13, thirdCreateTime_);
-    }
-    if (((bitField0_ & 0x00100000) == 0x00100000)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(14, thirdPayTime_);
+        .computeInt32Size(12, destPayType_);
     }
     if (((bitField0_ & 0x00000400) == 0x00000400)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(16, sourcePayType_);
+        .computeInt32Size(13, payMode_);
     }
     if (((bitField0_ & 0x00000800) == 0x00000800)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(17, destPayType_);
-    }
-    if (((bitField0_ & 0x00008000) == 0x00008000)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(18, fee_);
-    }
-    if (((bitField0_ & 0x00010000) == 0x00010000)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(19, feeReal_);
-    }
-    if (((bitField0_ & 0x00020000) == 0x00020000)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(20, feeUnit_);
-    }
-    if (((bitField0_ & 0x01000000) == 0x01000000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(21, orderId_);
-    }
-    if (((bitField0_ & 0x02000000) == 0x02000000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(22, orderTitle_);
-    }
-    if (((bitField0_ & 0x04000000) == 0x04000000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(23, orderDetail_);
-    }
-    if (((bitField0_ & 0x08000000) == 0x08000000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(24, orderShowUrl_);
-    }
-    if (((bitField0_ & 0x10000000) == 0x10000000)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(25, subId_);
-    }
-    if (((bitField0_ & 0x20000000) == 0x20000000)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(26, subType_);
-    }
-    if (((bitField0_ & 0x40000000) == 0x40000000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(27, subName_);
-    }
-    if (((bitField0_ & 0x80000000) == 0x80000000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(28, subAccountId_);
-    }
-    if (((bitField1_ & 0x00000001) == 0x00000001)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(29, subAccountType_);
-    }
-    if (((bitField1_ & 0x00000002) == 0x00000002)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(30, subIp_);
-    }
-    if (((bitField1_ & 0x00000004) == 0x00000004)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(31, subMobile_);
-    }
-    if (((bitField1_ & 0x00000008) == 0x00000008)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(32, subClientCode_);
-    }
-    if (((bitField1_ & 0x00000010) == 0x00000010)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(33, subDeviceId_);
-    }
-    if (((bitField1_ & 0x00000020) == 0x00000020)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(34, subEmail_);
-    }
-    if (((bitField1_ & 0x00000040) == 0x00000040)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(35, subLocation_);
-    }
-    if (((bitField1_ & 0x00000080) == 0x00000080)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(36, subCountryCode_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, appId_);
     }
     if (((bitField0_ & 0x00001000) == 0x00001000)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(39, payMode_);
-    }
-    if (((bitField1_ & 0x00000100) == 0x00000100)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(40, partnerId_);
-    }
-    if (((bitField1_ & 0x00000200) == 0x00000200)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(41, partnerType_);
-    }
-    if (((bitField1_ & 0x00000400) == 0x00000400)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(42, partnerAccountId_);
-    }
-    if (((bitField1_ & 0x00000800) == 0x00000800)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(43, partnerName_);
-    }
-    if (((bitField0_ & 0x00200000) == 0x00200000)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(44, currentKey_);
-    }
-    if (((bitField0_ & 0x00400000) == 0x00400000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(47, notifyUrl_);
-    }
-    if (((bitField0_ & 0x00800000) == 0x00800000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(48, returnUrl_);
+        .computeInt32Size(15, payScenarios_);
     }
     if (((bitField0_ & 0x00002000) == 0x00002000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(49, appId_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(21, fee_);
     }
     if (((bitField0_ & 0x00004000) == 0x00004000)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(50, payScenarios_);
+        .computeInt64Size(22, feeReal_);
+    }
+    if (((bitField0_ & 0x00008000) == 0x00008000)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(23, feeUnit_);
+    }
+    if (((bitField0_ & 0x00010000) == 0x00010000)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(31, thirdTradeCode_);
+    }
+    if (((bitField0_ & 0x00020000) == 0x00020000)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(32, thirdCreateTime_);
+    }
+    if (((bitField0_ & 0x00040000) == 0x00040000)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(33, thirdPayTime_);
+    }
+    if (((bitField0_ & 0x00080000) == 0x00080000)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(34, currentKey_);
+    }
+    if (((bitField0_ & 0x00100000) == 0x00100000)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(35, notifyUrl_);
+    }
+    if (((bitField0_ & 0x00200000) == 0x00200000)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(36, returnUrl_);
+    }
+    if (((bitField0_ & 0x00400000) == 0x00400000)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(41, orderId_);
+    }
+    if (((bitField0_ & 0x00800000) == 0x00800000)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(42, orderTitle_);
+    }
+    if (((bitField0_ & 0x01000000) == 0x01000000)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(43, orderDetail_);
+    }
+    if (((bitField0_ & 0x02000000) == 0x02000000)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(44, orderShowUrl_);
+    }
+    if (((bitField0_ & 0x04000000) == 0x04000000)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(51, subId_);
+    }
+    if (((bitField0_ & 0x08000000) == 0x08000000)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(52, subType_);
+    }
+    if (((bitField0_ & 0x10000000) == 0x10000000)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(53, subName_);
+    }
+    if (((bitField0_ & 0x20000000) == 0x20000000)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(54, subAccountId_);
+    }
+    if (((bitField0_ & 0x40000000) == 0x40000000)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(55, subAccountType_);
+    }
+    if (((bitField0_ & 0x80000000) == 0x80000000)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(56, subIp_);
+    }
+    if (((bitField1_ & 0x00000001) == 0x00000001)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(57, subMobile_);
+    }
+    if (((bitField1_ & 0x00000002) == 0x00000002)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(58, subClientCode_);
+    }
+    if (((bitField1_ & 0x00000004) == 0x00000004)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(59, subDeviceId_);
+    }
+    if (((bitField1_ & 0x00000008) == 0x00000008)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(60, subEmail_);
+    }
+    if (((bitField1_ & 0x00000010) == 0x00000010)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(61, subLocation_);
+    }
+    if (((bitField1_ & 0x00000020) == 0x00000020)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(62, subCountryCode_);
+    }
+    if (((bitField1_ & 0x00000040) == 0x00000040)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(71, partnerId_);
+    }
+    if (((bitField1_ & 0x00000080) == 0x00000080)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(72, partnerType_);
+    }
+    if (((bitField1_ & 0x00000100) == 0x00000100)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(73, partnerAccountId_);
+    }
+    if (((bitField1_ & 0x00000200) == 0x00000200)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(74, partnerName_);
+    }
+    if (((bitField1_ & 0x00000400) == 0x00000400)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(91, errorCode_);
+    }
+    if (((bitField1_ & 0x00000800) == 0x00000800)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(92, errorDetail_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
@@ -2532,15 +2501,15 @@ public  final class PayOrder extends
     org.jigsaw.payment.model.PayOrder other = (org.jigsaw.payment.model.PayOrder) obj;
 
     boolean result = true;
+    result = result && (hasKey() == other.hasKey());
+    if (hasKey()) {
+      result = result && (getKey()
+          == other.getKey());
+    }
     result = result && (hasId() == other.hasId());
     if (hasId()) {
       result = result && (getId()
           == other.getId());
-    }
-    result = result && (hasCode() == other.hasCode());
-    if (hasCode()) {
-      result = result && getCode()
-          .equals(other.getCode());
     }
     result = result && (hasCreateTime() == other.hasCreateTime());
     if (hasCreateTime()) {
@@ -2570,16 +2539,6 @@ public  final class PayOrder extends
     if (hasVersion()) {
       result = result && (getVersion()
           == other.getVersion());
-    }
-    result = result && (hasErrorCode() == other.hasErrorCode());
-    if (hasErrorCode()) {
-      result = result && getErrorCode()
-          .equals(other.getErrorCode());
-    }
-    result = result && (hasErrorDetail() == other.hasErrorDetail());
-    if (hasErrorDetail()) {
-      result = result && getErrorDetail()
-          .equals(other.getErrorDetail());
     }
     result = result && (hasSourcePayType() == other.hasSourcePayType());
     if (hasSourcePayType()) {
@@ -2749,6 +2708,16 @@ public  final class PayOrder extends
       result = result && getPartnerName()
           .equals(other.getPartnerName());
     }
+    result = result && (hasErrorCode() == other.hasErrorCode());
+    if (hasErrorCode()) {
+      result = result && getErrorCode()
+          .equals(other.getErrorCode());
+    }
+    result = result && (hasErrorDetail() == other.hasErrorDetail());
+    if (hasErrorDetail()) {
+      result = result && getErrorDetail()
+          .equals(other.getErrorDetail());
+    }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -2760,14 +2729,15 @@ public  final class PayOrder extends
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    if (hasKey()) {
+      hash = (37 * hash) + KEY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getKey());
+    }
     if (hasId()) {
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getId());
-    }
-    if (hasCode()) {
-      hash = (37 * hash) + CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getCode().hashCode();
     }
     if (hasCreateTime()) {
       hash = (37 * hash) + CREATE_TIME_FIELD_NUMBER;
@@ -2796,14 +2766,6 @@ public  final class PayOrder extends
     if (hasVersion()) {
       hash = (37 * hash) + VERSION_FIELD_NUMBER;
       hash = (53 * hash) + getVersion();
-    }
-    if (hasErrorCode()) {
-      hash = (37 * hash) + ERROR_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getErrorCode().hashCode();
-    }
-    if (hasErrorDetail()) {
-      hash = (37 * hash) + ERROR_DETAIL_FIELD_NUMBER;
-      hash = (53 * hash) + getErrorDetail().hashCode();
     }
     if (hasSourcePayType()) {
       hash = (37 * hash) + SOURCE_PAY_TYPE_FIELD_NUMBER;
@@ -2949,6 +2911,14 @@ public  final class PayOrder extends
       hash = (37 * hash) + PARTNER_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getPartnerName().hashCode();
     }
+    if (hasErrorCode()) {
+      hash = (37 * hash) + ERROR_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getErrorCode().hashCode();
+    }
+    if (hasErrorDetail()) {
+      hash = (37 * hash) + ERROR_DETAIL_FIELD_NUMBER;
+      hash = (53 * hash) + getErrorDetail().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -3083,9 +3053,9 @@ public  final class PayOrder extends
     }
     public Builder clear() {
       super.clear();
-      id_ = 0L;
+      key_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
-      code_ = "";
+      id_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000002);
       createTime_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000004);
@@ -3099,77 +3069,77 @@ public  final class PayOrder extends
       bitField0_ = (bitField0_ & ~0x00000040);
       version_ = 0;
       bitField0_ = (bitField0_ & ~0x00000080);
-      errorCode_ = "";
-      bitField0_ = (bitField0_ & ~0x00000100);
-      errorDetail_ = "";
-      bitField0_ = (bitField0_ & ~0x00000200);
       sourcePayType_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000400);
+      bitField0_ = (bitField0_ & ~0x00000100);
       destPayType_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000800);
+      bitField0_ = (bitField0_ & ~0x00000200);
       payMode_ = 0;
-      bitField0_ = (bitField0_ & ~0x00001000);
+      bitField0_ = (bitField0_ & ~0x00000400);
       appId_ = "";
-      bitField0_ = (bitField0_ & ~0x00002000);
+      bitField0_ = (bitField0_ & ~0x00000800);
       payScenarios_ = 0;
-      bitField0_ = (bitField0_ & ~0x00004000);
+      bitField0_ = (bitField0_ & ~0x00001000);
       fee_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00008000);
+      bitField0_ = (bitField0_ & ~0x00002000);
       feeReal_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00010000);
+      bitField0_ = (bitField0_ & ~0x00004000);
       feeUnit_ = 0;
-      bitField0_ = (bitField0_ & ~0x00020000);
+      bitField0_ = (bitField0_ & ~0x00008000);
       thirdTradeCode_ = "";
-      bitField0_ = (bitField0_ & ~0x00040000);
+      bitField0_ = (bitField0_ & ~0x00010000);
       thirdCreateTime_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00080000);
+      bitField0_ = (bitField0_ & ~0x00020000);
       thirdPayTime_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00100000);
+      bitField0_ = (bitField0_ & ~0x00040000);
       currentKey_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00200000);
+      bitField0_ = (bitField0_ & ~0x00080000);
       notifyUrl_ = "";
-      bitField0_ = (bitField0_ & ~0x00400000);
+      bitField0_ = (bitField0_ & ~0x00100000);
       returnUrl_ = "";
-      bitField0_ = (bitField0_ & ~0x00800000);
+      bitField0_ = (bitField0_ & ~0x00200000);
       orderId_ = "";
-      bitField0_ = (bitField0_ & ~0x01000000);
+      bitField0_ = (bitField0_ & ~0x00400000);
       orderTitle_ = "";
-      bitField0_ = (bitField0_ & ~0x02000000);
+      bitField0_ = (bitField0_ & ~0x00800000);
       orderDetail_ = "";
-      bitField0_ = (bitField0_ & ~0x04000000);
+      bitField0_ = (bitField0_ & ~0x01000000);
       orderShowUrl_ = "";
-      bitField0_ = (bitField0_ & ~0x08000000);
+      bitField0_ = (bitField0_ & ~0x02000000);
       subId_ = 0L;
-      bitField0_ = (bitField0_ & ~0x10000000);
+      bitField0_ = (bitField0_ & ~0x04000000);
       subType_ = 0;
-      bitField0_ = (bitField0_ & ~0x20000000);
+      bitField0_ = (bitField0_ & ~0x08000000);
       subName_ = "";
-      bitField0_ = (bitField0_ & ~0x40000000);
+      bitField0_ = (bitField0_ & ~0x10000000);
       subAccountId_ = "";
-      bitField0_ = (bitField0_ & ~0x80000000);
+      bitField0_ = (bitField0_ & ~0x20000000);
       subAccountType_ = 0;
-      bitField1_ = (bitField1_ & ~0x00000001);
+      bitField0_ = (bitField0_ & ~0x40000000);
       subIp_ = "";
-      bitField1_ = (bitField1_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x80000000);
       subMobile_ = "";
-      bitField1_ = (bitField1_ & ~0x00000004);
+      bitField1_ = (bitField1_ & ~0x00000001);
       subClientCode_ = "";
-      bitField1_ = (bitField1_ & ~0x00000008);
+      bitField1_ = (bitField1_ & ~0x00000002);
       subDeviceId_ = "";
-      bitField1_ = (bitField1_ & ~0x00000010);
+      bitField1_ = (bitField1_ & ~0x00000004);
       subEmail_ = "";
-      bitField1_ = (bitField1_ & ~0x00000020);
+      bitField1_ = (bitField1_ & ~0x00000008);
       subLocation_ = "";
-      bitField1_ = (bitField1_ & ~0x00000040);
+      bitField1_ = (bitField1_ & ~0x00000010);
       subCountryCode_ = "";
-      bitField1_ = (bitField1_ & ~0x00000080);
+      bitField1_ = (bitField1_ & ~0x00000020);
       partnerId_ = 0L;
-      bitField1_ = (bitField1_ & ~0x00000100);
+      bitField1_ = (bitField1_ & ~0x00000040);
       partnerType_ = 0;
-      bitField1_ = (bitField1_ & ~0x00000200);
+      bitField1_ = (bitField1_ & ~0x00000080);
       partnerAccountId_ = 0L;
-      bitField1_ = (bitField1_ & ~0x00000400);
+      bitField1_ = (bitField1_ & ~0x00000100);
       partnerName_ = "";
+      bitField1_ = (bitField1_ & ~0x00000200);
+      errorCode_ = "";
+      bitField1_ = (bitField1_ & ~0x00000400);
+      errorDetail_ = "";
       bitField1_ = (bitField1_ & ~0x00000800);
       return this;
     }
@@ -3200,11 +3170,11 @@ public  final class PayOrder extends
       if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
         to_bitField0_ |= 0x00000001;
       }
-      result.id_ = id_;
+      result.key_ = key_;
       if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
         to_bitField0_ |= 0x00000002;
       }
-      result.code_ = code_;
+      result.id_ = id_;
       if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
         to_bitField0_ |= 0x00000004;
       }
@@ -3232,147 +3202,147 @@ public  final class PayOrder extends
       if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
         to_bitField0_ |= 0x00000100;
       }
-      result.errorCode_ = errorCode_;
+      result.sourcePayType_ = sourcePayType_;
       if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
         to_bitField0_ |= 0x00000200;
       }
-      result.errorDetail_ = errorDetail_;
+      result.destPayType_ = destPayType_;
       if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
         to_bitField0_ |= 0x00000400;
       }
-      result.sourcePayType_ = sourcePayType_;
+      result.payMode_ = payMode_;
       if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
         to_bitField0_ |= 0x00000800;
       }
-      result.destPayType_ = destPayType_;
+      result.appId_ = appId_;
       if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
         to_bitField0_ |= 0x00001000;
       }
-      result.payMode_ = payMode_;
+      result.payScenarios_ = payScenarios_;
       if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
         to_bitField0_ |= 0x00002000;
       }
-      result.appId_ = appId_;
+      result.fee_ = fee_;
       if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
         to_bitField0_ |= 0x00004000;
       }
-      result.payScenarios_ = payScenarios_;
+      result.feeReal_ = feeReal_;
       if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
         to_bitField0_ |= 0x00008000;
       }
-      result.fee_ = fee_;
+      result.feeUnit_ = feeUnit_;
       if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
         to_bitField0_ |= 0x00010000;
       }
-      result.feeReal_ = feeReal_;
+      result.thirdTradeCode_ = thirdTradeCode_;
       if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
         to_bitField0_ |= 0x00020000;
       }
-      result.feeUnit_ = feeUnit_;
+      result.thirdCreateTime_ = thirdCreateTime_;
       if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
         to_bitField0_ |= 0x00040000;
       }
-      result.thirdTradeCode_ = thirdTradeCode_;
+      result.thirdPayTime_ = thirdPayTime_;
       if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
         to_bitField0_ |= 0x00080000;
       }
-      result.thirdCreateTime_ = thirdCreateTime_;
+      result.currentKey_ = currentKey_;
       if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
         to_bitField0_ |= 0x00100000;
       }
-      result.thirdPayTime_ = thirdPayTime_;
+      result.notifyUrl_ = notifyUrl_;
       if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
         to_bitField0_ |= 0x00200000;
       }
-      result.currentKey_ = currentKey_;
+      result.returnUrl_ = returnUrl_;
       if (((from_bitField0_ & 0x00400000) == 0x00400000)) {
         to_bitField0_ |= 0x00400000;
       }
-      result.notifyUrl_ = notifyUrl_;
+      result.orderId_ = orderId_;
       if (((from_bitField0_ & 0x00800000) == 0x00800000)) {
         to_bitField0_ |= 0x00800000;
       }
-      result.returnUrl_ = returnUrl_;
+      result.orderTitle_ = orderTitle_;
       if (((from_bitField0_ & 0x01000000) == 0x01000000)) {
         to_bitField0_ |= 0x01000000;
       }
-      result.orderId_ = orderId_;
+      result.orderDetail_ = orderDetail_;
       if (((from_bitField0_ & 0x02000000) == 0x02000000)) {
         to_bitField0_ |= 0x02000000;
       }
-      result.orderTitle_ = orderTitle_;
+      result.orderShowUrl_ = orderShowUrl_;
       if (((from_bitField0_ & 0x04000000) == 0x04000000)) {
         to_bitField0_ |= 0x04000000;
       }
-      result.orderDetail_ = orderDetail_;
+      result.subId_ = subId_;
       if (((from_bitField0_ & 0x08000000) == 0x08000000)) {
         to_bitField0_ |= 0x08000000;
       }
-      result.orderShowUrl_ = orderShowUrl_;
+      result.subType_ = subType_;
       if (((from_bitField0_ & 0x10000000) == 0x10000000)) {
         to_bitField0_ |= 0x10000000;
       }
-      result.subId_ = subId_;
+      result.subName_ = subName_;
       if (((from_bitField0_ & 0x20000000) == 0x20000000)) {
         to_bitField0_ |= 0x20000000;
       }
-      result.subType_ = subType_;
+      result.subAccountId_ = subAccountId_;
       if (((from_bitField0_ & 0x40000000) == 0x40000000)) {
         to_bitField0_ |= 0x40000000;
       }
-      result.subName_ = subName_;
+      result.subAccountType_ = subAccountType_;
       if (((from_bitField0_ & 0x80000000) == 0x80000000)) {
         to_bitField0_ |= 0x80000000;
       }
-      result.subAccountId_ = subAccountId_;
+      result.subIp_ = subIp_;
       if (((from_bitField1_ & 0x00000001) == 0x00000001)) {
         to_bitField1_ |= 0x00000001;
       }
-      result.subAccountType_ = subAccountType_;
+      result.subMobile_ = subMobile_;
       if (((from_bitField1_ & 0x00000002) == 0x00000002)) {
         to_bitField1_ |= 0x00000002;
       }
-      result.subIp_ = subIp_;
+      result.subClientCode_ = subClientCode_;
       if (((from_bitField1_ & 0x00000004) == 0x00000004)) {
         to_bitField1_ |= 0x00000004;
       }
-      result.subMobile_ = subMobile_;
+      result.subDeviceId_ = subDeviceId_;
       if (((from_bitField1_ & 0x00000008) == 0x00000008)) {
         to_bitField1_ |= 0x00000008;
       }
-      result.subClientCode_ = subClientCode_;
+      result.subEmail_ = subEmail_;
       if (((from_bitField1_ & 0x00000010) == 0x00000010)) {
         to_bitField1_ |= 0x00000010;
       }
-      result.subDeviceId_ = subDeviceId_;
+      result.subLocation_ = subLocation_;
       if (((from_bitField1_ & 0x00000020) == 0x00000020)) {
         to_bitField1_ |= 0x00000020;
       }
-      result.subEmail_ = subEmail_;
+      result.subCountryCode_ = subCountryCode_;
       if (((from_bitField1_ & 0x00000040) == 0x00000040)) {
         to_bitField1_ |= 0x00000040;
       }
-      result.subLocation_ = subLocation_;
+      result.partnerId_ = partnerId_;
       if (((from_bitField1_ & 0x00000080) == 0x00000080)) {
         to_bitField1_ |= 0x00000080;
       }
-      result.subCountryCode_ = subCountryCode_;
+      result.partnerType_ = partnerType_;
       if (((from_bitField1_ & 0x00000100) == 0x00000100)) {
         to_bitField1_ |= 0x00000100;
       }
-      result.partnerId_ = partnerId_;
+      result.partnerAccountId_ = partnerAccountId_;
       if (((from_bitField1_ & 0x00000200) == 0x00000200)) {
         to_bitField1_ |= 0x00000200;
       }
-      result.partnerType_ = partnerType_;
+      result.partnerName_ = partnerName_;
       if (((from_bitField1_ & 0x00000400) == 0x00000400)) {
         to_bitField1_ |= 0x00000400;
       }
-      result.partnerAccountId_ = partnerAccountId_;
+      result.errorCode_ = errorCode_;
       if (((from_bitField1_ & 0x00000800) == 0x00000800)) {
         to_bitField1_ |= 0x00000800;
       }
-      result.partnerName_ = partnerName_;
+      result.errorDetail_ = errorDetail_;
       result.bitField0_ = to_bitField0_;
       result.bitField1_ = to_bitField1_;
       onBuilt();
@@ -3384,7 +3354,7 @@ public  final class PayOrder extends
     }
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.setField(field, value);
     }
     public Builder clearField(
@@ -3397,12 +3367,12 @@ public  final class PayOrder extends
     }
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, Object value) {
+        int index, java.lang.Object value) {
       return (Builder) super.setRepeatedField(field, index, value);
     }
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -3416,13 +3386,11 @@ public  final class PayOrder extends
 
     public Builder mergeFrom(org.jigsaw.payment.model.PayOrder other) {
       if (other == org.jigsaw.payment.model.PayOrder.getDefaultInstance()) return this;
+      if (other.hasKey()) {
+        setKey(other.getKey());
+      }
       if (other.hasId()) {
         setId(other.getId());
-      }
-      if (other.hasCode()) {
-        bitField0_ |= 0x00000002;
-        code_ = other.code_;
-        onChanged();
       }
       if (other.hasCreateTime()) {
         setCreateTime(other.getCreateTime());
@@ -3442,16 +3410,6 @@ public  final class PayOrder extends
       if (other.hasVersion()) {
         setVersion(other.getVersion());
       }
-      if (other.hasErrorCode()) {
-        bitField0_ |= 0x00000100;
-        errorCode_ = other.errorCode_;
-        onChanged();
-      }
-      if (other.hasErrorDetail()) {
-        bitField0_ |= 0x00000200;
-        errorDetail_ = other.errorDetail_;
-        onChanged();
-      }
       if (other.hasSourcePayType()) {
         setSourcePayType(other.getSourcePayType());
       }
@@ -3462,7 +3420,7 @@ public  final class PayOrder extends
         setPayMode(other.getPayMode());
       }
       if (other.hasAppId()) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00000800;
         appId_ = other.appId_;
         onChanged();
       }
@@ -3479,7 +3437,7 @@ public  final class PayOrder extends
         setFeeUnit(other.getFeeUnit());
       }
       if (other.hasThirdTradeCode()) {
-        bitField0_ |= 0x00040000;
+        bitField0_ |= 0x00010000;
         thirdTradeCode_ = other.thirdTradeCode_;
         onChanged();
       }
@@ -3493,32 +3451,32 @@ public  final class PayOrder extends
         setCurrentKey(other.getCurrentKey());
       }
       if (other.hasNotifyUrl()) {
-        bitField0_ |= 0x00400000;
+        bitField0_ |= 0x00100000;
         notifyUrl_ = other.notifyUrl_;
         onChanged();
       }
       if (other.hasReturnUrl()) {
-        bitField0_ |= 0x00800000;
+        bitField0_ |= 0x00200000;
         returnUrl_ = other.returnUrl_;
         onChanged();
       }
       if (other.hasOrderId()) {
-        bitField0_ |= 0x01000000;
+        bitField0_ |= 0x00400000;
         orderId_ = other.orderId_;
         onChanged();
       }
       if (other.hasOrderTitle()) {
-        bitField0_ |= 0x02000000;
+        bitField0_ |= 0x00800000;
         orderTitle_ = other.orderTitle_;
         onChanged();
       }
       if (other.hasOrderDetail()) {
-        bitField0_ |= 0x04000000;
+        bitField0_ |= 0x01000000;
         orderDetail_ = other.orderDetail_;
         onChanged();
       }
       if (other.hasOrderShowUrl()) {
-        bitField0_ |= 0x08000000;
+        bitField0_ |= 0x02000000;
         orderShowUrl_ = other.orderShowUrl_;
         onChanged();
       }
@@ -3529,12 +3487,12 @@ public  final class PayOrder extends
         setSubType(other.getSubType());
       }
       if (other.hasSubName()) {
-        bitField0_ |= 0x40000000;
+        bitField0_ |= 0x10000000;
         subName_ = other.subName_;
         onChanged();
       }
       if (other.hasSubAccountId()) {
-        bitField0_ |= 0x80000000;
+        bitField0_ |= 0x20000000;
         subAccountId_ = other.subAccountId_;
         onChanged();
       }
@@ -3542,37 +3500,37 @@ public  final class PayOrder extends
         setSubAccountType(other.getSubAccountType());
       }
       if (other.hasSubIp()) {
-        bitField1_ |= 0x00000002;
+        bitField0_ |= 0x80000000;
         subIp_ = other.subIp_;
         onChanged();
       }
       if (other.hasSubMobile()) {
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000001;
         subMobile_ = other.subMobile_;
         onChanged();
       }
       if (other.hasSubClientCode()) {
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000002;
         subClientCode_ = other.subClientCode_;
         onChanged();
       }
       if (other.hasSubDeviceId()) {
-        bitField1_ |= 0x00000010;
+        bitField1_ |= 0x00000004;
         subDeviceId_ = other.subDeviceId_;
         onChanged();
       }
       if (other.hasSubEmail()) {
-        bitField1_ |= 0x00000020;
+        bitField1_ |= 0x00000008;
         subEmail_ = other.subEmail_;
         onChanged();
       }
       if (other.hasSubLocation()) {
-        bitField1_ |= 0x00000040;
+        bitField1_ |= 0x00000010;
         subLocation_ = other.subLocation_;
         onChanged();
       }
       if (other.hasSubCountryCode()) {
-        bitField1_ |= 0x00000080;
+        bitField1_ |= 0x00000020;
         subCountryCode_ = other.subCountryCode_;
         onChanged();
       }
@@ -3586,8 +3544,18 @@ public  final class PayOrder extends
         setPartnerAccountId(other.getPartnerAccountId());
       }
       if (other.hasPartnerName()) {
-        bitField1_ |= 0x00000800;
+        bitField1_ |= 0x00000200;
         partnerName_ = other.partnerName_;
+        onChanged();
+      }
+      if (other.hasErrorCode()) {
+        bitField1_ |= 0x00000400;
+        errorCode_ = other.errorCode_;
+        onChanged();
+      }
+      if (other.hasErrorDetail()) {
+        bitField1_ |= 0x00000800;
+        errorDetail_ = other.errorDetail_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -3619,15 +3587,15 @@ public  final class PayOrder extends
     private int bitField0_;
     private int bitField1_;
 
-    private long id_ ;
+    private long key_ ;
     /**
      * <pre>
      *id，主键， 数据中自增
      * </pre>
      *
-     * <code>optional int64 id = 1;</code>
+     * <code>optional int64 key = 1;</code>
      */
-    public boolean hasId() {
+    public boolean hasKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
@@ -3635,134 +3603,82 @@ public  final class PayOrder extends
      *id，主键， 数据中自增
      * </pre>
      *
-     * <code>optional int64 id = 1;</code>
+     * <code>optional int64 key = 1;</code>
+     */
+    public long getKey() {
+      return key_;
+    }
+    /**
+     * <pre>
+     *id，主键， 数据中自增
+     * </pre>
+     *
+     * <code>optional int64 key = 1;</code>
+     */
+    public Builder setKey(long value) {
+      bitField0_ |= 0x00000001;
+      key_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *id，主键， 数据中自增
+     * </pre>
+     *
+     * <code>optional int64 key = 1;</code>
+     */
+    public Builder clearKey() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      key_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long id_ ;
+    /**
+     * <pre>
+     *支付订单号， 外部主键
+     * </pre>
+     *
+     * <code>optional int64 id = 2;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <pre>
+     *支付订单号， 外部主键
+     * </pre>
+     *
+     * <code>optional int64 id = 2;</code>
      */
     public long getId() {
       return id_;
     }
     /**
      * <pre>
-     *id，主键， 数据中自增
+     *支付订单号， 外部主键
      * </pre>
      *
-     * <code>optional int64 id = 1;</code>
+     * <code>optional int64 id = 2;</code>
      */
     public Builder setId(long value) {
-      bitField0_ |= 0x00000001;
+      bitField0_ |= 0x00000002;
       id_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     *id，主键， 数据中自增
+     *支付订单号， 外部主键
      * </pre>
      *
-     * <code>optional int64 id = 1;</code>
+     * <code>optional int64 id = 2;</code>
      */
     public Builder clearId() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      id_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object code_ = "";
-    /**
-     * <pre>
-     *支付订单号
-     * </pre>
-     *
-     * <code>optional string code = 11;</code>
-     */
-    public boolean hasCode() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <pre>
-     *支付订单号
-     * </pre>
-     *
-     * <code>optional string code = 11;</code>
-     */
-    public java.lang.String getCode() {
-      java.lang.Object ref = code_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          code_ = s;
-        }
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     *支付订单号
-     * </pre>
-     *
-     * <code>optional string code = 11;</code>
-     */
-    public com.google.protobuf.ByteString
-        getCodeBytes() {
-      java.lang.Object ref = code_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        code_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *支付订单号
-     * </pre>
-     *
-     * <code>optional string code = 11;</code>
-     */
-    public Builder setCode(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-      code_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *支付订单号
-     * </pre>
-     *
-     * <code>optional string code = 11;</code>
-     */
-    public Builder clearCode() {
       bitField0_ = (bitField0_ & ~0x00000002);
-      code_ = getDefaultInstance().getCode();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *支付订单号
-     * </pre>
-     *
-     * <code>optional string code = 11;</code>
-     */
-    public Builder setCodeBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-      code_ = value;
+      id_ = 0L;
       onChanged();
       return this;
     }
@@ -3773,7 +3689,7 @@ public  final class PayOrder extends
      *创建时间，本条记录在服务器上创建的时间。
      * </pre>
      *
-     * <code>optional int64 create_time = 2 [(.column_option) = { ... }</code>
+     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
      */
     public boolean hasCreateTime() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
@@ -3783,7 +3699,7 @@ public  final class PayOrder extends
      *创建时间，本条记录在服务器上创建的时间。
      * </pre>
      *
-     * <code>optional int64 create_time = 2 [(.column_option) = { ... }</code>
+     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
      */
     public long getCreateTime() {
       return createTime_;
@@ -3793,7 +3709,7 @@ public  final class PayOrder extends
      *创建时间，本条记录在服务器上创建的时间。
      * </pre>
      *
-     * <code>optional int64 create_time = 2 [(.column_option) = { ... }</code>
+     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
      */
     public Builder setCreateTime(long value) {
       bitField0_ |= 0x00000004;
@@ -3806,7 +3722,7 @@ public  final class PayOrder extends
      *创建时间，本条记录在服务器上创建的时间。
      * </pre>
      *
-     * <code>optional int64 create_time = 2 [(.column_option) = { ... }</code>
+     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
      */
     public Builder clearCreateTime() {
       bitField0_ = (bitField0_ & ~0x00000004);
@@ -3821,7 +3737,7 @@ public  final class PayOrder extends
      *更新时间，本条记录最后修改时间；
      * </pre>
      *
-     * <code>optional int64 update_time = 3 [(.column_option) = { ... }</code>
+     * <code>optional int64 update_time = 4 [(.column_option) = { ... }</code>
      */
     public boolean hasUpdateTime() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
@@ -3831,7 +3747,7 @@ public  final class PayOrder extends
      *更新时间，本条记录最后修改时间；
      * </pre>
      *
-     * <code>optional int64 update_time = 3 [(.column_option) = { ... }</code>
+     * <code>optional int64 update_time = 4 [(.column_option) = { ... }</code>
      */
     public long getUpdateTime() {
       return updateTime_;
@@ -3841,7 +3757,7 @@ public  final class PayOrder extends
      *更新时间，本条记录最后修改时间；
      * </pre>
      *
-     * <code>optional int64 update_time = 3 [(.column_option) = { ... }</code>
+     * <code>optional int64 update_time = 4 [(.column_option) = { ... }</code>
      */
     public Builder setUpdateTime(long value) {
       bitField0_ |= 0x00000008;
@@ -3854,7 +3770,7 @@ public  final class PayOrder extends
      *更新时间，本条记录最后修改时间；
      * </pre>
      *
-     * <code>optional int64 update_time = 3 [(.column_option) = { ... }</code>
+     * <code>optional int64 update_time = 4 [(.column_option) = { ... }</code>
      */
     public Builder clearUpdateTime() {
       bitField0_ = (bitField0_ & ~0x00000008);
@@ -3869,7 +3785,7 @@ public  final class PayOrder extends
      *过期时间，由业务方设定的支付有效期。超过这个时间，支付即被判定为过期。在过期时间后不能在发起支付。如果在过期时间前支付已发起但是未完成，
      * </pre>
      *
-     * <code>optional int64 expire_time = 4 [(.column_option) = { ... }</code>
+     * <code>optional int64 expire_time = 5 [(.column_option) = { ... }</code>
      */
     public boolean hasExpireTime() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
@@ -3879,7 +3795,7 @@ public  final class PayOrder extends
      *过期时间，由业务方设定的支付有效期。超过这个时间，支付即被判定为过期。在过期时间后不能在发起支付。如果在过期时间前支付已发起但是未完成，
      * </pre>
      *
-     * <code>optional int64 expire_time = 4 [(.column_option) = { ... }</code>
+     * <code>optional int64 expire_time = 5 [(.column_option) = { ... }</code>
      */
     public long getExpireTime() {
       return expireTime_;
@@ -3889,7 +3805,7 @@ public  final class PayOrder extends
      *过期时间，由业务方设定的支付有效期。超过这个时间，支付即被判定为过期。在过期时间后不能在发起支付。如果在过期时间前支付已发起但是未完成，
      * </pre>
      *
-     * <code>optional int64 expire_time = 4 [(.column_option) = { ... }</code>
+     * <code>optional int64 expire_time = 5 [(.column_option) = { ... }</code>
      */
     public Builder setExpireTime(long value) {
       bitField0_ |= 0x00000010;
@@ -3902,7 +3818,7 @@ public  final class PayOrder extends
      *过期时间，由业务方设定的支付有效期。超过这个时间，支付即被判定为过期。在过期时间后不能在发起支付。如果在过期时间前支付已发起但是未完成，
      * </pre>
      *
-     * <code>optional int64 expire_time = 4 [(.column_option) = { ... }</code>
+     * <code>optional int64 expire_time = 5 [(.column_option) = { ... }</code>
      */
     public Builder clearExpireTime() {
       bitField0_ = (bitField0_ & ~0x00000010);
@@ -3917,7 +3833,7 @@ public  final class PayOrder extends
      *支付完成时间
      * </pre>
      *
-     * <code>optional int64 pay_time = 5 [(.column_option) = { ... }</code>
+     * <code>optional int64 pay_time = 6 [(.column_option) = { ... }</code>
      */
     public boolean hasPayTime() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
@@ -3927,7 +3843,7 @@ public  final class PayOrder extends
      *支付完成时间
      * </pre>
      *
-     * <code>optional int64 pay_time = 5 [(.column_option) = { ... }</code>
+     * <code>optional int64 pay_time = 6 [(.column_option) = { ... }</code>
      */
     public long getPayTime() {
       return payTime_;
@@ -3937,7 +3853,7 @@ public  final class PayOrder extends
      *支付完成时间
      * </pre>
      *
-     * <code>optional int64 pay_time = 5 [(.column_option) = { ... }</code>
+     * <code>optional int64 pay_time = 6 [(.column_option) = { ... }</code>
      */
     public Builder setPayTime(long value) {
       bitField0_ |= 0x00000020;
@@ -3950,7 +3866,7 @@ public  final class PayOrder extends
      *支付完成时间
      * </pre>
      *
-     * <code>optional int64 pay_time = 5 [(.column_option) = { ... }</code>
+     * <code>optional int64 pay_time = 6 [(.column_option) = { ... }</code>
      */
     public Builder clearPayTime() {
       bitField0_ = (bitField0_ & ~0x00000020);
@@ -3965,7 +3881,7 @@ public  final class PayOrder extends
      *状态
      * </pre>
      *
-     * <code>optional .PayOrder.Status status = 6;</code>
+     * <code>optional .PayOrder.Status status = 7;</code>
      */
     public boolean hasStatus() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
@@ -3975,7 +3891,7 @@ public  final class PayOrder extends
      *状态
      * </pre>
      *
-     * <code>optional .PayOrder.Status status = 6;</code>
+     * <code>optional .PayOrder.Status status = 7;</code>
      */
     public org.jigsaw.payment.model.PayOrder.Status getStatus() {
       org.jigsaw.payment.model.PayOrder.Status result = org.jigsaw.payment.model.PayOrder.Status.valueOf(status_);
@@ -3986,7 +3902,7 @@ public  final class PayOrder extends
      *状态
      * </pre>
      *
-     * <code>optional .PayOrder.Status status = 6;</code>
+     * <code>optional .PayOrder.Status status = 7;</code>
      */
     public Builder setStatus(org.jigsaw.payment.model.PayOrder.Status value) {
       if (value == null) {
@@ -4002,7 +3918,7 @@ public  final class PayOrder extends
      *状态
      * </pre>
      *
-     * <code>optional .PayOrder.Status status = 6;</code>
+     * <code>optional .PayOrder.Status status = 7;</code>
      */
     public Builder clearStatus() {
       bitField0_ = (bitField0_ & ~0x00000040);
@@ -4017,7 +3933,7 @@ public  final class PayOrder extends
      *版本号
      * </pre>
      *
-     * <code>optional int32 version = 7;</code>
+     * <code>optional int32 version = 8;</code>
      */
     public boolean hasVersion() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
@@ -4027,7 +3943,7 @@ public  final class PayOrder extends
      *版本号
      * </pre>
      *
-     * <code>optional int32 version = 7;</code>
+     * <code>optional int32 version = 8;</code>
      */
     public int getVersion() {
       return version_;
@@ -4037,7 +3953,7 @@ public  final class PayOrder extends
      *版本号
      * </pre>
      *
-     * <code>optional int32 version = 7;</code>
+     * <code>optional int32 version = 8;</code>
      */
     public Builder setVersion(int value) {
       bitField0_ |= 0x00000080;
@@ -4050,211 +3966,11 @@ public  final class PayOrder extends
      *版本号
      * </pre>
      *
-     * <code>optional int32 version = 7;</code>
+     * <code>optional int32 version = 8;</code>
      */
     public Builder clearVersion() {
       bitField0_ = (bitField0_ & ~0x00000080);
       version_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object errorCode_ = "";
-    /**
-     * <pre>
-     *错误码
-     * </pre>
-     *
-     * <code>optional string error_code = 8;</code>
-     */
-    public boolean hasErrorCode() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <pre>
-     *错误码
-     * </pre>
-     *
-     * <code>optional string error_code = 8;</code>
-     */
-    public java.lang.String getErrorCode() {
-      java.lang.Object ref = errorCode_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          errorCode_ = s;
-        }
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     *错误码
-     * </pre>
-     *
-     * <code>optional string error_code = 8;</code>
-     */
-    public com.google.protobuf.ByteString
-        getErrorCodeBytes() {
-      java.lang.Object ref = errorCode_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        errorCode_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *错误码
-     * </pre>
-     *
-     * <code>optional string error_code = 8;</code>
-     */
-    public Builder setErrorCode(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000100;
-      errorCode_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *错误码
-     * </pre>
-     *
-     * <code>optional string error_code = 8;</code>
-     */
-    public Builder clearErrorCode() {
-      bitField0_ = (bitField0_ & ~0x00000100);
-      errorCode_ = getDefaultInstance().getErrorCode();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *错误码
-     * </pre>
-     *
-     * <code>optional string error_code = 8;</code>
-     */
-    public Builder setErrorCodeBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000100;
-      errorCode_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object errorDetail_ = "";
-    /**
-     * <pre>
-     *错误描述
-     * </pre>
-     *
-     * <code>optional string error_detail = 9;</code>
-     */
-    public boolean hasErrorDetail() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    /**
-     * <pre>
-     *错误描述
-     * </pre>
-     *
-     * <code>optional string error_detail = 9;</code>
-     */
-    public java.lang.String getErrorDetail() {
-      java.lang.Object ref = errorDetail_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          errorDetail_ = s;
-        }
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     *错误描述
-     * </pre>
-     *
-     * <code>optional string error_detail = 9;</code>
-     */
-    public com.google.protobuf.ByteString
-        getErrorDetailBytes() {
-      java.lang.Object ref = errorDetail_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        errorDetail_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *错误描述
-     * </pre>
-     *
-     * <code>optional string error_detail = 9;</code>
-     */
-    public Builder setErrorDetail(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000200;
-      errorDetail_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *错误描述
-     * </pre>
-     *
-     * <code>optional string error_detail = 9;</code>
-     */
-    public Builder clearErrorDetail() {
-      bitField0_ = (bitField0_ & ~0x00000200);
-      errorDetail_ = getDefaultInstance().getErrorDetail();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *错误描述
-     * </pre>
-     *
-     * <code>optional string error_detail = 9;</code>
-     */
-    public Builder setErrorDetailBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000200;
-      errorDetail_ = value;
       onChanged();
       return this;
     }
@@ -4265,17 +3981,17 @@ public  final class PayOrder extends
      * 支付上下文信息
      * </pre>
      *
-     * <code>optional int32 source_pay_type = 16;</code>
+     * <code>optional int32 source_pay_type = 11;</code>
      */
     public boolean hasSourcePayType() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <pre>
      * 支付上下文信息
      * </pre>
      *
-     * <code>optional int32 source_pay_type = 16;</code>
+     * <code>optional int32 source_pay_type = 11;</code>
      */
     public int getSourcePayType() {
       return sourcePayType_;
@@ -4285,10 +4001,10 @@ public  final class PayOrder extends
      * 支付上下文信息
      * </pre>
      *
-     * <code>optional int32 source_pay_type = 16;</code>
+     * <code>optional int32 source_pay_type = 11;</code>
      */
     public Builder setSourcePayType(int value) {
-      bitField0_ |= 0x00000400;
+      bitField0_ |= 0x00000100;
       sourcePayType_ = value;
       onChanged();
       return this;
@@ -4298,10 +4014,10 @@ public  final class PayOrder extends
      * 支付上下文信息
      * </pre>
      *
-     * <code>optional int32 source_pay_type = 16;</code>
+     * <code>optional int32 source_pay_type = 11;</code>
      */
     public Builder clearSourcePayType() {
-      bitField0_ = (bitField0_ & ~0x00000400);
+      bitField0_ = (bitField0_ & ~0x00000100);
       sourcePayType_ = 0;
       onChanged();
       return this;
@@ -4313,17 +4029,17 @@ public  final class PayOrder extends
      *支付服务ID，经过路由实际执行的交易渠道表的代码，与之前一致
      * </pre>
      *
-     * <code>optional int32 dest_pay_type = 17;</code>
+     * <code>optional int32 dest_pay_type = 12;</code>
      */
     public boolean hasDestPayType() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <pre>
      *支付服务ID，经过路由实际执行的交易渠道表的代码，与之前一致
      * </pre>
      *
-     * <code>optional int32 dest_pay_type = 17;</code>
+     * <code>optional int32 dest_pay_type = 12;</code>
      */
     public int getDestPayType() {
       return destPayType_;
@@ -4333,10 +4049,10 @@ public  final class PayOrder extends
      *支付服务ID，经过路由实际执行的交易渠道表的代码，与之前一致
      * </pre>
      *
-     * <code>optional int32 dest_pay_type = 17;</code>
+     * <code>optional int32 dest_pay_type = 12;</code>
      */
     public Builder setDestPayType(int value) {
-      bitField0_ |= 0x00000800;
+      bitField0_ |= 0x00000200;
       destPayType_ = value;
       onChanged();
       return this;
@@ -4346,10 +4062,10 @@ public  final class PayOrder extends
      *支付服务ID，经过路由实际执行的交易渠道表的代码，与之前一致
      * </pre>
      *
-     * <code>optional int32 dest_pay_type = 17;</code>
+     * <code>optional int32 dest_pay_type = 12;</code>
      */
     public Builder clearDestPayType() {
-      bitField0_ = (bitField0_ & ~0x00000800);
+      bitField0_ = (bitField0_ & ~0x00000200);
       destPayType_ = 0;
       onChanged();
       return this;
@@ -4361,17 +4077,17 @@ public  final class PayOrder extends
      * 0:正常订单，1：测试订单
      * </pre>
      *
-     * <code>optional int32 pay_mode = 39;</code>
+     * <code>optional int32 pay_mode = 13;</code>
      */
     public boolean hasPayMode() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <pre>
      * 0:正常订单，1：测试订单
      * </pre>
      *
-     * <code>optional int32 pay_mode = 39;</code>
+     * <code>optional int32 pay_mode = 13;</code>
      */
     public int getPayMode() {
       return payMode_;
@@ -4381,10 +4097,10 @@ public  final class PayOrder extends
      * 0:正常订单，1：测试订单
      * </pre>
      *
-     * <code>optional int32 pay_mode = 39;</code>
+     * <code>optional int32 pay_mode = 13;</code>
      */
     public Builder setPayMode(int value) {
-      bitField0_ |= 0x00001000;
+      bitField0_ |= 0x00000400;
       payMode_ = value;
       onChanged();
       return this;
@@ -4394,10 +4110,10 @@ public  final class PayOrder extends
      * 0:正常订单，1：测试订单
      * </pre>
      *
-     * <code>optional int32 pay_mode = 39;</code>
+     * <code>optional int32 pay_mode = 13;</code>
      */
     public Builder clearPayMode() {
-      bitField0_ = (bitField0_ & ~0x00001000);
+      bitField0_ = (bitField0_ & ~0x00000400);
       payMode_ = 0;
       onChanged();
       return this;
@@ -4409,17 +4125,17 @@ public  final class PayOrder extends
      *发起交易的app id
      * </pre>
      *
-     * <code>optional string app_id = 49;</code>
+     * <code>optional string app_id = 14;</code>
      */
     public boolean hasAppId() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
      * <pre>
      *发起交易的app id
      * </pre>
      *
-     * <code>optional string app_id = 49;</code>
+     * <code>optional string app_id = 14;</code>
      */
     public java.lang.String getAppId() {
       java.lang.Object ref = appId_;
@@ -4440,7 +4156,7 @@ public  final class PayOrder extends
      *发起交易的app id
      * </pre>
      *
-     * <code>optional string app_id = 49;</code>
+     * <code>optional string app_id = 14;</code>
      */
     public com.google.protobuf.ByteString
         getAppIdBytes() {
@@ -4460,14 +4176,14 @@ public  final class PayOrder extends
      *发起交易的app id
      * </pre>
      *
-     * <code>optional string app_id = 49;</code>
+     * <code>optional string app_id = 14;</code>
      */
     public Builder setAppId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00002000;
+  bitField0_ |= 0x00000800;
       appId_ = value;
       onChanged();
       return this;
@@ -4477,10 +4193,10 @@ public  final class PayOrder extends
      *发起交易的app id
      * </pre>
      *
-     * <code>optional string app_id = 49;</code>
+     * <code>optional string app_id = 14;</code>
      */
     public Builder clearAppId() {
-      bitField0_ = (bitField0_ & ~0x00002000);
+      bitField0_ = (bitField0_ & ~0x00000800);
       appId_ = getDefaultInstance().getAppId();
       onChanged();
       return this;
@@ -4490,14 +4206,14 @@ public  final class PayOrder extends
      *发起交易的app id
      * </pre>
      *
-     * <code>optional string app_id = 49;</code>
+     * <code>optional string app_id = 14;</code>
      */
     public Builder setAppIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00002000;
+  bitField0_ |= 0x00000800;
       appId_ = value;
       onChanged();
       return this;
@@ -4509,17 +4225,17 @@ public  final class PayOrder extends
      *发起交易的场景，api，通用收银台，充值收银台，扫码支付
      * </pre>
      *
-     * <code>optional int32 pay_scenarios = 50;</code>
+     * <code>optional int32 pay_scenarios = 15;</code>
      */
     public boolean hasPayScenarios() {
-      return ((bitField0_ & 0x00004000) == 0x00004000);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
      * <pre>
      *发起交易的场景，api，通用收银台，充值收银台，扫码支付
      * </pre>
      *
-     * <code>optional int32 pay_scenarios = 50;</code>
+     * <code>optional int32 pay_scenarios = 15;</code>
      */
     public int getPayScenarios() {
       return payScenarios_;
@@ -4529,10 +4245,10 @@ public  final class PayOrder extends
      *发起交易的场景，api，通用收银台，充值收银台，扫码支付
      * </pre>
      *
-     * <code>optional int32 pay_scenarios = 50;</code>
+     * <code>optional int32 pay_scenarios = 15;</code>
      */
     public Builder setPayScenarios(int value) {
-      bitField0_ |= 0x00004000;
+      bitField0_ |= 0x00001000;
       payScenarios_ = value;
       onChanged();
       return this;
@@ -4542,10 +4258,10 @@ public  final class PayOrder extends
      *发起交易的场景，api，通用收银台，充值收银台，扫码支付
      * </pre>
      *
-     * <code>optional int32 pay_scenarios = 50;</code>
+     * <code>optional int32 pay_scenarios = 15;</code>
      */
     public Builder clearPayScenarios() {
-      bitField0_ = (bitField0_ & ~0x00004000);
+      bitField0_ = (bitField0_ & ~0x00001000);
       payScenarios_ = 0;
       onChanged();
       return this;
@@ -4557,17 +4273,17 @@ public  final class PayOrder extends
      *费用信息
      * </pre>
      *
-     * <code>optional int64 fee = 18;</code>
+     * <code>optional int64 fee = 21;</code>
      */
     public boolean hasFee() {
-      return ((bitField0_ & 0x00008000) == 0x00008000);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
      * <pre>
      *费用信息
      * </pre>
      *
-     * <code>optional int64 fee = 18;</code>
+     * <code>optional int64 fee = 21;</code>
      */
     public long getFee() {
       return fee_;
@@ -4577,10 +4293,10 @@ public  final class PayOrder extends
      *费用信息
      * </pre>
      *
-     * <code>optional int64 fee = 18;</code>
+     * <code>optional int64 fee = 21;</code>
      */
     public Builder setFee(long value) {
-      bitField0_ |= 0x00008000;
+      bitField0_ |= 0x00002000;
       fee_ = value;
       onChanged();
       return this;
@@ -4590,10 +4306,10 @@ public  final class PayOrder extends
      *费用信息
      * </pre>
      *
-     * <code>optional int64 fee = 18;</code>
+     * <code>optional int64 fee = 21;</code>
      */
     public Builder clearFee() {
-      bitField0_ = (bitField0_ & ~0x00008000);
+      bitField0_ = (bitField0_ & ~0x00002000);
       fee_ = 0L;
       onChanged();
       return this;
@@ -4605,17 +4321,17 @@ public  final class PayOrder extends
      *实际支付金额
      * </pre>
      *
-     * <code>optional int64 fee_real = 19;</code>
+     * <code>optional int64 fee_real = 22;</code>
      */
     public boolean hasFeeReal() {
-      return ((bitField0_ & 0x00010000) == 0x00010000);
+      return ((bitField0_ & 0x00004000) == 0x00004000);
     }
     /**
      * <pre>
      *实际支付金额
      * </pre>
      *
-     * <code>optional int64 fee_real = 19;</code>
+     * <code>optional int64 fee_real = 22;</code>
      */
     public long getFeeReal() {
       return feeReal_;
@@ -4625,10 +4341,10 @@ public  final class PayOrder extends
      *实际支付金额
      * </pre>
      *
-     * <code>optional int64 fee_real = 19;</code>
+     * <code>optional int64 fee_real = 22;</code>
      */
     public Builder setFeeReal(long value) {
-      bitField0_ |= 0x00010000;
+      bitField0_ |= 0x00004000;
       feeReal_ = value;
       onChanged();
       return this;
@@ -4638,10 +4354,10 @@ public  final class PayOrder extends
      *实际支付金额
      * </pre>
      *
-     * <code>optional int64 fee_real = 19;</code>
+     * <code>optional int64 fee_real = 22;</code>
      */
     public Builder clearFeeReal() {
-      bitField0_ = (bitField0_ & ~0x00010000);
+      bitField0_ = (bitField0_ & ~0x00004000);
       feeReal_ = 0L;
       onChanged();
       return this;
@@ -4653,17 +4369,17 @@ public  final class PayOrder extends
      *订单计费单位
      * </pre>
      *
-     * <code>optional int32 fee_unit = 20;</code>
+     * <code>optional int32 fee_unit = 23;</code>
      */
     public boolean hasFeeUnit() {
-      return ((bitField0_ & 0x00020000) == 0x00020000);
+      return ((bitField0_ & 0x00008000) == 0x00008000);
     }
     /**
      * <pre>
      *订单计费单位
      * </pre>
      *
-     * <code>optional int32 fee_unit = 20;</code>
+     * <code>optional int32 fee_unit = 23;</code>
      */
     public int getFeeUnit() {
       return feeUnit_;
@@ -4673,10 +4389,10 @@ public  final class PayOrder extends
      *订单计费单位
      * </pre>
      *
-     * <code>optional int32 fee_unit = 20;</code>
+     * <code>optional int32 fee_unit = 23;</code>
      */
     public Builder setFeeUnit(int value) {
-      bitField0_ |= 0x00020000;
+      bitField0_ |= 0x00008000;
       feeUnit_ = value;
       onChanged();
       return this;
@@ -4686,10 +4402,10 @@ public  final class PayOrder extends
      *订单计费单位
      * </pre>
      *
-     * <code>optional int32 fee_unit = 20;</code>
+     * <code>optional int32 fee_unit = 23;</code>
      */
     public Builder clearFeeUnit() {
-      bitField0_ = (bitField0_ & ~0x00020000);
+      bitField0_ = (bitField0_ & ~0x00008000);
       feeUnit_ = 0;
       onChanged();
       return this;
@@ -4701,17 +4417,17 @@ public  final class PayOrder extends
      *支付渠道信息；
      * </pre>
      *
-     * <code>optional string third_trade_code = 12;</code>
+     * <code>optional string third_trade_code = 31;</code>
      */
     public boolean hasThirdTradeCode() {
-      return ((bitField0_ & 0x00040000) == 0x00040000);
+      return ((bitField0_ & 0x00010000) == 0x00010000);
     }
     /**
      * <pre>
      *支付渠道信息；
      * </pre>
      *
-     * <code>optional string third_trade_code = 12;</code>
+     * <code>optional string third_trade_code = 31;</code>
      */
     public java.lang.String getThirdTradeCode() {
       java.lang.Object ref = thirdTradeCode_;
@@ -4732,7 +4448,7 @@ public  final class PayOrder extends
      *支付渠道信息；
      * </pre>
      *
-     * <code>optional string third_trade_code = 12;</code>
+     * <code>optional string third_trade_code = 31;</code>
      */
     public com.google.protobuf.ByteString
         getThirdTradeCodeBytes() {
@@ -4752,14 +4468,14 @@ public  final class PayOrder extends
      *支付渠道信息；
      * </pre>
      *
-     * <code>optional string third_trade_code = 12;</code>
+     * <code>optional string third_trade_code = 31;</code>
      */
     public Builder setThirdTradeCode(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00040000;
+  bitField0_ |= 0x00010000;
       thirdTradeCode_ = value;
       onChanged();
       return this;
@@ -4769,10 +4485,10 @@ public  final class PayOrder extends
      *支付渠道信息；
      * </pre>
      *
-     * <code>optional string third_trade_code = 12;</code>
+     * <code>optional string third_trade_code = 31;</code>
      */
     public Builder clearThirdTradeCode() {
-      bitField0_ = (bitField0_ & ~0x00040000);
+      bitField0_ = (bitField0_ & ~0x00010000);
       thirdTradeCode_ = getDefaultInstance().getThirdTradeCode();
       onChanged();
       return this;
@@ -4782,14 +4498,14 @@ public  final class PayOrder extends
      *支付渠道信息；
      * </pre>
      *
-     * <code>optional string third_trade_code = 12;</code>
+     * <code>optional string third_trade_code = 31;</code>
      */
     public Builder setThirdTradeCodeBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00040000;
+  bitField0_ |= 0x00010000;
       thirdTradeCode_ = value;
       onChanged();
       return this;
@@ -4801,17 +4517,17 @@ public  final class PayOrder extends
      *第三方创建时间
      * </pre>
      *
-     * <code>optional int64 third_create_time = 13 [(.column_option) = { ... }</code>
+     * <code>optional int64 third_create_time = 32 [(.column_option) = { ... }</code>
      */
     public boolean hasThirdCreateTime() {
-      return ((bitField0_ & 0x00080000) == 0x00080000);
+      return ((bitField0_ & 0x00020000) == 0x00020000);
     }
     /**
      * <pre>
      *第三方创建时间
      * </pre>
      *
-     * <code>optional int64 third_create_time = 13 [(.column_option) = { ... }</code>
+     * <code>optional int64 third_create_time = 32 [(.column_option) = { ... }</code>
      */
     public long getThirdCreateTime() {
       return thirdCreateTime_;
@@ -4821,10 +4537,10 @@ public  final class PayOrder extends
      *第三方创建时间
      * </pre>
      *
-     * <code>optional int64 third_create_time = 13 [(.column_option) = { ... }</code>
+     * <code>optional int64 third_create_time = 32 [(.column_option) = { ... }</code>
      */
     public Builder setThirdCreateTime(long value) {
-      bitField0_ |= 0x00080000;
+      bitField0_ |= 0x00020000;
       thirdCreateTime_ = value;
       onChanged();
       return this;
@@ -4834,10 +4550,10 @@ public  final class PayOrder extends
      *第三方创建时间
      * </pre>
      *
-     * <code>optional int64 third_create_time = 13 [(.column_option) = { ... }</code>
+     * <code>optional int64 third_create_time = 32 [(.column_option) = { ... }</code>
      */
     public Builder clearThirdCreateTime() {
-      bitField0_ = (bitField0_ & ~0x00080000);
+      bitField0_ = (bitField0_ & ~0x00020000);
       thirdCreateTime_ = 0L;
       onChanged();
       return this;
@@ -4849,17 +4565,17 @@ public  final class PayOrder extends
      *第三方支付时间
      * </pre>
      *
-     * <code>optional int64 third_pay_time = 14 [(.column_option) = { ... }</code>
+     * <code>optional int64 third_pay_time = 33 [(.column_option) = { ... }</code>
      */
     public boolean hasThirdPayTime() {
-      return ((bitField0_ & 0x00100000) == 0x00100000);
+      return ((bitField0_ & 0x00040000) == 0x00040000);
     }
     /**
      * <pre>
      *第三方支付时间
      * </pre>
      *
-     * <code>optional int64 third_pay_time = 14 [(.column_option) = { ... }</code>
+     * <code>optional int64 third_pay_time = 33 [(.column_option) = { ... }</code>
      */
     public long getThirdPayTime() {
       return thirdPayTime_;
@@ -4869,10 +4585,10 @@ public  final class PayOrder extends
      *第三方支付时间
      * </pre>
      *
-     * <code>optional int64 third_pay_time = 14 [(.column_option) = { ... }</code>
+     * <code>optional int64 third_pay_time = 33 [(.column_option) = { ... }</code>
      */
     public Builder setThirdPayTime(long value) {
-      bitField0_ |= 0x00100000;
+      bitField0_ |= 0x00040000;
       thirdPayTime_ = value;
       onChanged();
       return this;
@@ -4882,10 +4598,10 @@ public  final class PayOrder extends
      *第三方支付时间
      * </pre>
      *
-     * <code>optional int64 third_pay_time = 14 [(.column_option) = { ... }</code>
+     * <code>optional int64 third_pay_time = 33 [(.column_option) = { ... }</code>
      */
     public Builder clearThirdPayTime() {
-      bitField0_ = (bitField0_ & ~0x00100000);
+      bitField0_ = (bitField0_ & ~0x00040000);
       thirdPayTime_ = 0L;
       onChanged();
       return this;
@@ -4897,17 +4613,17 @@ public  final class PayOrder extends
      *当前密钥ID
      * </pre>
      *
-     * <code>optional int64 current_key = 44;</code>
+     * <code>optional int64 current_key = 34;</code>
      */
     public boolean hasCurrentKey() {
-      return ((bitField0_ & 0x00200000) == 0x00200000);
+      return ((bitField0_ & 0x00080000) == 0x00080000);
     }
     /**
      * <pre>
      *当前密钥ID
      * </pre>
      *
-     * <code>optional int64 current_key = 44;</code>
+     * <code>optional int64 current_key = 34;</code>
      */
     public long getCurrentKey() {
       return currentKey_;
@@ -4917,10 +4633,10 @@ public  final class PayOrder extends
      *当前密钥ID
      * </pre>
      *
-     * <code>optional int64 current_key = 44;</code>
+     * <code>optional int64 current_key = 34;</code>
      */
     public Builder setCurrentKey(long value) {
-      bitField0_ |= 0x00200000;
+      bitField0_ |= 0x00080000;
       currentKey_ = value;
       onChanged();
       return this;
@@ -4930,10 +4646,10 @@ public  final class PayOrder extends
      *当前密钥ID
      * </pre>
      *
-     * <code>optional int64 current_key = 44;</code>
+     * <code>optional int64 current_key = 34;</code>
      */
     public Builder clearCurrentKey() {
-      bitField0_ = (bitField0_ & ~0x00200000);
+      bitField0_ = (bitField0_ & ~0x00080000);
       currentKey_ = 0L;
       onChanged();
       return this;
@@ -4945,17 +4661,17 @@ public  final class PayOrder extends
      *异步回调URL
      * </pre>
      *
-     * <code>optional string notify_url = 47;</code>
+     * <code>optional string notify_url = 35;</code>
      */
     public boolean hasNotifyUrl() {
-      return ((bitField0_ & 0x00400000) == 0x00400000);
+      return ((bitField0_ & 0x00100000) == 0x00100000);
     }
     /**
      * <pre>
      *异步回调URL
      * </pre>
      *
-     * <code>optional string notify_url = 47;</code>
+     * <code>optional string notify_url = 35;</code>
      */
     public java.lang.String getNotifyUrl() {
       java.lang.Object ref = notifyUrl_;
@@ -4976,7 +4692,7 @@ public  final class PayOrder extends
      *异步回调URL
      * </pre>
      *
-     * <code>optional string notify_url = 47;</code>
+     * <code>optional string notify_url = 35;</code>
      */
     public com.google.protobuf.ByteString
         getNotifyUrlBytes() {
@@ -4996,14 +4712,14 @@ public  final class PayOrder extends
      *异步回调URL
      * </pre>
      *
-     * <code>optional string notify_url = 47;</code>
+     * <code>optional string notify_url = 35;</code>
      */
     public Builder setNotifyUrl(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00400000;
+  bitField0_ |= 0x00100000;
       notifyUrl_ = value;
       onChanged();
       return this;
@@ -5013,10 +4729,10 @@ public  final class PayOrder extends
      *异步回调URL
      * </pre>
      *
-     * <code>optional string notify_url = 47;</code>
+     * <code>optional string notify_url = 35;</code>
      */
     public Builder clearNotifyUrl() {
-      bitField0_ = (bitField0_ & ~0x00400000);
+      bitField0_ = (bitField0_ & ~0x00100000);
       notifyUrl_ = getDefaultInstance().getNotifyUrl();
       onChanged();
       return this;
@@ -5026,14 +4742,14 @@ public  final class PayOrder extends
      *异步回调URL
      * </pre>
      *
-     * <code>optional string notify_url = 47;</code>
+     * <code>optional string notify_url = 35;</code>
      */
     public Builder setNotifyUrlBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00400000;
+  bitField0_ |= 0x00100000;
       notifyUrl_ = value;
       onChanged();
       return this;
@@ -5045,17 +4761,17 @@ public  final class PayOrder extends
      *同步回调URL
      * </pre>
      *
-     * <code>optional string return_url = 48;</code>
+     * <code>optional string return_url = 36;</code>
      */
     public boolean hasReturnUrl() {
-      return ((bitField0_ & 0x00800000) == 0x00800000);
+      return ((bitField0_ & 0x00200000) == 0x00200000);
     }
     /**
      * <pre>
      *同步回调URL
      * </pre>
      *
-     * <code>optional string return_url = 48;</code>
+     * <code>optional string return_url = 36;</code>
      */
     public java.lang.String getReturnUrl() {
       java.lang.Object ref = returnUrl_;
@@ -5076,7 +4792,7 @@ public  final class PayOrder extends
      *同步回调URL
      * </pre>
      *
-     * <code>optional string return_url = 48;</code>
+     * <code>optional string return_url = 36;</code>
      */
     public com.google.protobuf.ByteString
         getReturnUrlBytes() {
@@ -5096,14 +4812,14 @@ public  final class PayOrder extends
      *同步回调URL
      * </pre>
      *
-     * <code>optional string return_url = 48;</code>
+     * <code>optional string return_url = 36;</code>
      */
     public Builder setReturnUrl(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00800000;
+  bitField0_ |= 0x00200000;
       returnUrl_ = value;
       onChanged();
       return this;
@@ -5113,10 +4829,10 @@ public  final class PayOrder extends
      *同步回调URL
      * </pre>
      *
-     * <code>optional string return_url = 48;</code>
+     * <code>optional string return_url = 36;</code>
      */
     public Builder clearReturnUrl() {
-      bitField0_ = (bitField0_ & ~0x00800000);
+      bitField0_ = (bitField0_ & ~0x00200000);
       returnUrl_ = getDefaultInstance().getReturnUrl();
       onChanged();
       return this;
@@ -5126,14 +4842,14 @@ public  final class PayOrder extends
      *同步回调URL
      * </pre>
      *
-     * <code>optional string return_url = 48;</code>
+     * <code>optional string return_url = 36;</code>
      */
     public Builder setReturnUrlBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00800000;
+  bitField0_ |= 0x00200000;
       returnUrl_ = value;
       onChanged();
       return this;
@@ -5145,17 +4861,17 @@ public  final class PayOrder extends
      *商品订单信息
      * </pre>
      *
-     * <code>optional string order_id = 21;</code>
+     * <code>optional string order_id = 41;</code>
      */
     public boolean hasOrderId() {
-      return ((bitField0_ & 0x01000000) == 0x01000000);
+      return ((bitField0_ & 0x00400000) == 0x00400000);
     }
     /**
      * <pre>
      *商品订单信息
      * </pre>
      *
-     * <code>optional string order_id = 21;</code>
+     * <code>optional string order_id = 41;</code>
      */
     public java.lang.String getOrderId() {
       java.lang.Object ref = orderId_;
@@ -5176,7 +4892,7 @@ public  final class PayOrder extends
      *商品订单信息
      * </pre>
      *
-     * <code>optional string order_id = 21;</code>
+     * <code>optional string order_id = 41;</code>
      */
     public com.google.protobuf.ByteString
         getOrderIdBytes() {
@@ -5196,14 +4912,14 @@ public  final class PayOrder extends
      *商品订单信息
      * </pre>
      *
-     * <code>optional string order_id = 21;</code>
+     * <code>optional string order_id = 41;</code>
      */
     public Builder setOrderId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x01000000;
+  bitField0_ |= 0x00400000;
       orderId_ = value;
       onChanged();
       return this;
@@ -5213,10 +4929,10 @@ public  final class PayOrder extends
      *商品订单信息
      * </pre>
      *
-     * <code>optional string order_id = 21;</code>
+     * <code>optional string order_id = 41;</code>
      */
     public Builder clearOrderId() {
-      bitField0_ = (bitField0_ & ~0x01000000);
+      bitField0_ = (bitField0_ & ~0x00400000);
       orderId_ = getDefaultInstance().getOrderId();
       onChanged();
       return this;
@@ -5226,14 +4942,14 @@ public  final class PayOrder extends
      *商品订单信息
      * </pre>
      *
-     * <code>optional string order_id = 21;</code>
+     * <code>optional string order_id = 41;</code>
      */
     public Builder setOrderIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x01000000;
+  bitField0_ |= 0x00400000;
       orderId_ = value;
       onChanged();
       return this;
@@ -5245,17 +4961,17 @@ public  final class PayOrder extends
      *商品的名称
      * </pre>
      *
-     * <code>optional string order_title = 22;</code>
+     * <code>optional string order_title = 42;</code>
      */
     public boolean hasOrderTitle() {
-      return ((bitField0_ & 0x02000000) == 0x02000000);
+      return ((bitField0_ & 0x00800000) == 0x00800000);
     }
     /**
      * <pre>
      *商品的名称
      * </pre>
      *
-     * <code>optional string order_title = 22;</code>
+     * <code>optional string order_title = 42;</code>
      */
     public java.lang.String getOrderTitle() {
       java.lang.Object ref = orderTitle_;
@@ -5276,7 +4992,7 @@ public  final class PayOrder extends
      *商品的名称
      * </pre>
      *
-     * <code>optional string order_title = 22;</code>
+     * <code>optional string order_title = 42;</code>
      */
     public com.google.protobuf.ByteString
         getOrderTitleBytes() {
@@ -5296,14 +5012,14 @@ public  final class PayOrder extends
      *商品的名称
      * </pre>
      *
-     * <code>optional string order_title = 22;</code>
+     * <code>optional string order_title = 42;</code>
      */
     public Builder setOrderTitle(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x02000000;
+  bitField0_ |= 0x00800000;
       orderTitle_ = value;
       onChanged();
       return this;
@@ -5313,10 +5029,10 @@ public  final class PayOrder extends
      *商品的名称
      * </pre>
      *
-     * <code>optional string order_title = 22;</code>
+     * <code>optional string order_title = 42;</code>
      */
     public Builder clearOrderTitle() {
-      bitField0_ = (bitField0_ & ~0x02000000);
+      bitField0_ = (bitField0_ & ~0x00800000);
       orderTitle_ = getDefaultInstance().getOrderTitle();
       onChanged();
       return this;
@@ -5326,14 +5042,14 @@ public  final class PayOrder extends
      *商品的名称
      * </pre>
      *
-     * <code>optional string order_title = 22;</code>
+     * <code>optional string order_title = 42;</code>
      */
     public Builder setOrderTitleBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x02000000;
+  bitField0_ |= 0x00800000;
       orderTitle_ = value;
       onChanged();
       return this;
@@ -5345,17 +5061,17 @@ public  final class PayOrder extends
      *商品描述
      * </pre>
      *
-     * <code>optional string order_detail = 23;</code>
+     * <code>optional string order_detail = 43;</code>
      */
     public boolean hasOrderDetail() {
-      return ((bitField0_ & 0x04000000) == 0x04000000);
+      return ((bitField0_ & 0x01000000) == 0x01000000);
     }
     /**
      * <pre>
      *商品描述
      * </pre>
      *
-     * <code>optional string order_detail = 23;</code>
+     * <code>optional string order_detail = 43;</code>
      */
     public java.lang.String getOrderDetail() {
       java.lang.Object ref = orderDetail_;
@@ -5376,7 +5092,7 @@ public  final class PayOrder extends
      *商品描述
      * </pre>
      *
-     * <code>optional string order_detail = 23;</code>
+     * <code>optional string order_detail = 43;</code>
      */
     public com.google.protobuf.ByteString
         getOrderDetailBytes() {
@@ -5396,14 +5112,14 @@ public  final class PayOrder extends
      *商品描述
      * </pre>
      *
-     * <code>optional string order_detail = 23;</code>
+     * <code>optional string order_detail = 43;</code>
      */
     public Builder setOrderDetail(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x04000000;
+  bitField0_ |= 0x01000000;
       orderDetail_ = value;
       onChanged();
       return this;
@@ -5413,10 +5129,10 @@ public  final class PayOrder extends
      *商品描述
      * </pre>
      *
-     * <code>optional string order_detail = 23;</code>
+     * <code>optional string order_detail = 43;</code>
      */
     public Builder clearOrderDetail() {
-      bitField0_ = (bitField0_ & ~0x04000000);
+      bitField0_ = (bitField0_ & ~0x01000000);
       orderDetail_ = getDefaultInstance().getOrderDetail();
       onChanged();
       return this;
@@ -5426,14 +5142,14 @@ public  final class PayOrder extends
      *商品描述
      * </pre>
      *
-     * <code>optional string order_detail = 23;</code>
+     * <code>optional string order_detail = 43;</code>
      */
     public Builder setOrderDetailBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x04000000;
+  bitField0_ |= 0x01000000;
       orderDetail_ = value;
       onChanged();
       return this;
@@ -5445,17 +5161,17 @@ public  final class PayOrder extends
      *订单显示的url地址
      * </pre>
      *
-     * <code>optional string order_show_url = 24;</code>
+     * <code>optional string order_show_url = 44;</code>
      */
     public boolean hasOrderShowUrl() {
-      return ((bitField0_ & 0x08000000) == 0x08000000);
+      return ((bitField0_ & 0x02000000) == 0x02000000);
     }
     /**
      * <pre>
      *订单显示的url地址
      * </pre>
      *
-     * <code>optional string order_show_url = 24;</code>
+     * <code>optional string order_show_url = 44;</code>
      */
     public java.lang.String getOrderShowUrl() {
       java.lang.Object ref = orderShowUrl_;
@@ -5476,7 +5192,7 @@ public  final class PayOrder extends
      *订单显示的url地址
      * </pre>
      *
-     * <code>optional string order_show_url = 24;</code>
+     * <code>optional string order_show_url = 44;</code>
      */
     public com.google.protobuf.ByteString
         getOrderShowUrlBytes() {
@@ -5496,14 +5212,14 @@ public  final class PayOrder extends
      *订单显示的url地址
      * </pre>
      *
-     * <code>optional string order_show_url = 24;</code>
+     * <code>optional string order_show_url = 44;</code>
      */
     public Builder setOrderShowUrl(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x08000000;
+  bitField0_ |= 0x02000000;
       orderShowUrl_ = value;
       onChanged();
       return this;
@@ -5513,10 +5229,10 @@ public  final class PayOrder extends
      *订单显示的url地址
      * </pre>
      *
-     * <code>optional string order_show_url = 24;</code>
+     * <code>optional string order_show_url = 44;</code>
      */
     public Builder clearOrderShowUrl() {
-      bitField0_ = (bitField0_ & ~0x08000000);
+      bitField0_ = (bitField0_ & ~0x02000000);
       orderShowUrl_ = getDefaultInstance().getOrderShowUrl();
       onChanged();
       return this;
@@ -5526,14 +5242,14 @@ public  final class PayOrder extends
      *订单显示的url地址
      * </pre>
      *
-     * <code>optional string order_show_url = 24;</code>
+     * <code>optional string order_show_url = 44;</code>
      */
     public Builder setOrderShowUrlBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x08000000;
+  bitField0_ |= 0x02000000;
       orderShowUrl_ = value;
       onChanged();
       return this;
@@ -5545,17 +5261,17 @@ public  final class PayOrder extends
      *交易主体信息；
      * </pre>
      *
-     * <code>optional int64 sub_id = 25;</code>
+     * <code>optional int64 sub_id = 51;</code>
      */
     public boolean hasSubId() {
-      return ((bitField0_ & 0x10000000) == 0x10000000);
+      return ((bitField0_ & 0x04000000) == 0x04000000);
     }
     /**
      * <pre>
      *交易主体信息；
      * </pre>
      *
-     * <code>optional int64 sub_id = 25;</code>
+     * <code>optional int64 sub_id = 51;</code>
      */
     public long getSubId() {
       return subId_;
@@ -5565,10 +5281,10 @@ public  final class PayOrder extends
      *交易主体信息；
      * </pre>
      *
-     * <code>optional int64 sub_id = 25;</code>
+     * <code>optional int64 sub_id = 51;</code>
      */
     public Builder setSubId(long value) {
-      bitField0_ |= 0x10000000;
+      bitField0_ |= 0x04000000;
       subId_ = value;
       onChanged();
       return this;
@@ -5578,10 +5294,10 @@ public  final class PayOrder extends
      *交易主体信息；
      * </pre>
      *
-     * <code>optional int64 sub_id = 25;</code>
+     * <code>optional int64 sub_id = 51;</code>
      */
     public Builder clearSubId() {
-      bitField0_ = (bitField0_ & ~0x10000000);
+      bitField0_ = (bitField0_ & ~0x04000000);
       subId_ = 0L;
       onChanged();
       return this;
@@ -5593,17 +5309,17 @@ public  final class PayOrder extends
      *主体类型
      * </pre>
      *
-     * <code>optional .EntityType sub_type = 26;</code>
+     * <code>optional .EntityType sub_type = 52;</code>
      */
     public boolean hasSubType() {
-      return ((bitField0_ & 0x20000000) == 0x20000000);
+      return ((bitField0_ & 0x08000000) == 0x08000000);
     }
     /**
      * <pre>
      *主体类型
      * </pre>
      *
-     * <code>optional .EntityType sub_type = 26;</code>
+     * <code>optional .EntityType sub_type = 52;</code>
      */
     public org.jigsaw.payment.model.EntityType getSubType() {
       org.jigsaw.payment.model.EntityType result = org.jigsaw.payment.model.EntityType.valueOf(subType_);
@@ -5614,13 +5330,13 @@ public  final class PayOrder extends
      *主体类型
      * </pre>
      *
-     * <code>optional .EntityType sub_type = 26;</code>
+     * <code>optional .EntityType sub_type = 52;</code>
      */
     public Builder setSubType(org.jigsaw.payment.model.EntityType value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      bitField0_ |= 0x20000000;
+      bitField0_ |= 0x08000000;
       subType_ = value.getNumber();
       onChanged();
       return this;
@@ -5630,10 +5346,10 @@ public  final class PayOrder extends
      *主体类型
      * </pre>
      *
-     * <code>optional .EntityType sub_type = 26;</code>
+     * <code>optional .EntityType sub_type = 52;</code>
      */
     public Builder clearSubType() {
-      bitField0_ = (bitField0_ & ~0x20000000);
+      bitField0_ = (bitField0_ & ~0x08000000);
       subType_ = 0;
       onChanged();
       return this;
@@ -5645,17 +5361,17 @@ public  final class PayOrder extends
      *主体名称
      * </pre>
      *
-     * <code>optional string sub_name = 27;</code>
+     * <code>optional string sub_name = 53;</code>
      */
     public boolean hasSubName() {
-      return ((bitField0_ & 0x40000000) == 0x40000000);
+      return ((bitField0_ & 0x10000000) == 0x10000000);
     }
     /**
      * <pre>
      *主体名称
      * </pre>
      *
-     * <code>optional string sub_name = 27;</code>
+     * <code>optional string sub_name = 53;</code>
      */
     public java.lang.String getSubName() {
       java.lang.Object ref = subName_;
@@ -5676,7 +5392,7 @@ public  final class PayOrder extends
      *主体名称
      * </pre>
      *
-     * <code>optional string sub_name = 27;</code>
+     * <code>optional string sub_name = 53;</code>
      */
     public com.google.protobuf.ByteString
         getSubNameBytes() {
@@ -5696,14 +5412,14 @@ public  final class PayOrder extends
      *主体名称
      * </pre>
      *
-     * <code>optional string sub_name = 27;</code>
+     * <code>optional string sub_name = 53;</code>
      */
     public Builder setSubName(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x40000000;
+  bitField0_ |= 0x10000000;
       subName_ = value;
       onChanged();
       return this;
@@ -5713,10 +5429,10 @@ public  final class PayOrder extends
      *主体名称
      * </pre>
      *
-     * <code>optional string sub_name = 27;</code>
+     * <code>optional string sub_name = 53;</code>
      */
     public Builder clearSubName() {
-      bitField0_ = (bitField0_ & ~0x40000000);
+      bitField0_ = (bitField0_ & ~0x10000000);
       subName_ = getDefaultInstance().getSubName();
       onChanged();
       return this;
@@ -5726,14 +5442,14 @@ public  final class PayOrder extends
      *主体名称
      * </pre>
      *
-     * <code>optional string sub_name = 27;</code>
+     * <code>optional string sub_name = 53;</code>
      */
     public Builder setSubNameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x40000000;
+  bitField0_ |= 0x10000000;
       subName_ = value;
       onChanged();
       return this;
@@ -5745,17 +5461,17 @@ public  final class PayOrder extends
      *主体帐号
      * </pre>
      *
-     * <code>optional string sub_account_id = 28;</code>
+     * <code>optional string sub_account_id = 54;</code>
      */
     public boolean hasSubAccountId() {
-      return ((bitField0_ & 0x80000000) == 0x80000000);
+      return ((bitField0_ & 0x20000000) == 0x20000000);
     }
     /**
      * <pre>
      *主体帐号
      * </pre>
      *
-     * <code>optional string sub_account_id = 28;</code>
+     * <code>optional string sub_account_id = 54;</code>
      */
     public java.lang.String getSubAccountId() {
       java.lang.Object ref = subAccountId_;
@@ -5776,7 +5492,7 @@ public  final class PayOrder extends
      *主体帐号
      * </pre>
      *
-     * <code>optional string sub_account_id = 28;</code>
+     * <code>optional string sub_account_id = 54;</code>
      */
     public com.google.protobuf.ByteString
         getSubAccountIdBytes() {
@@ -5796,14 +5512,14 @@ public  final class PayOrder extends
      *主体帐号
      * </pre>
      *
-     * <code>optional string sub_account_id = 28;</code>
+     * <code>optional string sub_account_id = 54;</code>
      */
     public Builder setSubAccountId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x80000000;
+  bitField0_ |= 0x20000000;
       subAccountId_ = value;
       onChanged();
       return this;
@@ -5813,10 +5529,10 @@ public  final class PayOrder extends
      *主体帐号
      * </pre>
      *
-     * <code>optional string sub_account_id = 28;</code>
+     * <code>optional string sub_account_id = 54;</code>
      */
     public Builder clearSubAccountId() {
-      bitField0_ = (bitField0_ & ~0x80000000);
+      bitField0_ = (bitField0_ & ~0x20000000);
       subAccountId_ = getDefaultInstance().getSubAccountId();
       onChanged();
       return this;
@@ -5826,14 +5542,14 @@ public  final class PayOrder extends
      *主体帐号
      * </pre>
      *
-     * <code>optional string sub_account_id = 28;</code>
+     * <code>optional string sub_account_id = 54;</code>
      */
     public Builder setSubAccountIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x80000000;
+  bitField0_ |= 0x20000000;
       subAccountId_ = value;
       onChanged();
       return this;
@@ -5845,17 +5561,17 @@ public  final class PayOrder extends
      *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
      * </pre>
      *
-     * <code>optional int32 sub_account_type = 29;</code>
+     * <code>optional int32 sub_account_type = 55;</code>
      */
     public boolean hasSubAccountType() {
-      return ((bitField1_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x40000000) == 0x40000000);
     }
     /**
      * <pre>
      *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
      * </pre>
      *
-     * <code>optional int32 sub_account_type = 29;</code>
+     * <code>optional int32 sub_account_type = 55;</code>
      */
     public int getSubAccountType() {
       return subAccountType_;
@@ -5865,10 +5581,10 @@ public  final class PayOrder extends
      *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
      * </pre>
      *
-     * <code>optional int32 sub_account_type = 29;</code>
+     * <code>optional int32 sub_account_type = 55;</code>
      */
     public Builder setSubAccountType(int value) {
-      bitField1_ |= 0x00000001;
+      bitField0_ |= 0x40000000;
       subAccountType_ = value;
       onChanged();
       return this;
@@ -5878,10 +5594,10 @@ public  final class PayOrder extends
      *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
      * </pre>
      *
-     * <code>optional int32 sub_account_type = 29;</code>
+     * <code>optional int32 sub_account_type = 55;</code>
      */
     public Builder clearSubAccountType() {
-      bitField1_ = (bitField1_ & ~0x00000001);
+      bitField0_ = (bitField0_ & ~0x40000000);
       subAccountType_ = 0;
       onChanged();
       return this;
@@ -5893,17 +5609,17 @@ public  final class PayOrder extends
      * 主体使用的IP
      * </pre>
      *
-     * <code>optional string sub_ip = 30;</code>
+     * <code>optional string sub_ip = 56;</code>
      */
     public boolean hasSubIp() {
-      return ((bitField1_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x80000000) == 0x80000000);
     }
     /**
      * <pre>
      * 主体使用的IP
      * </pre>
      *
-     * <code>optional string sub_ip = 30;</code>
+     * <code>optional string sub_ip = 56;</code>
      */
     public java.lang.String getSubIp() {
       java.lang.Object ref = subIp_;
@@ -5924,7 +5640,7 @@ public  final class PayOrder extends
      * 主体使用的IP
      * </pre>
      *
-     * <code>optional string sub_ip = 30;</code>
+     * <code>optional string sub_ip = 56;</code>
      */
     public com.google.protobuf.ByteString
         getSubIpBytes() {
@@ -5944,14 +5660,14 @@ public  final class PayOrder extends
      * 主体使用的IP
      * </pre>
      *
-     * <code>optional string sub_ip = 30;</code>
+     * <code>optional string sub_ip = 56;</code>
      */
     public Builder setSubIp(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000002;
+  bitField0_ |= 0x80000000;
       subIp_ = value;
       onChanged();
       return this;
@@ -5961,10 +5677,10 @@ public  final class PayOrder extends
      * 主体使用的IP
      * </pre>
      *
-     * <code>optional string sub_ip = 30;</code>
+     * <code>optional string sub_ip = 56;</code>
      */
     public Builder clearSubIp() {
-      bitField1_ = (bitField1_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x80000000);
       subIp_ = getDefaultInstance().getSubIp();
       onChanged();
       return this;
@@ -5974,14 +5690,14 @@ public  final class PayOrder extends
      * 主体使用的IP
      * </pre>
      *
-     * <code>optional string sub_ip = 30;</code>
+     * <code>optional string sub_ip = 56;</code>
      */
     public Builder setSubIpBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000002;
+  bitField0_ |= 0x80000000;
       subIp_ = value;
       onChanged();
       return this;
@@ -5993,17 +5709,17 @@ public  final class PayOrder extends
      *主体使用的手机号
      * </pre>
      *
-     * <code>optional string sub_mobile = 31;</code>
+     * <code>optional string sub_mobile = 57;</code>
      */
     public boolean hasSubMobile() {
-      return ((bitField1_ & 0x00000004) == 0x00000004);
+      return ((bitField1_ & 0x00000001) == 0x00000001);
     }
     /**
      * <pre>
      *主体使用的手机号
      * </pre>
      *
-     * <code>optional string sub_mobile = 31;</code>
+     * <code>optional string sub_mobile = 57;</code>
      */
     public java.lang.String getSubMobile() {
       java.lang.Object ref = subMobile_;
@@ -6024,7 +5740,7 @@ public  final class PayOrder extends
      *主体使用的手机号
      * </pre>
      *
-     * <code>optional string sub_mobile = 31;</code>
+     * <code>optional string sub_mobile = 57;</code>
      */
     public com.google.protobuf.ByteString
         getSubMobileBytes() {
@@ -6044,14 +5760,14 @@ public  final class PayOrder extends
      *主体使用的手机号
      * </pre>
      *
-     * <code>optional string sub_mobile = 31;</code>
+     * <code>optional string sub_mobile = 57;</code>
      */
     public Builder setSubMobile(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000004;
+  bitField1_ |= 0x00000001;
       subMobile_ = value;
       onChanged();
       return this;
@@ -6061,10 +5777,10 @@ public  final class PayOrder extends
      *主体使用的手机号
      * </pre>
      *
-     * <code>optional string sub_mobile = 31;</code>
+     * <code>optional string sub_mobile = 57;</code>
      */
     public Builder clearSubMobile() {
-      bitField1_ = (bitField1_ & ~0x00000004);
+      bitField1_ = (bitField1_ & ~0x00000001);
       subMobile_ = getDefaultInstance().getSubMobile();
       onChanged();
       return this;
@@ -6074,14 +5790,14 @@ public  final class PayOrder extends
      *主体使用的手机号
      * </pre>
      *
-     * <code>optional string sub_mobile = 31;</code>
+     * <code>optional string sub_mobile = 57;</code>
      */
     public Builder setSubMobileBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000004;
+  bitField1_ |= 0x00000001;
       subMobile_ = value;
       onChanged();
       return this;
@@ -6093,17 +5809,17 @@ public  final class PayOrder extends
      *发起交易的客户端代码
      * </pre>
      *
-     * <code>optional string sub_client_code = 32;</code>
+     * <code>optional string sub_client_code = 58;</code>
      */
     public boolean hasSubClientCode() {
-      return ((bitField1_ & 0x00000008) == 0x00000008);
+      return ((bitField1_ & 0x00000002) == 0x00000002);
     }
     /**
      * <pre>
      *发起交易的客户端代码
      * </pre>
      *
-     * <code>optional string sub_client_code = 32;</code>
+     * <code>optional string sub_client_code = 58;</code>
      */
     public java.lang.String getSubClientCode() {
       java.lang.Object ref = subClientCode_;
@@ -6124,7 +5840,7 @@ public  final class PayOrder extends
      *发起交易的客户端代码
      * </pre>
      *
-     * <code>optional string sub_client_code = 32;</code>
+     * <code>optional string sub_client_code = 58;</code>
      */
     public com.google.protobuf.ByteString
         getSubClientCodeBytes() {
@@ -6144,14 +5860,14 @@ public  final class PayOrder extends
      *发起交易的客户端代码
      * </pre>
      *
-     * <code>optional string sub_client_code = 32;</code>
+     * <code>optional string sub_client_code = 58;</code>
      */
     public Builder setSubClientCode(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000008;
+  bitField1_ |= 0x00000002;
       subClientCode_ = value;
       onChanged();
       return this;
@@ -6161,10 +5877,10 @@ public  final class PayOrder extends
      *发起交易的客户端代码
      * </pre>
      *
-     * <code>optional string sub_client_code = 32;</code>
+     * <code>optional string sub_client_code = 58;</code>
      */
     public Builder clearSubClientCode() {
-      bitField1_ = (bitField1_ & ~0x00000008);
+      bitField1_ = (bitField1_ & ~0x00000002);
       subClientCode_ = getDefaultInstance().getSubClientCode();
       onChanged();
       return this;
@@ -6174,14 +5890,14 @@ public  final class PayOrder extends
      *发起交易的客户端代码
      * </pre>
      *
-     * <code>optional string sub_client_code = 32;</code>
+     * <code>optional string sub_client_code = 58;</code>
      */
     public Builder setSubClientCodeBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000008;
+  bitField1_ |= 0x00000002;
       subClientCode_ = value;
       onChanged();
       return this;
@@ -6193,17 +5909,17 @@ public  final class PayOrder extends
      *交易主体实使用的设备号
      * </pre>
      *
-     * <code>optional string sub_device_id = 33;</code>
+     * <code>optional string sub_device_id = 59;</code>
      */
     public boolean hasSubDeviceId() {
-      return ((bitField1_ & 0x00000010) == 0x00000010);
+      return ((bitField1_ & 0x00000004) == 0x00000004);
     }
     /**
      * <pre>
      *交易主体实使用的设备号
      * </pre>
      *
-     * <code>optional string sub_device_id = 33;</code>
+     * <code>optional string sub_device_id = 59;</code>
      */
     public java.lang.String getSubDeviceId() {
       java.lang.Object ref = subDeviceId_;
@@ -6224,7 +5940,7 @@ public  final class PayOrder extends
      *交易主体实使用的设备号
      * </pre>
      *
-     * <code>optional string sub_device_id = 33;</code>
+     * <code>optional string sub_device_id = 59;</code>
      */
     public com.google.protobuf.ByteString
         getSubDeviceIdBytes() {
@@ -6244,14 +5960,14 @@ public  final class PayOrder extends
      *交易主体实使用的设备号
      * </pre>
      *
-     * <code>optional string sub_device_id = 33;</code>
+     * <code>optional string sub_device_id = 59;</code>
      */
     public Builder setSubDeviceId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000010;
+  bitField1_ |= 0x00000004;
       subDeviceId_ = value;
       onChanged();
       return this;
@@ -6261,10 +5977,10 @@ public  final class PayOrder extends
      *交易主体实使用的设备号
      * </pre>
      *
-     * <code>optional string sub_device_id = 33;</code>
+     * <code>optional string sub_device_id = 59;</code>
      */
     public Builder clearSubDeviceId() {
-      bitField1_ = (bitField1_ & ~0x00000010);
+      bitField1_ = (bitField1_ & ~0x00000004);
       subDeviceId_ = getDefaultInstance().getSubDeviceId();
       onChanged();
       return this;
@@ -6274,14 +5990,14 @@ public  final class PayOrder extends
      *交易主体实使用的设备号
      * </pre>
      *
-     * <code>optional string sub_device_id = 33;</code>
+     * <code>optional string sub_device_id = 59;</code>
      */
     public Builder setSubDeviceIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000010;
+  bitField1_ |= 0x00000004;
       subDeviceId_ = value;
       onChanged();
       return this;
@@ -6293,17 +6009,17 @@ public  final class PayOrder extends
      *交易主体的邮箱，预留
      * </pre>
      *
-     * <code>optional string sub_email = 34;</code>
+     * <code>optional string sub_email = 60;</code>
      */
     public boolean hasSubEmail() {
-      return ((bitField1_ & 0x00000020) == 0x00000020);
+      return ((bitField1_ & 0x00000008) == 0x00000008);
     }
     /**
      * <pre>
      *交易主体的邮箱，预留
      * </pre>
      *
-     * <code>optional string sub_email = 34;</code>
+     * <code>optional string sub_email = 60;</code>
      */
     public java.lang.String getSubEmail() {
       java.lang.Object ref = subEmail_;
@@ -6324,7 +6040,7 @@ public  final class PayOrder extends
      *交易主体的邮箱，预留
      * </pre>
      *
-     * <code>optional string sub_email = 34;</code>
+     * <code>optional string sub_email = 60;</code>
      */
     public com.google.protobuf.ByteString
         getSubEmailBytes() {
@@ -6344,14 +6060,14 @@ public  final class PayOrder extends
      *交易主体的邮箱，预留
      * </pre>
      *
-     * <code>optional string sub_email = 34;</code>
+     * <code>optional string sub_email = 60;</code>
      */
     public Builder setSubEmail(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000020;
+  bitField1_ |= 0x00000008;
       subEmail_ = value;
       onChanged();
       return this;
@@ -6361,10 +6077,10 @@ public  final class PayOrder extends
      *交易主体的邮箱，预留
      * </pre>
      *
-     * <code>optional string sub_email = 34;</code>
+     * <code>optional string sub_email = 60;</code>
      */
     public Builder clearSubEmail() {
-      bitField1_ = (bitField1_ & ~0x00000020);
+      bitField1_ = (bitField1_ & ~0x00000008);
       subEmail_ = getDefaultInstance().getSubEmail();
       onChanged();
       return this;
@@ -6374,14 +6090,14 @@ public  final class PayOrder extends
      *交易主体的邮箱，预留
      * </pre>
      *
-     * <code>optional string sub_email = 34;</code>
+     * <code>optional string sub_email = 60;</code>
      */
     public Builder setSubEmailBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000020;
+  bitField1_ |= 0x00000008;
       subEmail_ = value;
       onChanged();
       return this;
@@ -6393,17 +6109,17 @@ public  final class PayOrder extends
      *交易主体的地理位置，预留
      * </pre>
      *
-     * <code>optional string sub_location = 35;</code>
+     * <code>optional string sub_location = 61;</code>
      */
     public boolean hasSubLocation() {
-      return ((bitField1_ & 0x00000040) == 0x00000040);
+      return ((bitField1_ & 0x00000010) == 0x00000010);
     }
     /**
      * <pre>
      *交易主体的地理位置，预留
      * </pre>
      *
-     * <code>optional string sub_location = 35;</code>
+     * <code>optional string sub_location = 61;</code>
      */
     public java.lang.String getSubLocation() {
       java.lang.Object ref = subLocation_;
@@ -6424,7 +6140,7 @@ public  final class PayOrder extends
      *交易主体的地理位置，预留
      * </pre>
      *
-     * <code>optional string sub_location = 35;</code>
+     * <code>optional string sub_location = 61;</code>
      */
     public com.google.protobuf.ByteString
         getSubLocationBytes() {
@@ -6444,14 +6160,14 @@ public  final class PayOrder extends
      *交易主体的地理位置，预留
      * </pre>
      *
-     * <code>optional string sub_location = 35;</code>
+     * <code>optional string sub_location = 61;</code>
      */
     public Builder setSubLocation(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000040;
+  bitField1_ |= 0x00000010;
       subLocation_ = value;
       onChanged();
       return this;
@@ -6461,10 +6177,10 @@ public  final class PayOrder extends
      *交易主体的地理位置，预留
      * </pre>
      *
-     * <code>optional string sub_location = 35;</code>
+     * <code>optional string sub_location = 61;</code>
      */
     public Builder clearSubLocation() {
-      bitField1_ = (bitField1_ & ~0x00000040);
+      bitField1_ = (bitField1_ & ~0x00000010);
       subLocation_ = getDefaultInstance().getSubLocation();
       onChanged();
       return this;
@@ -6474,14 +6190,14 @@ public  final class PayOrder extends
      *交易主体的地理位置，预留
      * </pre>
      *
-     * <code>optional string sub_location = 35;</code>
+     * <code>optional string sub_location = 61;</code>
      */
     public Builder setSubLocationBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000040;
+  bitField1_ |= 0x00000010;
       subLocation_ = value;
       onChanged();
       return this;
@@ -6493,17 +6209,17 @@ public  final class PayOrder extends
      *交易主体的国别，预留，默认为中国
      * </pre>
      *
-     * <code>optional string sub_country_code = 36;</code>
+     * <code>optional string sub_country_code = 62;</code>
      */
     public boolean hasSubCountryCode() {
-      return ((bitField1_ & 0x00000080) == 0x00000080);
+      return ((bitField1_ & 0x00000020) == 0x00000020);
     }
     /**
      * <pre>
      *交易主体的国别，预留，默认为中国
      * </pre>
      *
-     * <code>optional string sub_country_code = 36;</code>
+     * <code>optional string sub_country_code = 62;</code>
      */
     public java.lang.String getSubCountryCode() {
       java.lang.Object ref = subCountryCode_;
@@ -6524,7 +6240,7 @@ public  final class PayOrder extends
      *交易主体的国别，预留，默认为中国
      * </pre>
      *
-     * <code>optional string sub_country_code = 36;</code>
+     * <code>optional string sub_country_code = 62;</code>
      */
     public com.google.protobuf.ByteString
         getSubCountryCodeBytes() {
@@ -6544,14 +6260,14 @@ public  final class PayOrder extends
      *交易主体的国别，预留，默认为中国
      * </pre>
      *
-     * <code>optional string sub_country_code = 36;</code>
+     * <code>optional string sub_country_code = 62;</code>
      */
     public Builder setSubCountryCode(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000080;
+  bitField1_ |= 0x00000020;
       subCountryCode_ = value;
       onChanged();
       return this;
@@ -6561,10 +6277,10 @@ public  final class PayOrder extends
      *交易主体的国别，预留，默认为中国
      * </pre>
      *
-     * <code>optional string sub_country_code = 36;</code>
+     * <code>optional string sub_country_code = 62;</code>
      */
     public Builder clearSubCountryCode() {
-      bitField1_ = (bitField1_ & ~0x00000080);
+      bitField1_ = (bitField1_ & ~0x00000020);
       subCountryCode_ = getDefaultInstance().getSubCountryCode();
       onChanged();
       return this;
@@ -6574,14 +6290,14 @@ public  final class PayOrder extends
      *交易主体的国别，预留，默认为中国
      * </pre>
      *
-     * <code>optional string sub_country_code = 36;</code>
+     * <code>optional string sub_country_code = 62;</code>
      */
     public Builder setSubCountryCodeBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000080;
+  bitField1_ |= 0x00000020;
       subCountryCode_ = value;
       onChanged();
       return this;
@@ -6593,17 +6309,17 @@ public  final class PayOrder extends
      *交易对手信息
      * </pre>
      *
-     * <code>optional int64 partner_id = 40;</code>
+     * <code>optional int64 partner_id = 71;</code>
      */
     public boolean hasPartnerId() {
-      return ((bitField1_ & 0x00000100) == 0x00000100);
+      return ((bitField1_ & 0x00000040) == 0x00000040);
     }
     /**
      * <pre>
      *交易对手信息
      * </pre>
      *
-     * <code>optional int64 partner_id = 40;</code>
+     * <code>optional int64 partner_id = 71;</code>
      */
     public long getPartnerId() {
       return partnerId_;
@@ -6613,10 +6329,10 @@ public  final class PayOrder extends
      *交易对手信息
      * </pre>
      *
-     * <code>optional int64 partner_id = 40;</code>
+     * <code>optional int64 partner_id = 71;</code>
      */
     public Builder setPartnerId(long value) {
-      bitField1_ |= 0x00000100;
+      bitField1_ |= 0x00000040;
       partnerId_ = value;
       onChanged();
       return this;
@@ -6626,10 +6342,10 @@ public  final class PayOrder extends
      *交易对手信息
      * </pre>
      *
-     * <code>optional int64 partner_id = 40;</code>
+     * <code>optional int64 partner_id = 71;</code>
      */
     public Builder clearPartnerId() {
-      bitField1_ = (bitField1_ & ~0x00000100);
+      bitField1_ = (bitField1_ & ~0x00000040);
       partnerId_ = 0L;
       onChanged();
       return this;
@@ -6641,17 +6357,17 @@ public  final class PayOrder extends
      *交易对手的类型
      * </pre>
      *
-     * <code>optional .EntityType partner_type = 41;</code>
+     * <code>optional .EntityType partner_type = 72;</code>
      */
     public boolean hasPartnerType() {
-      return ((bitField1_ & 0x00000200) == 0x00000200);
+      return ((bitField1_ & 0x00000080) == 0x00000080);
     }
     /**
      * <pre>
      *交易对手的类型
      * </pre>
      *
-     * <code>optional .EntityType partner_type = 41;</code>
+     * <code>optional .EntityType partner_type = 72;</code>
      */
     public org.jigsaw.payment.model.EntityType getPartnerType() {
       org.jigsaw.payment.model.EntityType result = org.jigsaw.payment.model.EntityType.valueOf(partnerType_);
@@ -6662,13 +6378,13 @@ public  final class PayOrder extends
      *交易对手的类型
      * </pre>
      *
-     * <code>optional .EntityType partner_type = 41;</code>
+     * <code>optional .EntityType partner_type = 72;</code>
      */
     public Builder setPartnerType(org.jigsaw.payment.model.EntityType value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      bitField1_ |= 0x00000200;
+      bitField1_ |= 0x00000080;
       partnerType_ = value.getNumber();
       onChanged();
       return this;
@@ -6678,10 +6394,10 @@ public  final class PayOrder extends
      *交易对手的类型
      * </pre>
      *
-     * <code>optional .EntityType partner_type = 41;</code>
+     * <code>optional .EntityType partner_type = 72;</code>
      */
     public Builder clearPartnerType() {
-      bitField1_ = (bitField1_ & ~0x00000200);
+      bitField1_ = (bitField1_ & ~0x00000080);
       partnerType_ = 0;
       onChanged();
       return this;
@@ -6693,17 +6409,17 @@ public  final class PayOrder extends
      *交易对手的帐号,商户号ID
      * </pre>
      *
-     * <code>optional int64 partner_account_id = 42;</code>
+     * <code>optional int64 partner_account_id = 73;</code>
      */
     public boolean hasPartnerAccountId() {
-      return ((bitField1_ & 0x00000400) == 0x00000400);
+      return ((bitField1_ & 0x00000100) == 0x00000100);
     }
     /**
      * <pre>
      *交易对手的帐号,商户号ID
      * </pre>
      *
-     * <code>optional int64 partner_account_id = 42;</code>
+     * <code>optional int64 partner_account_id = 73;</code>
      */
     public long getPartnerAccountId() {
       return partnerAccountId_;
@@ -6713,10 +6429,10 @@ public  final class PayOrder extends
      *交易对手的帐号,商户号ID
      * </pre>
      *
-     * <code>optional int64 partner_account_id = 42;</code>
+     * <code>optional int64 partner_account_id = 73;</code>
      */
     public Builder setPartnerAccountId(long value) {
-      bitField1_ |= 0x00000400;
+      bitField1_ |= 0x00000100;
       partnerAccountId_ = value;
       onChanged();
       return this;
@@ -6726,10 +6442,10 @@ public  final class PayOrder extends
      *交易对手的帐号,商户号ID
      * </pre>
      *
-     * <code>optional int64 partner_account_id = 42;</code>
+     * <code>optional int64 partner_account_id = 73;</code>
      */
     public Builder clearPartnerAccountId() {
-      bitField1_ = (bitField1_ & ~0x00000400);
+      bitField1_ = (bitField1_ & ~0x00000100);
       partnerAccountId_ = 0L;
       onChanged();
       return this;
@@ -6741,17 +6457,17 @@ public  final class PayOrder extends
      *交易对手的名称
      * </pre>
      *
-     * <code>optional string partner_name = 43;</code>
+     * <code>optional string partner_name = 74;</code>
      */
     public boolean hasPartnerName() {
-      return ((bitField1_ & 0x00000800) == 0x00000800);
+      return ((bitField1_ & 0x00000200) == 0x00000200);
     }
     /**
      * <pre>
      *交易对手的名称
      * </pre>
      *
-     * <code>optional string partner_name = 43;</code>
+     * <code>optional string partner_name = 74;</code>
      */
     public java.lang.String getPartnerName() {
       java.lang.Object ref = partnerName_;
@@ -6772,7 +6488,7 @@ public  final class PayOrder extends
      *交易对手的名称
      * </pre>
      *
-     * <code>optional string partner_name = 43;</code>
+     * <code>optional string partner_name = 74;</code>
      */
     public com.google.protobuf.ByteString
         getPartnerNameBytes() {
@@ -6792,14 +6508,14 @@ public  final class PayOrder extends
      *交易对手的名称
      * </pre>
      *
-     * <code>optional string partner_name = 43;</code>
+     * <code>optional string partner_name = 74;</code>
      */
     public Builder setPartnerName(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000800;
+  bitField1_ |= 0x00000200;
       partnerName_ = value;
       onChanged();
       return this;
@@ -6809,10 +6525,10 @@ public  final class PayOrder extends
      *交易对手的名称
      * </pre>
      *
-     * <code>optional string partner_name = 43;</code>
+     * <code>optional string partner_name = 74;</code>
      */
     public Builder clearPartnerName() {
-      bitField1_ = (bitField1_ & ~0x00000800);
+      bitField1_ = (bitField1_ & ~0x00000200);
       partnerName_ = getDefaultInstance().getPartnerName();
       onChanged();
       return this;
@@ -6822,15 +6538,215 @@ public  final class PayOrder extends
      *交易对手的名称
      * </pre>
      *
-     * <code>optional string partner_name = 43;</code>
+     * <code>optional string partner_name = 74;</code>
      */
     public Builder setPartnerNameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000800;
+  bitField1_ |= 0x00000200;
       partnerName_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object errorCode_ = "";
+    /**
+     * <pre>
+     *错误码
+     * </pre>
+     *
+     * <code>optional string error_code = 91;</code>
+     */
+    public boolean hasErrorCode() {
+      return ((bitField1_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <pre>
+     *错误码
+     * </pre>
+     *
+     * <code>optional string error_code = 91;</code>
+     */
+    public java.lang.String getErrorCode() {
+      java.lang.Object ref = errorCode_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          errorCode_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *错误码
+     * </pre>
+     *
+     * <code>optional string error_code = 91;</code>
+     */
+    public com.google.protobuf.ByteString
+        getErrorCodeBytes() {
+      java.lang.Object ref = errorCode_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        errorCode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *错误码
+     * </pre>
+     *
+     * <code>optional string error_code = 91;</code>
+     */
+    public Builder setErrorCode(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField1_ |= 0x00000400;
+      errorCode_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *错误码
+     * </pre>
+     *
+     * <code>optional string error_code = 91;</code>
+     */
+    public Builder clearErrorCode() {
+      bitField1_ = (bitField1_ & ~0x00000400);
+      errorCode_ = getDefaultInstance().getErrorCode();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *错误码
+     * </pre>
+     *
+     * <code>optional string error_code = 91;</code>
+     */
+    public Builder setErrorCodeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField1_ |= 0x00000400;
+      errorCode_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object errorDetail_ = "";
+    /**
+     * <pre>
+     *错误描述
+     * </pre>
+     *
+     * <code>optional string error_detail = 92;</code>
+     */
+    public boolean hasErrorDetail() {
+      return ((bitField1_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <pre>
+     *错误描述
+     * </pre>
+     *
+     * <code>optional string error_detail = 92;</code>
+     */
+    public java.lang.String getErrorDetail() {
+      java.lang.Object ref = errorDetail_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          errorDetail_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *错误描述
+     * </pre>
+     *
+     * <code>optional string error_detail = 92;</code>
+     */
+    public com.google.protobuf.ByteString
+        getErrorDetailBytes() {
+      java.lang.Object ref = errorDetail_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        errorDetail_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *错误描述
+     * </pre>
+     *
+     * <code>optional string error_detail = 92;</code>
+     */
+    public Builder setErrorDetail(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField1_ |= 0x00000800;
+      errorDetail_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *错误描述
+     * </pre>
+     *
+     * <code>optional string error_detail = 92;</code>
+     */
+    public Builder clearErrorDetail() {
+      bitField1_ = (bitField1_ & ~0x00000800);
+      errorDetail_ = getDefaultInstance().getErrorDetail();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *错误描述
+     * </pre>
+     *
+     * <code>optional string error_detail = 92;</code>
+     */
+    public Builder setErrorDetailBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField1_ |= 0x00000800;
+      errorDetail_ = value;
       onChanged();
       return this;
     }

@@ -71,5 +71,10 @@ public class IdServerConfiguration {
 	public RedisTemplate redisTemplate(ShardedJedisPool shardedJedisPool){
 		return new RedisTemplate(shardedJedisPool);
 	}
+	
+	@Bean
+	public ShardingByUserId shardingByUserId(){
+		return ShardingByUserId.newBuilder().build();
+	}
 
 }

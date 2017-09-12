@@ -14,148 +14,8 @@ public final class IdService {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  /**
-   * Protobuf enum {@code IdType}
-   */
-  public enum IdType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <pre>
-     *uuid
-     * </pre>
-     *
-     * <code>UUID = 0;</code>
-     */
-    UUID(0),
-    /**
-     * <pre>
-     *订单
-     * </pre>
-     *
-     * <code>PAY_ORDER = 1;</code>
-     */
-    PAY_ORDER(1),
-    /**
-     * <pre>
-     *卡券
-     * </pre>
-     *
-     * <code>COUPON = 2;</code>
-     */
-    COUPON(2),
-    /**
-     * <pre>
-     *账户
-     * </pre>
-     *
-     * <code>ACCOUNT = 4;</code>
-     */
-    ACCOUNT(4),
-    ;
-
-    /**
-     * <pre>
-     *uuid
-     * </pre>
-     *
-     * <code>UUID = 0;</code>
-     */
-    public static final int UUID_VALUE = 0;
-    /**
-     * <pre>
-     *订单
-     * </pre>
-     *
-     * <code>PAY_ORDER = 1;</code>
-     */
-    public static final int PAY_ORDER_VALUE = 1;
-    /**
-     * <pre>
-     *卡券
-     * </pre>
-     *
-     * <code>COUPON = 2;</code>
-     */
-    public static final int COUPON_VALUE = 2;
-    /**
-     * <pre>
-     *账户
-     * </pre>
-     *
-     * <code>ACCOUNT = 4;</code>
-     */
-    public static final int ACCOUNT_VALUE = 4;
-
-
-    public final int getNumber() {
-      return value;
-    }
-
-    /**
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static IdType valueOf(int value) {
-      return forNumber(value);
-    }
-
-    public static IdType forNumber(int value) {
-      switch (value) {
-        case 0: return UUID;
-        case 1: return PAY_ORDER;
-        case 2: return COUPON;
-        case 4: return ACCOUNT;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<IdType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        IdType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<IdType>() {
-            public IdType findValueByNumber(int number) {
-              return IdType.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return org.jigsaw.payment.rpc.IdService.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final IdType[] VALUES = values();
-
-    public static IdType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private IdType(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:IdType)
-  }
-
-  public interface GeneratePayOrderCodeRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GeneratePayOrderCodeRequest)
+  public interface GeneratePayOrderIdRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GeneratePayOrderIdRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -228,17 +88,23 @@ public final class IdService {
     long getSubId();
   }
   /**
-   * Protobuf type {@code GeneratePayOrderCodeRequest}
+   * <pre>
+   **
+   * 生成订单ID和订单号；
+   * </pre>
+   *
+   * Protobuf type {@code GeneratePayOrderIdRequest}
    */
-  public  static final class GeneratePayOrderCodeRequest extends
+  public  static final class GeneratePayOrderIdRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GeneratePayOrderCodeRequest)
-      GeneratePayOrderCodeRequestOrBuilder {
-    // Use GeneratePayOrderCodeRequest.newBuilder() to construct.
-    private GeneratePayOrderCodeRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:GeneratePayOrderIdRequest)
+      GeneratePayOrderIdRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GeneratePayOrderIdRequest.newBuilder() to construct.
+    private GeneratePayOrderIdRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private GeneratePayOrderCodeRequest() {
+    private GeneratePayOrderIdRequest() {
       userName_ = "";
       password_ = "";
       subId_ = 0L;
@@ -249,7 +115,7 @@ public final class IdService {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private GeneratePayOrderCodeRequest(
+    private GeneratePayOrderIdRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -266,8 +132,8 @@ public final class IdService {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -303,14 +169,14 @@ public final class IdService {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderCodeRequest_descriptor;
+      return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderIdRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderCodeRequest_fieldAccessorTable
+      return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderIdRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest.class, org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest.Builder.class);
+              org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest.class, org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest.Builder.class);
     }
 
     private int bitField0_;
@@ -489,16 +355,15 @@ public final class IdService {
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest)) {
+      if (!(obj instanceof org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest)) {
         return super.equals(obj);
       }
-      org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest other = (org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest) obj;
+      org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest other = (org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest) obj;
 
       boolean result = true;
       result = result && (hasUserName() == other.hasUserName());
@@ -545,69 +410,69 @@ public final class IdService {
       return hash;
     }
 
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseFrom(byte[] data)
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseFrom(java.io.InputStream input)
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseDelimitedFrom(java.io.InputStream input)
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseDelimitedFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -619,7 +484,7 @@ public final class IdService {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest prototype) {
+    public static Builder newBuilder(org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -634,25 +499,30 @@ public final class IdService {
       return builder;
     }
     /**
-     * Protobuf type {@code GeneratePayOrderCodeRequest}
+     * <pre>
+     **
+     * 生成订单ID和订单号；
+     * </pre>
+     *
+     * Protobuf type {@code GeneratePayOrderIdRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GeneratePayOrderCodeRequest)
-        org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:GeneratePayOrderIdRequest)
+        org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderCodeRequest_descriptor;
+        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderIdRequest_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderCodeRequest_fieldAccessorTable
+        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderIdRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest.class, org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest.Builder.class);
+                org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest.class, org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest.Builder.class);
       }
 
-      // Construct using org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest.newBuilder()
+      // Construct using org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -680,23 +550,23 @@ public final class IdService {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderCodeRequest_descriptor;
+        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderIdRequest_descriptor;
       }
 
-      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest getDefaultInstanceForType() {
-        return org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest.getDefaultInstance();
+      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest getDefaultInstanceForType() {
+        return org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest.getDefaultInstance();
       }
 
-      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest build() {
-        org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest result = buildPartial();
+      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest build() {
+        org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest buildPartial() {
-        org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest result = new org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest(this);
+      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest buildPartial() {
+        org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest result = new org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -721,7 +591,7 @@ public final class IdService {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -734,25 +604,25 @@ public final class IdService {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest) {
-          return mergeFrom((org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest)other);
+        if (other instanceof org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest) {
+          return mergeFrom((org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest other) {
-        if (other == org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest other) {
+        if (other == org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest.getDefaultInstance()) return this;
         if (other.hasUserName()) {
           bitField0_ |= 0x00000001;
           userName_ = other.userName_;
@@ -779,11 +649,11 @@ public final class IdService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest parsedMessage = null;
+        org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest) e.getUnfinishedMessage();
+          parsedMessage = (org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1052,85 +922,86 @@ public final class IdService {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:GeneratePayOrderCodeRequest)
+      // @@protoc_insertion_point(builder_scope:GeneratePayOrderIdRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:GeneratePayOrderCodeRequest)
-    private static final org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:GeneratePayOrderIdRequest)
+    private static final org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest();
+      DEFAULT_INSTANCE = new org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest();
     }
 
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest getDefaultInstance() {
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<GeneratePayOrderCodeRequest>
-        PARSER = new com.google.protobuf.AbstractParser<GeneratePayOrderCodeRequest>() {
-      public GeneratePayOrderCodeRequest parsePartialFrom(
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<GeneratePayOrderIdRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GeneratePayOrderIdRequest>() {
+      public GeneratePayOrderIdRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GeneratePayOrderCodeRequest(input, extensionRegistry);
+          return new GeneratePayOrderIdRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<GeneratePayOrderCodeRequest> parser() {
+    public static com.google.protobuf.Parser<GeneratePayOrderIdRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GeneratePayOrderCodeRequest> getParserForType() {
+    public com.google.protobuf.Parser<GeneratePayOrderIdRequest> getParserForType() {
       return PARSER;
     }
 
-    public org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeRequest getDefaultInstanceForType() {
+    public org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface GeneratePayOrderCodeResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GeneratePayOrderCodeResponse)
+  public interface GeneratePayOrderIdResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GeneratePayOrderIdResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int64 id = 11;</code>
+     * <code>required int64 key = 1;</code>
+     */
+    boolean hasKey();
+    /**
+     * <code>required int64 key = 1;</code>
+     */
+    long getKey();
+
+    /**
+     * <code>required int64 id = 2;</code>
      */
     boolean hasId();
     /**
-     * <code>required int64 id = 11;</code>
+     * <code>required int64 id = 2;</code>
      */
     long getId();
-
-    /**
-     * <code>required string code = 12;</code>
-     */
-    boolean hasCode();
-    /**
-     * <code>required string code = 12;</code>
-     */
-    java.lang.String getCode();
-    /**
-     * <code>required string code = 12;</code>
-     */
-    com.google.protobuf.ByteString
-        getCodeBytes();
   }
   /**
-   * Protobuf type {@code GeneratePayOrderCodeResponse}
+   * <pre>
+   **
+   * 生成订单ID和订单号；
+   * </pre>
+   *
+   * Protobuf type {@code GeneratePayOrderIdResponse}
    */
-  public  static final class GeneratePayOrderCodeResponse extends
+  public  static final class GeneratePayOrderIdResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GeneratePayOrderCodeResponse)
-      GeneratePayOrderCodeResponseOrBuilder {
-    // Use GeneratePayOrderCodeResponse.newBuilder() to construct.
-    private GeneratePayOrderCodeResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:GeneratePayOrderIdResponse)
+      GeneratePayOrderIdResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GeneratePayOrderIdResponse.newBuilder() to construct.
+    private GeneratePayOrderIdResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private GeneratePayOrderCodeResponse() {
+    private GeneratePayOrderIdResponse() {
+      key_ = 0L;
       id_ = 0L;
-      code_ = "";
     }
 
     @java.lang.Override
@@ -1138,7 +1009,7 @@ public final class IdService {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private GeneratePayOrderCodeResponse(
+    private GeneratePayOrderIdResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1155,21 +1026,20 @@ public final class IdService {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
             }
-            case 88: {
+            case 8: {
               bitField0_ |= 0x00000001;
-              id_ = input.readInt64();
+              key_ = input.readInt64();
               break;
             }
-            case 98: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+            case 16: {
               bitField0_ |= 0x00000002;
-              code_ = bs;
+              id_ = input.readInt64();
               break;
             }
           }
@@ -1186,72 +1056,45 @@ public final class IdService {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderCodeResponse_descriptor;
+      return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderIdResponse_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderCodeResponse_fieldAccessorTable
+      return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderIdResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse.class, org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse.Builder.class);
+              org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse.class, org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse.Builder.class);
     }
 
     private int bitField0_;
-    public static final int ID_FIELD_NUMBER = 11;
-    private long id_;
+    public static final int KEY_FIELD_NUMBER = 1;
+    private long key_;
     /**
-     * <code>required int64 id = 11;</code>
+     * <code>required int64 key = 1;</code>
      */
-    public boolean hasId() {
+    public boolean hasKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int64 id = 11;</code>
+     * <code>required int64 key = 1;</code>
      */
-    public long getId() {
-      return id_;
+    public long getKey() {
+      return key_;
     }
 
-    public static final int CODE_FIELD_NUMBER = 12;
-    private volatile java.lang.Object code_;
+    public static final int ID_FIELD_NUMBER = 2;
+    private long id_;
     /**
-     * <code>required string code = 12;</code>
+     * <code>required int64 id = 2;</code>
      */
-    public boolean hasCode() {
+    public boolean hasId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required string code = 12;</code>
+     * <code>required int64 id = 2;</code>
      */
-    public java.lang.String getCode() {
-      java.lang.Object ref = code_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          code_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string code = 12;</code>
-     */
-    public com.google.protobuf.ByteString
-        getCodeBytes() {
-      java.lang.Object ref = code_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        code_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public long getId() {
+      return id_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1260,11 +1103,11 @@ public final class IdService {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasId()) {
+      if (!hasKey()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasCode()) {
+      if (!hasId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1275,10 +1118,10 @@ public final class IdService {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(11, id_);
+        output.writeInt64(1, key_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, code_);
+        output.writeInt64(2, id_);
       }
       unknownFields.writeTo(output);
     }
@@ -1290,37 +1133,37 @@ public final class IdService {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(11, id_);
+          .computeInt64Size(1, key_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, code_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, id_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse)) {
+      if (!(obj instanceof org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse)) {
         return super.equals(obj);
       }
-      org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse other = (org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse) obj;
+      org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse other = (org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse) obj;
 
       boolean result = true;
+      result = result && (hasKey() == other.hasKey());
+      if (hasKey()) {
+        result = result && (getKey()
+            == other.getKey());
+      }
       result = result && (hasId() == other.hasId());
       if (hasId()) {
         result = result && (getId()
             == other.getId());
-      }
-      result = result && (hasCode() == other.hasCode());
-      if (hasCode()) {
-        result = result && getCode()
-            .equals(other.getCode());
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -1333,83 +1176,84 @@ public final class IdService {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasKey()) {
+        hash = (37 * hash) + KEY_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getKey());
+      }
       if (hasId()) {
         hash = (37 * hash) + ID_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
             getId());
-      }
-      if (hasCode()) {
-        hash = (37 * hash) + CODE_FIELD_NUMBER;
-        hash = (53 * hash) + getCode().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseFrom(byte[] data)
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseFrom(java.io.InputStream input)
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseDelimitedFrom(java.io.InputStream input)
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseDelimitedFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parseFrom(
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1421,7 +1265,7 @@ public final class IdService {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse prototype) {
+    public static Builder newBuilder(org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -1436,25 +1280,30 @@ public final class IdService {
       return builder;
     }
     /**
-     * Protobuf type {@code GeneratePayOrderCodeResponse}
+     * <pre>
+     **
+     * 生成订单ID和订单号；
+     * </pre>
+     *
+     * Protobuf type {@code GeneratePayOrderIdResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GeneratePayOrderCodeResponse)
-        org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:GeneratePayOrderIdResponse)
+        org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderCodeResponse_descriptor;
+        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderIdResponse_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderCodeResponse_fieldAccessorTable
+        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderIdResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse.class, org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse.Builder.class);
+                org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse.class, org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse.Builder.class);
       }
 
-      // Construct using org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse.newBuilder()
+      // Construct using org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1471,42 +1320,42 @@ public final class IdService {
       }
       public Builder clear() {
         super.clear();
-        id_ = 0L;
+        key_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        code_ = "";
+        id_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderCodeResponse_descriptor;
+        return org.jigsaw.payment.rpc.IdService.internal_static_GeneratePayOrderIdResponse_descriptor;
       }
 
-      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse getDefaultInstanceForType() {
-        return org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse.getDefaultInstance();
+      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse getDefaultInstanceForType() {
+        return org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse.getDefaultInstance();
       }
 
-      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse build() {
-        org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse result = buildPartial();
+      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse build() {
+        org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse buildPartial() {
-        org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse result = new org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse(this);
+      public org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse buildPartial() {
+        org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse result = new org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.id_ = id_;
+        result.key_ = key_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.code_ = code_;
+        result.id_ = id_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1517,7 +1366,7 @@ public final class IdService {
       }
       public Builder setField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.setField(field, value);
       }
       public Builder clearField(
@@ -1530,32 +1379,30 @@ public final class IdService {
       }
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
+          int index, java.lang.Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
       public Builder addRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
+          java.lang.Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse) {
-          return mergeFrom((org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse)other);
+        if (other instanceof org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse) {
+          return mergeFrom((org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse other) {
-        if (other == org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse other) {
+        if (other == org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse.getDefaultInstance()) return this;
+        if (other.hasKey()) {
+          setKey(other.getKey());
+        }
         if (other.hasId()) {
           setId(other.getId());
-        }
-        if (other.hasCode()) {
-          bitField0_ |= 0x00000002;
-          code_ = other.code_;
-          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1563,10 +1410,10 @@ public final class IdService {
       }
 
       public final boolean isInitialized() {
-        if (!hasId()) {
+        if (!hasKey()) {
           return false;
         }
-        if (!hasCode()) {
+        if (!hasId()) {
           return false;
         }
         return true;
@@ -1576,11 +1423,11 @@ public final class IdService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse parsedMessage = null;
+        org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse) e.getUnfinishedMessage();
+          parsedMessage = (org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1591,110 +1438,66 @@ public final class IdService {
       }
       private int bitField0_;
 
-      private long id_ ;
+      private long key_ ;
       /**
-       * <code>required int64 id = 11;</code>
+       * <code>required int64 key = 1;</code>
        */
-      public boolean hasId() {
+      public boolean hasKey() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int64 id = 11;</code>
+       * <code>required int64 key = 1;</code>
+       */
+      public long getKey() {
+        return key_;
+      }
+      /**
+       * <code>required int64 key = 1;</code>
+       */
+      public Builder setKey(long value) {
+        bitField0_ |= 0x00000001;
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 key = 1;</code>
+       */
+      public Builder clearKey() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        key_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long id_ ;
+      /**
+       * <code>required int64 id = 2;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int64 id = 2;</code>
        */
       public long getId() {
         return id_;
       }
       /**
-       * <code>required int64 id = 11;</code>
+       * <code>required int64 id = 2;</code>
        */
       public Builder setId(long value) {
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int64 id = 11;</code>
+       * <code>required int64 id = 2;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object code_ = "";
-      /**
-       * <code>required string code = 12;</code>
-       */
-      public boolean hasCode() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required string code = 12;</code>
-       */
-      public java.lang.String getCode() {
-        java.lang.Object ref = code_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            code_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string code = 12;</code>
-       */
-      public com.google.protobuf.ByteString
-          getCodeBytes() {
-        java.lang.Object ref = code_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          code_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string code = 12;</code>
-       */
-      public Builder setCode(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        code_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string code = 12;</code>
-       */
-      public Builder clearCode() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        code_ = getDefaultInstance().getCode();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string code = 12;</code>
-       */
-      public Builder setCodeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        code_ = value;
+        id_ = 0L;
         onChanged();
         return this;
       }
@@ -1709,54 +1512,2087 @@ public final class IdService {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:GeneratePayOrderCodeResponse)
+      // @@protoc_insertion_point(builder_scope:GeneratePayOrderIdResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:GeneratePayOrderCodeResponse)
-    private static final org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:GeneratePayOrderIdResponse)
+    private static final org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse();
+      DEFAULT_INSTANCE = new org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse();
     }
 
-    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse getDefaultInstance() {
+    public static org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<GeneratePayOrderCodeResponse>
-        PARSER = new com.google.protobuf.AbstractParser<GeneratePayOrderCodeResponse>() {
-      public GeneratePayOrderCodeResponse parsePartialFrom(
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<GeneratePayOrderIdResponse>
+        PARSER = new com.google.protobuf.AbstractParser<GeneratePayOrderIdResponse>() {
+      public GeneratePayOrderIdResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GeneratePayOrderCodeResponse(input, extensionRegistry);
+          return new GeneratePayOrderIdResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<GeneratePayOrderCodeResponse> parser() {
+    public static com.google.protobuf.Parser<GeneratePayOrderIdResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GeneratePayOrderCodeResponse> getParserForType() {
+    public com.google.protobuf.Parser<GeneratePayOrderIdResponse> getParserForType() {
       return PARSER;
     }
 
-    public org.jigsaw.payment.rpc.IdService.GeneratePayOrderCodeResponse getDefaultInstanceForType() {
+    public org.jigsaw.payment.rpc.IdService.GeneratePayOrderIdResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GenerateAccountIdRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GenerateAccountIdRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     *用户名
+     * </pre>
+     *
+     * <code>optional string user_name = 1;</code>
+     */
+    boolean hasUserName();
+    /**
+     * <pre>
+     *用户名
+     * </pre>
+     *
+     * <code>optional string user_name = 1;</code>
+     */
+    java.lang.String getUserName();
+    /**
+     * <pre>
+     *用户名
+     * </pre>
+     *
+     * <code>optional string user_name = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUserNameBytes();
+
+    /**
+     * <pre>
+     *密码
+     * </pre>
+     *
+     * <code>optional string password = 2;</code>
+     */
+    boolean hasPassword();
+    /**
+     * <pre>
+     *密码
+     * </pre>
+     *
+     * <code>optional string password = 2;</code>
+     */
+    java.lang.String getPassword();
+    /**
+     * <pre>
+     *密码
+     * </pre>
+     *
+     * <code>optional string password = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPasswordBytes();
+
+    /**
+     * <pre>
+     *主体ID
+     * </pre>
+     *
+     * <code>required int64 sub_id = 13;</code>
+     */
+    boolean hasSubId();
+    /**
+     * <pre>
+     *主体ID
+     * </pre>
+     *
+     * <code>required int64 sub_id = 13;</code>
+     */
+    long getSubId();
+
+    /**
+     * <pre>
+     *账户类型
+     * </pre>
+     *
+     * <code>required .AccountType account_type = 14;</code>
+     */
+    boolean hasAccountType();
+    /**
+     * <pre>
+     *账户类型
+     * </pre>
+     *
+     * <code>required .AccountType account_type = 14;</code>
+     */
+    org.jigsaw.payment.model.AccountType getAccountType();
+
+    /**
+     * <pre>
+     *货币类型
+     * </pre>
+     *
+     * <code>required .AccountTitle account_title = 15 [default = PERSONAL_DEPOSIT];</code>
+     */
+    boolean hasAccountTitle();
+    /**
+     * <pre>
+     *货币类型
+     * </pre>
+     *
+     * <code>required .AccountTitle account_title = 15 [default = PERSONAL_DEPOSIT];</code>
+     */
+    org.jigsaw.payment.model.AccountTitle getAccountTitle();
+
+    /**
+     * <pre>
+     *是否沙盒账户
+     * </pre>
+     *
+     * <code>optional bool sandbox = 16 [default = false];</code>
+     */
+    boolean hasSandbox();
+    /**
+     * <pre>
+     *是否沙盒账户
+     * </pre>
+     *
+     * <code>optional bool sandbox = 16 [default = false];</code>
+     */
+    boolean getSandbox();
+  }
+  /**
+   * <pre>
+   **
+   * 生成账户相关的Id和；
+   * </pre>
+   *
+   * Protobuf type {@code GenerateAccountIdRequest}
+   */
+  public  static final class GenerateAccountIdRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:GenerateAccountIdRequest)
+      GenerateAccountIdRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GenerateAccountIdRequest.newBuilder() to construct.
+    private GenerateAccountIdRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GenerateAccountIdRequest() {
+      userName_ = "";
+      password_ = "";
+      subId_ = 0L;
+      accountType_ = 0;
+      accountTitle_ = 2203001;
+      sandbox_ = false;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GenerateAccountIdRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              userName_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              password_ = bs;
+              break;
+            }
+            case 104: {
+              bitField0_ |= 0x00000004;
+              subId_ = input.readInt64();
+              break;
+            }
+            case 112: {
+              int rawValue = input.readEnum();
+              org.jigsaw.payment.model.AccountType value = org.jigsaw.payment.model.AccountType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(14, rawValue);
+              } else {
+                bitField0_ |= 0x00000008;
+                accountType_ = rawValue;
+              }
+              break;
+            }
+            case 120: {
+              int rawValue = input.readEnum();
+              org.jigsaw.payment.model.AccountTitle value = org.jigsaw.payment.model.AccountTitle.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(15, rawValue);
+              } else {
+                bitField0_ |= 0x00000010;
+                accountTitle_ = rawValue;
+              }
+              break;
+            }
+            case 128: {
+              bitField0_ |= 0x00000020;
+              sandbox_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.jigsaw.payment.rpc.IdService.internal_static_GenerateAccountIdRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.jigsaw.payment.rpc.IdService.internal_static_GenerateAccountIdRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest.class, org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int USER_NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object userName_;
+    /**
+     * <pre>
+     *用户名
+     * </pre>
+     *
+     * <code>optional string user_name = 1;</code>
+     */
+    public boolean hasUserName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <pre>
+     *用户名
+     * </pre>
+     *
+     * <code>optional string user_name = 1;</code>
+     */
+    public java.lang.String getUserName() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          userName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *用户名
+     * </pre>
+     *
+     * <code>optional string user_name = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUserNameBytes() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PASSWORD_FIELD_NUMBER = 2;
+    private volatile java.lang.Object password_;
+    /**
+     * <pre>
+     *密码
+     * </pre>
+     *
+     * <code>optional string password = 2;</code>
+     */
+    public boolean hasPassword() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <pre>
+     *密码
+     * </pre>
+     *
+     * <code>optional string password = 2;</code>
+     */
+    public java.lang.String getPassword() {
+      java.lang.Object ref = password_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          password_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *密码
+     * </pre>
+     *
+     * <code>optional string password = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPasswordBytes() {
+      java.lang.Object ref = password_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        password_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUB_ID_FIELD_NUMBER = 13;
+    private long subId_;
+    /**
+     * <pre>
+     *主体ID
+     * </pre>
+     *
+     * <code>required int64 sub_id = 13;</code>
+     */
+    public boolean hasSubId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <pre>
+     *主体ID
+     * </pre>
+     *
+     * <code>required int64 sub_id = 13;</code>
+     */
+    public long getSubId() {
+      return subId_;
+    }
+
+    public static final int ACCOUNT_TYPE_FIELD_NUMBER = 14;
+    private int accountType_;
+    /**
+     * <pre>
+     *账户类型
+     * </pre>
+     *
+     * <code>required .AccountType account_type = 14;</code>
+     */
+    public boolean hasAccountType() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <pre>
+     *账户类型
+     * </pre>
+     *
+     * <code>required .AccountType account_type = 14;</code>
+     */
+    public org.jigsaw.payment.model.AccountType getAccountType() {
+      org.jigsaw.payment.model.AccountType result = org.jigsaw.payment.model.AccountType.valueOf(accountType_);
+      return result == null ? org.jigsaw.payment.model.AccountType.ACCOUNT_TYPE_UNKNOWN : result;
+    }
+
+    public static final int ACCOUNT_TITLE_FIELD_NUMBER = 15;
+    private int accountTitle_;
+    /**
+     * <pre>
+     *货币类型
+     * </pre>
+     *
+     * <code>required .AccountTitle account_title = 15 [default = PERSONAL_DEPOSIT];</code>
+     */
+    public boolean hasAccountTitle() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <pre>
+     *货币类型
+     * </pre>
+     *
+     * <code>required .AccountTitle account_title = 15 [default = PERSONAL_DEPOSIT];</code>
+     */
+    public org.jigsaw.payment.model.AccountTitle getAccountTitle() {
+      org.jigsaw.payment.model.AccountTitle result = org.jigsaw.payment.model.AccountTitle.valueOf(accountTitle_);
+      return result == null ? org.jigsaw.payment.model.AccountTitle.PERSONAL_DEPOSIT : result;
+    }
+
+    public static final int SANDBOX_FIELD_NUMBER = 16;
+    private boolean sandbox_;
+    /**
+     * <pre>
+     *是否沙盒账户
+     * </pre>
+     *
+     * <code>optional bool sandbox = 16 [default = false];</code>
+     */
+    public boolean hasSandbox() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <pre>
+     *是否沙盒账户
+     * </pre>
+     *
+     * <code>optional bool sandbox = 16 [default = false];</code>
+     */
+    public boolean getSandbox() {
+      return sandbox_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasSubId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAccountType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAccountTitle()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userName_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt64(13, subId_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeEnum(14, accountType_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeEnum(15, accountTitle_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBool(16, sandbox_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userName_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(13, subId_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(14, accountType_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(15, accountTitle_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(16, sandbox_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest)) {
+        return super.equals(obj);
+      }
+      org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest other = (org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest) obj;
+
+      boolean result = true;
+      result = result && (hasUserName() == other.hasUserName());
+      if (hasUserName()) {
+        result = result && getUserName()
+            .equals(other.getUserName());
+      }
+      result = result && (hasPassword() == other.hasPassword());
+      if (hasPassword()) {
+        result = result && getPassword()
+            .equals(other.getPassword());
+      }
+      result = result && (hasSubId() == other.hasSubId());
+      if (hasSubId()) {
+        result = result && (getSubId()
+            == other.getSubId());
+      }
+      result = result && (hasAccountType() == other.hasAccountType());
+      if (hasAccountType()) {
+        result = result && accountType_ == other.accountType_;
+      }
+      result = result && (hasAccountTitle() == other.hasAccountTitle());
+      if (hasAccountTitle()) {
+        result = result && accountTitle_ == other.accountTitle_;
+      }
+      result = result && (hasSandbox() == other.hasSandbox());
+      if (hasSandbox()) {
+        result = result && (getSandbox()
+            == other.getSandbox());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasUserName()) {
+        hash = (37 * hash) + USER_NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getUserName().hashCode();
+      }
+      if (hasPassword()) {
+        hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+        hash = (53 * hash) + getPassword().hashCode();
+      }
+      if (hasSubId()) {
+        hash = (37 * hash) + SUB_ID_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getSubId());
+      }
+      if (hasAccountType()) {
+        hash = (37 * hash) + ACCOUNT_TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + accountType_;
+      }
+      if (hasAccountTitle()) {
+        hash = (37 * hash) + ACCOUNT_TITLE_FIELD_NUMBER;
+        hash = (53 * hash) + accountTitle_;
+      }
+      if (hasSandbox()) {
+        hash = (37 * hash) + SANDBOX_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getSandbox());
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     **
+     * 生成账户相关的Id和；
+     * </pre>
+     *
+     * Protobuf type {@code GenerateAccountIdRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GenerateAccountIdRequest)
+        org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.jigsaw.payment.rpc.IdService.internal_static_GenerateAccountIdRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.jigsaw.payment.rpc.IdService.internal_static_GenerateAccountIdRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest.class, org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest.Builder.class);
+      }
+
+      // Construct using org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        userName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        password_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        subId_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        accountType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        accountTitle_ = 2203001;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        sandbox_ = false;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.jigsaw.payment.rpc.IdService.internal_static_GenerateAccountIdRequest_descriptor;
+      }
+
+      public org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest getDefaultInstanceForType() {
+        return org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest.getDefaultInstance();
+      }
+
+      public org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest build() {
+        org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest buildPartial() {
+        org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest result = new org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.userName_ = userName_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.password_ = password_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.subId_ = subId_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.accountType_ = accountType_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.accountTitle_ = accountTitle_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.sandbox_ = sandbox_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest) {
+          return mergeFrom((org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest other) {
+        if (other == org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest.getDefaultInstance()) return this;
+        if (other.hasUserName()) {
+          bitField0_ |= 0x00000001;
+          userName_ = other.userName_;
+          onChanged();
+        }
+        if (other.hasPassword()) {
+          bitField0_ |= 0x00000002;
+          password_ = other.password_;
+          onChanged();
+        }
+        if (other.hasSubId()) {
+          setSubId(other.getSubId());
+        }
+        if (other.hasAccountType()) {
+          setAccountType(other.getAccountType());
+        }
+        if (other.hasAccountTitle()) {
+          setAccountTitle(other.getAccountTitle());
+        }
+        if (other.hasSandbox()) {
+          setSandbox(other.getSandbox());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasSubId()) {
+          return false;
+        }
+        if (!hasAccountType()) {
+          return false;
+        }
+        if (!hasAccountTitle()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object userName_ = "";
+      /**
+       * <pre>
+       *用户名
+       * </pre>
+       *
+       * <code>optional string user_name = 1;</code>
+       */
+      public boolean hasUserName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <pre>
+       *用户名
+       * </pre>
+       *
+       * <code>optional string user_name = 1;</code>
+       */
+      public java.lang.String getUserName() {
+        java.lang.Object ref = userName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            userName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *用户名
+       * </pre>
+       *
+       * <code>optional string user_name = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUserNameBytes() {
+        java.lang.Object ref = userName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *用户名
+       * </pre>
+       *
+       * <code>optional string user_name = 1;</code>
+       */
+      public Builder setUserName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *用户名
+       * </pre>
+       *
+       * <code>optional string user_name = 1;</code>
+       */
+      public Builder clearUserName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        userName_ = getDefaultInstance().getUserName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *用户名
+       * </pre>
+       *
+       * <code>optional string user_name = 1;</code>
+       */
+      public Builder setUserNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        userName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object password_ = "";
+      /**
+       * <pre>
+       *密码
+       * </pre>
+       *
+       * <code>optional string password = 2;</code>
+       */
+      public boolean hasPassword() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <pre>
+       *密码
+       * </pre>
+       *
+       * <code>optional string password = 2;</code>
+       */
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            password_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *密码
+       * </pre>
+       *
+       * <code>optional string password = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPasswordBytes() {
+        java.lang.Object ref = password_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          password_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *密码
+       * </pre>
+       *
+       * <code>optional string password = 2;</code>
+       */
+      public Builder setPassword(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        password_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *密码
+       * </pre>
+       *
+       * <code>optional string password = 2;</code>
+       */
+      public Builder clearPassword() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        password_ = getDefaultInstance().getPassword();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *密码
+       * </pre>
+       *
+       * <code>optional string password = 2;</code>
+       */
+      public Builder setPasswordBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        password_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long subId_ ;
+      /**
+       * <pre>
+       *主体ID
+       * </pre>
+       *
+       * <code>required int64 sub_id = 13;</code>
+       */
+      public boolean hasSubId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <pre>
+       *主体ID
+       * </pre>
+       *
+       * <code>required int64 sub_id = 13;</code>
+       */
+      public long getSubId() {
+        return subId_;
+      }
+      /**
+       * <pre>
+       *主体ID
+       * </pre>
+       *
+       * <code>required int64 sub_id = 13;</code>
+       */
+      public Builder setSubId(long value) {
+        bitField0_ |= 0x00000004;
+        subId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *主体ID
+       * </pre>
+       *
+       * <code>required int64 sub_id = 13;</code>
+       */
+      public Builder clearSubId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        subId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int accountType_ = 0;
+      /**
+       * <pre>
+       *账户类型
+       * </pre>
+       *
+       * <code>required .AccountType account_type = 14;</code>
+       */
+      public boolean hasAccountType() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <pre>
+       *账户类型
+       * </pre>
+       *
+       * <code>required .AccountType account_type = 14;</code>
+       */
+      public org.jigsaw.payment.model.AccountType getAccountType() {
+        org.jigsaw.payment.model.AccountType result = org.jigsaw.payment.model.AccountType.valueOf(accountType_);
+        return result == null ? org.jigsaw.payment.model.AccountType.ACCOUNT_TYPE_UNKNOWN : result;
+      }
+      /**
+       * <pre>
+       *账户类型
+       * </pre>
+       *
+       * <code>required .AccountType account_type = 14;</code>
+       */
+      public Builder setAccountType(org.jigsaw.payment.model.AccountType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000008;
+        accountType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *账户类型
+       * </pre>
+       *
+       * <code>required .AccountType account_type = 14;</code>
+       */
+      public Builder clearAccountType() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        accountType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int accountTitle_ = 2203001;
+      /**
+       * <pre>
+       *货币类型
+       * </pre>
+       *
+       * <code>required .AccountTitle account_title = 15 [default = PERSONAL_DEPOSIT];</code>
+       */
+      public boolean hasAccountTitle() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <pre>
+       *货币类型
+       * </pre>
+       *
+       * <code>required .AccountTitle account_title = 15 [default = PERSONAL_DEPOSIT];</code>
+       */
+      public org.jigsaw.payment.model.AccountTitle getAccountTitle() {
+        org.jigsaw.payment.model.AccountTitle result = org.jigsaw.payment.model.AccountTitle.valueOf(accountTitle_);
+        return result == null ? org.jigsaw.payment.model.AccountTitle.PERSONAL_DEPOSIT : result;
+      }
+      /**
+       * <pre>
+       *货币类型
+       * </pre>
+       *
+       * <code>required .AccountTitle account_title = 15 [default = PERSONAL_DEPOSIT];</code>
+       */
+      public Builder setAccountTitle(org.jigsaw.payment.model.AccountTitle value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000010;
+        accountTitle_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *货币类型
+       * </pre>
+       *
+       * <code>required .AccountTitle account_title = 15 [default = PERSONAL_DEPOSIT];</code>
+       */
+      public Builder clearAccountTitle() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        accountTitle_ = 2203001;
+        onChanged();
+        return this;
+      }
+
+      private boolean sandbox_ ;
+      /**
+       * <pre>
+       *是否沙盒账户
+       * </pre>
+       *
+       * <code>optional bool sandbox = 16 [default = false];</code>
+       */
+      public boolean hasSandbox() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <pre>
+       *是否沙盒账户
+       * </pre>
+       *
+       * <code>optional bool sandbox = 16 [default = false];</code>
+       */
+      public boolean getSandbox() {
+        return sandbox_;
+      }
+      /**
+       * <pre>
+       *是否沙盒账户
+       * </pre>
+       *
+       * <code>optional bool sandbox = 16 [default = false];</code>
+       */
+      public Builder setSandbox(boolean value) {
+        bitField0_ |= 0x00000020;
+        sandbox_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *是否沙盒账户
+       * </pre>
+       *
+       * <code>optional bool sandbox = 16 [default = false];</code>
+       */
+      public Builder clearSandbox() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        sandbox_ = false;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GenerateAccountIdRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:GenerateAccountIdRequest)
+    private static final org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest();
+    }
+
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<GenerateAccountIdRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GenerateAccountIdRequest>() {
+      public GenerateAccountIdRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new GenerateAccountIdRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GenerateAccountIdRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GenerateAccountIdRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public org.jigsaw.payment.rpc.IdService.GenerateAccountIdRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GenerateAccountIdResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GenerateAccountIdResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 accountKey = 1;</code>
+     */
+    boolean hasAccountKey();
+    /**
+     * <code>required int64 accountKey = 1;</code>
+     */
+    long getAccountKey();
+
+    /**
+     * <code>required int64 accountId = 2;</code>
+     */
+    boolean hasAccountId();
+    /**
+     * <code>required int64 accountId = 2;</code>
+     */
+    long getAccountId();
+
+    /**
+     * <code>optional int64 contractKey = 3;</code>
+     */
+    boolean hasContractKey();
+    /**
+     * <code>optional int64 contractKey = 3;</code>
+     */
+    long getContractKey();
+  }
+  /**
+   * <pre>
+   **
+   * 生成订单ID和订单号；
+   * </pre>
+   *
+   * Protobuf type {@code GenerateAccountIdResponse}
+   */
+  public  static final class GenerateAccountIdResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:GenerateAccountIdResponse)
+      GenerateAccountIdResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GenerateAccountIdResponse.newBuilder() to construct.
+    private GenerateAccountIdResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GenerateAccountIdResponse() {
+      accountKey_ = 0L;
+      accountId_ = 0L;
+      contractKey_ = 0L;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GenerateAccountIdResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              accountKey_ = input.readInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              accountId_ = input.readInt64();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              contractKey_ = input.readInt64();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.jigsaw.payment.rpc.IdService.internal_static_GenerateAccountIdResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.jigsaw.payment.rpc.IdService.internal_static_GenerateAccountIdResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse.class, org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ACCOUNTKEY_FIELD_NUMBER = 1;
+    private long accountKey_;
+    /**
+     * <code>required int64 accountKey = 1;</code>
+     */
+    public boolean hasAccountKey() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int64 accountKey = 1;</code>
+     */
+    public long getAccountKey() {
+      return accountKey_;
+    }
+
+    public static final int ACCOUNTID_FIELD_NUMBER = 2;
+    private long accountId_;
+    /**
+     * <code>required int64 accountId = 2;</code>
+     */
+    public boolean hasAccountId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int64 accountId = 2;</code>
+     */
+    public long getAccountId() {
+      return accountId_;
+    }
+
+    public static final int CONTRACTKEY_FIELD_NUMBER = 3;
+    private long contractKey_;
+    /**
+     * <code>optional int64 contractKey = 3;</code>
+     */
+    public boolean hasContractKey() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int64 contractKey = 3;</code>
+     */
+    public long getContractKey() {
+      return contractKey_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasAccountKey()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAccountId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt64(1, accountKey_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt64(2, accountId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt64(3, contractKey_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, accountKey_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, accountId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, contractKey_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse)) {
+        return super.equals(obj);
+      }
+      org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse other = (org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse) obj;
+
+      boolean result = true;
+      result = result && (hasAccountKey() == other.hasAccountKey());
+      if (hasAccountKey()) {
+        result = result && (getAccountKey()
+            == other.getAccountKey());
+      }
+      result = result && (hasAccountId() == other.hasAccountId());
+      if (hasAccountId()) {
+        result = result && (getAccountId()
+            == other.getAccountId());
+      }
+      result = result && (hasContractKey() == other.hasContractKey());
+      if (hasContractKey()) {
+        result = result && (getContractKey()
+            == other.getContractKey());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasAccountKey()) {
+        hash = (37 * hash) + ACCOUNTKEY_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getAccountKey());
+      }
+      if (hasAccountId()) {
+        hash = (37 * hash) + ACCOUNTID_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getAccountId());
+      }
+      if (hasContractKey()) {
+        hash = (37 * hash) + CONTRACTKEY_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getContractKey());
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     **
+     * 生成订单ID和订单号；
+     * </pre>
+     *
+     * Protobuf type {@code GenerateAccountIdResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GenerateAccountIdResponse)
+        org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.jigsaw.payment.rpc.IdService.internal_static_GenerateAccountIdResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.jigsaw.payment.rpc.IdService.internal_static_GenerateAccountIdResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse.class, org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse.Builder.class);
+      }
+
+      // Construct using org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        accountKey_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        accountId_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        contractKey_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.jigsaw.payment.rpc.IdService.internal_static_GenerateAccountIdResponse_descriptor;
+      }
+
+      public org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse getDefaultInstanceForType() {
+        return org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse.getDefaultInstance();
+      }
+
+      public org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse build() {
+        org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse buildPartial() {
+        org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse result = new org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.accountKey_ = accountKey_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.accountId_ = accountId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.contractKey_ = contractKey_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse) {
+          return mergeFrom((org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse other) {
+        if (other == org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse.getDefaultInstance()) return this;
+        if (other.hasAccountKey()) {
+          setAccountKey(other.getAccountKey());
+        }
+        if (other.hasAccountId()) {
+          setAccountId(other.getAccountId());
+        }
+        if (other.hasContractKey()) {
+          setContractKey(other.getContractKey());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasAccountKey()) {
+          return false;
+        }
+        if (!hasAccountId()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long accountKey_ ;
+      /**
+       * <code>required int64 accountKey = 1;</code>
+       */
+      public boolean hasAccountKey() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int64 accountKey = 1;</code>
+       */
+      public long getAccountKey() {
+        return accountKey_;
+      }
+      /**
+       * <code>required int64 accountKey = 1;</code>
+       */
+      public Builder setAccountKey(long value) {
+        bitField0_ |= 0x00000001;
+        accountKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 accountKey = 1;</code>
+       */
+      public Builder clearAccountKey() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        accountKey_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long accountId_ ;
+      /**
+       * <code>required int64 accountId = 2;</code>
+       */
+      public boolean hasAccountId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int64 accountId = 2;</code>
+       */
+      public long getAccountId() {
+        return accountId_;
+      }
+      /**
+       * <code>required int64 accountId = 2;</code>
+       */
+      public Builder setAccountId(long value) {
+        bitField0_ |= 0x00000002;
+        accountId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 accountId = 2;</code>
+       */
+      public Builder clearAccountId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        accountId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long contractKey_ ;
+      /**
+       * <code>optional int64 contractKey = 3;</code>
+       */
+      public boolean hasContractKey() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int64 contractKey = 3;</code>
+       */
+      public long getContractKey() {
+        return contractKey_;
+      }
+      /**
+       * <code>optional int64 contractKey = 3;</code>
+       */
+      public Builder setContractKey(long value) {
+        bitField0_ |= 0x00000004;
+        contractKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 contractKey = 3;</code>
+       */
+      public Builder clearContractKey() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        contractKey_ = 0L;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GenerateAccountIdResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:GenerateAccountIdResponse)
+    private static final org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse();
+    }
+
+    public static org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<GenerateAccountIdResponse>
+        PARSER = new com.google.protobuf.AbstractParser<GenerateAccountIdResponse>() {
+      public GenerateAccountIdResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new GenerateAccountIdResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GenerateAccountIdResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GenerateAccountIdResponse> getParserForType() {
+      return PARSER;
+    }
+
+    public org.jigsaw.payment.rpc.IdService.GenerateAccountIdResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GeneratePayOrderCodeRequest_descriptor;
+    internal_static_GeneratePayOrderIdRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GeneratePayOrderCodeRequest_fieldAccessorTable;
+      internal_static_GeneratePayOrderIdRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GeneratePayOrderCodeResponse_descriptor;
+    internal_static_GeneratePayOrderIdResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GeneratePayOrderCodeResponse_fieldAccessorTable;
+      internal_static_GeneratePayOrderIdResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GenerateAccountIdRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GenerateAccountIdRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GenerateAccountIdResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GenerateAccountIdResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1767,12 +3603,18 @@ public final class IdService {
   static {
     java.lang.String[] descriptorData = {
       "\n\020id_service.proto\032\014entity.proto\032\014taglib" +
-      ".proto\"R\n\033GeneratePayOrderCodeRequest\022\021\n" +
-      "\tuser_name\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\016\n\006su" +
-      "b_id\030\r \001(\003\"8\n\034GeneratePayOrderCodeRespon" +
-      "se\022\n\n\002id\030\013 \002(\003\022\014\n\004code\030\014 \002(\t*:\n\006IdType\022\010" +
-      "\n\004UUID\020\000\022\r\n\tPAY_ORDER\020\001\022\n\n\006COUPON\020\002\022\013\n\007A" +
-      "CCOUNT\020\004B\030\n\026org.jigsaw.payment.rpc"
+      ".proto\032\013enums.proto\"P\n\031GeneratePayOrderI" +
+      "dRequest\022\021\n\tuser_name\030\001 \001(\t\022\020\n\010password\030" +
+      "\002 \001(\t\022\016\n\006sub_id\030\r \001(\003\"5\n\032GeneratePayOrde" +
+      "rIdResponse\022\013\n\003key\030\001 \002(\003\022\n\n\002id\030\002 \002(\003\"\303\001\n" +
+      "\030GenerateAccountIdRequest\022\021\n\tuser_name\030\001" +
+      " \001(\t\022\020\n\010password\030\002 \001(\t\022\016\n\006sub_id\030\r \002(\003\022\"" +
+      "\n\014account_type\030\016 \002(\0162\014.AccountType\0226\n\rac" +
+      "count_title\030\017 \002(\0162\r.AccountTitle:\020PERSON" +
+      "AL_DEPOSIT\022\026\n\007sandbox\030\020 \001(\010:\005false\"W\n\031Ge",
+      "nerateAccountIdResponse\022\022\n\naccountKey\030\001 " +
+      "\002(\003\022\021\n\taccountId\030\002 \002(\003\022\023\n\013contractKey\030\003 " +
+      "\001(\003B\030\n\026org.jigsaw.payment.rpc"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1787,21 +3629,35 @@ public final class IdService {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           org.jigsaw.payment.model.Entity.getDescriptor(),
           org.jigsaw.payment.model.Taglib.getDescriptor(),
+          org.jigsaw.payment.model.Enums.getDescriptor(),
         }, assigner);
-    internal_static_GeneratePayOrderCodeRequest_descriptor =
+    internal_static_GeneratePayOrderIdRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_GeneratePayOrderCodeRequest_fieldAccessorTable = new
+    internal_static_GeneratePayOrderIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GeneratePayOrderCodeRequest_descriptor,
+        internal_static_GeneratePayOrderIdRequest_descriptor,
         new java.lang.String[] { "UserName", "Password", "SubId", });
-    internal_static_GeneratePayOrderCodeResponse_descriptor =
+    internal_static_GeneratePayOrderIdResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_GeneratePayOrderCodeResponse_fieldAccessorTable = new
+    internal_static_GeneratePayOrderIdResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GeneratePayOrderCodeResponse_descriptor,
-        new java.lang.String[] { "Id", "Code", });
+        internal_static_GeneratePayOrderIdResponse_descriptor,
+        new java.lang.String[] { "Key", "Id", });
+    internal_static_GenerateAccountIdRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_GenerateAccountIdRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GenerateAccountIdRequest_descriptor,
+        new java.lang.String[] { "UserName", "Password", "SubId", "AccountType", "AccountTitle", "Sandbox", });
+    internal_static_GenerateAccountIdResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_GenerateAccountIdResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GenerateAccountIdResponse_descriptor,
+        new java.lang.String[] { "AccountKey", "AccountId", "ContractKey", });
     org.jigsaw.payment.model.Entity.getDescriptor();
     org.jigsaw.payment.model.Taglib.getDescriptor();
+    org.jigsaw.payment.model.Enums.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -6,7 +6,7 @@ package org.jigsaw.payment.model;
 /**
  * <pre>
  **
- * 账户
+ * 内部账户
  * </pre>
  *
  * Protobuf type {@code Account}
@@ -15,31 +15,33 @@ public  final class Account extends
     com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:Account)
     AccountOrBuilder {
+private static final long serialVersionUID = 0L;
   // Use Account.newBuilder() to construct.
   private Account(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
   private Account() {
-    id_ = "";
-    userId_ = 0L;
-    type_ = 1;
-    feeUnit_ = 1;
+    key_ = 0L;
+    id_ = 0L;
+    createTime_ = 0L;
+    createUser_ = "";
+    updateTime_ = 0L;
+    updateUser_ = "";
+    status_ = 1;
+    version_ = 0;
+    ownerId_ = 0L;
+    type_ = 2;
+    feeUnit_ = 0;
     balance_ = 0L;
     frozen_ = 0L;
     income_ = 0L;
     outcome_ = 0L;
-    status_ = 0;
     rank_ = 0;
-    notice_ = 0;
-    attr_ = 0L;
-    securityLevel_ = 0;
-    sandbox_ = 0;
-    version_ = "";
-    createTime_ = 0L;
-    updateTime_ = 0L;
-    thirdType_ = 0;
-    thirdAccount_ = "";
-    trirdParam_ = "";
+    notification_ = 0;
+    permissions_ = 0L;
+    riskLevel_ = 0;
+    sandbox_ = false;
+    accountTitle_ = 2203001L;
   }
 
   @java.lang.Override
@@ -64,138 +66,147 @@ public  final class Account extends
             done = true;
             break;
           default: {
-            if (!parseUnknownField(input, unknownFields,
-                                   extensionRegistry, tag)) {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
               done = true;
             }
             break;
           }
-          case 10: {
-            com.google.protobuf.ByteString bs = input.readBytes();
+          case 8: {
             bitField0_ |= 0x00000001;
-            id_ = bs;
+            key_ = input.readInt64();
             break;
           }
           case 16: {
             bitField0_ |= 0x00000002;
-            userId_ = input.readInt64();
+            id_ = input.readInt64();
             break;
           }
           case 24: {
-            int rawValue = input.readEnum();
-            org.jigsaw.payment.model.Account.Type value = org.jigsaw.payment.model.Account.Type.valueOf(rawValue);
-            if (value == null) {
-              unknownFields.mergeVarintField(3, rawValue);
-            } else {
-              bitField0_ |= 0x00000004;
-              type_ = rawValue;
-            }
+            bitField0_ |= 0x00000004;
+            createTime_ = input.readInt64();
             break;
           }
-          case 32: {
-            int rawValue = input.readEnum();
-            org.jigsaw.payment.model.FeeUnit value = org.jigsaw.payment.model.FeeUnit.valueOf(rawValue);
-            if (value == null) {
-              unknownFields.mergeVarintField(4, rawValue);
-            } else {
-              bitField0_ |= 0x00000008;
-              feeUnit_ = rawValue;
-            }
+          case 34: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x00000008;
+            createUser_ = bs;
             break;
           }
           case 40: {
             bitField0_ |= 0x00000010;
-            balance_ = input.readInt64();
+            updateTime_ = input.readInt64();
             break;
           }
-          case 48: {
+          case 50: {
+            com.google.protobuf.ByteString bs = input.readBytes();
             bitField0_ |= 0x00000020;
-            frozen_ = input.readInt64();
+            updateUser_ = bs;
             break;
           }
           case 56: {
-            bitField0_ |= 0x00000040;
-            income_ = input.readInt64();
-            break;
-          }
-          case 64: {
-            bitField0_ |= 0x00000080;
-            outcome_ = input.readInt64();
-            break;
-          }
-          case 72: {
             int rawValue = input.readEnum();
             org.jigsaw.payment.model.Account.Status value = org.jigsaw.payment.model.Account.Status.valueOf(rawValue);
             if (value == null) {
-              unknownFields.mergeVarintField(9, rawValue);
+              unknownFields.mergeVarintField(7, rawValue);
             } else {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000040;
               status_ = rawValue;
             }
             break;
           }
-          case 80: {
-            bitField0_ |= 0x00000200;
-            rank_ = input.readInt32();
+          case 64: {
+            bitField0_ |= 0x00000080;
+            version_ = input.readInt32();
             break;
           }
-          case 88: {
-            bitField0_ |= 0x00000400;
-            notice_ = input.readInt32();
+          case 80: {
+            bitField0_ |= 0x00000100;
+            ownerId_ = input.readInt64();
             break;
           }
           case 96: {
-            bitField0_ |= 0x00000800;
-            attr_ = input.readInt64();
-            break;
-          }
-          case 104: {
-            bitField0_ |= 0x00001000;
-            securityLevel_ = input.readInt32();
+            int rawValue = input.readEnum();
+            org.jigsaw.payment.model.AccountType value = org.jigsaw.payment.model.AccountType.valueOf(rawValue);
+            if (value == null) {
+              unknownFields.mergeVarintField(12, rawValue);
+            } else {
+              bitField0_ |= 0x00000200;
+              type_ = rawValue;
+            }
             break;
           }
           case 112: {
             int rawValue = input.readEnum();
-            org.jigsaw.payment.model.Account.Sandbox value = org.jigsaw.payment.model.Account.Sandbox.valueOf(rawValue);
+            org.jigsaw.payment.model.FeeUnit value = org.jigsaw.payment.model.FeeUnit.valueOf(rawValue);
             if (value == null) {
               unknownFields.mergeVarintField(14, rawValue);
             } else {
-              bitField0_ |= 0x00002000;
-              sandbox_ = rawValue;
+              bitField0_ |= 0x00000400;
+              feeUnit_ = rawValue;
             }
             break;
           }
-          case 122: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00004000;
-            version_ = bs;
+          case 120: {
+            bitField0_ |= 0x00000800;
+            balance_ = input.readInt64();
             break;
           }
           case 128: {
-            bitField0_ |= 0x00008000;
-            createTime_ = input.readInt64();
+            bitField0_ |= 0x00001000;
+            frozen_ = input.readInt64();
             break;
           }
           case 136: {
-            bitField0_ |= 0x00010000;
-            updateTime_ = input.readInt64();
+            bitField0_ |= 0x00002000;
+            income_ = input.readInt64();
             break;
           }
           case 144: {
+            bitField0_ |= 0x00004000;
+            outcome_ = input.readInt64();
+            break;
+          }
+          case 160: {
+            bitField0_ |= 0x00008000;
+            rank_ = input.readInt32();
+            break;
+          }
+          case 168: {
+            int rawValue = input.readEnum();
+            org.jigsaw.payment.model.Account.AccountNotification value = org.jigsaw.payment.model.Account.AccountNotification.valueOf(rawValue);
+            if (value == null) {
+              unknownFields.mergeVarintField(21, rawValue);
+            } else {
+              bitField0_ |= 0x00010000;
+              notification_ = rawValue;
+            }
+            break;
+          }
+          case 176: {
             bitField0_ |= 0x00020000;
-            thirdType_ = input.readInt32();
+            permissions_ = input.readUInt64();
             break;
           }
-          case 154: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00040000;
-            thirdAccount_ = bs;
+          case 184: {
+            int rawValue = input.readEnum();
+            org.jigsaw.payment.model.Account.RiskLevel value = org.jigsaw.payment.model.Account.RiskLevel.valueOf(rawValue);
+            if (value == null) {
+              unknownFields.mergeVarintField(23, rawValue);
+            } else {
+              bitField0_ |= 0x00040000;
+              riskLevel_ = rawValue;
+            }
             break;
           }
-          case 162: {
-            com.google.protobuf.ByteString bs = input.readBytes();
+          case 192: {
             bitField0_ |= 0x00080000;
-            trirdParam_ = bs;
+            sandbox_ = input.readBool();
+            break;
+          }
+          case 200: {
+            bitField0_ |= 0x00100000;
+            accountTitle_ = input.readInt64();
             break;
           }
         }
@@ -232,71 +243,79 @@ public  final class Account extends
   public enum Status
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
+     * <code>ACCOUNT_STATUS_UNKNOWN = 0;</code>
+     */
+    ACCOUNT_STATUS_UNKNOWN(0),
+    /**
      * <pre>
      *创建
      * </pre>
      *
-     * <code>INITIALIZED = 0;</code>
+     * <code>INITIALIZED = 1;</code>
      */
-    INITIALIZED(0),
+    INITIALIZED(1),
     /**
      * <pre>
      *激活
      * </pre>
      *
-     * <code>ACTIVATED = 1;</code>
+     * <code>ACTIVATED = 2;</code>
      */
-    ACTIVATED(1),
+    ACTIVATED(2),
     /**
      * <pre>
      *冻结
      * </pre>
      *
-     * <code>FROZEN = 2;</code>
+     * <code>FROZEN = 3;</code>
      */
-    FROZEN(2),
+    FROZEN(3),
     /**
      * <pre>
      *销毁
      * </pre>
      *
-     * <code>DESTROYED = 3;</code>
+     * <code>DESTROYED = 4;</code>
      */
-    DESTROYED(3),
+    DESTROYED(4),
     ;
 
     /**
+     * <code>ACCOUNT_STATUS_UNKNOWN = 0;</code>
+     */
+    public static final int ACCOUNT_STATUS_UNKNOWN_VALUE = 0;
+    /**
      * <pre>
      *创建
      * </pre>
      *
-     * <code>INITIALIZED = 0;</code>
+     * <code>INITIALIZED = 1;</code>
      */
-    public static final int INITIALIZED_VALUE = 0;
+    public static final int INITIALIZED_VALUE = 1;
     /**
      * <pre>
      *激活
      * </pre>
      *
-     * <code>ACTIVATED = 1;</code>
+     * <code>ACTIVATED = 2;</code>
      */
-    public static final int ACTIVATED_VALUE = 1;
+    public static final int ACTIVATED_VALUE = 2;
     /**
      * <pre>
      *冻结
      * </pre>
      *
-     * <code>FROZEN = 2;</code>
+     * <code>FROZEN = 3;</code>
      */
-    public static final int FROZEN_VALUE = 2;
+    public static final int FROZEN_VALUE = 3;
     /**
      * <pre>
      *销毁
      * </pre>
      *
-     * <code>DESTROYED = 3;</code>
+     * <code>DESTROYED = 4;</code>
      */
-    public static final int DESTROYED_VALUE = 3;
+    public static final int DESTROYED_VALUE = 4;
 
 
     public final int getNumber() {
@@ -313,10 +332,11 @@ public  final class Account extends
 
     public static Status forNumber(int value) {
       switch (value) {
-        case 0: return INITIALIZED;
-        case 1: return ACTIVATED;
-        case 2: return FROZEN;
-        case 3: return DESTROYED;
+        case 0: return ACCOUNT_STATUS_UNKNOWN;
+        case 1: return INITIALIZED;
+        case 2: return ACTIVATED;
+        case 3: return FROZEN;
+        case 4: return DESTROYED;
         default: return null;
       }
     }
@@ -368,47 +388,56 @@ public  final class Account extends
 
   /**
    * <pre>
-   *账户类型
+   **
+   * 账户变更的通知方式
    * </pre>
    *
-   * Protobuf enum {@code Account.Type}
+   * Protobuf enum {@code Account.AccountNotification}
    */
-  public enum Type
+  public enum AccountNotification
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <pre>
-     *零钱
-     * </pre>
-     *
-     * <code>TYPE_WALLET = 1;</code>
+     * <code>NOTIFICATION_NONE = 0;</code>
      */
-    TYPE_WALLET(1),
+    NOTIFICATION_NONE(0),
+    /**
+     * <code>EMAIL = 1;</code>
+     */
+    EMAIL(1),
+    /**
+     * <code>MOBILE = 2;</code>
+     */
+    MOBILE(2),
     /**
      * <pre>
-     *虚币
+     *1+2
      * </pre>
      *
-     * <code>TYPE_VC = 2;</code>
+     * <code>EMAIL_MOBILE = 3;</code>
      */
-    TYPE_VC(2),
+    EMAIL_MOBILE(3),
     ;
 
     /**
-     * <pre>
-     *零钱
-     * </pre>
-     *
-     * <code>TYPE_WALLET = 1;</code>
+     * <code>NOTIFICATION_NONE = 0;</code>
      */
-    public static final int TYPE_WALLET_VALUE = 1;
+    public static final int NOTIFICATION_NONE_VALUE = 0;
+    /**
+     * <code>EMAIL = 1;</code>
+     */
+    public static final int EMAIL_VALUE = 1;
+    /**
+     * <code>MOBILE = 2;</code>
+     */
+    public static final int MOBILE_VALUE = 2;
     /**
      * <pre>
-     *虚币
+     *1+2
      * </pre>
      *
-     * <code>TYPE_VC = 2;</code>
+     * <code>EMAIL_MOBILE = 3;</code>
      */
-    public static final int TYPE_VC_VALUE = 2;
+    public static final int EMAIL_MOBILE_VALUE = 3;
 
 
     public final int getNumber() {
@@ -419,27 +448,29 @@ public  final class Account extends
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static Type valueOf(int value) {
+    public static AccountNotification valueOf(int value) {
       return forNumber(value);
     }
 
-    public static Type forNumber(int value) {
+    public static AccountNotification forNumber(int value) {
       switch (value) {
-        case 1: return TYPE_WALLET;
-        case 2: return TYPE_VC;
+        case 0: return NOTIFICATION_NONE;
+        case 1: return EMAIL;
+        case 2: return MOBILE;
+        case 3: return EMAIL_MOBILE;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<Type>
+    public static com.google.protobuf.Internal.EnumLiteMap<AccountNotification>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        Type> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<Type>() {
-            public Type findValueByNumber(int number) {
-              return Type.forNumber(number);
+        AccountNotification> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<AccountNotification>() {
+            public AccountNotification findValueByNumber(int number) {
+              return AccountNotification.forNumber(number);
             }
           };
 
@@ -456,9 +487,9 @@ public  final class Account extends
       return org.jigsaw.payment.model.Account.getDescriptor().getEnumTypes().get(1);
     }
 
-    private static final Type[] VALUES = values();
+    private static final AccountNotification[] VALUES = values();
 
-    public static Type valueOf(
+    public static AccountNotification valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -469,40 +500,136 @@ public  final class Account extends
 
     private final int value;
 
-    private Type(int value) {
+    private AccountNotification(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:Account.Type)
+    // @@protoc_insertion_point(enum_scope:Account.AccountNotification)
   }
 
   /**
    * <pre>
-   *沙盒类型
+   *账户权限，以二进制方式表示在permissions字段中
    * </pre>
    *
-   * Protobuf enum {@code Account.Sandbox}
+   * Protobuf enum {@code Account.AccountPermission}
    */
-  public enum Sandbox
+  public enum AccountPermission
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>NO = 0;</code>
+     * <code>UNKNOWN_PERMISSION = 0;</code>
      */
-    NO(0),
+    UNKNOWN_PERMISSION(0),
     /**
-     * <code>YES = 1;</code>
+     * <code>BEAR_INTEREST = 1;</code>
      */
-    YES(1),
+    BEAR_INTEREST(1),
+    /**
+     * <code>ALLOW_DEPOSITE = 2;</code>
+     */
+    ALLOW_DEPOSITE(2),
+    /**
+     * <code>ALLOW_WITHDRAWAL = 4;</code>
+     */
+    ALLOW_WITHDRAWAL(4),
+    /**
+     * <code>ALLOW_OVERDRAFT = 8;</code>
+     */
+    ALLOW_OVERDRAFT(8),
+    /**
+     * <code>ALLOW_PAY = 16;</code>
+     */
+    ALLOW_PAY(16),
+    /**
+     * <code>ALLOW_TRANSFER_IN = 32;</code>
+     */
+    ALLOW_TRANSFER_IN(32),
+    /**
+     * <code>ALLOW_TRANSFER_OUT = 64;</code>
+     */
+    ALLOW_TRANSFER_OUT(64),
+    /**
+     * <code>ALLOW_IN = 128;</code>
+     */
+    ALLOW_IN(128),
+    /**
+     * <code>ALLOW_OUT = 256;</code>
+     */
+    ALLOW_OUT(256),
+    /**
+     * <code>IS_DELETED = 512;</code>
+     */
+    IS_DELETED(512),
+    /**
+     * <code>IS_PROTECTED = 1024;</code>
+     */
+    IS_PROTECTED(1024),
+    /**
+     * <code>IS_ACTIVATED = 2048;</code>
+     */
+    IS_ACTIVATED(2048),
+    /**
+     * <code>IS_FROZEN = 4096;</code>
+     */
+    IS_FROZEN(4096),
     ;
 
     /**
-     * <code>NO = 0;</code>
+     * <code>UNKNOWN_PERMISSION = 0;</code>
      */
-    public static final int NO_VALUE = 0;
+    public static final int UNKNOWN_PERMISSION_VALUE = 0;
     /**
-     * <code>YES = 1;</code>
+     * <code>BEAR_INTEREST = 1;</code>
      */
-    public static final int YES_VALUE = 1;
+    public static final int BEAR_INTEREST_VALUE = 1;
+    /**
+     * <code>ALLOW_DEPOSITE = 2;</code>
+     */
+    public static final int ALLOW_DEPOSITE_VALUE = 2;
+    /**
+     * <code>ALLOW_WITHDRAWAL = 4;</code>
+     */
+    public static final int ALLOW_WITHDRAWAL_VALUE = 4;
+    /**
+     * <code>ALLOW_OVERDRAFT = 8;</code>
+     */
+    public static final int ALLOW_OVERDRAFT_VALUE = 8;
+    /**
+     * <code>ALLOW_PAY = 16;</code>
+     */
+    public static final int ALLOW_PAY_VALUE = 16;
+    /**
+     * <code>ALLOW_TRANSFER_IN = 32;</code>
+     */
+    public static final int ALLOW_TRANSFER_IN_VALUE = 32;
+    /**
+     * <code>ALLOW_TRANSFER_OUT = 64;</code>
+     */
+    public static final int ALLOW_TRANSFER_OUT_VALUE = 64;
+    /**
+     * <code>ALLOW_IN = 128;</code>
+     */
+    public static final int ALLOW_IN_VALUE = 128;
+    /**
+     * <code>ALLOW_OUT = 256;</code>
+     */
+    public static final int ALLOW_OUT_VALUE = 256;
+    /**
+     * <code>IS_DELETED = 512;</code>
+     */
+    public static final int IS_DELETED_VALUE = 512;
+    /**
+     * <code>IS_PROTECTED = 1024;</code>
+     */
+    public static final int IS_PROTECTED_VALUE = 1024;
+    /**
+     * <code>IS_ACTIVATED = 2048;</code>
+     */
+    public static final int IS_ACTIVATED_VALUE = 2048;
+    /**
+     * <code>IS_FROZEN = 4096;</code>
+     */
+    public static final int IS_FROZEN_VALUE = 4096;
 
 
     public final int getNumber() {
@@ -513,27 +640,39 @@ public  final class Account extends
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static Sandbox valueOf(int value) {
+    public static AccountPermission valueOf(int value) {
       return forNumber(value);
     }
 
-    public static Sandbox forNumber(int value) {
+    public static AccountPermission forNumber(int value) {
       switch (value) {
-        case 0: return NO;
-        case 1: return YES;
+        case 0: return UNKNOWN_PERMISSION;
+        case 1: return BEAR_INTEREST;
+        case 2: return ALLOW_DEPOSITE;
+        case 4: return ALLOW_WITHDRAWAL;
+        case 8: return ALLOW_OVERDRAFT;
+        case 16: return ALLOW_PAY;
+        case 32: return ALLOW_TRANSFER_IN;
+        case 64: return ALLOW_TRANSFER_OUT;
+        case 128: return ALLOW_IN;
+        case 256: return ALLOW_OUT;
+        case 512: return IS_DELETED;
+        case 1024: return IS_PROTECTED;
+        case 2048: return IS_ACTIVATED;
+        case 4096: return IS_FROZEN;
         default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<Sandbox>
+    public static com.google.protobuf.Internal.EnumLiteMap<AccountPermission>
         internalGetValueMap() {
       return internalValueMap;
     }
     private static final com.google.protobuf.Internal.EnumLiteMap<
-        Sandbox> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<Sandbox>() {
-            public Sandbox findValueByNumber(int number) {
-              return Sandbox.forNumber(number);
+        AccountPermission> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<AccountPermission>() {
+            public AccountPermission findValueByNumber(int number) {
+              return AccountPermission.forNumber(number);
             }
           };
 
@@ -550,9 +689,9 @@ public  final class Account extends
       return org.jigsaw.payment.model.Account.getDescriptor().getEnumTypes().get(2);
     }
 
-    private static final Sandbox[] VALUES = values();
+    private static final AccountPermission[] VALUES = values();
 
-    public static Sandbox valueOf(
+    public static AccountPermission valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -563,35 +702,217 @@ public  final class Account extends
 
     private final int value;
 
-    private Sandbox(int value) {
+    private AccountPermission(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:Account.Sandbox)
+    // @@protoc_insertion_point(enum_scope:Account.AccountPermission)
+  }
+
+  /**
+   * <pre>
+   **
+   * 风险等级划分
+   * </pre>
+   *
+   * Protobuf enum {@code Account.RiskLevel}
+   */
+  public enum RiskLevel
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>RISK_LEVEL_UNKNOWN = 0;</code>
+     */
+    RISK_LEVEL_UNKNOWN(0),
+    /**
+     * <code>LOW = 1;</code>
+     */
+    LOW(1),
+    /**
+     * <code>MEDIAN = 2;</code>
+     */
+    MEDIAN(2),
+    /**
+     * <code>HIGH = 3;</code>
+     */
+    HIGH(3),
+    ;
+
+    /**
+     * <code>RISK_LEVEL_UNKNOWN = 0;</code>
+     */
+    public static final int RISK_LEVEL_UNKNOWN_VALUE = 0;
+    /**
+     * <code>LOW = 1;</code>
+     */
+    public static final int LOW_VALUE = 1;
+    /**
+     * <code>MEDIAN = 2;</code>
+     */
+    public static final int MEDIAN_VALUE = 2;
+    /**
+     * <code>HIGH = 3;</code>
+     */
+    public static final int HIGH_VALUE = 3;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static RiskLevel valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static RiskLevel forNumber(int value) {
+      switch (value) {
+        case 0: return RISK_LEVEL_UNKNOWN;
+        case 1: return LOW;
+        case 2: return MEDIAN;
+        case 3: return HIGH;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<RiskLevel>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        RiskLevel> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<RiskLevel>() {
+            public RiskLevel findValueByNumber(int number) {
+              return RiskLevel.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return org.jigsaw.payment.model.Account.getDescriptor().getEnumTypes().get(3);
+    }
+
+    private static final RiskLevel[] VALUES = values();
+
+    public static RiskLevel valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private RiskLevel(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:Account.RiskLevel)
   }
 
   private int bitField0_;
-  public static final int ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object id_;
+  public static final int KEY_FIELD_NUMBER = 1;
+  private long key_;
   /**
    * <pre>
-   * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+   *内部主键
    * </pre>
    *
-   * <code>optional string id = 1;</code>
+   * <code>optional int64 key = 1;</code>
    */
-  public boolean hasId() {
+  public boolean hasKey() {
     return ((bitField0_ & 0x00000001) == 0x00000001);
   }
   /**
    * <pre>
-   * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+   *内部主键
    * </pre>
    *
-   * <code>optional string id = 1;</code>
+   * <code>optional int64 key = 1;</code>
    */
-  public java.lang.String getId() {
-    java.lang.Object ref = id_;
+  public long getKey() {
+    return key_;
+  }
+
+  public static final int ID_FIELD_NUMBER = 2;
+  private long id_;
+  /**
+   * <pre>
+   *业务主键    	
+   * </pre>
+   *
+   * <code>optional int64 id = 2;</code>
+   */
+  public boolean hasId() {
+    return ((bitField0_ & 0x00000002) == 0x00000002);
+  }
+  /**
+   * <pre>
+   *业务主键    	
+   * </pre>
+   *
+   * <code>optional int64 id = 2;</code>
+   */
+  public long getId() {
+    return id_;
+  }
+
+  public static final int CREATE_TIME_FIELD_NUMBER = 3;
+  private long createTime_;
+  /**
+   * <pre>
+   *创建时间
+   * </pre>
+   *
+   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+   */
+  public boolean hasCreateTime() {
+    return ((bitField0_ & 0x00000004) == 0x00000004);
+  }
+  /**
+   * <pre>
+   *创建时间
+   * </pre>
+   *
+   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+   */
+  public long getCreateTime() {
+    return createTime_;
+  }
+
+  public static final int CREATE_USER_FIELD_NUMBER = 4;
+  private volatile java.lang.Object createUser_;
+  /**
+   * <pre>
+   *创建用户姓名
+   * </pre>
+   *
+   * <code>optional string create_user = 4;</code>
+   */
+  public boolean hasCreateUser() {
+    return ((bitField0_ & 0x00000008) == 0x00000008);
+  }
+  /**
+   * <pre>
+   *创建用户姓名
+   * </pre>
+   *
+   * <code>optional string create_user = 4;</code>
+   */
+  public java.lang.String getCreateUser() {
+    java.lang.Object ref = createUser_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
@@ -599,564 +920,457 @@ public  final class Account extends
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (bs.isValidUtf8()) {
-        id_ = s;
+        createUser_ = s;
       }
       return s;
     }
   }
   /**
    * <pre>
-   * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+   *创建用户姓名
    * </pre>
    *
-   * <code>optional string id = 1;</code>
+   * <code>optional string create_user = 4;</code>
    */
   public com.google.protobuf.ByteString
-      getIdBytes() {
-    java.lang.Object ref = id_;
+      getCreateUserBytes() {
+    java.lang.Object ref = createUser_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      id_ = b;
+      createUser_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int USER_ID_FIELD_NUMBER = 2;
-  private long userId_;
+  public static final int UPDATE_TIME_FIELD_NUMBER = 5;
+  private long updateTime_;
   /**
    * <pre>
-   * 用户ID
+   *更新时间
    * </pre>
    *
-   * <code>optional int64 user_id = 2;</code>
+   * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
    */
-  public boolean hasUserId() {
-    return ((bitField0_ & 0x00000002) == 0x00000002);
-  }
-  /**
-   * <pre>
-   * 用户ID
-   * </pre>
-   *
-   * <code>optional int64 user_id = 2;</code>
-   */
-  public long getUserId() {
-    return userId_;
-  }
-
-  public static final int TYPE_FIELD_NUMBER = 3;
-  private int type_;
-  /**
-   * <pre>
-   * 账户类型：1：奇豆；2：奇点；3：零钱。同一用户同一类型只允许开一个账户
-   * </pre>
-   *
-   * <code>optional .Account.Type type = 3;</code>
-   */
-  public boolean hasType() {
-    return ((bitField0_ & 0x00000004) == 0x00000004);
-  }
-  /**
-   * <pre>
-   * 账户类型：1：奇豆；2：奇点；3：零钱。同一用户同一类型只允许开一个账户
-   * </pre>
-   *
-   * <code>optional .Account.Type type = 3;</code>
-   */
-  public org.jigsaw.payment.model.Account.Type getType() {
-    org.jigsaw.payment.model.Account.Type result = org.jigsaw.payment.model.Account.Type.valueOf(type_);
-    return result == null ? org.jigsaw.payment.model.Account.Type.TYPE_WALLET : result;
-  }
-
-  public static final int FEE_UNIT_FIELD_NUMBER = 4;
-  private int feeUnit_;
-  /**
-   * <pre>
-   * 货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币
-   * </pre>
-   *
-   * <code>optional .FeeUnit fee_unit = 4;</code>
-   */
-  public boolean hasFeeUnit() {
-    return ((bitField0_ & 0x00000008) == 0x00000008);
-  }
-  /**
-   * <pre>
-   * 货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币
-   * </pre>
-   *
-   * <code>optional .FeeUnit fee_unit = 4;</code>
-   */
-  public org.jigsaw.payment.model.FeeUnit getFeeUnit() {
-    org.jigsaw.payment.model.FeeUnit result = org.jigsaw.payment.model.FeeUnit.valueOf(feeUnit_);
-    return result == null ? org.jigsaw.payment.model.FeeUnit.CNY : result;
-  }
-
-  public static final int BALANCE_FIELD_NUMBER = 5;
-  private long balance_;
-  /**
-   * <pre>
-   * 余额
-   * </pre>
-   *
-   * <code>optional int64 balance = 5;</code>
-   */
-  public boolean hasBalance() {
+  public boolean hasUpdateTime() {
     return ((bitField0_ & 0x00000010) == 0x00000010);
   }
   /**
    * <pre>
-   * 余额
+   *更新时间
    * </pre>
    *
-   * <code>optional int64 balance = 5;</code>
+   * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
    */
-  public long getBalance() {
-    return balance_;
+  public long getUpdateTime() {
+    return updateTime_;
   }
 
-  public static final int FROZEN_FIELD_NUMBER = 6;
-  private long frozen_;
+  public static final int UPDATE_USER_FIELD_NUMBER = 6;
+  private volatile java.lang.Object updateUser_;
   /**
    * <pre>
-   * 冻结金额
+   *更新用户姓名
    * </pre>
    *
-   * <code>optional int64 frozen = 6;</code>
+   * <code>optional string update_user = 6;</code>
    */
-  public boolean hasFrozen() {
+  public boolean hasUpdateUser() {
     return ((bitField0_ & 0x00000020) == 0x00000020);
   }
   /**
    * <pre>
-   * 冻结金额
+   *更新用户姓名
    * </pre>
    *
-   * <code>optional int64 frozen = 6;</code>
+   * <code>optional string update_user = 6;</code>
    */
-  public long getFrozen() {
-    return frozen_;
+  public java.lang.String getUpdateUser() {
+    java.lang.Object ref = updateUser_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (bs.isValidUtf8()) {
+        updateUser_ = s;
+      }
+      return s;
+    }
   }
-
-  public static final int INCOME_FIELD_NUMBER = 7;
-  private long income_;
   /**
    * <pre>
-   * 入账总额
+   *更新用户姓名
    * </pre>
    *
-   * <code>optional int64 income = 7;</code>
+   * <code>optional string update_user = 6;</code>
    */
-  public boolean hasIncome() {
+  public com.google.protobuf.ByteString
+      getUpdateUserBytes() {
+    java.lang.Object ref = updateUser_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      updateUser_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STATUS_FIELD_NUMBER = 7;
+  private int status_;
+  /**
+   * <pre>
+   *状态：1有效 0无效
+   * </pre>
+   *
+   * <code>optional .Account.Status status = 7 [default = INITIALIZED];</code>
+   */
+  public boolean hasStatus() {
     return ((bitField0_ & 0x00000040) == 0x00000040);
   }
   /**
    * <pre>
-   * 入账总额
+   *状态：1有效 0无效
    * </pre>
    *
-   * <code>optional int64 income = 7;</code>
-   */
-  public long getIncome() {
-    return income_;
-  }
-
-  public static final int OUTCOME_FIELD_NUMBER = 8;
-  private long outcome_;
-  /**
-   * <pre>
-   * 出账总额
-   * </pre>
-   *
-   * <code>optional int64 outcome = 8;</code>
-   */
-  public boolean hasOutcome() {
-    return ((bitField0_ & 0x00000080) == 0x00000080);
-  }
-  /**
-   * <pre>
-   * 出账总额
-   * </pre>
-   *
-   * <code>optional int64 outcome = 8;</code>
-   */
-  public long getOutcome() {
-    return outcome_;
-  }
-
-  public static final int STATUS_FIELD_NUMBER = 9;
-  private int status_;
-  /**
-   * <pre>
-   * 状态：0：创建；1、激活；2：冻结；3：销毁
-   * </pre>
-   *
-   * <code>optional .Account.Status status = 9;</code>
-   */
-  public boolean hasStatus() {
-    return ((bitField0_ & 0x00000100) == 0x00000100);
-  }
-  /**
-   * <pre>
-   * 状态：0：创建；1、激活；2：冻结；3：销毁
-   * </pre>
-   *
-   * <code>optional .Account.Status status = 9;</code>
+   * <code>optional .Account.Status status = 7 [default = INITIALIZED];</code>
    */
   public org.jigsaw.payment.model.Account.Status getStatus() {
     org.jigsaw.payment.model.Account.Status result = org.jigsaw.payment.model.Account.Status.valueOf(status_);
     return result == null ? org.jigsaw.payment.model.Account.Status.INITIALIZED : result;
   }
 
-  public static final int RANK_FIELD_NUMBER = 10;
-  private int rank_;
+  public static final int VERSION_FIELD_NUMBER = 8;
+  private int version_;
   /**
    * <pre>
-   * 账户等级
+   *版本号
    * </pre>
    *
-   * <code>optional int32 rank = 10;</code>
+   * <code>optional int32 version = 8 [default = 0];</code>
    */
-  public boolean hasRank() {
+  public boolean hasVersion() {
+    return ((bitField0_ & 0x00000080) == 0x00000080);
+  }
+  /**
+   * <pre>
+   *版本号
+   * </pre>
+   *
+   * <code>optional int32 version = 8 [default = 0];</code>
+   */
+  public int getVersion() {
+    return version_;
+  }
+
+  public static final int OWNER_ID_FIELD_NUMBER = 10;
+  private long ownerId_;
+  /**
+   * <pre>
+   * 所有者的id
+   * </pre>
+   *
+   * <code>optional int64 owner_id = 10;</code>
+   */
+  public boolean hasOwnerId() {
+    return ((bitField0_ & 0x00000100) == 0x00000100);
+  }
+  /**
+   * <pre>
+   * 所有者的id
+   * </pre>
+   *
+   * <code>optional int64 owner_id = 10;</code>
+   */
+  public long getOwnerId() {
+    return ownerId_;
+  }
+
+  public static final int TYPE_FIELD_NUMBER = 12;
+  private int type_;
+  /**
+   * <pre>
+   *账户类型
+   * </pre>
+   *
+   * <code>optional .AccountType type = 12 [default = FOR_PERSONAL];</code>
+   */
+  public boolean hasType() {
     return ((bitField0_ & 0x00000200) == 0x00000200);
   }
   /**
    * <pre>
-   * 账户等级
+   *账户类型
    * </pre>
    *
-   * <code>optional int32 rank = 10;</code>
+   * <code>optional .AccountType type = 12 [default = FOR_PERSONAL];</code>
+   */
+  public org.jigsaw.payment.model.AccountType getType() {
+    org.jigsaw.payment.model.AccountType result = org.jigsaw.payment.model.AccountType.valueOf(type_);
+    return result == null ? org.jigsaw.payment.model.AccountType.FOR_PERSONAL : result;
+  }
+
+  public static final int FEE_UNIT_FIELD_NUMBER = 14;
+  private int feeUnit_;
+  /**
+   * <pre>
+   * 货币类型
+   * </pre>
+   *
+   * <code>optional .FeeUnit fee_unit = 14;</code>
+   */
+  public boolean hasFeeUnit() {
+    return ((bitField0_ & 0x00000400) == 0x00000400);
+  }
+  /**
+   * <pre>
+   * 货币类型
+   * </pre>
+   *
+   * <code>optional .FeeUnit fee_unit = 14;</code>
+   */
+  public org.jigsaw.payment.model.FeeUnit getFeeUnit() {
+    org.jigsaw.payment.model.FeeUnit result = org.jigsaw.payment.model.FeeUnit.valueOf(feeUnit_);
+    return result == null ? org.jigsaw.payment.model.FeeUnit.UNKNOWN_FEE_UNIT : result;
+  }
+
+  public static final int BALANCE_FIELD_NUMBER = 15;
+  private long balance_;
+  /**
+   * <pre>
+   * 余额
+   * </pre>
+   *
+   * <code>optional int64 balance = 15;</code>
+   */
+  public boolean hasBalance() {
+    return ((bitField0_ & 0x00000800) == 0x00000800);
+  }
+  /**
+   * <pre>
+   * 余额
+   * </pre>
+   *
+   * <code>optional int64 balance = 15;</code>
+   */
+  public long getBalance() {
+    return balance_;
+  }
+
+  public static final int FROZEN_FIELD_NUMBER = 16;
+  private long frozen_;
+  /**
+   * <pre>
+   * 冻结金额
+   * </pre>
+   *
+   * <code>optional int64 frozen = 16;</code>
+   */
+  public boolean hasFrozen() {
+    return ((bitField0_ & 0x00001000) == 0x00001000);
+  }
+  /**
+   * <pre>
+   * 冻结金额
+   * </pre>
+   *
+   * <code>optional int64 frozen = 16;</code>
+   */
+  public long getFrozen() {
+    return frozen_;
+  }
+
+  public static final int INCOME_FIELD_NUMBER = 17;
+  private long income_;
+  /**
+   * <pre>
+   * 入账总额
+   * </pre>
+   *
+   * <code>optional int64 income = 17;</code>
+   */
+  public boolean hasIncome() {
+    return ((bitField0_ & 0x00002000) == 0x00002000);
+  }
+  /**
+   * <pre>
+   * 入账总额
+   * </pre>
+   *
+   * <code>optional int64 income = 17;</code>
+   */
+  public long getIncome() {
+    return income_;
+  }
+
+  public static final int OUTCOME_FIELD_NUMBER = 18;
+  private long outcome_;
+  /**
+   * <pre>
+   * 出账总额
+   * </pre>
+   *
+   * <code>optional int64 outcome = 18;</code>
+   */
+  public boolean hasOutcome() {
+    return ((bitField0_ & 0x00004000) == 0x00004000);
+  }
+  /**
+   * <pre>
+   * 出账总额
+   * </pre>
+   *
+   * <code>optional int64 outcome = 18;</code>
+   */
+  public long getOutcome() {
+    return outcome_;
+  }
+
+  public static final int RANK_FIELD_NUMBER = 20;
+  private int rank_;
+  /**
+   * <pre>
+   * 账户等级，按照权限根据公司的业务来设置。
+   * </pre>
+   *
+   * <code>optional int32 rank = 20;</code>
+   */
+  public boolean hasRank() {
+    return ((bitField0_ & 0x00008000) == 0x00008000);
+  }
+  /**
+   * <pre>
+   * 账户等级，按照权限根据公司的业务来设置。
+   * </pre>
+   *
+   * <code>optional int32 rank = 20;</code>
    */
   public int getRank() {
     return rank_;
   }
 
-  public static final int NOTICE_FIELD_NUMBER = 11;
-  private int notice_;
+  public static final int NOTIFICATION_FIELD_NUMBER = 21;
+  private int notification_;
   /**
    * <pre>
-   * 通知方式：mobile(1)+email(1)
+   * 通知方式：
    * </pre>
    *
-   * <code>optional int32 notice = 11;</code>
+   * <code>optional .Account.AccountNotification notification = 21;</code>
    */
-  public boolean hasNotice() {
-    return ((bitField0_ & 0x00000400) == 0x00000400);
-  }
-  /**
-   * <pre>
-   * 通知方式：mobile(1)+email(1)
-   * </pre>
-   *
-   * <code>optional int32 notice = 11;</code>
-   */
-  public int getNotice() {
-    return notice_;
-  }
-
-  public static final int ATTR_FIELD_NUMBER = 12;
-  private long attr_;
-  /**
-   * <pre>
-   * 账户属性，可以bit位扩展
-   * </pre>
-   *
-   * <code>optional int64 attr = 12;</code>
-   */
-  public boolean hasAttr() {
-    return ((bitField0_ & 0x00000800) == 0x00000800);
-  }
-  /**
-   * <pre>
-   * 账户属性，可以bit位扩展
-   * </pre>
-   *
-   * <code>optional int64 attr = 12;</code>
-   */
-  public long getAttr() {
-    return attr_;
-  }
-
-  public static final int SECURITY_LEVEL_FIELD_NUMBER = 13;
-  private int securityLevel_;
-  /**
-   * <pre>
-   * 安全等级
-   * </pre>
-   *
-   * <code>optional int32 security_level = 13;</code>
-   */
-  public boolean hasSecurityLevel() {
-    return ((bitField0_ & 0x00001000) == 0x00001000);
-  }
-  /**
-   * <pre>
-   * 安全等级
-   * </pre>
-   *
-   * <code>optional int32 security_level = 13;</code>
-   */
-  public int getSecurityLevel() {
-    return securityLevel_;
-  }
-
-  public static final int SANDBOX_FIELD_NUMBER = 14;
-  private int sandbox_;
-  /**
-   * <pre>
-   * 沙盒账户：0：否；1：是
-   * </pre>
-   *
-   * <code>optional .Account.Sandbox sandbox = 14;</code>
-   */
-  public boolean hasSandbox() {
-    return ((bitField0_ & 0x00002000) == 0x00002000);
-  }
-  /**
-   * <pre>
-   * 沙盒账户：0：否；1：是
-   * </pre>
-   *
-   * <code>optional .Account.Sandbox sandbox = 14;</code>
-   */
-  public org.jigsaw.payment.model.Account.Sandbox getSandbox() {
-    org.jigsaw.payment.model.Account.Sandbox result = org.jigsaw.payment.model.Account.Sandbox.valueOf(sandbox_);
-    return result == null ? org.jigsaw.payment.model.Account.Sandbox.NO : result;
-  }
-
-  public static final int VERSION_FIELD_NUMBER = 15;
-  private volatile java.lang.Object version_;
-  /**
-   * <pre>
-   * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
-   * </pre>
-   *
-   * <code>optional string version = 15;</code>
-   */
-  public boolean hasVersion() {
-    return ((bitField0_ & 0x00004000) == 0x00004000);
-  }
-  /**
-   * <pre>
-   * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
-   * </pre>
-   *
-   * <code>optional string version = 15;</code>
-   */
-  public java.lang.String getVersion() {
-    java.lang.Object ref = version_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      if (bs.isValidUtf8()) {
-        version_ = s;
-      }
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
-   * </pre>
-   *
-   * <code>optional string version = 15;</code>
-   */
-  public com.google.protobuf.ByteString
-      getVersionBytes() {
-    java.lang.Object ref = version_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      version_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CREATE_TIME_FIELD_NUMBER = 16;
-  private long createTime_;
-  /**
-   * <pre>
-   * 创建时间
-   * </pre>
-   *
-   * <code>optional int64 create_time = 16 [(.column_option) = { ... }</code>
-   */
-  public boolean hasCreateTime() {
-    return ((bitField0_ & 0x00008000) == 0x00008000);
-  }
-  /**
-   * <pre>
-   * 创建时间
-   * </pre>
-   *
-   * <code>optional int64 create_time = 16 [(.column_option) = { ... }</code>
-   */
-  public long getCreateTime() {
-    return createTime_;
-  }
-
-  public static final int UPDATE_TIME_FIELD_NUMBER = 17;
-  private long updateTime_;
-  /**
-   * <pre>
-   * 更新时间
-   * </pre>
-   *
-   * <code>optional int64 update_time = 17 [(.column_option) = { ... }</code>
-   */
-  public boolean hasUpdateTime() {
+  public boolean hasNotification() {
     return ((bitField0_ & 0x00010000) == 0x00010000);
   }
   /**
    * <pre>
-   * 更新时间
+   * 通知方式：
    * </pre>
    *
-   * <code>optional int64 update_time = 17 [(.column_option) = { ... }</code>
+   * <code>optional .Account.AccountNotification notification = 21;</code>
    */
-  public long getUpdateTime() {
-    return updateTime_;
+  public org.jigsaw.payment.model.Account.AccountNotification getNotification() {
+    org.jigsaw.payment.model.Account.AccountNotification result = org.jigsaw.payment.model.Account.AccountNotification.valueOf(notification_);
+    return result == null ? org.jigsaw.payment.model.Account.AccountNotification.NOTIFICATION_NONE : result;
   }
 
-  public static final int THIRD_TYPE_FIELD_NUMBER = 18;
-  private int thirdType_;
+  public static final int PERMISSIONS_FIELD_NUMBER = 22;
+  private long permissions_;
   /**
    * <pre>
-   *第三方渠道ID，pay_partner表维护
+   * 账户属性，可以bit位扩展
    * </pre>
    *
-   * <code>optional int32 third_type = 18;</code>
+   * <code>optional uint64 permissions = 22;</code>
    */
-  public boolean hasThirdType() {
+  public boolean hasPermissions() {
     return ((bitField0_ & 0x00020000) == 0x00020000);
   }
   /**
    * <pre>
-   *第三方渠道ID，pay_partner表维护
+   * 账户属性，可以bit位扩展
    * </pre>
    *
-   * <code>optional int32 third_type = 18;</code>
+   * <code>optional uint64 permissions = 22;</code>
    */
-  public int getThirdType() {
-    return thirdType_;
+  public long getPermissions() {
+    return permissions_;
   }
 
-  public static final int THIRD_ACCOUNT_FIELD_NUMBER = 19;
-  private volatile java.lang.Object thirdAccount_;
+  public static final int RISK_LEVEL_FIELD_NUMBER = 23;
+  private int riskLevel_;
   /**
    * <pre>
-   * 第三方的用户账户
+   * 安全等级
    * </pre>
    *
-   * <code>optional string third_account = 19;</code>
+   * <code>optional .Account.RiskLevel risk_level = 23;</code>
    */
-  public boolean hasThirdAccount() {
+  public boolean hasRiskLevel() {
     return ((bitField0_ & 0x00040000) == 0x00040000);
   }
   /**
    * <pre>
-   * 第三方的用户账户
+   * 安全等级
    * </pre>
    *
-   * <code>optional string third_account = 19;</code>
+   * <code>optional .Account.RiskLevel risk_level = 23;</code>
    */
-  public java.lang.String getThirdAccount() {
-    java.lang.Object ref = thirdAccount_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      if (bs.isValidUtf8()) {
-        thirdAccount_ = s;
-      }
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   * 第三方的用户账户
-   * </pre>
-   *
-   * <code>optional string third_account = 19;</code>
-   */
-  public com.google.protobuf.ByteString
-      getThirdAccountBytes() {
-    java.lang.Object ref = thirdAccount_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      thirdAccount_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public org.jigsaw.payment.model.Account.RiskLevel getRiskLevel() {
+    org.jigsaw.payment.model.Account.RiskLevel result = org.jigsaw.payment.model.Account.RiskLevel.valueOf(riskLevel_);
+    return result == null ? org.jigsaw.payment.model.Account.RiskLevel.RISK_LEVEL_UNKNOWN : result;
   }
 
-  public static final int TRIRD_PARAM_FIELD_NUMBER = 20;
-  private volatile java.lang.Object trirdParam_;
+  public static final int SANDBOX_FIELD_NUMBER = 24;
+  private boolean sandbox_;
   /**
    * <pre>
-   * 第三方凭证信息，通用字段，每个渠道区别维护
+   *是否沙盒账户
    * </pre>
    *
-   * <code>optional string trird_param = 20;</code>
+   * <code>optional bool sandbox = 24 [default = false];</code>
    */
-  public boolean hasTrirdParam() {
+  public boolean hasSandbox() {
     return ((bitField0_ & 0x00080000) == 0x00080000);
   }
   /**
    * <pre>
-   * 第三方凭证信息，通用字段，每个渠道区别维护
+   *是否沙盒账户
    * </pre>
    *
-   * <code>optional string trird_param = 20;</code>
+   * <code>optional bool sandbox = 24 [default = false];</code>
    */
-  public java.lang.String getTrirdParam() {
-    java.lang.Object ref = trirdParam_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      if (bs.isValidUtf8()) {
-        trirdParam_ = s;
-      }
-      return s;
-    }
+  public boolean getSandbox() {
+    return sandbox_;
+  }
+
+  public static final int ACCOUNT_TITLE_FIELD_NUMBER = 25;
+  private long accountTitle_;
+  /**
+   * <pre>
+   *会计科目
+   * </pre>
+   *
+   * <code>optional int64 account_title = 25 [default = 2203001];</code>
+   */
+  public boolean hasAccountTitle() {
+    return ((bitField0_ & 0x00100000) == 0x00100000);
   }
   /**
    * <pre>
-   * 第三方凭证信息，通用字段，每个渠道区别维护
+   *会计科目
    * </pre>
    *
-   * <code>optional string trird_param = 20;</code>
+   * <code>optional int64 account_title = 25 [default = 2203001];</code>
    */
-  public com.google.protobuf.ByteString
-      getTrirdParamBytes() {
-    java.lang.Object ref = trirdParam_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      trirdParam_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public long getAccountTitle() {
+    return accountTitle_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -1172,64 +1386,67 @@ public  final class Account extends
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      output.writeInt64(1, key_);
     }
     if (((bitField0_ & 0x00000002) == 0x00000002)) {
-      output.writeInt64(2, userId_);
+      output.writeInt64(2, id_);
     }
     if (((bitField0_ & 0x00000004) == 0x00000004)) {
-      output.writeEnum(3, type_);
+      output.writeInt64(3, createTime_);
     }
     if (((bitField0_ & 0x00000008) == 0x00000008)) {
-      output.writeEnum(4, feeUnit_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, createUser_);
     }
     if (((bitField0_ & 0x00000010) == 0x00000010)) {
-      output.writeInt64(5, balance_);
+      output.writeInt64(5, updateTime_);
     }
     if (((bitField0_ & 0x00000020) == 0x00000020)) {
-      output.writeInt64(6, frozen_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, updateUser_);
     }
     if (((bitField0_ & 0x00000040) == 0x00000040)) {
-      output.writeInt64(7, income_);
+      output.writeEnum(7, status_);
     }
     if (((bitField0_ & 0x00000080) == 0x00000080)) {
-      output.writeInt64(8, outcome_);
+      output.writeInt32(8, version_);
     }
     if (((bitField0_ & 0x00000100) == 0x00000100)) {
-      output.writeEnum(9, status_);
+      output.writeInt64(10, ownerId_);
     }
     if (((bitField0_ & 0x00000200) == 0x00000200)) {
-      output.writeInt32(10, rank_);
+      output.writeEnum(12, type_);
     }
     if (((bitField0_ & 0x00000400) == 0x00000400)) {
-      output.writeInt32(11, notice_);
+      output.writeEnum(14, feeUnit_);
     }
     if (((bitField0_ & 0x00000800) == 0x00000800)) {
-      output.writeInt64(12, attr_);
+      output.writeInt64(15, balance_);
     }
     if (((bitField0_ & 0x00001000) == 0x00001000)) {
-      output.writeInt32(13, securityLevel_);
+      output.writeInt64(16, frozen_);
     }
     if (((bitField0_ & 0x00002000) == 0x00002000)) {
-      output.writeEnum(14, sandbox_);
+      output.writeInt64(17, income_);
     }
     if (((bitField0_ & 0x00004000) == 0x00004000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 15, version_);
+      output.writeInt64(18, outcome_);
     }
     if (((bitField0_ & 0x00008000) == 0x00008000)) {
-      output.writeInt64(16, createTime_);
+      output.writeInt32(20, rank_);
     }
     if (((bitField0_ & 0x00010000) == 0x00010000)) {
-      output.writeInt64(17, updateTime_);
+      output.writeEnum(21, notification_);
     }
     if (((bitField0_ & 0x00020000) == 0x00020000)) {
-      output.writeInt32(18, thirdType_);
+      output.writeUInt64(22, permissions_);
     }
     if (((bitField0_ & 0x00040000) == 0x00040000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 19, thirdAccount_);
+      output.writeEnum(23, riskLevel_);
     }
     if (((bitField0_ & 0x00080000) == 0x00080000)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 20, trirdParam_);
+      output.writeBool(24, sandbox_);
+    }
+    if (((bitField0_ & 0x00100000) == 0x00100000)) {
+      output.writeInt64(25, accountTitle_);
     }
     unknownFields.writeTo(output);
   }
@@ -1240,87 +1457,92 @@ public  final class Account extends
 
     size = 0;
     if (((bitField0_ & 0x00000001) == 0x00000001)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(1, key_);
     }
     if (((bitField0_ & 0x00000002) == 0x00000002)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, userId_);
+        .computeInt64Size(2, id_);
     }
     if (((bitField0_ & 0x00000004) == 0x00000004)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(3, type_);
+        .computeInt64Size(3, createTime_);
     }
     if (((bitField0_ & 0x00000008) == 0x00000008)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(4, feeUnit_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, createUser_);
     }
     if (((bitField0_ & 0x00000010) == 0x00000010)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(5, balance_);
+        .computeInt64Size(5, updateTime_);
     }
     if (((bitField0_ & 0x00000020) == 0x00000020)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(6, frozen_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, updateUser_);
     }
     if (((bitField0_ & 0x00000040) == 0x00000040)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(7, income_);
+        .computeEnumSize(7, status_);
     }
     if (((bitField0_ & 0x00000080) == 0x00000080)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(8, outcome_);
+        .computeInt32Size(8, version_);
     }
     if (((bitField0_ & 0x00000100) == 0x00000100)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(9, status_);
+        .computeInt64Size(10, ownerId_);
     }
     if (((bitField0_ & 0x00000200) == 0x00000200)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(10, rank_);
+        .computeEnumSize(12, type_);
     }
     if (((bitField0_ & 0x00000400) == 0x00000400)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(11, notice_);
+        .computeEnumSize(14, feeUnit_);
     }
     if (((bitField0_ & 0x00000800) == 0x00000800)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(12, attr_);
+        .computeInt64Size(15, balance_);
     }
     if (((bitField0_ & 0x00001000) == 0x00001000)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(13, securityLevel_);
+        .computeInt64Size(16, frozen_);
     }
     if (((bitField0_ & 0x00002000) == 0x00002000)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(14, sandbox_);
+        .computeInt64Size(17, income_);
     }
     if (((bitField0_ & 0x00004000) == 0x00004000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, version_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(18, outcome_);
     }
     if (((bitField0_ & 0x00008000) == 0x00008000)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(16, createTime_);
+        .computeInt32Size(20, rank_);
     }
     if (((bitField0_ & 0x00010000) == 0x00010000)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(17, updateTime_);
+        .computeEnumSize(21, notification_);
     }
     if (((bitField0_ & 0x00020000) == 0x00020000)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(18, thirdType_);
+        .computeUInt64Size(22, permissions_);
     }
     if (((bitField0_ & 0x00040000) == 0x00040000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(19, thirdAccount_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(23, riskLevel_);
     }
     if (((bitField0_ & 0x00080000) == 0x00080000)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, trirdParam_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(24, sandbox_);
+    }
+    if (((bitField0_ & 0x00100000) == 0x00100000)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(25, accountTitle_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
 
-  private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
@@ -1332,15 +1554,49 @@ public  final class Account extends
     org.jigsaw.payment.model.Account other = (org.jigsaw.payment.model.Account) obj;
 
     boolean result = true;
+    result = result && (hasKey() == other.hasKey());
+    if (hasKey()) {
+      result = result && (getKey()
+          == other.getKey());
+    }
     result = result && (hasId() == other.hasId());
     if (hasId()) {
-      result = result && getId()
-          .equals(other.getId());
+      result = result && (getId()
+          == other.getId());
     }
-    result = result && (hasUserId() == other.hasUserId());
-    if (hasUserId()) {
-      result = result && (getUserId()
-          == other.getUserId());
+    result = result && (hasCreateTime() == other.hasCreateTime());
+    if (hasCreateTime()) {
+      result = result && (getCreateTime()
+          == other.getCreateTime());
+    }
+    result = result && (hasCreateUser() == other.hasCreateUser());
+    if (hasCreateUser()) {
+      result = result && getCreateUser()
+          .equals(other.getCreateUser());
+    }
+    result = result && (hasUpdateTime() == other.hasUpdateTime());
+    if (hasUpdateTime()) {
+      result = result && (getUpdateTime()
+          == other.getUpdateTime());
+    }
+    result = result && (hasUpdateUser() == other.hasUpdateUser());
+    if (hasUpdateUser()) {
+      result = result && getUpdateUser()
+          .equals(other.getUpdateUser());
+    }
+    result = result && (hasStatus() == other.hasStatus());
+    if (hasStatus()) {
+      result = result && status_ == other.status_;
+    }
+    result = result && (hasVersion() == other.hasVersion());
+    if (hasVersion()) {
+      result = result && (getVersion()
+          == other.getVersion());
+    }
+    result = result && (hasOwnerId() == other.hasOwnerId());
+    if (hasOwnerId()) {
+      result = result && (getOwnerId()
+          == other.getOwnerId());
     }
     result = result && (hasType() == other.hasType());
     if (hasType()) {
@@ -1370,63 +1626,33 @@ public  final class Account extends
       result = result && (getOutcome()
           == other.getOutcome());
     }
-    result = result && (hasStatus() == other.hasStatus());
-    if (hasStatus()) {
-      result = result && status_ == other.status_;
-    }
     result = result && (hasRank() == other.hasRank());
     if (hasRank()) {
       result = result && (getRank()
           == other.getRank());
     }
-    result = result && (hasNotice() == other.hasNotice());
-    if (hasNotice()) {
-      result = result && (getNotice()
-          == other.getNotice());
+    result = result && (hasNotification() == other.hasNotification());
+    if (hasNotification()) {
+      result = result && notification_ == other.notification_;
     }
-    result = result && (hasAttr() == other.hasAttr());
-    if (hasAttr()) {
-      result = result && (getAttr()
-          == other.getAttr());
+    result = result && (hasPermissions() == other.hasPermissions());
+    if (hasPermissions()) {
+      result = result && (getPermissions()
+          == other.getPermissions());
     }
-    result = result && (hasSecurityLevel() == other.hasSecurityLevel());
-    if (hasSecurityLevel()) {
-      result = result && (getSecurityLevel()
-          == other.getSecurityLevel());
+    result = result && (hasRiskLevel() == other.hasRiskLevel());
+    if (hasRiskLevel()) {
+      result = result && riskLevel_ == other.riskLevel_;
     }
     result = result && (hasSandbox() == other.hasSandbox());
     if (hasSandbox()) {
-      result = result && sandbox_ == other.sandbox_;
+      result = result && (getSandbox()
+          == other.getSandbox());
     }
-    result = result && (hasVersion() == other.hasVersion());
-    if (hasVersion()) {
-      result = result && getVersion()
-          .equals(other.getVersion());
-    }
-    result = result && (hasCreateTime() == other.hasCreateTime());
-    if (hasCreateTime()) {
-      result = result && (getCreateTime()
-          == other.getCreateTime());
-    }
-    result = result && (hasUpdateTime() == other.hasUpdateTime());
-    if (hasUpdateTime()) {
-      result = result && (getUpdateTime()
-          == other.getUpdateTime());
-    }
-    result = result && (hasThirdType() == other.hasThirdType());
-    if (hasThirdType()) {
-      result = result && (getThirdType()
-          == other.getThirdType());
-    }
-    result = result && (hasThirdAccount() == other.hasThirdAccount());
-    if (hasThirdAccount()) {
-      result = result && getThirdAccount()
-          .equals(other.getThirdAccount());
-    }
-    result = result && (hasTrirdParam() == other.hasTrirdParam());
-    if (hasTrirdParam()) {
-      result = result && getTrirdParam()
-          .equals(other.getTrirdParam());
+    result = result && (hasAccountTitle() == other.hasAccountTitle());
+    if (hasAccountTitle()) {
+      result = result && (getAccountTitle()
+          == other.getAccountTitle());
     }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
@@ -1439,14 +1665,46 @@ public  final class Account extends
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    if (hasKey()) {
+      hash = (37 * hash) + KEY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getKey());
+    }
     if (hasId()) {
       hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId().hashCode();
-    }
-    if (hasUserId()) {
-      hash = (37 * hash) + USER_ID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getUserId());
+          getId());
+    }
+    if (hasCreateTime()) {
+      hash = (37 * hash) + CREATE_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getCreateTime());
+    }
+    if (hasCreateUser()) {
+      hash = (37 * hash) + CREATE_USER_FIELD_NUMBER;
+      hash = (53 * hash) + getCreateUser().hashCode();
+    }
+    if (hasUpdateTime()) {
+      hash = (37 * hash) + UPDATE_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUpdateTime());
+    }
+    if (hasUpdateUser()) {
+      hash = (37 * hash) + UPDATE_USER_FIELD_NUMBER;
+      hash = (53 * hash) + getUpdateUser().hashCode();
+    }
+    if (hasStatus()) {
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + status_;
+    }
+    if (hasVersion()) {
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion();
+    }
+    if (hasOwnerId()) {
+      hash = (37 * hash) + OWNER_ID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getOwnerId());
     }
     if (hasType()) {
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
@@ -1476,56 +1734,32 @@ public  final class Account extends
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getOutcome());
     }
-    if (hasStatus()) {
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
-    }
     if (hasRank()) {
       hash = (37 * hash) + RANK_FIELD_NUMBER;
       hash = (53 * hash) + getRank();
     }
-    if (hasNotice()) {
-      hash = (37 * hash) + NOTICE_FIELD_NUMBER;
-      hash = (53 * hash) + getNotice();
+    if (hasNotification()) {
+      hash = (37 * hash) + NOTIFICATION_FIELD_NUMBER;
+      hash = (53 * hash) + notification_;
     }
-    if (hasAttr()) {
-      hash = (37 * hash) + ATTR_FIELD_NUMBER;
+    if (hasPermissions()) {
+      hash = (37 * hash) + PERMISSIONS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getAttr());
+          getPermissions());
     }
-    if (hasSecurityLevel()) {
-      hash = (37 * hash) + SECURITY_LEVEL_FIELD_NUMBER;
-      hash = (53 * hash) + getSecurityLevel();
+    if (hasRiskLevel()) {
+      hash = (37 * hash) + RISK_LEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + riskLevel_;
     }
     if (hasSandbox()) {
       hash = (37 * hash) + SANDBOX_FIELD_NUMBER;
-      hash = (53 * hash) + sandbox_;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getSandbox());
     }
-    if (hasVersion()) {
-      hash = (37 * hash) + VERSION_FIELD_NUMBER;
-      hash = (53 * hash) + getVersion().hashCode();
-    }
-    if (hasCreateTime()) {
-      hash = (37 * hash) + CREATE_TIME_FIELD_NUMBER;
+    if (hasAccountTitle()) {
+      hash = (37 * hash) + ACCOUNT_TITLE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getCreateTime());
-    }
-    if (hasUpdateTime()) {
-      hash = (37 * hash) + UPDATE_TIME_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getUpdateTime());
-    }
-    if (hasThirdType()) {
-      hash = (37 * hash) + THIRD_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getThirdType();
-    }
-    if (hasThirdAccount()) {
-      hash = (37 * hash) + THIRD_ACCOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getThirdAccount().hashCode();
-    }
-    if (hasTrirdParam()) {
-      hash = (37 * hash) + TRIRD_PARAM_FIELD_NUMBER;
-      hash = (53 * hash) + getTrirdParam().hashCode();
+          getAccountTitle());
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -1623,7 +1857,7 @@ public  final class Account extends
   /**
    * <pre>
    **
-   * 账户
+   * 内部账户
    * </pre>
    *
    * Protobuf type {@code Account}
@@ -1661,46 +1895,48 @@ public  final class Account extends
     }
     public Builder clear() {
       super.clear();
-      id_ = "";
+      key_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
-      userId_ = 0L;
+      id_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000002);
-      type_ = 1;
-      bitField0_ = (bitField0_ & ~0x00000004);
-      feeUnit_ = 1;
-      bitField0_ = (bitField0_ & ~0x00000008);
-      balance_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00000010);
-      frozen_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00000020);
-      income_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00000040);
-      outcome_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00000080);
-      status_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000100);
-      rank_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000200);
-      notice_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000400);
-      attr_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00000800);
-      securityLevel_ = 0;
-      bitField0_ = (bitField0_ & ~0x00001000);
-      sandbox_ = 0;
-      bitField0_ = (bitField0_ & ~0x00002000);
-      version_ = "";
-      bitField0_ = (bitField0_ & ~0x00004000);
       createTime_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00008000);
+      bitField0_ = (bitField0_ & ~0x00000004);
+      createUser_ = "";
+      bitField0_ = (bitField0_ & ~0x00000008);
       updateTime_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00000010);
+      updateUser_ = "";
+      bitField0_ = (bitField0_ & ~0x00000020);
+      status_ = 1;
+      bitField0_ = (bitField0_ & ~0x00000040);
+      version_ = 0;
+      bitField0_ = (bitField0_ & ~0x00000080);
+      ownerId_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00000100);
+      type_ = 2;
+      bitField0_ = (bitField0_ & ~0x00000200);
+      feeUnit_ = 0;
+      bitField0_ = (bitField0_ & ~0x00000400);
+      balance_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00000800);
+      frozen_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00001000);
+      income_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00002000);
+      outcome_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00004000);
+      rank_ = 0;
+      bitField0_ = (bitField0_ & ~0x00008000);
+      notification_ = 0;
       bitField0_ = (bitField0_ & ~0x00010000);
-      thirdType_ = 0;
+      permissions_ = 0L;
       bitField0_ = (bitField0_ & ~0x00020000);
-      thirdAccount_ = "";
+      riskLevel_ = 0;
       bitField0_ = (bitField0_ & ~0x00040000);
-      trirdParam_ = "";
+      sandbox_ = false;
       bitField0_ = (bitField0_ & ~0x00080000);
+      accountTitle_ = 2203001L;
+      bitField0_ = (bitField0_ & ~0x00100000);
       return this;
     }
 
@@ -1728,83 +1964,87 @@ public  final class Account extends
       if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
         to_bitField0_ |= 0x00000001;
       }
-      result.id_ = id_;
+      result.key_ = key_;
       if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
         to_bitField0_ |= 0x00000002;
       }
-      result.userId_ = userId_;
+      result.id_ = id_;
       if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
         to_bitField0_ |= 0x00000004;
       }
-      result.type_ = type_;
+      result.createTime_ = createTime_;
       if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
         to_bitField0_ |= 0x00000008;
       }
-      result.feeUnit_ = feeUnit_;
+      result.createUser_ = createUser_;
       if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
         to_bitField0_ |= 0x00000010;
       }
-      result.balance_ = balance_;
+      result.updateTime_ = updateTime_;
       if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
         to_bitField0_ |= 0x00000020;
       }
-      result.frozen_ = frozen_;
+      result.updateUser_ = updateUser_;
       if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
         to_bitField0_ |= 0x00000040;
       }
-      result.income_ = income_;
+      result.status_ = status_;
       if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
         to_bitField0_ |= 0x00000080;
       }
-      result.outcome_ = outcome_;
+      result.version_ = version_;
       if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
         to_bitField0_ |= 0x00000100;
       }
-      result.status_ = status_;
+      result.ownerId_ = ownerId_;
       if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
         to_bitField0_ |= 0x00000200;
       }
-      result.rank_ = rank_;
+      result.type_ = type_;
       if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
         to_bitField0_ |= 0x00000400;
       }
-      result.notice_ = notice_;
+      result.feeUnit_ = feeUnit_;
       if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
         to_bitField0_ |= 0x00000800;
       }
-      result.attr_ = attr_;
+      result.balance_ = balance_;
       if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
         to_bitField0_ |= 0x00001000;
       }
-      result.securityLevel_ = securityLevel_;
+      result.frozen_ = frozen_;
       if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
         to_bitField0_ |= 0x00002000;
       }
-      result.sandbox_ = sandbox_;
+      result.income_ = income_;
       if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
         to_bitField0_ |= 0x00004000;
       }
-      result.version_ = version_;
+      result.outcome_ = outcome_;
       if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
         to_bitField0_ |= 0x00008000;
       }
-      result.createTime_ = createTime_;
+      result.rank_ = rank_;
       if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
         to_bitField0_ |= 0x00010000;
       }
-      result.updateTime_ = updateTime_;
+      result.notification_ = notification_;
       if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
         to_bitField0_ |= 0x00020000;
       }
-      result.thirdType_ = thirdType_;
+      result.permissions_ = permissions_;
       if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
         to_bitField0_ |= 0x00040000;
       }
-      result.thirdAccount_ = thirdAccount_;
+      result.riskLevel_ = riskLevel_;
       if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
         to_bitField0_ |= 0x00080000;
       }
-      result.trirdParam_ = trirdParam_;
+      result.sandbox_ = sandbox_;
+      if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
+        to_bitField0_ |= 0x00100000;
+      }
+      result.accountTitle_ = accountTitle_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -1815,7 +2055,7 @@ public  final class Account extends
     }
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.setField(field, value);
     }
     public Builder clearField(
@@ -1828,12 +2068,12 @@ public  final class Account extends
     }
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, Object value) {
+        int index, java.lang.Object value) {
       return (Builder) super.setRepeatedField(field, index, value);
     }
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
-        Object value) {
+        java.lang.Object value) {
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1847,13 +2087,36 @@ public  final class Account extends
 
     public Builder mergeFrom(org.jigsaw.payment.model.Account other) {
       if (other == org.jigsaw.payment.model.Account.getDefaultInstance()) return this;
+      if (other.hasKey()) {
+        setKey(other.getKey());
+      }
       if (other.hasId()) {
-        bitField0_ |= 0x00000001;
-        id_ = other.id_;
+        setId(other.getId());
+      }
+      if (other.hasCreateTime()) {
+        setCreateTime(other.getCreateTime());
+      }
+      if (other.hasCreateUser()) {
+        bitField0_ |= 0x00000008;
+        createUser_ = other.createUser_;
         onChanged();
       }
-      if (other.hasUserId()) {
-        setUserId(other.getUserId());
+      if (other.hasUpdateTime()) {
+        setUpdateTime(other.getUpdateTime());
+      }
+      if (other.hasUpdateUser()) {
+        bitField0_ |= 0x00000020;
+        updateUser_ = other.updateUser_;
+        onChanged();
+      }
+      if (other.hasStatus()) {
+        setStatus(other.getStatus());
+      }
+      if (other.hasVersion()) {
+        setVersion(other.getVersion());
+      }
+      if (other.hasOwnerId()) {
+        setOwnerId(other.getOwnerId());
       }
       if (other.hasType()) {
         setType(other.getType());
@@ -1873,47 +2136,23 @@ public  final class Account extends
       if (other.hasOutcome()) {
         setOutcome(other.getOutcome());
       }
-      if (other.hasStatus()) {
-        setStatus(other.getStatus());
-      }
       if (other.hasRank()) {
         setRank(other.getRank());
       }
-      if (other.hasNotice()) {
-        setNotice(other.getNotice());
+      if (other.hasNotification()) {
+        setNotification(other.getNotification());
       }
-      if (other.hasAttr()) {
-        setAttr(other.getAttr());
+      if (other.hasPermissions()) {
+        setPermissions(other.getPermissions());
       }
-      if (other.hasSecurityLevel()) {
-        setSecurityLevel(other.getSecurityLevel());
+      if (other.hasRiskLevel()) {
+        setRiskLevel(other.getRiskLevel());
       }
       if (other.hasSandbox()) {
         setSandbox(other.getSandbox());
       }
-      if (other.hasVersion()) {
-        bitField0_ |= 0x00004000;
-        version_ = other.version_;
-        onChanged();
-      }
-      if (other.hasCreateTime()) {
-        setCreateTime(other.getCreateTime());
-      }
-      if (other.hasUpdateTime()) {
-        setUpdateTime(other.getUpdateTime());
-      }
-      if (other.hasThirdType()) {
-        setThirdType(other.getThirdType());
-      }
-      if (other.hasThirdAccount()) {
-        bitField0_ |= 0x00040000;
-        thirdAccount_ = other.thirdAccount_;
-        onChanged();
-      }
-      if (other.hasTrirdParam()) {
-        bitField0_ |= 0x00080000;
-        trirdParam_ = other.trirdParam_;
-        onChanged();
+      if (other.hasAccountTitle()) {
+        setAccountTitle(other.getAccountTitle());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1943,32 +2182,176 @@ public  final class Account extends
     }
     private int bitField0_;
 
-    private java.lang.Object id_ = "";
+    private long key_ ;
     /**
      * <pre>
-     * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+     *内部主键
      * </pre>
      *
-     * <code>optional string id = 1;</code>
+     * <code>optional int64 key = 1;</code>
      */
-    public boolean hasId() {
+    public boolean hasKey() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <pre>
-     * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+     *内部主键
      * </pre>
      *
-     * <code>optional string id = 1;</code>
+     * <code>optional int64 key = 1;</code>
      */
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
+    public long getKey() {
+      return key_;
+    }
+    /**
+     * <pre>
+     *内部主键
+     * </pre>
+     *
+     * <code>optional int64 key = 1;</code>
+     */
+    public Builder setKey(long value) {
+      bitField0_ |= 0x00000001;
+      key_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *内部主键
+     * </pre>
+     *
+     * <code>optional int64 key = 1;</code>
+     */
+    public Builder clearKey() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      key_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long id_ ;
+    /**
+     * <pre>
+     *业务主键    	
+     * </pre>
+     *
+     * <code>optional int64 id = 2;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <pre>
+     *业务主键    	
+     * </pre>
+     *
+     * <code>optional int64 id = 2;</code>
+     */
+    public long getId() {
+      return id_;
+    }
+    /**
+     * <pre>
+     *业务主键    	
+     * </pre>
+     *
+     * <code>optional int64 id = 2;</code>
+     */
+    public Builder setId(long value) {
+      bitField0_ |= 0x00000002;
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *业务主键    	
+     * </pre>
+     *
+     * <code>optional int64 id = 2;</code>
+     */
+    public Builder clearId() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      id_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long createTime_ ;
+    /**
+     * <pre>
+     *创建时间
+     * </pre>
+     *
+     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+     */
+    public boolean hasCreateTime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <pre>
+     *创建时间
+     * </pre>
+     *
+     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+     */
+    public long getCreateTime() {
+      return createTime_;
+    }
+    /**
+     * <pre>
+     *创建时间
+     * </pre>
+     *
+     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+     */
+    public Builder setCreateTime(long value) {
+      bitField0_ |= 0x00000004;
+      createTime_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *创建时间
+     * </pre>
+     *
+     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+     */
+    public Builder clearCreateTime() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      createTime_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object createUser_ = "";
+    /**
+     * <pre>
+     *创建用户姓名
+     * </pre>
+     *
+     * <code>optional string create_user = 4;</code>
+     */
+    public boolean hasCreateUser() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <pre>
+     *创建用户姓名
+     * </pre>
+     *
+     * <code>optional string create_user = 4;</code>
+     */
+    public java.lang.String getCreateUser() {
+      java.lang.Object ref = createUser_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          id_ = s;
+          createUser_ = s;
         }
         return s;
       } else {
@@ -1977,19 +2360,19 @@ public  final class Account extends
     }
     /**
      * <pre>
-     * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+     *创建用户姓名
      * </pre>
      *
-     * <code>optional string id = 1;</code>
+     * <code>optional string create_user = 4;</code>
      */
     public com.google.protobuf.ByteString
-        getIdBytes() {
-      java.lang.Object ref = id_;
+        getCreateUserBytes() {
+      java.lang.Object ref = createUser_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        id_ = b;
+        createUser_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1997,200 +2380,448 @@ public  final class Account extends
     }
     /**
      * <pre>
-     * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+     *创建用户姓名
      * </pre>
      *
-     * <code>optional string id = 1;</code>
+     * <code>optional string create_user = 4;</code>
      */
-    public Builder setId(
+    public Builder setCreateUser(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-      id_ = value;
+  bitField0_ |= 0x00000008;
+      createUser_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+     *创建用户姓名
      * </pre>
      *
-     * <code>optional string id = 1;</code>
+     * <code>optional string create_user = 4;</code>
      */
-    public Builder clearId() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      id_ = getDefaultInstance().getId();
+    public Builder clearCreateUser() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      createUser_ = getDefaultInstance().getCreateUser();
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * 账户ID，非主键，生成规则：标示(1)+type(2)+id(12)+sum(1) primary key
+     *创建用户姓名
      * </pre>
      *
-     * <code>optional string id = 1;</code>
+     * <code>optional string create_user = 4;</code>
      */
-    public Builder setIdBytes(
+    public Builder setCreateUserBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
-      id_ = value;
+  bitField0_ |= 0x00000008;
+      createUser_ = value;
       onChanged();
       return this;
     }
 
-    private long userId_ ;
+    private long updateTime_ ;
     /**
      * <pre>
-     * 用户ID
+     *更新时间
      * </pre>
      *
-     * <code>optional int64 user_id = 2;</code>
+     * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
      */
-    public boolean hasUserId() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+    public boolean hasUpdateTime() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <pre>
-     * 用户ID
+     *更新时间
      * </pre>
      *
-     * <code>optional int64 user_id = 2;</code>
+     * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
      */
-    public long getUserId() {
-      return userId_;
+    public long getUpdateTime() {
+      return updateTime_;
     }
     /**
      * <pre>
-     * 用户ID
+     *更新时间
      * </pre>
      *
-     * <code>optional int64 user_id = 2;</code>
+     * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
      */
-    public Builder setUserId(long value) {
-      bitField0_ |= 0x00000002;
-      userId_ = value;
+    public Builder setUpdateTime(long value) {
+      bitField0_ |= 0x00000010;
+      updateTime_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * 用户ID
+     *更新时间
      * </pre>
      *
-     * <code>optional int64 user_id = 2;</code>
+     * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
      */
-    public Builder clearUserId() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      userId_ = 0L;
+    public Builder clearUpdateTime() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      updateTime_ = 0L;
       onChanged();
       return this;
     }
 
-    private int type_ = 1;
+    private java.lang.Object updateUser_ = "";
     /**
      * <pre>
-     * 账户类型：1：奇豆；2：奇点；3：零钱。同一用户同一类型只允许开一个账户
+     *更新用户姓名
      * </pre>
      *
-     * <code>optional .Account.Type type = 3;</code>
+     * <code>optional string update_user = 6;</code>
      */
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public boolean hasUpdateUser() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <pre>
-     * 账户类型：1：奇豆；2：奇点；3：零钱。同一用户同一类型只允许开一个账户
+     *更新用户姓名
      * </pre>
      *
-     * <code>optional .Account.Type type = 3;</code>
+     * <code>optional string update_user = 6;</code>
      */
-    public org.jigsaw.payment.model.Account.Type getType() {
-      org.jigsaw.payment.model.Account.Type result = org.jigsaw.payment.model.Account.Type.valueOf(type_);
-      return result == null ? org.jigsaw.payment.model.Account.Type.TYPE_WALLET : result;
+    public java.lang.String getUpdateUser() {
+      java.lang.Object ref = updateUser_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          updateUser_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
      * <pre>
-     * 账户类型：1：奇豆；2：奇点；3：零钱。同一用户同一类型只允许开一个账户
+     *更新用户姓名
      * </pre>
      *
-     * <code>optional .Account.Type type = 3;</code>
+     * <code>optional string update_user = 6;</code>
      */
-    public Builder setType(org.jigsaw.payment.model.Account.Type value) {
+    public com.google.protobuf.ByteString
+        getUpdateUserBytes() {
+      java.lang.Object ref = updateUser_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        updateUser_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *更新用户姓名
+     * </pre>
+     *
+     * <code>optional string update_user = 6;</code>
+     */
+    public Builder setUpdateUser(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+      updateUser_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *更新用户姓名
+     * </pre>
+     *
+     * <code>optional string update_user = 6;</code>
+     */
+    public Builder clearUpdateUser() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      updateUser_ = getDefaultInstance().getUpdateUser();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *更新用户姓名
+     * </pre>
+     *
+     * <code>optional string update_user = 6;</code>
+     */
+    public Builder setUpdateUserBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+      updateUser_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int status_ = 1;
+    /**
+     * <pre>
+     *状态：1有效 0无效
+     * </pre>
+     *
+     * <code>optional .Account.Status status = 7 [default = INITIALIZED];</code>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <pre>
+     *状态：1有效 0无效
+     * </pre>
+     *
+     * <code>optional .Account.Status status = 7 [default = INITIALIZED];</code>
+     */
+    public org.jigsaw.payment.model.Account.Status getStatus() {
+      org.jigsaw.payment.model.Account.Status result = org.jigsaw.payment.model.Account.Status.valueOf(status_);
+      return result == null ? org.jigsaw.payment.model.Account.Status.INITIALIZED : result;
+    }
+    /**
+     * <pre>
+     *状态：1有效 0无效
+     * </pre>
+     *
+     * <code>optional .Account.Status status = 7 [default = INITIALIZED];</code>
+     */
+    public Builder setStatus(org.jigsaw.payment.model.Account.Status value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000040;
+      status_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *状态：1有效 0无效
+     * </pre>
+     *
+     * <code>optional .Account.Status status = 7 [default = INITIALIZED];</code>
+     */
+    public Builder clearStatus() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      status_ = 1;
+      onChanged();
+      return this;
+    }
+
+    private int version_ ;
+    /**
+     * <pre>
+     *版本号
+     * </pre>
+     *
+     * <code>optional int32 version = 8 [default = 0];</code>
+     */
+    public boolean hasVersion() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <pre>
+     *版本号
+     * </pre>
+     *
+     * <code>optional int32 version = 8 [default = 0];</code>
+     */
+    public int getVersion() {
+      return version_;
+    }
+    /**
+     * <pre>
+     *版本号
+     * </pre>
+     *
+     * <code>optional int32 version = 8 [default = 0];</code>
+     */
+    public Builder setVersion(int value) {
+      bitField0_ |= 0x00000080;
+      version_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *版本号
+     * </pre>
+     *
+     * <code>optional int32 version = 8 [default = 0];</code>
+     */
+    public Builder clearVersion() {
+      bitField0_ = (bitField0_ & ~0x00000080);
+      version_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private long ownerId_ ;
+    /**
+     * <pre>
+     * 所有者的id
+     * </pre>
+     *
+     * <code>optional int64 owner_id = 10;</code>
+     */
+    public boolean hasOwnerId() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <pre>
+     * 所有者的id
+     * </pre>
+     *
+     * <code>optional int64 owner_id = 10;</code>
+     */
+    public long getOwnerId() {
+      return ownerId_;
+    }
+    /**
+     * <pre>
+     * 所有者的id
+     * </pre>
+     *
+     * <code>optional int64 owner_id = 10;</code>
+     */
+    public Builder setOwnerId(long value) {
+      bitField0_ |= 0x00000100;
+      ownerId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 所有者的id
+     * </pre>
+     *
+     * <code>optional int64 owner_id = 10;</code>
+     */
+    public Builder clearOwnerId() {
+      bitField0_ = (bitField0_ & ~0x00000100);
+      ownerId_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private int type_ = 2;
+    /**
+     * <pre>
+     *账户类型
+     * </pre>
+     *
+     * <code>optional .AccountType type = 12 [default = FOR_PERSONAL];</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <pre>
+     *账户类型
+     * </pre>
+     *
+     * <code>optional .AccountType type = 12 [default = FOR_PERSONAL];</code>
+     */
+    public org.jigsaw.payment.model.AccountType getType() {
+      org.jigsaw.payment.model.AccountType result = org.jigsaw.payment.model.AccountType.valueOf(type_);
+      return result == null ? org.jigsaw.payment.model.AccountType.FOR_PERSONAL : result;
+    }
+    /**
+     * <pre>
+     *账户类型
+     * </pre>
+     *
+     * <code>optional .AccountType type = 12 [default = FOR_PERSONAL];</code>
+     */
+    public Builder setType(org.jigsaw.payment.model.AccountType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      bitField0_ |= 0x00000200;
       type_ = value.getNumber();
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * 账户类型：1：奇豆；2：奇点；3：零钱。同一用户同一类型只允许开一个账户
+     *账户类型
      * </pre>
      *
-     * <code>optional .Account.Type type = 3;</code>
+     * <code>optional .AccountType type = 12 [default = FOR_PERSONAL];</code>
      */
     public Builder clearType() {
-      bitField0_ = (bitField0_ & ~0x00000004);
-      type_ = 1;
+      bitField0_ = (bitField0_ & ~0x00000200);
+      type_ = 2;
       onChanged();
       return this;
     }
 
-    private int feeUnit_ = 1;
+    private int feeUnit_ = 0;
     /**
      * <pre>
-     * 货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币
+     * 货币类型
      * </pre>
      *
-     * <code>optional .FeeUnit fee_unit = 4;</code>
+     * <code>optional .FeeUnit fee_unit = 14;</code>
      */
     public boolean hasFeeUnit() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <pre>
-     * 货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币
+     * 货币类型
      * </pre>
      *
-     * <code>optional .FeeUnit fee_unit = 4;</code>
+     * <code>optional .FeeUnit fee_unit = 14;</code>
      */
     public org.jigsaw.payment.model.FeeUnit getFeeUnit() {
       org.jigsaw.payment.model.FeeUnit result = org.jigsaw.payment.model.FeeUnit.valueOf(feeUnit_);
-      return result == null ? org.jigsaw.payment.model.FeeUnit.CNY : result;
+      return result == null ? org.jigsaw.payment.model.FeeUnit.UNKNOWN_FEE_UNIT : result;
     }
     /**
      * <pre>
-     * 货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币
+     * 货币类型
      * </pre>
      *
-     * <code>optional .FeeUnit fee_unit = 4;</code>
+     * <code>optional .FeeUnit fee_unit = 14;</code>
      */
     public Builder setFeeUnit(org.jigsaw.payment.model.FeeUnit value) {
       if (value == null) {
         throw new NullPointerException();
       }
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000400;
       feeUnit_ = value.getNumber();
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * 货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币
+     * 货币类型
      * </pre>
      *
-     * <code>optional .FeeUnit fee_unit = 4;</code>
+     * <code>optional .FeeUnit fee_unit = 14;</code>
      */
     public Builder clearFeeUnit() {
-      bitField0_ = (bitField0_ & ~0x00000008);
-      feeUnit_ = 1;
+      bitField0_ = (bitField0_ & ~0x00000400);
+      feeUnit_ = 0;
       onChanged();
       return this;
     }
@@ -2201,17 +2832,17 @@ public  final class Account extends
      * 余额
      * </pre>
      *
-     * <code>optional int64 balance = 5;</code>
+     * <code>optional int64 balance = 15;</code>
      */
     public boolean hasBalance() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
      * <pre>
      * 余额
      * </pre>
      *
-     * <code>optional int64 balance = 5;</code>
+     * <code>optional int64 balance = 15;</code>
      */
     public long getBalance() {
       return balance_;
@@ -2221,10 +2852,10 @@ public  final class Account extends
      * 余额
      * </pre>
      *
-     * <code>optional int64 balance = 5;</code>
+     * <code>optional int64 balance = 15;</code>
      */
     public Builder setBalance(long value) {
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000800;
       balance_ = value;
       onChanged();
       return this;
@@ -2234,10 +2865,10 @@ public  final class Account extends
      * 余额
      * </pre>
      *
-     * <code>optional int64 balance = 5;</code>
+     * <code>optional int64 balance = 15;</code>
      */
     public Builder clearBalance() {
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000800);
       balance_ = 0L;
       onChanged();
       return this;
@@ -2249,17 +2880,17 @@ public  final class Account extends
      * 冻结金额
      * </pre>
      *
-     * <code>optional int64 frozen = 6;</code>
+     * <code>optional int64 frozen = 16;</code>
      */
     public boolean hasFrozen() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
      * <pre>
      * 冻结金额
      * </pre>
      *
-     * <code>optional int64 frozen = 6;</code>
+     * <code>optional int64 frozen = 16;</code>
      */
     public long getFrozen() {
       return frozen_;
@@ -2269,10 +2900,10 @@ public  final class Account extends
      * 冻结金额
      * </pre>
      *
-     * <code>optional int64 frozen = 6;</code>
+     * <code>optional int64 frozen = 16;</code>
      */
     public Builder setFrozen(long value) {
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00001000;
       frozen_ = value;
       onChanged();
       return this;
@@ -2282,10 +2913,10 @@ public  final class Account extends
      * 冻结金额
      * </pre>
      *
-     * <code>optional int64 frozen = 6;</code>
+     * <code>optional int64 frozen = 16;</code>
      */
     public Builder clearFrozen() {
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00001000);
       frozen_ = 0L;
       onChanged();
       return this;
@@ -2297,17 +2928,17 @@ public  final class Account extends
      * 入账总额
      * </pre>
      *
-     * <code>optional int64 income = 7;</code>
+     * <code>optional int64 income = 17;</code>
      */
     public boolean hasIncome() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
      * <pre>
      * 入账总额
      * </pre>
      *
-     * <code>optional int64 income = 7;</code>
+     * <code>optional int64 income = 17;</code>
      */
     public long getIncome() {
       return income_;
@@ -2317,10 +2948,10 @@ public  final class Account extends
      * 入账总额
      * </pre>
      *
-     * <code>optional int64 income = 7;</code>
+     * <code>optional int64 income = 17;</code>
      */
     public Builder setIncome(long value) {
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00002000;
       income_ = value;
       onChanged();
       return this;
@@ -2330,10 +2961,10 @@ public  final class Account extends
      * 入账总额
      * </pre>
      *
-     * <code>optional int64 income = 7;</code>
+     * <code>optional int64 income = 17;</code>
      */
     public Builder clearIncome() {
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00002000);
       income_ = 0L;
       onChanged();
       return this;
@@ -2345,17 +2976,17 @@ public  final class Account extends
      * 出账总额
      * </pre>
      *
-     * <code>optional int64 outcome = 8;</code>
+     * <code>optional int64 outcome = 18;</code>
      */
     public boolean hasOutcome() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00004000) == 0x00004000);
     }
     /**
      * <pre>
      * 出账总额
      * </pre>
      *
-     * <code>optional int64 outcome = 8;</code>
+     * <code>optional int64 outcome = 18;</code>
      */
     public long getOutcome() {
       return outcome_;
@@ -2365,10 +2996,10 @@ public  final class Account extends
      * 出账总额
      * </pre>
      *
-     * <code>optional int64 outcome = 8;</code>
+     * <code>optional int64 outcome = 18;</code>
      */
     public Builder setOutcome(long value) {
-      bitField0_ |= 0x00000080;
+      bitField0_ |= 0x00004000;
       outcome_ = value;
       onChanged();
       return this;
@@ -2378,63 +3009,11 @@ public  final class Account extends
      * 出账总额
      * </pre>
      *
-     * <code>optional int64 outcome = 8;</code>
+     * <code>optional int64 outcome = 18;</code>
      */
     public Builder clearOutcome() {
-      bitField0_ = (bitField0_ & ~0x00000080);
+      bitField0_ = (bitField0_ & ~0x00004000);
       outcome_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private int status_ = 0;
-    /**
-     * <pre>
-     * 状态：0：创建；1、激活；2：冻结；3：销毁
-     * </pre>
-     *
-     * <code>optional .Account.Status status = 9;</code>
-     */
-    public boolean hasStatus() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <pre>
-     * 状态：0：创建；1、激活；2：冻结；3：销毁
-     * </pre>
-     *
-     * <code>optional .Account.Status status = 9;</code>
-     */
-    public org.jigsaw.payment.model.Account.Status getStatus() {
-      org.jigsaw.payment.model.Account.Status result = org.jigsaw.payment.model.Account.Status.valueOf(status_);
-      return result == null ? org.jigsaw.payment.model.Account.Status.INITIALIZED : result;
-    }
-    /**
-     * <pre>
-     * 状态：0：创建；1、激活；2：冻结；3：销毁
-     * </pre>
-     *
-     * <code>optional .Account.Status status = 9;</code>
-     */
-    public Builder setStatus(org.jigsaw.payment.model.Account.Status value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      bitField0_ |= 0x00000100;
-      status_ = value.getNumber();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 状态：0：创建；1、激活；2：冻结；3：销毁
-     * </pre>
-     *
-     * <code>optional .Account.Status status = 9;</code>
-     */
-    public Builder clearStatus() {
-      bitField0_ = (bitField0_ & ~0x00000100);
-      status_ = 0;
       onChanged();
       return this;
     }
@@ -2442,687 +3021,295 @@ public  final class Account extends
     private int rank_ ;
     /**
      * <pre>
-     * 账户等级
+     * 账户等级，按照权限根据公司的业务来设置。
      * </pre>
      *
-     * <code>optional int32 rank = 10;</code>
+     * <code>optional int32 rank = 20;</code>
      */
     public boolean hasRank() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00008000) == 0x00008000);
     }
     /**
      * <pre>
-     * 账户等级
+     * 账户等级，按照权限根据公司的业务来设置。
      * </pre>
      *
-     * <code>optional int32 rank = 10;</code>
+     * <code>optional int32 rank = 20;</code>
      */
     public int getRank() {
       return rank_;
     }
     /**
      * <pre>
-     * 账户等级
+     * 账户等级，按照权限根据公司的业务来设置。
      * </pre>
      *
-     * <code>optional int32 rank = 10;</code>
+     * <code>optional int32 rank = 20;</code>
      */
     public Builder setRank(int value) {
-      bitField0_ |= 0x00000200;
+      bitField0_ |= 0x00008000;
       rank_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * 账户等级
+     * 账户等级，按照权限根据公司的业务来设置。
      * </pre>
      *
-     * <code>optional int32 rank = 10;</code>
+     * <code>optional int32 rank = 20;</code>
      */
     public Builder clearRank() {
-      bitField0_ = (bitField0_ & ~0x00000200);
+      bitField0_ = (bitField0_ & ~0x00008000);
       rank_ = 0;
       onChanged();
       return this;
     }
 
-    private int notice_ ;
+    private int notification_ = 0;
     /**
      * <pre>
-     * 通知方式：mobile(1)+email(1)
+     * 通知方式：
      * </pre>
      *
-     * <code>optional int32 notice = 11;</code>
+     * <code>optional .Account.AccountNotification notification = 21;</code>
      */
-    public boolean hasNotice() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    /**
-     * <pre>
-     * 通知方式：mobile(1)+email(1)
-     * </pre>
-     *
-     * <code>optional int32 notice = 11;</code>
-     */
-    public int getNotice() {
-      return notice_;
-    }
-    /**
-     * <pre>
-     * 通知方式：mobile(1)+email(1)
-     * </pre>
-     *
-     * <code>optional int32 notice = 11;</code>
-     */
-    public Builder setNotice(int value) {
-      bitField0_ |= 0x00000400;
-      notice_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 通知方式：mobile(1)+email(1)
-     * </pre>
-     *
-     * <code>optional int32 notice = 11;</code>
-     */
-    public Builder clearNotice() {
-      bitField0_ = (bitField0_ & ~0x00000400);
-      notice_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private long attr_ ;
-    /**
-     * <pre>
-     * 账户属性，可以bit位扩展
-     * </pre>
-     *
-     * <code>optional int64 attr = 12;</code>
-     */
-    public boolean hasAttr() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
-    }
-    /**
-     * <pre>
-     * 账户属性，可以bit位扩展
-     * </pre>
-     *
-     * <code>optional int64 attr = 12;</code>
-     */
-    public long getAttr() {
-      return attr_;
-    }
-    /**
-     * <pre>
-     * 账户属性，可以bit位扩展
-     * </pre>
-     *
-     * <code>optional int64 attr = 12;</code>
-     */
-    public Builder setAttr(long value) {
-      bitField0_ |= 0x00000800;
-      attr_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 账户属性，可以bit位扩展
-     * </pre>
-     *
-     * <code>optional int64 attr = 12;</code>
-     */
-    public Builder clearAttr() {
-      bitField0_ = (bitField0_ & ~0x00000800);
-      attr_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private int securityLevel_ ;
-    /**
-     * <pre>
-     * 安全等级
-     * </pre>
-     *
-     * <code>optional int32 security_level = 13;</code>
-     */
-    public boolean hasSecurityLevel() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
-    }
-    /**
-     * <pre>
-     * 安全等级
-     * </pre>
-     *
-     * <code>optional int32 security_level = 13;</code>
-     */
-    public int getSecurityLevel() {
-      return securityLevel_;
-    }
-    /**
-     * <pre>
-     * 安全等级
-     * </pre>
-     *
-     * <code>optional int32 security_level = 13;</code>
-     */
-    public Builder setSecurityLevel(int value) {
-      bitField0_ |= 0x00001000;
-      securityLevel_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 安全等级
-     * </pre>
-     *
-     * <code>optional int32 security_level = 13;</code>
-     */
-    public Builder clearSecurityLevel() {
-      bitField0_ = (bitField0_ & ~0x00001000);
-      securityLevel_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int sandbox_ = 0;
-    /**
-     * <pre>
-     * 沙盒账户：0：否；1：是
-     * </pre>
-     *
-     * <code>optional .Account.Sandbox sandbox = 14;</code>
-     */
-    public boolean hasSandbox() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
-    }
-    /**
-     * <pre>
-     * 沙盒账户：0：否；1：是
-     * </pre>
-     *
-     * <code>optional .Account.Sandbox sandbox = 14;</code>
-     */
-    public org.jigsaw.payment.model.Account.Sandbox getSandbox() {
-      org.jigsaw.payment.model.Account.Sandbox result = org.jigsaw.payment.model.Account.Sandbox.valueOf(sandbox_);
-      return result == null ? org.jigsaw.payment.model.Account.Sandbox.NO : result;
-    }
-    /**
-     * <pre>
-     * 沙盒账户：0：否；1：是
-     * </pre>
-     *
-     * <code>optional .Account.Sandbox sandbox = 14;</code>
-     */
-    public Builder setSandbox(org.jigsaw.payment.model.Account.Sandbox value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      bitField0_ |= 0x00002000;
-      sandbox_ = value.getNumber();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 沙盒账户：0：否；1：是
-     * </pre>
-     *
-     * <code>optional .Account.Sandbox sandbox = 14;</code>
-     */
-    public Builder clearSandbox() {
-      bitField0_ = (bitField0_ & ~0x00002000);
-      sandbox_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object version_ = "";
-    /**
-     * <pre>
-     * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
-     * </pre>
-     *
-     * <code>optional string version = 15;</code>
-     */
-    public boolean hasVersion() {
-      return ((bitField0_ & 0x00004000) == 0x00004000);
-    }
-    /**
-     * <pre>
-     * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
-     * </pre>
-     *
-     * <code>optional string version = 15;</code>
-     */
-    public java.lang.String getVersion() {
-      java.lang.Object ref = version_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          version_ = s;
-        }
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
-     * </pre>
-     *
-     * <code>optional string version = 15;</code>
-     */
-    public com.google.protobuf.ByteString
-        getVersionBytes() {
-      java.lang.Object ref = version_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        version_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
-     * </pre>
-     *
-     * <code>optional string version = 15;</code>
-     */
-    public Builder setVersion(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00004000;
-      version_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
-     * </pre>
-     *
-     * <code>optional string version = 15;</code>
-     */
-    public Builder clearVersion() {
-      bitField0_ = (bitField0_ & ~0x00004000);
-      version_ = getDefaultInstance().getVersion();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 数据摘要，即版本，MD5(ID+BALANCE+FROZEN+STATUS+RANK+ATTR+SECURITY_LEVEL)
-     * </pre>
-     *
-     * <code>optional string version = 15;</code>
-     */
-    public Builder setVersionBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00004000;
-      version_ = value;
-      onChanged();
-      return this;
-    }
-
-    private long createTime_ ;
-    /**
-     * <pre>
-     * 创建时间
-     * </pre>
-     *
-     * <code>optional int64 create_time = 16 [(.column_option) = { ... }</code>
-     */
-    public boolean hasCreateTime() {
-      return ((bitField0_ & 0x00008000) == 0x00008000);
-    }
-    /**
-     * <pre>
-     * 创建时间
-     * </pre>
-     *
-     * <code>optional int64 create_time = 16 [(.column_option) = { ... }</code>
-     */
-    public long getCreateTime() {
-      return createTime_;
-    }
-    /**
-     * <pre>
-     * 创建时间
-     * </pre>
-     *
-     * <code>optional int64 create_time = 16 [(.column_option) = { ... }</code>
-     */
-    public Builder setCreateTime(long value) {
-      bitField0_ |= 0x00008000;
-      createTime_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 创建时间
-     * </pre>
-     *
-     * <code>optional int64 create_time = 16 [(.column_option) = { ... }</code>
-     */
-    public Builder clearCreateTime() {
-      bitField0_ = (bitField0_ & ~0x00008000);
-      createTime_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long updateTime_ ;
-    /**
-     * <pre>
-     * 更新时间
-     * </pre>
-     *
-     * <code>optional int64 update_time = 17 [(.column_option) = { ... }</code>
-     */
-    public boolean hasUpdateTime() {
+    public boolean hasNotification() {
       return ((bitField0_ & 0x00010000) == 0x00010000);
     }
     /**
      * <pre>
-     * 更新时间
+     * 通知方式：
      * </pre>
      *
-     * <code>optional int64 update_time = 17 [(.column_option) = { ... }</code>
+     * <code>optional .Account.AccountNotification notification = 21;</code>
      */
-    public long getUpdateTime() {
-      return updateTime_;
+    public org.jigsaw.payment.model.Account.AccountNotification getNotification() {
+      org.jigsaw.payment.model.Account.AccountNotification result = org.jigsaw.payment.model.Account.AccountNotification.valueOf(notification_);
+      return result == null ? org.jigsaw.payment.model.Account.AccountNotification.NOTIFICATION_NONE : result;
     }
     /**
      * <pre>
-     * 更新时间
+     * 通知方式：
      * </pre>
      *
-     * <code>optional int64 update_time = 17 [(.column_option) = { ... }</code>
+     * <code>optional .Account.AccountNotification notification = 21;</code>
      */
-    public Builder setUpdateTime(long value) {
+    public Builder setNotification(org.jigsaw.payment.model.Account.AccountNotification value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
       bitField0_ |= 0x00010000;
-      updateTime_ = value;
+      notification_ = value.getNumber();
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * 更新时间
+     * 通知方式：
      * </pre>
      *
-     * <code>optional int64 update_time = 17 [(.column_option) = { ... }</code>
+     * <code>optional .Account.AccountNotification notification = 21;</code>
      */
-    public Builder clearUpdateTime() {
+    public Builder clearNotification() {
       bitField0_ = (bitField0_ & ~0x00010000);
-      updateTime_ = 0L;
+      notification_ = 0;
       onChanged();
       return this;
     }
 
-    private int thirdType_ ;
+    private long permissions_ ;
     /**
      * <pre>
-     *第三方渠道ID，pay_partner表维护
+     * 账户属性，可以bit位扩展
      * </pre>
      *
-     * <code>optional int32 third_type = 18;</code>
+     * <code>optional uint64 permissions = 22;</code>
      */
-    public boolean hasThirdType() {
+    public boolean hasPermissions() {
       return ((bitField0_ & 0x00020000) == 0x00020000);
     }
     /**
      * <pre>
-     *第三方渠道ID，pay_partner表维护
+     * 账户属性，可以bit位扩展
      * </pre>
      *
-     * <code>optional int32 third_type = 18;</code>
+     * <code>optional uint64 permissions = 22;</code>
      */
-    public int getThirdType() {
-      return thirdType_;
+    public long getPermissions() {
+      return permissions_;
     }
     /**
      * <pre>
-     *第三方渠道ID，pay_partner表维护
+     * 账户属性，可以bit位扩展
      * </pre>
      *
-     * <code>optional int32 third_type = 18;</code>
+     * <code>optional uint64 permissions = 22;</code>
      */
-    public Builder setThirdType(int value) {
+    public Builder setPermissions(long value) {
       bitField0_ |= 0x00020000;
-      thirdType_ = value;
+      permissions_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     *第三方渠道ID，pay_partner表维护
+     * 账户属性，可以bit位扩展
      * </pre>
      *
-     * <code>optional int32 third_type = 18;</code>
+     * <code>optional uint64 permissions = 22;</code>
      */
-    public Builder clearThirdType() {
+    public Builder clearPermissions() {
       bitField0_ = (bitField0_ & ~0x00020000);
-      thirdType_ = 0;
+      permissions_ = 0L;
       onChanged();
       return this;
     }
 
-    private java.lang.Object thirdAccount_ = "";
+    private int riskLevel_ = 0;
     /**
      * <pre>
-     * 第三方的用户账户
+     * 安全等级
      * </pre>
      *
-     * <code>optional string third_account = 19;</code>
+     * <code>optional .Account.RiskLevel risk_level = 23;</code>
      */
-    public boolean hasThirdAccount() {
+    public boolean hasRiskLevel() {
       return ((bitField0_ & 0x00040000) == 0x00040000);
     }
     /**
      * <pre>
-     * 第三方的用户账户
+     * 安全等级
      * </pre>
      *
-     * <code>optional string third_account = 19;</code>
+     * <code>optional .Account.RiskLevel risk_level = 23;</code>
      */
-    public java.lang.String getThirdAccount() {
-      java.lang.Object ref = thirdAccount_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          thirdAccount_ = s;
-        }
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public org.jigsaw.payment.model.Account.RiskLevel getRiskLevel() {
+      org.jigsaw.payment.model.Account.RiskLevel result = org.jigsaw.payment.model.Account.RiskLevel.valueOf(riskLevel_);
+      return result == null ? org.jigsaw.payment.model.Account.RiskLevel.RISK_LEVEL_UNKNOWN : result;
     }
     /**
      * <pre>
-     * 第三方的用户账户
+     * 安全等级
      * </pre>
      *
-     * <code>optional string third_account = 19;</code>
+     * <code>optional .Account.RiskLevel risk_level = 23;</code>
      */
-    public com.google.protobuf.ByteString
-        getThirdAccountBytes() {
-      java.lang.Object ref = thirdAccount_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        thirdAccount_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     * 第三方的用户账户
-     * </pre>
-     *
-     * <code>optional string third_account = 19;</code>
-     */
-    public Builder setThirdAccount(
-        java.lang.String value) {
+    public Builder setRiskLevel(org.jigsaw.payment.model.Account.RiskLevel value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00040000;
-      thirdAccount_ = value;
+        throw new NullPointerException();
+      }
+      bitField0_ |= 0x00040000;
+      riskLevel_ = value.getNumber();
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * 第三方的用户账户
+     * 安全等级
      * </pre>
      *
-     * <code>optional string third_account = 19;</code>
+     * <code>optional .Account.RiskLevel risk_level = 23;</code>
      */
-    public Builder clearThirdAccount() {
+    public Builder clearRiskLevel() {
       bitField0_ = (bitField0_ & ~0x00040000);
-      thirdAccount_ = getDefaultInstance().getThirdAccount();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 第三方的用户账户
-     * </pre>
-     *
-     * <code>optional string third_account = 19;</code>
-     */
-    public Builder setThirdAccountBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00040000;
-      thirdAccount_ = value;
+      riskLevel_ = 0;
       onChanged();
       return this;
     }
 
-    private java.lang.Object trirdParam_ = "";
+    private boolean sandbox_ ;
     /**
      * <pre>
-     * 第三方凭证信息，通用字段，每个渠道区别维护
+     *是否沙盒账户
      * </pre>
      *
-     * <code>optional string trird_param = 20;</code>
+     * <code>optional bool sandbox = 24 [default = false];</code>
      */
-    public boolean hasTrirdParam() {
+    public boolean hasSandbox() {
       return ((bitField0_ & 0x00080000) == 0x00080000);
     }
     /**
      * <pre>
-     * 第三方凭证信息，通用字段，每个渠道区别维护
+     *是否沙盒账户
      * </pre>
      *
-     * <code>optional string trird_param = 20;</code>
+     * <code>optional bool sandbox = 24 [default = false];</code>
      */
-    public java.lang.String getTrirdParam() {
-      java.lang.Object ref = trirdParam_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          trirdParam_ = s;
-        }
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public boolean getSandbox() {
+      return sandbox_;
     }
     /**
      * <pre>
-     * 第三方凭证信息，通用字段，每个渠道区别维护
+     *是否沙盒账户
      * </pre>
      *
-     * <code>optional string trird_param = 20;</code>
+     * <code>optional bool sandbox = 24 [default = false];</code>
      */
-    public com.google.protobuf.ByteString
-        getTrirdParamBytes() {
-      java.lang.Object ref = trirdParam_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        trirdParam_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     * 第三方凭证信息，通用字段，每个渠道区别维护
-     * </pre>
-     *
-     * <code>optional string trird_param = 20;</code>
-     */
-    public Builder setTrirdParam(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00080000;
-      trirdParam_ = value;
+    public Builder setSandbox(boolean value) {
+      bitField0_ |= 0x00080000;
+      sandbox_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * 第三方凭证信息，通用字段，每个渠道区别维护
+     *是否沙盒账户
      * </pre>
      *
-     * <code>optional string trird_param = 20;</code>
+     * <code>optional bool sandbox = 24 [default = false];</code>
      */
-    public Builder clearTrirdParam() {
+    public Builder clearSandbox() {
       bitField0_ = (bitField0_ & ~0x00080000);
-      trirdParam_ = getDefaultInstance().getTrirdParam();
+      sandbox_ = false;
+      onChanged();
+      return this;
+    }
+
+    private long accountTitle_ = 2203001L;
+    /**
+     * <pre>
+     *会计科目
+     * </pre>
+     *
+     * <code>optional int64 account_title = 25 [default = 2203001];</code>
+     */
+    public boolean hasAccountTitle() {
+      return ((bitField0_ & 0x00100000) == 0x00100000);
+    }
+    /**
+     * <pre>
+     *会计科目
+     * </pre>
+     *
+     * <code>optional int64 account_title = 25 [default = 2203001];</code>
+     */
+    public long getAccountTitle() {
+      return accountTitle_;
+    }
+    /**
+     * <pre>
+     *会计科目
+     * </pre>
+     *
+     * <code>optional int64 account_title = 25 [default = 2203001];</code>
+     */
+    public Builder setAccountTitle(long value) {
+      bitField0_ |= 0x00100000;
+      accountTitle_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * 第三方凭证信息，通用字段，每个渠道区别维护
+     *会计科目
      * </pre>
      *
-     * <code>optional string trird_param = 20;</code>
+     * <code>optional int64 account_title = 25 [default = 2203001];</code>
      */
-    public Builder setTrirdParamBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00080000;
-      trirdParam_ = value;
+    public Builder clearAccountTitle() {
+      bitField0_ = (bitField0_ & ~0x00100000);
+      accountTitle_ = 2203001L;
       onChanged();
       return this;
     }

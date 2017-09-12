@@ -70,19 +70,19 @@ public final class Taglib {
   static {
     java.lang.String[] descriptorData = {
       "\n\014taglib.proto\032 google/protobuf/descript" +
-      "or.proto\"(\n\022TableMessageOption\022\022\n\ntable_" +
-      "name\030\001 \002(\t\"h\n\021ColumnFieldOption\022\023\n\013colum" +
-      "n_name\030\001 \001(\t\022 \n\013column_type\030\002 \001(\0162\013.Colu" +
-      "mnType\022\034\n\024need_encrypted_store\030\003 \001(\010*o\n\n" +
-      "ColumnType\022\013\n\007VARCHAR\020\001\022\007\n\003INT\020\002\022\n\n\006BIGI" +
-      "NT\020\003\022\n\n\006DOUBLE\020\004\022\t\n\005FLOAT\020\005\022\013\n\007DECIMAL\020\006" +
-      "\022\014\n\010DATETIME\020\007\022\r\n\tTIMESTAMP\020\010:L\n\014table_o" +
-      "ption\022\037.google.protobuf.MessageOptions\030\340" +
-      "\324\003 \001(\0132\023.TableMessageOption:J\n\rcolumn_op",
-      "tion\022\035.google.protobuf.FieldOptions\030\341\324\003 " +
-      "\001(\0132\022.ColumnFieldOption:2\n\005alias\022!.googl" +
-      "e.protobuf.EnumValueOptions\030\342\324\003 \001(\tB\034\n\030o" +
-      "rg.jigsaw.payment.modelP\001"
+      "or.proto\"7\n\022TableMessageOption\022\022\n\ntable_" +
+      "name\030\001 \002(\t\022\r\n\005id_no\030\002 \001(\005\"h\n\021ColumnField" +
+      "Option\022\023\n\013column_name\030\001 \001(\t\022 \n\013column_ty" +
+      "pe\030\002 \001(\0162\013.ColumnType\022\034\n\024need_encrypted_" +
+      "store\030\003 \001(\010*o\n\nColumnType\022\013\n\007VARCHAR\020\001\022\007" +
+      "\n\003INT\020\002\022\n\n\006BIGINT\020\003\022\n\n\006DOUBLE\020\004\022\t\n\005FLOAT" +
+      "\020\005\022\013\n\007DECIMAL\020\006\022\014\n\010DATETIME\020\007\022\r\n\tTIMESTA" +
+      "MP\020\010:L\n\014table_option\022\037.google.protobuf.M" +
+      "essageOptions\030\340\324\003 \001(\0132\023.TableMessageOpti",
+      "on:J\n\rcolumn_option\022\035.google.protobuf.Fi" +
+      "eldOptions\030\341\324\003 \001(\0132\022.ColumnFieldOption:2" +
+      "\n\005alias\022!.google.protobuf.EnumValueOptio" +
+      "ns\030\342\324\003 \001(\tB\034\n\030org.jigsaw.payment.modelP\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -102,7 +102,7 @@ public final class Taglib {
     internal_static_TableMessageOption_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TableMessageOption_descriptor,
-        new java.lang.String[] { "TableName", });
+        new java.lang.String[] { "TableName", "IdNo", });
     internal_static_ColumnFieldOption_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_ColumnFieldOption_fieldAccessorTable = new

@@ -16,6 +16,7 @@ import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.data.ACL;
 import org.jigsaw.payment.rpc.register.DigestAuthInfo;
 import org.jigsaw.payment.rpc.sharder.BasicTransportPool;
+import org.jigsaw.payment.rpc.sharder.RpcServiceClient;
 import org.jigsaw.payment.rpc.sharder.TransportManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -34,11 +35,11 @@ public class HelloClientConfig {
 	   @Autowired
 	    private Environment env;
 	   
-	   @Bean(name="hello-client", initMethod="run")
-	   public HelloClient client(){
-		   HelloClient client = new HelloClient();
-		   client.setTransportManager(this.transportManager());
-		   return client;
+	   @Bean
+	   public RpcServiceClient client(){
+		   RpcServiceClient.Builder client = RpcServiceClient.newBuilder();
+		   client.transportManager(this.transportManager());
+		   return client.build();
 	   }
 
 	    @Bean(initMethod="start", destroyMethod = "close")

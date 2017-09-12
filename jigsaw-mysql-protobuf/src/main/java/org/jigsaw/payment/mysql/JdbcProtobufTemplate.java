@@ -170,7 +170,11 @@ public class JdbcProtobufTemplate<ID, M extends Message> {
 	 * @return
 	 */
 	public int update(final String sql, final List<?> args) {
-		logger.debug(sql);
+		if(logger.isDebugEnabled()){
+			StringBuilder builder = new StringBuilder();
+			builder.append("{sql: \"").append(sql).append("\"; parameters:").append(args);
+			logger.debug(builder.toString());
+		}
 		return jdbcTemplate.update(new PreparedStatementCreator() {
 
 			@Override
@@ -215,6 +219,10 @@ public class JdbcProtobufTemplate<ID, M extends Message> {
 			} else if (o instanceof Descriptors.EnumValueDescriptor) {
 				ps.setInt(i + 1,
 						((Descriptors.EnumValueDescriptor) o).getNumber());
+			} else if(o instanceof Boolean){
+				ps.setBoolean(i+1, (Boolean)o);
+			} else {
+				ps.setObject(i+1, o);
 			}
 		}
 	}
@@ -270,7 +278,7 @@ public class JdbcProtobufTemplate<ID, M extends Message> {
 	 * @return
 	 */
 	public long insert(M message, String tableName) {
-		StringBuilder insertSql = new StringBuilder("insert ignore into ");
+		StringBuilder insertSql = new StringBuilder("insert into ");
 		insertSql.append(tableName).append("(");
 		StringBuilder fields = new StringBuilder("");
 		StringBuilder values = new StringBuilder("");
@@ -288,12 +296,12 @@ public class JdbcProtobufTemplate<ID, M extends Message> {
 			if (columnFieldOption.getColumnType() == ColumnType.DATETIME
 					|| columnFieldOption.getColumnType() == ColumnType.TIMESTAMP) {// datetime类型
 				if (value != null && (long) value > 0) {
-					fields.append(fieldName).append(",");
+					fields.append('`').append(fieldName).append("`,");
 					values.append("?, ");
 					args.add(new Timestamp((long) value));
 				}
 			} else {
-				fields.append(fieldName).append(",");
+				fields.append('`').append(fieldName).append("`,");
 				values.append("?, ");
 				args.add(value);
 			}
@@ -303,7 +311,6 @@ public class JdbcProtobufTemplate<ID, M extends Message> {
 		tmpIndex = values.lastIndexOf(",");
 		insertSql.append(values.substring(0, tmpIndex)).append(")");
 		String sql = insertSql.toString();
-		logger.debug(sql);
 		return update(sql, args);
 	}
 
