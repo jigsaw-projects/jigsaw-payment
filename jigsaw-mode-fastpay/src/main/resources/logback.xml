@@ -3,7 +3,8 @@
 	<!--<include resource="org/springframework/boot/logging/logback/base.xml"/>	-->
 	<!-- logger name="org.springside.samples.quickservice" level="DEBUG"/-->
 
-	<!--本机ip映射 使用%localIP-->
+
+
 	<property name="log_path" value="/data/logs/jigsaw-mode-fastpay"/>
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
@@ -57,12 +58,8 @@
 		<!-- 添加附加的appender,最多只能添加一个 -->
 		<appender-ref ref="ERROR_DAILY_ROLLING_FILE"/>
 	</appender>
-
 	<!-- project default level -->
-	<logger name="org.jigsaw.payment" level="DEBUG"/>
-
-	<!--${logback.logger.config}-->
-
+	<logger name="org.jigsaw.pament" level="DEBUG"/>
 
 	<springProfile name="default,dev,test">
 
