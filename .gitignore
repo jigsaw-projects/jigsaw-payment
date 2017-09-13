@@ -6,8 +6,6 @@
 .DS_Store
 .settings
 .springBeans
-bin
-build.sh
 integration-repo
 ivy-cache
 jxl.log
@@ -16,9 +14,7 @@ derby.log
 spring-test/test-output/
 .gradle
 argfile*
-pom.xml
 activemq-data/
-
 classes/
 /build
 buildSrc/build
