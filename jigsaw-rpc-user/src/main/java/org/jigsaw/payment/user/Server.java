@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class Server{
 
 	/**
-	 * 主函数
+	 * 通过SpringApplication来启动RpCServer。 RPCServer配置在Jigsaw-thrift-protobuf项目中。
 	 * @param args
 	 * @throws Exception
 	 */
