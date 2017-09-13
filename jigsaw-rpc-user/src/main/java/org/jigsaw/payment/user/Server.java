@@ -15,7 +15,7 @@ public class Server{
 
 	/**
 	 * 通过SpringApplication来启动RpCServer。 RPCServer配置在Jigsaw-thrift-protobuf项目中。
-	 * @param args 参考Spring boot 的启动参数说明
+	 * @param args 参考Spring boot 的启动参数说明。
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
