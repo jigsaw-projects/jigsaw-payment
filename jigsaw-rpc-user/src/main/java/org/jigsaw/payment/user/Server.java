@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * 启动RPC服务器，使用spring boot application
+ * 启动RPC服务器，使用spring boot application.
  */
 @EnableTransactionManagement
 @SpringBootApplication
