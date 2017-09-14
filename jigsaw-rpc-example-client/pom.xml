@@ -20,7 +20,7 @@
 		<jackson.version>2.7.9</jackson.version>
 		<proto.path>protoc</proto.path>
 		<thrift.path>thrift</thrift.path>
-		<idl.folder>${basedir}/src/main/resources</idl.folder>
+		<idl.folder>${basedir}/src/test/resources</idl.folder>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -53,24 +53,24 @@
 						<phase>generate-sources</phase>
 						<configuration>
 							<tasks>
-								<echo>Delete folder : ${basedir}/src/main/gen</echo>
-								<delete dir="${basedir}/src/main/gen" quiet="true" />
-								<echo>Create folder : ${basedir}/src/main/gen</echo>
-								<mkdir dir="${basedir}/src/main/gen" />
+								<echo>Delete folder : ${basedir}/src/test/gen</echo>
+								<delete dir="${basedir}/src/test/gen" quiet="true" />
+								<echo>Create folder : ${basedir}/src/test/gen</echo>
+								<mkdir dir="${basedir}/src/test/gen" />
 								<!-- Compile thrift files in all locations -->
 								<echo>Compiling **/*.thrift files...</echo>
 								<apply executable="${thrift.path}">
 									<arg value="--gen" />
 									<arg value="java" />
 									<arg value="-out" />
-									<arg value="${basedir}/src/main/gen" />
+									<arg value="${basedir}/src/test/gen" />
 									<fileset dir="${idl.folder}" includes="**/*.thrift" />
 								</apply>
 								<!-- Compile proto files in all locations -->
 								<echo>Compiling **/*.proto files...</echo>
 								<apply executable="${proto.path}">
 									<arg value="--proto_path=${idl.folder}" />
-									<arg value="--java_out=${basedir}/src/main/gen" />
+									<arg value="--java_out=${basedir}/src/test/gen" />
 									<fileset dir="${idl.folder}" includes="**/*.proto"
 										excludes="google/protobuf/descriptor.proto" />
 								</apply>
@@ -83,17 +83,16 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.7</version>
 				<executions>
 					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
+						<id>add-test-source</id>
+						<phase>generate-test-sources</phase>
 						<goals>
-							<goal>add-source</goal>
+							<goal>add-test-source</goal>
 						</goals>
 						<configuration>
 							<sources>
-								<source>src/main/gen</source>
+								<source>src/test/gen</source>
 							</sources>
 						</configuration>
 					</execution>
