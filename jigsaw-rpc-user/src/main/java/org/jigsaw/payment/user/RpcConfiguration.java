@@ -26,6 +26,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
+ * 运行user rpc service所需要的配置。注意这里使用的是自动配置。
  * @author shamphone@gmail.com
  * @version 1.0.0
  * @date 2017年9月8日
