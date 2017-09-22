@@ -47,7 +47,7 @@ CREATE TABLE `pay_order_0` (
   `sub_type` int(9) NOT NULL COMMENT '交易主体类型',
   `sub_name` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '交易主体名称',
   `sub_account_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '交易主体账号',
-  `sub_account_type` int(10) NOT NULL COMMENT '交易主体使用的账号类型；银行卡、钱包、奇点、奇豆等',
+  `sub_account_type` int(10) NOT NULL COMMENT '交易主体使用的账号类型',
   `sub_ip` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '交易主体ip地址',
   `sub_mobile` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '交易主体使用的手机号',
   `sub_client_code` varchar(16) NOT NULL COMMENT '交易主体的客户端代码，发起交易的平台代码，参考公司标准代码规范',
