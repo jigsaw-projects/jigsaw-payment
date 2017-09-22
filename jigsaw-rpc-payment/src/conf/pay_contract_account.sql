@@ -15,7 +15,7 @@ CREATE TABLE `pay_contract_account_0` (
   `owner_id`	bigint(20) NOT NULL COMMENT '用户id',
   `type` tinyint(2) NOT NULL DEFAULT '2' COMMENT '账户类型',
    `order_id`	bigint(20) NOT NULL COMMENT '签约并支付时关联的订单号',
-  `fee_unit` tinyint(4) NOT NULL DEFAULT '1' COMMENT '货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币',
+  `fee_unit` tinyint(4) NOT NULL DEFAULT '1' COMMENT '货币类型 1、人民币 2、积分 3、代金券',
 
   `contract_account`	varchar(20) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '签约账号，如银行卡号，第三方平台的账户号',
   `mobile_number`	varchar(20) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '银行预留手机号',
