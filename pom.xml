@@ -21,8 +21,8 @@
 		<module>jigsaw-payment-docs</module>
 		<module>jigsaw-payment-schema</module>
 		<module>jigsaw-payment-algorithm</module>
-		<module>jigsaw-thrift-protobuf</module>
 		<module>jigsaw-protobuf-format</module>
+		<module>jigsaw-thrift-protobuf</module>
 		<module>jigsaw-mysql-protobuf</module>
 		<module>jigsaw-runtime-metrics</module>
 		<module>jigsaw-rpc-example-server</module>
