@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jigsaw.payment</groupId>
 	<artifactId>jigsaw-payment-parent</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>jigsaw-payment-parent</name>
 	<url>https://github.com/jigsaw-projects/jigsaw-payment</url>

@@ -3,13 +3,12 @@
 	<parent>
 		<groupId>org.jigsaw.payment</groupId>
 		<artifactId>jigsaw-payment-parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>0.0.1-SNAPSHOT</version>
 		<relativePath></relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jigsaw-rpc-user</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0-SNAPSHOT</version>
 	<name>jigsaw-rpc-user</name>
 	<properties>
 		<protobuf.version>3.3.1</protobuf.version>
@@ -25,27 +24,27 @@
 		<dependency>
 			<groupId>org.jigsaw.payment</groupId>
 			<artifactId>jigsaw-thrift-protobuf</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jigsaw.payment</groupId>
 			<artifactId>jigsaw-protobuf-format</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jigsaw.payment</groupId>
 			<artifactId>jigsaw-runtime-metrics</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jigsaw.payment</groupId>
 			<artifactId>jigsaw-mysql-protobuf</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jigsaw.payment</groupId>
 			<artifactId>jigsaw-payment-schema</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>

@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>jigsaw-payment-parent</artifactId>
 		<groupId>org.jigsaw.payment</groupId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
@@ -58,22 +58,22 @@
 		<dependency>
 			<groupId>org.jigsaw.payment</groupId>
 			<artifactId>jigsaw-protobuf-format</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 			<dependency>
 			<groupId>org.jigsaw.payment</groupId>
 			<artifactId>jigsaw-thrift-protobuf</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jigsaw.payment</groupId>
 			<artifactId>jigsaw-runtime-metrics</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jigsaw.payment</groupId>
 			<artifactId>jigsaw-payment-schema</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

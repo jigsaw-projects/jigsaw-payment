@@ -19,6 +19,7 @@ import org.apache.thrift.TException;
 import org.jigsaw.payment.model.User;
 
 /**
+ * 用户库，正常情况下，应该使用公司已有的用户库。 
  * @author shamphone@gmail.com
  * @version 1.0.0
  * @date 2017年9月3日

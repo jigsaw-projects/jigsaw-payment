@@ -170,7 +170,7 @@ message PayOrderFilter {
 
 /**
  * 内部账户
- *
+ *sudo 
  **/
 message Account {
  	option (table_option).table_name = "pay_account";
