@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 /**
- * 
+ * 快捷支付应用入口。 
  * @author shamphone@gmail.com
  * @version 1.0.0
  * @date 2017年9月1日
