@@ -22,7 +22,6 @@ public class Application  {
         SpringApplication.run(Application.class,args);
     }
 
-	
 @Primary
 @Bean
     public Validator validator(){
