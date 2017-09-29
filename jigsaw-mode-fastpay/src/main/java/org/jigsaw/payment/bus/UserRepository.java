@@ -26,7 +26,7 @@ import org.jigsaw.payment.model.User;
  */
 public interface UserRepository {
 	/**
-	 * 根据用户id获取用户信息
+	 * 根据用户id获取用户信息。
 	 * @param uid
 	 * @return
 	 */
