@@ -109,7 +109,7 @@ message PayOrder {
     optional EntityType sub_type	= 52;//主体类型
     optional string sub_name		= 53;//主体名称
     optional string sub_account_id	= 54;//主体帐号
-    optional int32	sub_account_type = 55;//主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
+    optional int32	sub_account_type = 55;//主体帐号类型：银行卡，钱包,支付渠道
     optional string sub_ip			= 56;// 主体使用的IP
     optional string sub_mobile		= 57;//主体使用的手机号
     optional string sub_client_code = 58;//发起交易的客户端代码

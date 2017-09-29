@@ -12,7 +12,7 @@ CREATE TABLE `pay_account_0` (
   `order_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '签约并支付时关联的订单号',
   `type` tinyint(2) NOT NULL DEFAULT '2' COMMENT '账户类型',
   `account_title` bigint(20) NOT NULL DEFAULT '0' COMMENT '会计科目代码',
-  `fee_unit` tinyint(4) NOT NULL DEFAULT '1' COMMENT '货币类型 1、人民币 2、奇豆  3、积分 4、代金券 5、美元 6、台币',
+  `fee_unit` tinyint(4) NOT NULL DEFAULT '1' COMMENT '货币类型 1、人民币 2、积分 3、代金券 4、美元 5、台币',
   `third_type` int(8) NOT NULL DEFAULT '0' COMMENT '第三方渠道ID，pay_partner表维护',
   `third_account` varchar(32) NOT NULL DEFAULT '' COMMENT '第三方的用户账户',
   `third_param` varchar(1024) NOT NULL DEFAULT '' COMMENT '第三方凭证信息，通用字段，每个渠道区别维护',
