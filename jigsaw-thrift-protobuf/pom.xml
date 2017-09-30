@@ -19,6 +19,7 @@
 		<jackson.version>2.9.0</jackson.version>
 		<thrift.path>thrift</thrift.path>
 		<idl.folder>${basedir}/src/main/resources</idl.folder>
+		<sonar.exclusions>src/main/gen/**/*,src/test/gen/**/*</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>

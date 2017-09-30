@@ -20,6 +20,7 @@
 		<proto.path>protoc</proto.path>
 		<thrift.path>thrift</thrift.path>
 		<idl.folder>${basedir}/src/main/resources</idl.folder>
+		<sonar.exclusions>src/main/gen/**/*</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
