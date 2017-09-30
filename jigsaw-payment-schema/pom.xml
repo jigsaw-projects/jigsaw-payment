@@ -15,6 +15,7 @@
         <proto.path>protoc</proto.path>
         <proto.version>3.3.1</proto.version>
         <idl.folder>${basedir}/src/main/resources</idl.folder>
+		<sonar.exclusions>src/main/gen/**/*</sonar.exclusions>
   </properties>
   <dependencies>  
     <dependency>
