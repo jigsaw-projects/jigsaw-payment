@@ -24,7 +24,7 @@ import org.jigsaw.payment.model.Account;
  */
 public interface AccountRepository {
 	/**
-	 * 创建账户
+	 * 创建账户。
 	 * @param account，待创建的账户。 注意，为了提升性能，account的id和code必须先通过IdService来申请。 
 	 * @return 订单号。 
 	 */
@@ -32,7 +32,7 @@ public interface AccountRepository {
 
 
 	/**
-	 * 获取订单
+	 * 获取账户信息。
 	 * @param account，待创建的账户。 注意，为了提升性能，account的id必须先通过IdService来申请。 
 	 * @return 订单ID。 
 	 */
