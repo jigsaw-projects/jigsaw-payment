@@ -15,6 +15,7 @@
 		<protobuf.version>3.3.1</protobuf.version>
 		<protobuf-java-format.version>1.2</protobuf-java-format.version>
 		<jackson.version>2.9.0</jackson.version>
+		<sonar.exclusions>src/main/java/**/*</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
