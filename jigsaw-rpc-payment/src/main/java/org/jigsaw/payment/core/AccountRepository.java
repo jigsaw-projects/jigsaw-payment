@@ -33,9 +33,9 @@ public interface AccountRepository {
 
 	/**
 	 * 获取账户信息。
-	 * @param account，待创建的账户。 注意，为了提升性能，account的id必须先通过IdService来申请。 
-	 * @return 订单ID。 
+	 * @param id, 账户号。 
+	 * @return 账户信息。如果不存在，返回空值。 
 	 */
-	public Account get(long code);
+	public Account get(long id);
 
 }
