@@ -17,6 +17,7 @@ package org.jigsaw.payment.core;
 
 import org.jigsaw.payment.model.Account;
 /**
+ * 账户库
  * @author shamphone@gmail.com
  * @version 1.0.0
  * @date 2017年8月17日
