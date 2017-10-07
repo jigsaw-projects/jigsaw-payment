@@ -4,7 +4,6 @@
 		<groupId>org.jigsaw.payment</groupId>
 		<artifactId>jigsaw-payment-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath></relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jigsaw-runtime-metrics</artifactId>
