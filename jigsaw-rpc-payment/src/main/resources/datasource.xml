@@ -55,9 +55,9 @@
 			<property name="tableNamePattern" value="pay_account_%01d" />
 		</bean>
 		<bean id="contractSharder" parent="sharderParent">
-		<constructor-arg><value>org.jigsaw.payment.model.AccountContract</value></constructor-arg>
-			<property name="tableNamePattern" value="pay_account_contract_%01d" />
-		</bean>		 
+			<constructor-arg><value>org.jigsaw.payment.model.ContractAccount</value></constructor-arg>
+			<property name="tableNamePattern" value="pay_contract_account_%01d" />
+		</bean>
 	</beans>
 
 	<!-- 如果需要支持多机房（profile），可以参考上述格式定义不同的profile <beans profile="test"> </beans> -->
