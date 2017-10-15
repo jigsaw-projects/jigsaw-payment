@@ -50,3 +50,11 @@ RPC引擎客户端示例，和jigsaw-rpc-example-server配合使用。
 
 支付数据规范，使用Google Protocol Buffer格式来定义。 
 
+## 支持jigsaw payment 项目开发
+
+Jigsaw Payment 需要您的支持来维持正常的运转，特别是托管服务器采购的费用。 
+
+微信捐赠支持，请扫码：
+![微信收款码](http://jigsaw.lixf.cn/img/in-post/pay.jpg)
+)
+
