@@ -12,7 +12,7 @@ jigsaw payment 支付系统，面向互联网商户提供的支付系统。 支�
 
 1. Apache Thrift
 2. Google Protocol Buffer
-3. MySQL, 新建用户payment，密码123456，新建库jigasw_payment_0, jigsaw_payment_1, 导入相关的sql文件； 
+3. MySQL, 新建用户payment，密码123456，新建库jigsaw_payment_0, jigsaw_payment_1, 导入相关的sql文件； 
 4. redis
 5. zookeeper，新增用户payment,密码123456，节点/payment/rpc
 
