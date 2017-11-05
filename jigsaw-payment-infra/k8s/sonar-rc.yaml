@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: sonar-rc
+  namespace: sonar
+  labels:
+    name: sonar
+spec:
+  replicas: 1
+  selector:
+    name: sonar
+  template:
+    metadata:
+      labels:
+        name: sonar
+    spec:
+      containers:
+      - name: sonar
+        image: docker.io/sonarqube
+        env:
+        - name: SONARQUBE_JDBC_USERNAME
+          value: sonar
+        - name: SONARQUBE_JDBC_PASSWORD
+          value: zaq1XSW@
+        - name: SONARQUBE_JDBC_URL
+          value: 'jdbc:mysql://10.100.243.163:3306/sonar?useUnicode=true&amp;characterEncoding=utf8'
+        ports:
+        - containerPort: 9000
+        volumeMounts:
+        - mountPath: "/opt/sonarqube/conf"
+          name: sonar-conf
+        - mountPath: "/opt/sonarqube/data"
+          name: sonar-data
+        - mountPath: "/opt/sonarqube/extensions"
+          name: sonar-extensions
+        - mountPath: "/opt/sonarqube/logs"
+          name: sonar-logs
+      volumes:
+        - name: sonar-conf
+          nfs:
+            server: kube-master.jigsaw
+            path: "/nfs_share/sonar/conf"
+        - name: sonar-data
+          nfs:
+            server: kube-master.jigsaw
+            path: "/nfs_share/sonar/data"
+        - name: sonar-extensions
+          nfs:
+            server: kube-master.jigsaw
+            path: "/nfs_share/sonar/extensions"
+        - name: sonar-logs
+          nfs:
+            server: kube-master.jigsaw
+            path: "/nfs_share/sonar/logs"
