@@ -14,57 +14,53 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
+# 创建sonarqube的resource
+
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: sonar-rc
+  name: sonar-mysql
   namespace: sonar
   labels:
-    name: sonar
+    name: sonar-mysql
+    context: ctpaas_staging_site
 spec:
   replicas: 1
   selector:
-    name: sonar
+    app: sonar-mysql
   template:
     metadata:
       labels:
-        name: sonar
+        app: sonar-mysql
     spec:
       containers:
-      - name: sonar
-        image: docker.io/sonarqube
+      - name: sonar-mysql
+        image: docker.io/mysql:5.7.20
+        args: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci", "--max_allowed_packet=32M"]
         env:
-        - name: SONARQUBE_JDBC_USERNAME
-          value: sonar
-        - name: SONARQUBE_JDBC_PASSWORD
-          value: zaq1XSW@
-        - name: SONARQUBE_JDBC_URL
-          value: 'jdbc:mysql://10.100.243.163:3306/sonar?useUnicode=true&amp;characterEncoding=utf8'
+          - name: TZ
+            value: 'Asia/Shanghai'
+          - name: LANG
+            value: 'C.UTF-8'
+          - name: MYSQL_ROOT_PASSWORD
+            value: 'zaq1XSW@'
+          - name: MYSQL_DATABASE
+            value: 'sonar'
+          - name: MYSQL_USER
+            value: 'sonar'
+          - name: MYSQL_PASSWORD
+            value: 'zaq1XSW@'
         ports:
-        - containerPort: 9000
+        - containerPort: 3306
         volumeMounts:
-        - mountPath: "/opt/sonarqube/conf"
-          name: sonar-conf
-        - mountPath: "/opt/sonarqube/data"
-          name: sonar-data
-        - mountPath: "/opt/sonarqube/extensions"
-          name: sonar-extensions
-        - mountPath: "/opt/sonarqube/logs"
-          name: sonar-logs
+        - mountPath: "/var/lib/sonar-mysql"
+          name: sonar-mysql
+          readOnly: false
+      nodeSelector:
+        apptype: infra
       volumes:
-        - name: sonar-conf
+        - name: sonar-mysql
           nfs:
             server: kube-master.jigsaw
-            path: "/nfs_share/sonar/conf"
-        - name: sonar-data
-          nfs:
-            server: kube-master.jigsaw
-            path: "/nfs_share/sonar/data"
-        - name: sonar-extensions
-          nfs:
-            server: kube-master.jigsaw
-            path: "/nfs_share/sonar/extensions"
-        - name: sonar-logs
-          nfs:
-            server: kube-master.jigsaw
-            path: "/nfs_share/sonar/logs"
+            path: "/home/nfs/sonar/mysql"
