@@ -21,6 +21,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * 测试配置
  * @author shamphone@gmail.com
  * @version 1.0.0
  * @date 2017年8月16日
