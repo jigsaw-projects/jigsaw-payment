@@ -70,4 +70,93 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
+	<build>  
+        <finalName>${project.artifactId}</finalName>  <!--这里一定要定义生成的JAR包文件名-->  
+        <plugins>  
+            <plugin>  
+                <groupId>org.springframework.boot</groupId>  
+                <artifactId>spring-boot-maven-plugin</artifactId>  
+            </plugin>  
+  
+            <!--Docker 插件-->  
+            <!-- 构建镜像：       mvn docker:build -->  
+            <!-- 启动镜像：       mvn docker:start -->  
+            <!-- 停止镜像：       mvn docker:stop  -->  
+            <!-- 删除镜像：       mvn -Ddocker.removeAll docker:remove  -->  
+            <!-- 查看镜像日志：    mvn docker:logs -->  
+            <!-- 镜像启动成功后，访问地址为： http://192.168.1.70:8881/ams-server -->  
+            <plugin>  
+                <groupId>io.fabric8</groupId>  
+                <artifactId>docker-maven-plugin</artifactId>  
+                <version>0.20.0</version>  
+                <extensions>true</extensions>  
+                <configuration>  
+                    <dockerHost>http://kube23.jigsaw:32500</dockerHost>  
+                    <images>  
+                        <image>  
+                            <name>kube23.jigsaw:32500/${project.artifactId}</name> <!--生成的image名-->  
+                            <alias>${project.artifactId}</alias>  
+                            <build>  
+                                <from>kube23.jigsaw:32500/java:8u152</from>  
+                                <maintainer>shamphone@gmail.com</maintainer>  
+                                <tags>  
+                                    <tag>latest</tag>  
+                                    <tag>${project.version}</tag>  
+                                </tags>  
+                                <ports>  
+                                    <port>7777</port>  
+                                </ports>  
+                                <volumes>  
+                                    <volume>/usr/src/myapp</volume>  
+                                </volumes>  
+                                <buildOptions>  
+                                    <shmsize>2147483648</shmsize>  
+                                </buildOptions> 
+  
+                                <entryPoint>  
+                                    <!-- exec form for ENTRYPOINT -->  
+                                    <exec>  
+                                        <arg>java</arg>  
+										<arg>-server</arg>
+										<arg>-cp /usr/jigsaw/lib</arg>
+                                        <arg>-jar</arg>  
+										<arg>/usr/jigsaw/${project.artifactId}.jar</arg>  
+                                    </exec>  
+                                </entryPoint>    
+                                <assembly>  
+									<targetDir>/usr/jigsaw/</targetDir>
+									<exportTargetDir>true</exportTargetDir>
+                                    <mode>dir</mode>  
+                                </assembly>  
+                            </build>  
+                            <run>  
+                                <namingStrategy>alias</namingStrategy>  <!--container全名规则-->  
+                                <ports>  
+                                    <port>0.0.0.0:7777:7777</port> <!--端口映射, host端口: docker端口-->  
+                                </ports>  
+                            </run>  
+                        </image>  
+                    </images>  
+                </configuration>  
+                <executions>  
+                    <!-- 以下为插件与Maven声明周期做绑定，可选择使用 -->  
+                    <execution>  
+                      <id>build-docker-image</id>
+                      <phase>package</phase>  
+                      <goals>
+                         <goal>build</goal>
+                      </goals>
+                    </execution>
+                    <execution>
+                     <id>push-docker-image-to-registry</id>
+                     <phase>deploy</phase>
+                      <goals>  
+                      <goal>push</goal>
+                     </goals>
+                    </execution>
+                </executions>  
+            </plugin>  
+  
+        </plugins>  
+    </build>  
 </project>
