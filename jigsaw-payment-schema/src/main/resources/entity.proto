@@ -13,16 +13,16 @@ message User {
     option (table_option).id_no	 	= 10;
     optional int64 	key 			= 1;        //内部主键
 	optional int64  id				= 2;		//业务主键   
-    optional int64 	create_time		= 3[(column_option).column_type = DATETIME];    	//创建时间
-    optional string create_user 	= 4;    	//创建用户姓名
-    optional int64 	update_time		= 5[(column_option).column_type = DATETIME];        //更新时间
-    optional string update_user 	= 6;    	//更新用户姓名
+    optional int64 	created_time		= 3[(column_option).column_type = DATETIME];    	//创建时间
+    optional int64 	updated_time		= 5[(column_option).column_type = DATETIME];        //更新时间
     optional int32 	status 			= 7 [default = 1];    //状态：1有效 0无效
     optional int32 	version 		= 8 [default = 0];    //版本号
 	
-    required string username 		= 11;    //用户名
-	required string password 		= 12;    //密码
-	
+    required string user_name 		= 11;     //用户名
+	optional string security_phone  = 13;      //安全手机
+    optional string security_email  = 14;      //安全邮箱
+    optional bool identified     = 15;      //用户是否已经识别为客户',
+ 
 }
 
 /**

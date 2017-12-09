@@ -6,7 +6,7 @@ package org.jigsaw.payment.model;
 /**
  * <pre>
  **
- * 支付订单， 指业务方提交到支付平台的订单。 一个支付订单可以通过多个渠道订单来完成支付。
+ * 支付订单， 指业务方提交到支付平台的订单。
  * </pre>
  *
  * Protobuf type {@code PayOrder}
@@ -77,6 +77,9 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
     int mutable_bitField0_ = 0;
     int mutable_bitField1_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -1548,7 +1551,7 @@ private static final long serialVersionUID = 0L;
   private int subAccountType_;
   /**
    * <pre>
-   *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
+   *主体帐号类型：银行卡，钱包,支付渠道
    * </pre>
    *
    * <code>optional int32 sub_account_type = 55;</code>
@@ -1558,7 +1561,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
+   *主体帐号类型：银行卡，钱包,支付渠道
    * </pre>
    *
    * <code>optional int32 sub_account_type = 55;</code>
@@ -3015,7 +3018,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    **
-   * 支付订单， 指业务方提交到支付平台的订单。 一个支付订单可以通过多个渠道订单来完成支付。
+   * 支付订单， 指业务方提交到支付平台的订单。
    * </pre>
    *
    * Protobuf type {@code PayOrder}
@@ -5558,7 +5561,7 @@ private static final long serialVersionUID = 0L;
     private int subAccountType_ ;
     /**
      * <pre>
-     *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
+     *主体帐号类型：银行卡，钱包,支付渠道
      * </pre>
      *
      * <code>optional int32 sub_account_type = 55;</code>
@@ -5568,7 +5571,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
+     *主体帐号类型：银行卡，钱包,支付渠道
      * </pre>
      *
      * <code>optional int32 sub_account_type = 55;</code>
@@ -5578,7 +5581,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
+     *主体帐号类型：银行卡，钱包,支付渠道
      * </pre>
      *
      * <code>optional int32 sub_account_type = 55;</code>
@@ -5591,7 +5594,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
+     *主体帐号类型：银行卡，钱包,支付渠道
      * </pre>
      *
      * <code>optional int32 sub_account_type = 55;</code>
@@ -6780,7 +6783,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PayOrder(input, extensionRegistry);
+      return new PayOrder(input, extensionRegistry);
     }
   };
 

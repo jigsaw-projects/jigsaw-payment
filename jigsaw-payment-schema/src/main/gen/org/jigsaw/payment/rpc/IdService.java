@@ -120,6 +120,9 @@ public final class IdService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -941,7 +944,7 @@ public final class IdService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GeneratePayOrderIdRequest(input, extensionRegistry);
+        return new GeneratePayOrderIdRequest(input, extensionRegistry);
       }
     };
 
@@ -1014,6 +1017,9 @@ public final class IdService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1531,7 +1537,7 @@ public final class IdService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GeneratePayOrderIdResponse(input, extensionRegistry);
+        return new GeneratePayOrderIdResponse(input, extensionRegistry);
       }
     };
 
@@ -1710,6 +1716,9 @@ public final class IdService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -2876,7 +2885,7 @@ public final class IdService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GenerateAccountIdRequest(input, extensionRegistry);
+        return new GenerateAccountIdRequest(input, extensionRegistry);
       }
     };
 
@@ -2959,6 +2968,9 @@ public final class IdService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -3554,7 +3566,7 @@ public final class IdService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GenerateAccountIdResponse(input, extensionRegistry);
+        return new GenerateAccountIdResponse(input, extensionRegistry);
       }
     };
 
@@ -3611,7 +3623,7 @@ public final class IdService {
       " \001(\t\022\020\n\010password\030\002 \001(\t\022\016\n\006sub_id\030\r \002(\003\022\"" +
       "\n\014account_type\030\016 \002(\0162\014.AccountType\0226\n\rac" +
       "count_title\030\017 \002(\0162\r.AccountTitle:\020PERSON" +
-      "AL_DEPOSIT\022\026\n\007sandbox\030\020 \001(\010:\005false\"W\n\031Ge",
+      "AL_DEPOSIT\022\026\n\007sandbox\030\020 \001(\010:\005false\"W\n\031Ge" +
       "nerateAccountIdResponse\022\022\n\naccountKey\030\001 " +
       "\002(\003\022\021\n\taccountId\030\002 \002(\003\022\023\n\013contractKey\030\003 " +
       "\001(\003B\030\n\026org.jigsaw.payment.rpc"

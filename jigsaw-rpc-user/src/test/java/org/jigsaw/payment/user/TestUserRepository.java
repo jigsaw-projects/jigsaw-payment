@@ -45,9 +45,8 @@ public class TestUserRepository {
 			User.Builder builder = User.newBuilder();
 			builder.setId(uid);
 			builder.setKey(uid);
-			builder.setCreateTime(System.currentTimeMillis());
-			builder.setUsername("test" + uid);
-			builder.setPassword("pwd" + uid);
+			builder.setCreatedTime(System.currentTimeMillis());
+			builder.setUserName("test" + uid);
 			User user = builder.build();
 			
 			Assert.assertEquals(userRepository.create(user), ""+uid);

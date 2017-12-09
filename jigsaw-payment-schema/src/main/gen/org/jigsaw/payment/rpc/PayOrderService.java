@@ -115,6 +115,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1027,7 +1030,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new CreatePayOrderRequest(input, extensionRegistry);
+        return new CreatePayOrderRequest(input, extensionRegistry);
       }
     };
 
@@ -1105,6 +1108,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1693,7 +1699,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new CreatePayOrderResponse(input, extensionRegistry);
+        return new CreatePayOrderResponse(input, extensionRegistry);
       }
     };
 
@@ -1905,6 +1911,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -3444,7 +3453,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GetPayOrderRequest(input, extensionRegistry);
+        return new GetPayOrderRequest(input, extensionRegistry);
       }
     };
 
@@ -3510,6 +3519,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -4043,7 +4055,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GetPayOrderResponse(input, extensionRegistry);
+        return new GetPayOrderResponse(input, extensionRegistry);
       }
     };
 
@@ -4237,6 +4249,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -5600,7 +5615,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new QueryPayOrderRequest(input, extensionRegistry);
+        return new QueryPayOrderRequest(input, extensionRegistry);
       }
     };
 
@@ -5688,6 +5703,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -6462,7 +6480,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new QueryPayOrderResponse(input, extensionRegistry);
+        return new QueryPayOrderResponse(input, extensionRegistry);
       }
     };
 
@@ -6593,6 +6611,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -7552,7 +7573,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new CountPayOrderRequest(input, extensionRegistry);
+        return new CountPayOrderRequest(input, extensionRegistry);
       }
     };
 
@@ -7640,6 +7661,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -8197,7 +8221,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new CountPayOrderResponse(input, extensionRegistry);
+        return new CountPayOrderResponse(input, extensionRegistry);
       }
     };
 
@@ -8420,6 +8444,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -9851,7 +9878,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PreparePayRequest(input, extensionRegistry);
+        return new PreparePayRequest(input, extensionRegistry);
       }
     };
 
@@ -9928,6 +9955,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -10508,7 +10538,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PreparePayResponse(input, extensionRegistry);
+        return new PreparePayResponse(input, extensionRegistry);
       }
     };
 
@@ -10767,6 +10797,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -12458,7 +12491,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new FinishPayRequest(input, extensionRegistry);
+        return new FinishPayRequest(input, extensionRegistry);
       }
     };
 
@@ -12535,6 +12568,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -13115,7 +13151,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new FinishPayResponse(input, extensionRegistry);
+        return new FinishPayResponse(input, extensionRegistry);
       }
     };
 
@@ -13266,6 +13302,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -14279,7 +14318,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ClosePayRequest(input, extensionRegistry);
+        return new ClosePayRequest(input, extensionRegistry);
       }
     };
 
@@ -14394,6 +14433,9 @@ public final class PayOrderService {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -15139,7 +15181,7 @@ public final class PayOrderService {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ClosePayResponse(input, extensionRegistry);
+        return new ClosePayResponse(input, extensionRegistry);
       }
     };
 
@@ -15246,7 +15288,7 @@ public final class PayOrderService {
       "\001(\t\022\020\n\010password\030\002 \001(\t\022\014\n\004code\030\013 \001(\t\022\022\n\np" +
       "artner_id\030\025 \001(\005\022\030\n\020partner_order_no\030\026 \001(" +
       "\t\022\030\n\020third_trade_code\030\037 \001(\t\022\025\n\rdest_pay_" +
-      "type\030  \001(\005\022\021\n\tpay_index\030) \001(\003\022\016\n\006sub_id\030",
+      "type\030  \001(\005\022\021\n\tpay_index\030) \001(\003\022\016\n\006sub_id\030" +
       "* \001(\003\"3\n\023GetPayOrderResponse\022\034\n\tpay_orde" +
       "r\030\013 \001(\0132\t.PayOrder\"\227\001\n\024QueryPayOrderRequ" +
       "est\022\021\n\tuser_name\030\001 \001(\t\022\020\n\010password\030\002 \001(\t" +
@@ -15256,7 +15298,7 @@ public final class PayOrderService {
       "\005total\030\014 \002(\003\022\034\n\tpay_order\030\013 \003(\0132\t.PayOrd" +
       "er\"\\\n\024CountPayOrderRequest\022\021\n\tuser_name\030" +
       "\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\037\n\006filter\030\013 \002(\0132" +
-      "\017.PayOrderFilter\"9\n\025CountPayOrderRespons",
+      "\017.PayOrderFilter\"9\n\025CountPayOrderRespons" +
       "e\022\r\n\005total\030\013 \002(\003\022\021\n\ttotal_fee\030\014 \001(\003\"\276\001\n\021" +
       "PreparePayRequest\022\021\n\tuser_name\030\001 \001(\t\022\020\n\010" +
       "password\030\002 \001(\t\022\022\n\norder_code\030\013 \002(\t\022\027\n\017so" +
@@ -15266,7 +15308,7 @@ public final class PayOrderService {
       "ayResponse\022\030\n\005trade\030\013 \001(\0132\t.PayOrder\"\332\001\n" +
       "\020FinishPayRequest\022\021\n\tuser_name\030\001 \001(\t\022\020\n\010" +
       "password\030\002 \001(\t\022\022\n\norder_code\030\025 \001(\t\022\020\n\010re" +
-      "al_fee\030\026 \002(\003\022\030\n\020third_order_code\030\027 \001(\t\022\026",
+      "al_fee\030\026 \002(\003\022\030\n\020third_order_code\030\027 \001(\t\022\026" +
       "\n\016third_pay_time\030\030 \001(\003\022\031\n\021third_create_t" +
       "ime\030\031 \001(\003\022\026\n\016sub_account_id\030\032 \001(\t\022\026\n\016tra" +
       "nsaction_id\030\033 \001(\003\"1\n\021FinishPayResponse\022\034" +

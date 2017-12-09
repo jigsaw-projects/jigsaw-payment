@@ -2,7 +2,7 @@
 <configuration>
 	<!--<include resource="org/springframework/boot/logging/logback/base.xml"/>	-->
 	<!-- logger name="org.springside.samples.quickservice" level="DEBUG"/-->
-	<property name="log_path" value="d:/temp/hello"/>
+	<property name="log_path" value="/var/log/jigsaw/jigsaw-rpc-example-server"/>
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%C{1}:%M:%L] %m%n</pattern>
