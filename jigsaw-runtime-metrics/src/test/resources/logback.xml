@@ -4,7 +4,7 @@
 	<!-- logger name="org.springside.samples.quickservice" level="DEBUG"/-->
 
 
-	<property name="log_path" value="d:/temp/logs/pay-service-trade-sharding"/>
+	<property name="log_path" value="/var/log/jigsaw/jigsaw-runtime-metrics"/>
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>[%-5p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%C{1}:%M:%L] %m%n</pattern>

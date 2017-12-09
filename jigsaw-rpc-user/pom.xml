@@ -77,27 +77,20 @@
                 <groupId>org.springframework.boot</groupId>  
                 <artifactId>spring-boot-maven-plugin</artifactId>  
             </plugin>  
-  
-            <!--Docker 插件-->  
-            <!-- 构建镜像：       mvn docker:build -->  
-            <!-- 启动镜像：       mvn docker:start -->  
-            <!-- 停止镜像：       mvn docker:stop  -->  
-            <!-- 删除镜像：       mvn -Ddocker.removeAll docker:remove  -->  
-            <!-- 查看镜像日志：    mvn docker:logs -->  
-            <!-- 镜像启动成功后，访问地址为： http://192.168.1.70:8881/ams-server -->  
+
             <plugin>  
                 <groupId>io.fabric8</groupId>  
                 <artifactId>docker-maven-plugin</artifactId>  
                 <version>0.20.0</version>  
                 <extensions>true</extensions>  
                 <configuration>  
-                    <dockerHost>http://kube23.jigsaw:32500</dockerHost>  
+                     <dockerHost>tcp://localhost:2375</dockerHost>   
                     <images>  
                         <image>  
-                            <name>kube23.jigsaw:32500/${project.artifactId}</name> <!--生成的image名-->  
+                            <name>docker.lixf.cn/${project.artifactId}</name> <!--生成的image名-->  
                             <alias>${project.artifactId}</alias>  
                             <build>  
-                                <from>kube23.jigsaw:32500/java:8u152</from>  
+                                <from>docker.lixf.cn/jigsaw-rpc-docker</from>  
                                 <maintainer>shamphone@gmail.com</maintainer>  
                                 <tags>  
                                     <tag>latest</tag>  
@@ -106,6 +99,7 @@
                                 <ports>  
                                     <port>7777</port>  
                                 </ports>  
+							                              
                                 <volumes>  
                                     <volume>/usr/src/myapp</volume>  
                                 </volumes>  
@@ -131,18 +125,23 @@
                             </build>  
                             <run>  
                                 <namingStrategy>alias</namingStrategy>  <!--container全名规则-->  
+                                 <privileged>true</privileged>
+                                <links>
+                                  <link>docker.lixf.cn/jigsaw-mysql-user</link>
+                                </links>                                   
                                 <ports>  
                                     <port>0.0.0.0:7777:7777</port> <!--端口映射, host端口: docker端口-->  
                                 </ports>  
                             </run>  
                         </image>  
+      
                     </images>  
                 </configuration>  
                 <executions>  
                     <!-- 以下为插件与Maven声明周期做绑定，可选择使用 -->  
                     <execution>  
                       <id>build-docker-image</id>
-                      <phase>package</phase>  
+                      <phase>install</phase>  
                       <goals>
                          <goal>build</goal>
                       </goals>

@@ -78,7 +78,7 @@ public final class Taglib {
       "\n\003INT\020\002\022\n\n\006BIGINT\020\003\022\n\n\006DOUBLE\020\004\022\t\n\005FLOAT" +
       "\020\005\022\013\n\007DECIMAL\020\006\022\014\n\010DATETIME\020\007\022\r\n\tTIMESTA" +
       "MP\020\010:L\n\014table_option\022\037.google.protobuf.M" +
-      "essageOptions\030\340\324\003 \001(\0132\023.TableMessageOpti",
+      "essageOptions\030\340\324\003 \001(\0132\023.TableMessageOpti" +
       "on:J\n\rcolumn_option\022\035.google.protobuf.Fi" +
       "eldOptions\030\341\324\003 \001(\0132\022.ColumnFieldOption:2" +
       "\n\005alias\022!.google.protobuf.EnumValueOptio" +

@@ -46,86 +46,34 @@ public interface UserOrBuilder extends
    *创建时间
    * </pre>
    *
-   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+   * <code>optional int64 created_time = 3 [(.column_option) = { ... }</code>
    */
-  boolean hasCreateTime();
+  boolean hasCreatedTime();
   /**
    * <pre>
    *创建时间
    * </pre>
    *
-   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+   * <code>optional int64 created_time = 3 [(.column_option) = { ... }</code>
    */
-  long getCreateTime();
-
-  /**
-   * <pre>
-   *创建用户姓名
-   * </pre>
-   *
-   * <code>optional string create_user = 4;</code>
-   */
-  boolean hasCreateUser();
-  /**
-   * <pre>
-   *创建用户姓名
-   * </pre>
-   *
-   * <code>optional string create_user = 4;</code>
-   */
-  java.lang.String getCreateUser();
-  /**
-   * <pre>
-   *创建用户姓名
-   * </pre>
-   *
-   * <code>optional string create_user = 4;</code>
-   */
-  com.google.protobuf.ByteString
-      getCreateUserBytes();
+  long getCreatedTime();
 
   /**
    * <pre>
    *更新时间
    * </pre>
    *
-   * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
+   * <code>optional int64 updated_time = 5 [(.column_option) = { ... }</code>
    */
-  boolean hasUpdateTime();
+  boolean hasUpdatedTime();
   /**
    * <pre>
    *更新时间
    * </pre>
    *
-   * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
+   * <code>optional int64 updated_time = 5 [(.column_option) = { ... }</code>
    */
-  long getUpdateTime();
-
-  /**
-   * <pre>
-   *更新用户姓名
-   * </pre>
-   *
-   * <code>optional string update_user = 6;</code>
-   */
-  boolean hasUpdateUser();
-  /**
-   * <pre>
-   *更新用户姓名
-   * </pre>
-   *
-   * <code>optional string update_user = 6;</code>
-   */
-  java.lang.String getUpdateUser();
-  /**
-   * <pre>
-   *更新用户姓名
-   * </pre>
-   *
-   * <code>optional string update_user = 6;</code>
-   */
-  com.google.protobuf.ByteString
-      getUpdateUserBytes();
+  long getUpdatedTime();
 
   /**
    * <pre>
@@ -166,50 +114,93 @@ public interface UserOrBuilder extends
    *用户名
    * </pre>
    *
-   * <code>required string username = 11;</code>
+   * <code>required string user_name = 11;</code>
    */
-  boolean hasUsername();
+  boolean hasUserName();
   /**
    * <pre>
    *用户名
    * </pre>
    *
-   * <code>required string username = 11;</code>
+   * <code>required string user_name = 11;</code>
    */
-  java.lang.String getUsername();
+  java.lang.String getUserName();
   /**
    * <pre>
    *用户名
    * </pre>
    *
-   * <code>required string username = 11;</code>
+   * <code>required string user_name = 11;</code>
    */
   com.google.protobuf.ByteString
-      getUsernameBytes();
+      getUserNameBytes();
 
   /**
    * <pre>
-   *密码
+   *安全手机
    * </pre>
    *
-   * <code>required string password = 12;</code>
+   * <code>optional string security_phone = 13;</code>
    */
-  boolean hasPassword();
+  boolean hasSecurityPhone();
   /**
    * <pre>
-   *密码
+   *安全手机
    * </pre>
    *
-   * <code>required string password = 12;</code>
+   * <code>optional string security_phone = 13;</code>
    */
-  java.lang.String getPassword();
+  java.lang.String getSecurityPhone();
   /**
    * <pre>
-   *密码
+   *安全手机
    * </pre>
    *
-   * <code>required string password = 12;</code>
+   * <code>optional string security_phone = 13;</code>
    */
   com.google.protobuf.ByteString
-      getPasswordBytes();
+      getSecurityPhoneBytes();
+
+  /**
+   * <pre>
+   *安全邮箱
+   * </pre>
+   *
+   * <code>optional string security_email = 14;</code>
+   */
+  boolean hasSecurityEmail();
+  /**
+   * <pre>
+   *安全邮箱
+   * </pre>
+   *
+   * <code>optional string security_email = 14;</code>
+   */
+  java.lang.String getSecurityEmail();
+  /**
+   * <pre>
+   *安全邮箱
+   * </pre>
+   *
+   * <code>optional string security_email = 14;</code>
+   */
+  com.google.protobuf.ByteString
+      getSecurityEmailBytes();
+
+  /**
+   * <pre>
+   *用户是否已经识别为客户',
+   * </pre>
+   *
+   * <code>optional bool identified = 15;</code>
+   */
+  boolean hasIdentified();
+  /**
+   * <pre>
+   *用户是否已经识别为客户',
+   * </pre>
+   *
+   * <code>optional bool identified = 15;</code>
+   */
+  boolean getIdentified();
 }

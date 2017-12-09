@@ -609,7 +609,7 @@ public interface PayOrderOrBuilder extends
 
   /**
    * <pre>
-   *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
+   *主体帐号类型：银行卡，钱包,支付渠道
    * </pre>
    *
    * <code>optional int32 sub_account_type = 55;</code>
@@ -617,7 +617,7 @@ public interface PayOrderOrBuilder extends
   boolean hasSubAccountType();
   /**
    * <pre>
-   *主体帐号类型：银行卡，奇点，奇豆，钱包,支付渠道
+   *主体帐号类型：银行卡，钱包,支付渠道
    * </pre>
    *
    * <code>optional int32 sub_account_type = 55;</code>

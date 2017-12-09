@@ -24,9 +24,13 @@
 		<module>jigsaw-protobuf-format</module>
 		<module>jigsaw-thrift-protobuf</module>
 		<module>jigsaw-mysql-protobuf</module>
+        <module>jigsaw-zookeeper</module>
+	    <module>jigsaw-mysql-user</module>		
 		<module>jigsaw-runtime-metrics</module>
+		<module>jigsaw-rpc-docker</module>
 		<module>jigsaw-rpc-example-server</module>
 		<module>jigsaw-rpc-example-client</module>
+		<module>jigsaw-rpc-user</module>
 		<module>jigsaw-rpc-payment</module>
 		<module>jigsaw-mode-fastpay</module>
 	</modules>
@@ -385,8 +389,8 @@
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 				</configuration>
 			</plugin>
-
-			<plugin>
+      
+            <plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.6</version>
 				<executions>
@@ -421,9 +425,10 @@
 								</resource>
 							</resources>
 						</configuration>
-					</execution>
+					</execution>						
 				</executions>
 			</plugin>
+		
 			<!-- enforcer插件, 避免被依赖的依赖引入过期的jar -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -511,17 +516,9 @@
 			<organization>Phoenix Software, Inc.</organization>
 			<organizationUrl>http://www.lixf.cn</organizationUrl>
 			<roles>
-				<role>Project lead</role>
+				<role>Project leader</role>
 			</roles>
 		</developer>
 	</developers>
-
-	<scm>
-		<url>https://github.com/jigsaw-projects/jigsaw-payment/</url>
-		<connection>scm:git:ssh://git@github.com:jigsaw-projects/jigsaw-payment.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:jigsaw-projects/jigsaw-payment.git
-        </developerConnection>
-		<tag>HEAD</tag>
-	</scm>
 
 </project>

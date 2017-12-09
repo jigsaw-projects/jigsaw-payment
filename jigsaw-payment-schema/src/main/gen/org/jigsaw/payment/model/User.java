@@ -23,14 +23,14 @@ private static final long serialVersionUID = 0L;
   private User() {
     key_ = 0L;
     id_ = 0L;
-    createTime_ = 0L;
-    createUser_ = "";
-    updateTime_ = 0L;
-    updateUser_ = "";
+    createdTime_ = 0L;
+    updatedTime_ = 0L;
     status_ = 1;
     version_ = 0;
-    username_ = "";
-    password_ = "";
+    userName_ = "";
+    securityPhone_ = "";
+    securityEmail_ = "";
+    identified_ = false;
   }
 
   @java.lang.Override
@@ -43,6 +43,9 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
     int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -73,46 +76,45 @@ private static final long serialVersionUID = 0L;
           }
           case 24: {
             bitField0_ |= 0x00000004;
-            createTime_ = input.readInt64();
-            break;
-          }
-          case 34: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00000008;
-            createUser_ = bs;
+            createdTime_ = input.readInt64();
             break;
           }
           case 40: {
-            bitField0_ |= 0x00000010;
-            updateTime_ = input.readInt64();
-            break;
-          }
-          case 50: {
-            com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00000020;
-            updateUser_ = bs;
+            bitField0_ |= 0x00000008;
+            updatedTime_ = input.readInt64();
             break;
           }
           case 56: {
-            bitField0_ |= 0x00000040;
+            bitField0_ |= 0x00000010;
             status_ = input.readInt32();
             break;
           }
           case 64: {
-            bitField0_ |= 0x00000080;
+            bitField0_ |= 0x00000020;
             version_ = input.readInt32();
             break;
           }
           case 90: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00000100;
-            username_ = bs;
+            bitField0_ |= 0x00000040;
+            userName_ = bs;
             break;
           }
-          case 98: {
+          case 106: {
             com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x00000080;
+            securityPhone_ = bs;
+            break;
+          }
+          case 114: {
+            com.google.protobuf.ByteString bs = input.readBytes();
+            bitField0_ |= 0x00000100;
+            securityEmail_ = bs;
+            break;
+          }
+          case 120: {
             bitField0_ |= 0x00000200;
-            password_ = bs;
+            identified_ = input.readBool();
             break;
           }
         }
@@ -186,16 +188,16 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
-  public static final int CREATE_TIME_FIELD_NUMBER = 3;
-  private long createTime_;
+  public static final int CREATED_TIME_FIELD_NUMBER = 3;
+  private long createdTime_;
   /**
    * <pre>
    *创建时间
    * </pre>
    *
-   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+   * <code>optional int64 created_time = 3 [(.column_option) = { ... }</code>
    */
-  public boolean hasCreateTime() {
+  public boolean hasCreatedTime() {
     return ((bitField0_ & 0x00000004) == 0x00000004);
   }
   /**
@@ -203,141 +205,33 @@ private static final long serialVersionUID = 0L;
    *创建时间
    * </pre>
    *
-   * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+   * <code>optional int64 created_time = 3 [(.column_option) = { ... }</code>
    */
-  public long getCreateTime() {
-    return createTime_;
+  public long getCreatedTime() {
+    return createdTime_;
   }
 
-  public static final int CREATE_USER_FIELD_NUMBER = 4;
-  private volatile java.lang.Object createUser_;
+  public static final int UPDATED_TIME_FIELD_NUMBER = 5;
+  private long updatedTime_;
   /**
    * <pre>
-   *创建用户姓名
+   *更新时间
    * </pre>
    *
-   * <code>optional string create_user = 4;</code>
+   * <code>optional int64 updated_time = 5 [(.column_option) = { ... }</code>
    */
-  public boolean hasCreateUser() {
+  public boolean hasUpdatedTime() {
     return ((bitField0_ & 0x00000008) == 0x00000008);
   }
   /**
    * <pre>
-   *创建用户姓名
-   * </pre>
-   *
-   * <code>optional string create_user = 4;</code>
-   */
-  public java.lang.String getCreateUser() {
-    java.lang.Object ref = createUser_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      if (bs.isValidUtf8()) {
-        createUser_ = s;
-      }
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *创建用户姓名
-   * </pre>
-   *
-   * <code>optional string create_user = 4;</code>
-   */
-  public com.google.protobuf.ByteString
-      getCreateUserBytes() {
-    java.lang.Object ref = createUser_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      createUser_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int UPDATE_TIME_FIELD_NUMBER = 5;
-  private long updateTime_;
-  /**
-   * <pre>
    *更新时间
    * </pre>
    *
-   * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
+   * <code>optional int64 updated_time = 5 [(.column_option) = { ... }</code>
    */
-  public boolean hasUpdateTime() {
-    return ((bitField0_ & 0x00000010) == 0x00000010);
-  }
-  /**
-   * <pre>
-   *更新时间
-   * </pre>
-   *
-   * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
-   */
-  public long getUpdateTime() {
-    return updateTime_;
-  }
-
-  public static final int UPDATE_USER_FIELD_NUMBER = 6;
-  private volatile java.lang.Object updateUser_;
-  /**
-   * <pre>
-   *更新用户姓名
-   * </pre>
-   *
-   * <code>optional string update_user = 6;</code>
-   */
-  public boolean hasUpdateUser() {
-    return ((bitField0_ & 0x00000020) == 0x00000020);
-  }
-  /**
-   * <pre>
-   *更新用户姓名
-   * </pre>
-   *
-   * <code>optional string update_user = 6;</code>
-   */
-  public java.lang.String getUpdateUser() {
-    java.lang.Object ref = updateUser_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      if (bs.isValidUtf8()) {
-        updateUser_ = s;
-      }
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *更新用户姓名
-   * </pre>
-   *
-   * <code>optional string update_user = 6;</code>
-   */
-  public com.google.protobuf.ByteString
-      getUpdateUserBytes() {
-    java.lang.Object ref = updateUser_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      updateUser_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public long getUpdatedTime() {
+    return updatedTime_;
   }
 
   public static final int STATUS_FIELD_NUMBER = 7;
@@ -350,7 +244,7 @@ private static final long serialVersionUID = 0L;
    * <code>optional int32 status = 7 [default = 1];</code>
    */
   public boolean hasStatus() {
-    return ((bitField0_ & 0x00000040) == 0x00000040);
+    return ((bitField0_ & 0x00000010) == 0x00000010);
   }
   /**
    * <pre>
@@ -373,7 +267,7 @@ private static final long serialVersionUID = 0L;
    * <code>optional int32 version = 8 [default = 0];</code>
    */
   public boolean hasVersion() {
-    return ((bitField0_ & 0x00000080) == 0x00000080);
+    return ((bitField0_ & 0x00000020) == 0x00000020);
   }
   /**
    * <pre>
@@ -386,27 +280,27 @@ private static final long serialVersionUID = 0L;
     return version_;
   }
 
-  public static final int USERNAME_FIELD_NUMBER = 11;
-  private volatile java.lang.Object username_;
+  public static final int USER_NAME_FIELD_NUMBER = 11;
+  private volatile java.lang.Object userName_;
   /**
    * <pre>
    *用户名
    * </pre>
    *
-   * <code>required string username = 11;</code>
+   * <code>required string user_name = 11;</code>
    */
-  public boolean hasUsername() {
-    return ((bitField0_ & 0x00000100) == 0x00000100);
+  public boolean hasUserName() {
+    return ((bitField0_ & 0x00000040) == 0x00000040);
   }
   /**
    * <pre>
    *用户名
    * </pre>
    *
-   * <code>required string username = 11;</code>
+   * <code>required string user_name = 11;</code>
    */
-  public java.lang.String getUsername() {
-    java.lang.Object ref = username_;
+  public java.lang.String getUserName() {
+    java.lang.Object ref = userName_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
@@ -414,7 +308,7 @@ private static final long serialVersionUID = 0L;
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (bs.isValidUtf8()) {
-        username_ = s;
+        userName_ = s;
       }
       return s;
     }
@@ -424,43 +318,43 @@ private static final long serialVersionUID = 0L;
    *用户名
    * </pre>
    *
-   * <code>required string username = 11;</code>
+   * <code>required string user_name = 11;</code>
    */
   public com.google.protobuf.ByteString
-      getUsernameBytes() {
-    java.lang.Object ref = username_;
+      getUserNameBytes() {
+    java.lang.Object ref = userName_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      username_ = b;
+      userName_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int PASSWORD_FIELD_NUMBER = 12;
-  private volatile java.lang.Object password_;
+  public static final int SECURITY_PHONE_FIELD_NUMBER = 13;
+  private volatile java.lang.Object securityPhone_;
   /**
    * <pre>
-   *密码
+   *安全手机
    * </pre>
    *
-   * <code>required string password = 12;</code>
+   * <code>optional string security_phone = 13;</code>
    */
-  public boolean hasPassword() {
-    return ((bitField0_ & 0x00000200) == 0x00000200);
+  public boolean hasSecurityPhone() {
+    return ((bitField0_ & 0x00000080) == 0x00000080);
   }
   /**
    * <pre>
-   *密码
+   *安全手机
    * </pre>
    *
-   * <code>required string password = 12;</code>
+   * <code>optional string security_phone = 13;</code>
    */
-  public java.lang.String getPassword() {
-    java.lang.Object ref = password_;
+  public java.lang.String getSecurityPhone() {
+    java.lang.Object ref = securityPhone_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
@@ -468,30 +362,107 @@ private static final long serialVersionUID = 0L;
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (bs.isValidUtf8()) {
-        password_ = s;
+        securityPhone_ = s;
       }
       return s;
     }
   }
   /**
    * <pre>
-   *密码
+   *安全手机
    * </pre>
    *
-   * <code>required string password = 12;</code>
+   * <code>optional string security_phone = 13;</code>
    */
   public com.google.protobuf.ByteString
-      getPasswordBytes() {
-    java.lang.Object ref = password_;
+      getSecurityPhoneBytes() {
+    java.lang.Object ref = securityPhone_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      password_ = b;
+      securityPhone_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int SECURITY_EMAIL_FIELD_NUMBER = 14;
+  private volatile java.lang.Object securityEmail_;
+  /**
+   * <pre>
+   *安全邮箱
+   * </pre>
+   *
+   * <code>optional string security_email = 14;</code>
+   */
+  public boolean hasSecurityEmail() {
+    return ((bitField0_ & 0x00000100) == 0x00000100);
+  }
+  /**
+   * <pre>
+   *安全邮箱
+   * </pre>
+   *
+   * <code>optional string security_email = 14;</code>
+   */
+  public java.lang.String getSecurityEmail() {
+    java.lang.Object ref = securityEmail_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      if (bs.isValidUtf8()) {
+        securityEmail_ = s;
+      }
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *安全邮箱
+   * </pre>
+   *
+   * <code>optional string security_email = 14;</code>
+   */
+  public com.google.protobuf.ByteString
+      getSecurityEmailBytes() {
+    java.lang.Object ref = securityEmail_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      securityEmail_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int IDENTIFIED_FIELD_NUMBER = 15;
+  private boolean identified_;
+  /**
+   * <pre>
+   *用户是否已经识别为客户',
+   * </pre>
+   *
+   * <code>optional bool identified = 15;</code>
+   */
+  public boolean hasIdentified() {
+    return ((bitField0_ & 0x00000200) == 0x00000200);
+  }
+  /**
+   * <pre>
+   *用户是否已经识别为客户',
+   * </pre>
+   *
+   * <code>optional bool identified = 15;</code>
+   */
+  public boolean getIdentified() {
+    return identified_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -500,11 +471,7 @@ private static final long serialVersionUID = 0L;
     if (isInitialized == 1) return true;
     if (isInitialized == 0) return false;
 
-    if (!hasUsername()) {
-      memoizedIsInitialized = 0;
-      return false;
-    }
-    if (!hasPassword()) {
+    if (!hasUserName()) {
       memoizedIsInitialized = 0;
       return false;
     }
@@ -521,28 +488,28 @@ private static final long serialVersionUID = 0L;
       output.writeInt64(2, id_);
     }
     if (((bitField0_ & 0x00000004) == 0x00000004)) {
-      output.writeInt64(3, createTime_);
+      output.writeInt64(3, createdTime_);
     }
     if (((bitField0_ & 0x00000008) == 0x00000008)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, createUser_);
+      output.writeInt64(5, updatedTime_);
     }
     if (((bitField0_ & 0x00000010) == 0x00000010)) {
-      output.writeInt64(5, updateTime_);
-    }
-    if (((bitField0_ & 0x00000020) == 0x00000020)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, updateUser_);
-    }
-    if (((bitField0_ & 0x00000040) == 0x00000040)) {
       output.writeInt32(7, status_);
     }
-    if (((bitField0_ & 0x00000080) == 0x00000080)) {
+    if (((bitField0_ & 0x00000020) == 0x00000020)) {
       output.writeInt32(8, version_);
     }
+    if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, userName_);
+    }
+    if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, securityPhone_);
+    }
     if (((bitField0_ & 0x00000100) == 0x00000100)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, username_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 14, securityEmail_);
     }
     if (((bitField0_ & 0x00000200) == 0x00000200)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, password_);
+      output.writeBool(15, identified_);
     }
     unknownFields.writeTo(output);
   }
@@ -562,31 +529,32 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000004) == 0x00000004)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(3, createTime_);
+        .computeInt64Size(3, createdTime_);
     }
     if (((bitField0_ & 0x00000008) == 0x00000008)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, createUser_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(5, updatedTime_);
     }
     if (((bitField0_ & 0x00000010) == 0x00000010)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(5, updateTime_);
-    }
-    if (((bitField0_ & 0x00000020) == 0x00000020)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, updateUser_);
-    }
-    if (((bitField0_ & 0x00000040) == 0x00000040)) {
-      size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(7, status_);
     }
-    if (((bitField0_ & 0x00000080) == 0x00000080)) {
+    if (((bitField0_ & 0x00000020) == 0x00000020)) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(8, version_);
     }
+    if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, userName_);
+    }
+    if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, securityPhone_);
+    }
     if (((bitField0_ & 0x00000100) == 0x00000100)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, username_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, securityEmail_);
     }
     if (((bitField0_ & 0x00000200) == 0x00000200)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, password_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(15, identified_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -614,25 +582,15 @@ private static final long serialVersionUID = 0L;
       result = result && (getId()
           == other.getId());
     }
-    result = result && (hasCreateTime() == other.hasCreateTime());
-    if (hasCreateTime()) {
-      result = result && (getCreateTime()
-          == other.getCreateTime());
+    result = result && (hasCreatedTime() == other.hasCreatedTime());
+    if (hasCreatedTime()) {
+      result = result && (getCreatedTime()
+          == other.getCreatedTime());
     }
-    result = result && (hasCreateUser() == other.hasCreateUser());
-    if (hasCreateUser()) {
-      result = result && getCreateUser()
-          .equals(other.getCreateUser());
-    }
-    result = result && (hasUpdateTime() == other.hasUpdateTime());
-    if (hasUpdateTime()) {
-      result = result && (getUpdateTime()
-          == other.getUpdateTime());
-    }
-    result = result && (hasUpdateUser() == other.hasUpdateUser());
-    if (hasUpdateUser()) {
-      result = result && getUpdateUser()
-          .equals(other.getUpdateUser());
+    result = result && (hasUpdatedTime() == other.hasUpdatedTime());
+    if (hasUpdatedTime()) {
+      result = result && (getUpdatedTime()
+          == other.getUpdatedTime());
     }
     result = result && (hasStatus() == other.hasStatus());
     if (hasStatus()) {
@@ -644,15 +602,25 @@ private static final long serialVersionUID = 0L;
       result = result && (getVersion()
           == other.getVersion());
     }
-    result = result && (hasUsername() == other.hasUsername());
-    if (hasUsername()) {
-      result = result && getUsername()
-          .equals(other.getUsername());
+    result = result && (hasUserName() == other.hasUserName());
+    if (hasUserName()) {
+      result = result && getUserName()
+          .equals(other.getUserName());
     }
-    result = result && (hasPassword() == other.hasPassword());
-    if (hasPassword()) {
-      result = result && getPassword()
-          .equals(other.getPassword());
+    result = result && (hasSecurityPhone() == other.hasSecurityPhone());
+    if (hasSecurityPhone()) {
+      result = result && getSecurityPhone()
+          .equals(other.getSecurityPhone());
+    }
+    result = result && (hasSecurityEmail() == other.hasSecurityEmail());
+    if (hasSecurityEmail()) {
+      result = result && getSecurityEmail()
+          .equals(other.getSecurityEmail());
+    }
+    result = result && (hasIdentified() == other.hasIdentified());
+    if (hasIdentified()) {
+      result = result && (getIdentified()
+          == other.getIdentified());
     }
     result = result && unknownFields.equals(other.unknownFields);
     return result;
@@ -675,23 +643,15 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getId());
     }
-    if (hasCreateTime()) {
-      hash = (37 * hash) + CREATE_TIME_FIELD_NUMBER;
+    if (hasCreatedTime()) {
+      hash = (37 * hash) + CREATED_TIME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getCreateTime());
+          getCreatedTime());
     }
-    if (hasCreateUser()) {
-      hash = (37 * hash) + CREATE_USER_FIELD_NUMBER;
-      hash = (53 * hash) + getCreateUser().hashCode();
-    }
-    if (hasUpdateTime()) {
-      hash = (37 * hash) + UPDATE_TIME_FIELD_NUMBER;
+    if (hasUpdatedTime()) {
+      hash = (37 * hash) + UPDATED_TIME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getUpdateTime());
-    }
-    if (hasUpdateUser()) {
-      hash = (37 * hash) + UPDATE_USER_FIELD_NUMBER;
-      hash = (53 * hash) + getUpdateUser().hashCode();
+          getUpdatedTime());
     }
     if (hasStatus()) {
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
@@ -701,13 +661,22 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + VERSION_FIELD_NUMBER;
       hash = (53 * hash) + getVersion();
     }
-    if (hasUsername()) {
-      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getUsername().hashCode();
+    if (hasUserName()) {
+      hash = (37 * hash) + USER_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUserName().hashCode();
     }
-    if (hasPassword()) {
-      hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
-      hash = (53 * hash) + getPassword().hashCode();
+    if (hasSecurityPhone()) {
+      hash = (37 * hash) + SECURITY_PHONE_FIELD_NUMBER;
+      hash = (53 * hash) + getSecurityPhone().hashCode();
+    }
+    if (hasSecurityEmail()) {
+      hash = (37 * hash) + SECURITY_EMAIL_FIELD_NUMBER;
+      hash = (53 * hash) + getSecurityEmail().hashCode();
+    }
+    if (hasIdentified()) {
+      hash = (37 * hash) + IDENTIFIED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIdentified());
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -847,21 +816,21 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
       id_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000002);
-      createTime_ = 0L;
+      createdTime_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000004);
-      createUser_ = "";
+      updatedTime_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000008);
-      updateTime_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00000010);
-      updateUser_ = "";
-      bitField0_ = (bitField0_ & ~0x00000020);
       status_ = 1;
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000010);
       version_ = 0;
+      bitField0_ = (bitField0_ & ~0x00000020);
+      userName_ = "";
+      bitField0_ = (bitField0_ & ~0x00000040);
+      securityPhone_ = "";
       bitField0_ = (bitField0_ & ~0x00000080);
-      username_ = "";
+      securityEmail_ = "";
       bitField0_ = (bitField0_ & ~0x00000100);
-      password_ = "";
+      identified_ = false;
       bitField0_ = (bitField0_ & ~0x00000200);
       return this;
     }
@@ -898,35 +867,35 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
         to_bitField0_ |= 0x00000004;
       }
-      result.createTime_ = createTime_;
+      result.createdTime_ = createdTime_;
       if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
         to_bitField0_ |= 0x00000008;
       }
-      result.createUser_ = createUser_;
+      result.updatedTime_ = updatedTime_;
       if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
         to_bitField0_ |= 0x00000010;
       }
-      result.updateTime_ = updateTime_;
+      result.status_ = status_;
       if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
         to_bitField0_ |= 0x00000020;
       }
-      result.updateUser_ = updateUser_;
+      result.version_ = version_;
       if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
         to_bitField0_ |= 0x00000040;
       }
-      result.status_ = status_;
+      result.userName_ = userName_;
       if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
         to_bitField0_ |= 0x00000080;
       }
-      result.version_ = version_;
+      result.securityPhone_ = securityPhone_;
       if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
         to_bitField0_ |= 0x00000100;
       }
-      result.username_ = username_;
+      result.securityEmail_ = securityEmail_;
       if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
         to_bitField0_ |= 0x00000200;
       }
-      result.password_ = password_;
+      result.identified_ = identified_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -975,21 +944,11 @@ private static final long serialVersionUID = 0L;
       if (other.hasId()) {
         setId(other.getId());
       }
-      if (other.hasCreateTime()) {
-        setCreateTime(other.getCreateTime());
+      if (other.hasCreatedTime()) {
+        setCreatedTime(other.getCreatedTime());
       }
-      if (other.hasCreateUser()) {
-        bitField0_ |= 0x00000008;
-        createUser_ = other.createUser_;
-        onChanged();
-      }
-      if (other.hasUpdateTime()) {
-        setUpdateTime(other.getUpdateTime());
-      }
-      if (other.hasUpdateUser()) {
-        bitField0_ |= 0x00000020;
-        updateUser_ = other.updateUser_;
-        onChanged();
+      if (other.hasUpdatedTime()) {
+        setUpdatedTime(other.getUpdatedTime());
       }
       if (other.hasStatus()) {
         setStatus(other.getStatus());
@@ -997,15 +956,23 @@ private static final long serialVersionUID = 0L;
       if (other.hasVersion()) {
         setVersion(other.getVersion());
       }
-      if (other.hasUsername()) {
-        bitField0_ |= 0x00000100;
-        username_ = other.username_;
+      if (other.hasUserName()) {
+        bitField0_ |= 0x00000040;
+        userName_ = other.userName_;
         onChanged();
       }
-      if (other.hasPassword()) {
-        bitField0_ |= 0x00000200;
-        password_ = other.password_;
+      if (other.hasSecurityPhone()) {
+        bitField0_ |= 0x00000080;
+        securityPhone_ = other.securityPhone_;
         onChanged();
+      }
+      if (other.hasSecurityEmail()) {
+        bitField0_ |= 0x00000100;
+        securityEmail_ = other.securityEmail_;
+        onChanged();
+      }
+      if (other.hasIdentified()) {
+        setIdentified(other.getIdentified());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1013,10 +980,7 @@ private static final long serialVersionUID = 0L;
     }
 
     public final boolean isInitialized() {
-      if (!hasUsername()) {
-        return false;
-      }
-      if (!hasPassword()) {
+      if (!hasUserName()) {
         return false;
       }
       return true;
@@ -1137,15 +1101,15 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long createTime_ ;
+    private long createdTime_ ;
     /**
      * <pre>
      *创建时间
      * </pre>
      *
-     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+     * <code>optional int64 created_time = 3 [(.column_option) = { ... }</code>
      */
-    public boolean hasCreateTime() {
+    public boolean hasCreatedTime() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
@@ -1153,21 +1117,21 @@ private static final long serialVersionUID = 0L;
      *创建时间
      * </pre>
      *
-     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+     * <code>optional int64 created_time = 3 [(.column_option) = { ... }</code>
      */
-    public long getCreateTime() {
-      return createTime_;
+    public long getCreatedTime() {
+      return createdTime_;
     }
     /**
      * <pre>
      *创建时间
      * </pre>
      *
-     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+     * <code>optional int64 created_time = 3 [(.column_option) = { ... }</code>
      */
-    public Builder setCreateTime(long value) {
+    public Builder setCreatedTime(long value) {
       bitField0_ |= 0x00000004;
-      createTime_ = value;
+      createdTime_ = value;
       onChanged();
       return this;
     }
@@ -1176,259 +1140,59 @@ private static final long serialVersionUID = 0L;
      *创建时间
      * </pre>
      *
-     * <code>optional int64 create_time = 3 [(.column_option) = { ... }</code>
+     * <code>optional int64 created_time = 3 [(.column_option) = { ... }</code>
      */
-    public Builder clearCreateTime() {
+    public Builder clearCreatedTime() {
       bitField0_ = (bitField0_ & ~0x00000004);
-      createTime_ = 0L;
+      createdTime_ = 0L;
       onChanged();
       return this;
     }
 
-    private java.lang.Object createUser_ = "";
+    private long updatedTime_ ;
     /**
      * <pre>
-     *创建用户姓名
+     *更新时间
      * </pre>
      *
-     * <code>optional string create_user = 4;</code>
+     * <code>optional int64 updated_time = 5 [(.column_option) = { ... }</code>
      */
-    public boolean hasCreateUser() {
+    public boolean hasUpdatedTime() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <pre>
-     *创建用户姓名
+     *更新时间
      * </pre>
      *
-     * <code>optional string create_user = 4;</code>
+     * <code>optional int64 updated_time = 5 [(.column_option) = { ... }</code>
      */
-    public java.lang.String getCreateUser() {
-      java.lang.Object ref = createUser_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          createUser_ = s;
-        }
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public long getUpdatedTime() {
+      return updatedTime_;
     }
     /**
      * <pre>
-     *创建用户姓名
+     *更新时间
      * </pre>
      *
-     * <code>optional string create_user = 4;</code>
+     * <code>optional int64 updated_time = 5 [(.column_option) = { ... }</code>
      */
-    public com.google.protobuf.ByteString
-        getCreateUserBytes() {
-      java.lang.Object ref = createUser_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        createUser_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *创建用户姓名
-     * </pre>
-     *
-     * <code>optional string create_user = 4;</code>
-     */
-    public Builder setCreateUser(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-      createUser_ = value;
+    public Builder setUpdatedTime(long value) {
+      bitField0_ |= 0x00000008;
+      updatedTime_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     *创建用户姓名
+     *更新时间
      * </pre>
      *
-     * <code>optional string create_user = 4;</code>
+     * <code>optional int64 updated_time = 5 [(.column_option) = { ... }</code>
      */
-    public Builder clearCreateUser() {
+    public Builder clearUpdatedTime() {
       bitField0_ = (bitField0_ & ~0x00000008);
-      createUser_ = getDefaultInstance().getCreateUser();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *创建用户姓名
-     * </pre>
-     *
-     * <code>optional string create_user = 4;</code>
-     */
-    public Builder setCreateUserBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-      createUser_ = value;
-      onChanged();
-      return this;
-    }
-
-    private long updateTime_ ;
-    /**
-     * <pre>
-     *更新时间
-     * </pre>
-     *
-     * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
-     */
-    public boolean hasUpdateTime() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <pre>
-     *更新时间
-     * </pre>
-     *
-     * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
-     */
-    public long getUpdateTime() {
-      return updateTime_;
-    }
-    /**
-     * <pre>
-     *更新时间
-     * </pre>
-     *
-     * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
-     */
-    public Builder setUpdateTime(long value) {
-      bitField0_ |= 0x00000010;
-      updateTime_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *更新时间
-     * </pre>
-     *
-     * <code>optional int64 update_time = 5 [(.column_option) = { ... }</code>
-     */
-    public Builder clearUpdateTime() {
-      bitField0_ = (bitField0_ & ~0x00000010);
-      updateTime_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object updateUser_ = "";
-    /**
-     * <pre>
-     *更新用户姓名
-     * </pre>
-     *
-     * <code>optional string update_user = 6;</code>
-     */
-    public boolean hasUpdateUser() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <pre>
-     *更新用户姓名
-     * </pre>
-     *
-     * <code>optional string update_user = 6;</code>
-     */
-    public java.lang.String getUpdateUser() {
-      java.lang.Object ref = updateUser_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          updateUser_ = s;
-        }
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     *更新用户姓名
-     * </pre>
-     *
-     * <code>optional string update_user = 6;</code>
-     */
-    public com.google.protobuf.ByteString
-        getUpdateUserBytes() {
-      java.lang.Object ref = updateUser_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        updateUser_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *更新用户姓名
-     * </pre>
-     *
-     * <code>optional string update_user = 6;</code>
-     */
-    public Builder setUpdateUser(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-      updateUser_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *更新用户姓名
-     * </pre>
-     *
-     * <code>optional string update_user = 6;</code>
-     */
-    public Builder clearUpdateUser() {
-      bitField0_ = (bitField0_ & ~0x00000020);
-      updateUser_ = getDefaultInstance().getUpdateUser();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *更新用户姓名
-     * </pre>
-     *
-     * <code>optional string update_user = 6;</code>
-     */
-    public Builder setUpdateUserBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-      updateUser_ = value;
+      updatedTime_ = 0L;
       onChanged();
       return this;
     }
@@ -1442,7 +1206,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional int32 status = 7 [default = 1];</code>
      */
     public boolean hasStatus() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <pre>
@@ -1462,7 +1226,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional int32 status = 7 [default = 1];</code>
      */
     public Builder setStatus(int value) {
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000010;
       status_ = value;
       onChanged();
       return this;
@@ -1475,7 +1239,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional int32 status = 7 [default = 1];</code>
      */
     public Builder clearStatus() {
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000010);
       status_ = 1;
       onChanged();
       return this;
@@ -1490,7 +1254,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional int32 version = 8 [default = 0];</code>
      */
     public boolean hasVersion() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <pre>
@@ -1510,7 +1274,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional int32 version = 8 [default = 0];</code>
      */
     public Builder setVersion(int value) {
-      bitField0_ |= 0x00000080;
+      bitField0_ |= 0x00000020;
       version_ = value;
       onChanged();
       return this;
@@ -1523,38 +1287,38 @@ private static final long serialVersionUID = 0L;
      * <code>optional int32 version = 8 [default = 0];</code>
      */
     public Builder clearVersion() {
-      bitField0_ = (bitField0_ & ~0x00000080);
+      bitField0_ = (bitField0_ & ~0x00000020);
       version_ = 0;
       onChanged();
       return this;
     }
 
-    private java.lang.Object username_ = "";
+    private java.lang.Object userName_ = "";
     /**
      * <pre>
      *用户名
      * </pre>
      *
-     * <code>required string username = 11;</code>
+     * <code>required string user_name = 11;</code>
      */
-    public boolean hasUsername() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+    public boolean hasUserName() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <pre>
      *用户名
      * </pre>
      *
-     * <code>required string username = 11;</code>
+     * <code>required string user_name = 11;</code>
      */
-    public java.lang.String getUsername() {
-      java.lang.Object ref = username_;
+    public java.lang.String getUserName() {
+      java.lang.Object ref = userName_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          username_ = s;
+          userName_ = s;
         }
         return s;
       } else {
@@ -1566,16 +1330,16 @@ private static final long serialVersionUID = 0L;
      *用户名
      * </pre>
      *
-     * <code>required string username = 11;</code>
+     * <code>required string user_name = 11;</code>
      */
     public com.google.protobuf.ByteString
-        getUsernameBytes() {
-      java.lang.Object ref = username_;
+        getUserNameBytes() {
+      java.lang.Object ref = userName_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        username_ = b;
+        userName_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1586,15 +1350,15 @@ private static final long serialVersionUID = 0L;
      *用户名
      * </pre>
      *
-     * <code>required string username = 11;</code>
+     * <code>required string user_name = 11;</code>
      */
-    public Builder setUsername(
+    public Builder setUserName(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
-      username_ = value;
+  bitField0_ |= 0x00000040;
+      userName_ = value;
       onChanged();
       return this;
     }
@@ -1603,11 +1367,11 @@ private static final long serialVersionUID = 0L;
      *用户名
      * </pre>
      *
-     * <code>required string username = 11;</code>
+     * <code>required string user_name = 11;</code>
      */
-    public Builder clearUsername() {
-      bitField0_ = (bitField0_ & ~0x00000100);
-      username_ = getDefaultInstance().getUsername();
+    public Builder clearUserName() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      userName_ = getDefaultInstance().getUserName();
       onChanged();
       return this;
     }
@@ -1616,45 +1380,45 @@ private static final long serialVersionUID = 0L;
      *用户名
      * </pre>
      *
-     * <code>required string username = 11;</code>
+     * <code>required string user_name = 11;</code>
      */
-    public Builder setUsernameBytes(
+    public Builder setUserNameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
-      username_ = value;
+  bitField0_ |= 0x00000040;
+      userName_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object password_ = "";
+    private java.lang.Object securityPhone_ = "";
     /**
      * <pre>
-     *密码
+     *安全手机
      * </pre>
      *
-     * <code>required string password = 12;</code>
+     * <code>optional string security_phone = 13;</code>
      */
-    public boolean hasPassword() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+    public boolean hasSecurityPhone() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <pre>
-     *密码
+     *安全手机
      * </pre>
      *
-     * <code>required string password = 12;</code>
+     * <code>optional string security_phone = 13;</code>
      */
-    public java.lang.String getPassword() {
-      java.lang.Object ref = password_;
+    public java.lang.String getSecurityPhone() {
+      java.lang.Object ref = securityPhone_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          password_ = s;
+          securityPhone_ = s;
         }
         return s;
       } else {
@@ -1663,19 +1427,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *密码
+     *安全手机
      * </pre>
      *
-     * <code>required string password = 12;</code>
+     * <code>optional string security_phone = 13;</code>
      */
     public com.google.protobuf.ByteString
-        getPasswordBytes() {
-      java.lang.Object ref = password_;
+        getSecurityPhoneBytes() {
+      java.lang.Object ref = securityPhone_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        password_ = b;
+        securityPhone_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1683,48 +1447,196 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *密码
+     *安全手机
      * </pre>
      *
-     * <code>required string password = 12;</code>
+     * <code>optional string security_phone = 13;</code>
      */
-    public Builder setPassword(
+    public Builder setSecurityPhone(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
-      password_ = value;
+  bitField0_ |= 0x00000080;
+      securityPhone_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     *密码
+     *安全手机
      * </pre>
      *
-     * <code>required string password = 12;</code>
+     * <code>optional string security_phone = 13;</code>
      */
-    public Builder clearPassword() {
-      bitField0_ = (bitField0_ & ~0x00000200);
-      password_ = getDefaultInstance().getPassword();
+    public Builder clearSecurityPhone() {
+      bitField0_ = (bitField0_ & ~0x00000080);
+      securityPhone_ = getDefaultInstance().getSecurityPhone();
       onChanged();
       return this;
     }
     /**
      * <pre>
-     *密码
+     *安全手机
      * </pre>
      *
-     * <code>required string password = 12;</code>
+     * <code>optional string security_phone = 13;</code>
      */
-    public Builder setPasswordBytes(
+    public Builder setSecurityPhoneBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
-      password_ = value;
+  bitField0_ |= 0x00000080;
+      securityPhone_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object securityEmail_ = "";
+    /**
+     * <pre>
+     *安全邮箱
+     * </pre>
+     *
+     * <code>optional string security_email = 14;</code>
+     */
+    public boolean hasSecurityEmail() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <pre>
+     *安全邮箱
+     * </pre>
+     *
+     * <code>optional string security_email = 14;</code>
+     */
+    public java.lang.String getSecurityEmail() {
+      java.lang.Object ref = securityEmail_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          securityEmail_ = s;
+        }
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *安全邮箱
+     * </pre>
+     *
+     * <code>optional string security_email = 14;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSecurityEmailBytes() {
+      java.lang.Object ref = securityEmail_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        securityEmail_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *安全邮箱
+     * </pre>
+     *
+     * <code>optional string security_email = 14;</code>
+     */
+    public Builder setSecurityEmail(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+      securityEmail_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *安全邮箱
+     * </pre>
+     *
+     * <code>optional string security_email = 14;</code>
+     */
+    public Builder clearSecurityEmail() {
+      bitField0_ = (bitField0_ & ~0x00000100);
+      securityEmail_ = getDefaultInstance().getSecurityEmail();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *安全邮箱
+     * </pre>
+     *
+     * <code>optional string security_email = 14;</code>
+     */
+    public Builder setSecurityEmailBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+      securityEmail_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean identified_ ;
+    /**
+     * <pre>
+     *用户是否已经识别为客户',
+     * </pre>
+     *
+     * <code>optional bool identified = 15;</code>
+     */
+    public boolean hasIdentified() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <pre>
+     *用户是否已经识别为客户',
+     * </pre>
+     *
+     * <code>optional bool identified = 15;</code>
+     */
+    public boolean getIdentified() {
+      return identified_;
+    }
+    /**
+     * <pre>
+     *用户是否已经识别为客户',
+     * </pre>
+     *
+     * <code>optional bool identified = 15;</code>
+     */
+    public Builder setIdentified(boolean value) {
+      bitField0_ |= 0x00000200;
+      identified_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *用户是否已经识别为客户',
+     * </pre>
+     *
+     * <code>optional bool identified = 15;</code>
+     */
+    public Builder clearIdentified() {
+      bitField0_ = (bitField0_ & ~0x00000200);
+      identified_ = false;
       onChanged();
       return this;
     }
@@ -1758,7 +1670,7 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-        return new User(input, extensionRegistry);
+      return new User(input, extensionRegistry);
     }
   };
 
