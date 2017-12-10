@@ -27,7 +27,6 @@
         <module>jigsaw-zookeeper</module>
 	    <module>jigsaw-mysql-user</module>		
 		<module>jigsaw-runtime-metrics</module>
-		<module>jigsaw-rpc-docker</module>
 		<module>jigsaw-rpc-example-server</module>
 		<module>jigsaw-rpc-example-client</module>
 		<module>jigsaw-rpc-user</module>

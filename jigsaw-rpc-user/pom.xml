@@ -19,7 +19,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.16.10</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jigsaw.payment</groupId>
@@ -90,7 +89,7 @@
                             <name>docker.lixf.cn/${project.artifactId}</name> <!--生成的image名-->  
                             <alias>${project.artifactId}</alias>  
                             <build>  
-                                <from>docker.lixf.cn/jigsaw-rpc-docker</from>  
+                                <from>docker.lixf.cn/jigsaw-thrift-protobuf</from>  
                                 <maintainer>shamphone@gmail.com</maintainer>  
                                 <tags>  
                                     <tag>latest</tag>  
@@ -98,14 +97,8 @@
                                 </tags>  
                                 <ports>  
                                     <port>7777</port>  
-                                </ports>  
-							                              
-                                <volumes>  
-                                    <volume>/usr/src/myapp</volume>  
-                                </volumes>  
-                                <buildOptions>  
-                                    <shmsize>2147483648</shmsize>  
-                                </buildOptions> 
+                                </ports>  							                              
+                                <workdir>/usr/jigsaw</workdir>  
   
                                 <entryPoint>  
                                     <!-- exec form for ENTRYPOINT -->  
@@ -119,16 +112,14 @@
                                 </entryPoint>    
                                 <assembly>  
 									<targetDir>/usr/jigsaw/</targetDir>
-									<exportTargetDir>true</exportTargetDir>
+									 <descriptor>assembly.xml</descriptor>
                                     <mode>dir</mode>  
                                 </assembly>  
                             </build>  
                             <run>  
                                 <namingStrategy>alias</namingStrategy>  <!--container全名规则-->  
                                  <privileged>true</privileged>
-                                <links>
-                                  <link>docker.lixf.cn/jigsaw-mysql-user</link>
-                                </links>                                   
+                                                        
                                 <ports>  
                                     <port>0.0.0.0:7777:7777</port> <!--端口映射, host端口: docker端口-->  
                                 </ports>  
