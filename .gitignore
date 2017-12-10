@@ -22,6 +22,8 @@ buildSrc/build
 /spring-*/build
 /src/asciidoc/build
 target/
+*.tar.gz
+jdk1.*
 
 # Eclipse artifacts, including WTP generated manifests
 .classpath
