@@ -1,0 +1,48 @@
+syntax = "proto2";
+option java_package = "org.jigsaw.payment.rpc";
+import "entity.proto";
+import "taglib.proto";
+import "enums.proto";
+
+/**
+ * 生成订单ID和订单号；
+ *
+**/
+message GeneratePayOrderIdRequest {     
+    optional string user_name = 1;//用户名
+    optional string password = 2;//密码
+
+    optional int64 sub_id=13;//主体ID
+}
+/**
+ * 生成订单ID和订单号；
+ *
+**/
+message  GeneratePayOrderIdResponse {
+    required int64 key = 1;
+	required int64 id =  2;
+}
+
+
+/**
+ * 生成账户相关的Id和；
+ *
+**/
+message GenerateAccountIdRequest {     
+    optional string user_name = 1;//用户名
+    optional string password = 2;//密码
+
+    required int64 sub_id 				= 13;//主体ID
+    required AccountType account_type 	= 14; //账户类型
+    required AccountTitle account_title	= 15[default = PERSONAL_DEPOSIT ]; //货币类型
+    optional bool sandbox  			= 16[default = false];//是否沙盒账户
+}
+/**
+ * 生成订单ID和订单号；
+ *
+**/
+message  GenerateAccountIdResponse {
+    required int64 accountKey 	= 1;
+	required int64 accountId 	= 2;
+	optional int64 contractKey 	= 3;
+}

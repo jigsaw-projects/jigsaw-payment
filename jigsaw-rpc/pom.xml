@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.jigsaw.payment</groupId>
+		<artifactId>jigsaw-payment-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath></relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>jigsaw-rpc</artifactId>
+	<packaging>pom</packaging>
+	<name>Jigsaw RPC Server/Client </name>	
+	<modules>
+		<module>jigsaw-thrift-protobuf</module>
+		<module>jigsaw-rpc-example-server</module>
+		<module>jigsaw-rpc-example-client</module>
+		<module>jigsaw-protobuf-format</module>
+		<module>jigsaw-mysql-protobuf</module>
+	</modules>	
+	
+</project>
