@@ -1,0 +1,158 @@
+syntax = "proto2";
+option java_package = "org.jigsaw.payment.member";
+option java_multiple_files = true;//指定生成多个类
+import "taglib.proto";
+import "enums.proto";
+
+
+/**
+ * 客户信息，一个客户对应一位自然人。一个客户可以在系统中注册多个用户。 
+ *
+**/
+message Customer { 
+    option (table_option).table_name = "entity_customer";
+    option (table_option).id_no     = 10;
+    optional int64  key             = 1;        //内部主键
+    optional int64  id              = 2;        //业务主键   
+    optional int64  created_time    = 3[(column_option).column_type = DATETIME];        //创建时间
+    optional int64  updated_time    = 5[(column_option).column_type = DATETIME];        //更新时间
+    optional int32  status          = 7 [default = 1];    //状态：1有效 0无效
+    optional int32  version         = 8 [default = 0];    //版本号
+    
+    
+    required string full_name           = 11;   //姓名
+    enum Gender {
+        UNKNOWN_GENDER  = 0;
+        MALE            = 1;
+        FEMALE          = 2; 
+    }
+    optional Gender gender              = 12;   //性别
+    enum AuthState {
+        UNKNOWN_AUTH_STATE  = 0; 
+        UN_AUTHENTICATED    = 1;
+        AUTHENTICATED       = 2; 
+    }
+    optional AuthState      auth_state  = 13;   //认证状态
+    enum AuthMethod {
+        UNKNOWN_AUTH_METHOD = 0;
+        AUTH_BY_EMAIL       = 1; //邮件
+        AUTH_BY_SMS         = 2; //短信
+        AUTH_BY_BANK_CARD   = 4; //银行卡号四要素
+        AUTH_BY_ID          = 5; //身份证号
+        AUTH_BY_FACE        = 6; //人脸识别
+    }
+    optional AuthMethod     auth_method     = 14;     //认证方式
+    optional int64          auth_time       = 15;      //认证时间
+    optional int64          canceled_date   = 16;       //销户时间
+    optional string         canceled_reason = 17;       //销户原因 
+    optional int32          user_count      = 18;   //关联的用户数
+    optional int32          valid_user_count = 19;  //关联的有效用户数 
+}
+/**
+ * 用户。一般公司都有自己的用户库，可以直接使用，或者可以将必要的用户信息同步到支付系统中来使用。 
+ *
+**/
+message User {
+    option (table_option).table_name = "entity_user";
+    option (table_option).id_no     = 10;
+    optional int64  key             = 1;        //内部主键
+    optional int64      id          = 2;        //业务主键   
+    optional int64  created_time    = 3[(column_option).column_type = DATETIME];        //创建时间
+    optional int64  updated_time    = 5[(column_option).column_type = DATETIME];        //更新时间
+    optional int32  status          = 7 [default = 1];    //状态：1有效 0无效
+    optional int32  version         = 8 [default = 0];    //版本号
+    
+    required string     user_name           = 11;     //用户名
+    optional string     nickname            = 12;     //昵称
+    optional string     security_phone      = 13;     //安全手机
+    optional string     security_email      = 14;     //安全邮箱
+    optional int32	    security_level      = 15;     //安全等级
+    optional bool       identified          = 16;     //用户是否已经识别为客户
+    optional int64      customer_id         = 17;     //对应的客户ID
+    optional bool       is_trusted          = 18;     //是否托管账户
+	
+    optional int64      register_date       = 19;       //开户时间
+    optional string     register_channel    = 20;       //开户渠道
+    optional string     register_memo       = 21;       //开户预留信息
+    optional int64      activated_date      = 22;       //激活日期
+ 	
+    optional int64      canceled_date       = 23;       //销户时间
+    optional string     canceled_reason     = 24;       //销户原因 
+	
+	optional string  	last_login_ip  		= 25 ; 		//最后登录IP
+	optional int64  	last_login_time 	= 26 ; 		//最后登录时间
+	
+}
+/**
+ * 用户密码以及密码的使用记录。
+ **/
+message User_Login_Password {
+    optional int64  key             = 1;        //内部主键
+    optional int64  user_id          	= 2;     //用户ID，对应User.Id;
+    optional int64  created_time    = 3[(column_option).column_type = DATETIME];        //创建时间
+    optional int64  updated_time    = 5[(column_option).column_type = DATETIME];        //更新时间
+    optional int32  status          = 7 [default = 1];    //状态：1有效 0无效
+    optional int32  version         = 8 [default = 0];    //版本号
+
+	enum PasswordType {
+		UNKNOWN_PASSWORD_TYPE = 0;
+		DEFAULT	= 1;
+	}
+	required PasswordType type 		= 11; //密码类型
+	optional int64 locked_time		= 12; //密码被锁定的时间
+	optional string locked_reason	= 13; //密码被锁定的时间
+	optional string salt			= 14; //加密盐
+	optional string password		= 15; //加密后的密码
+	optional bool 	is_init			= 16; //是否初始密码
+	optional bool   is_changed		= 17; // 是否修改了密码
+	
+}
+/**
+ * 用户密码以及密码的使用记录。
+ **/
+message User_Payment_Password {
+    optional int64  key             = 1;        //内部主键
+    optional int64  user_id          	= 2;     //用户ID，对应User.Id;
+    optional int64  created_time    = 3[(column_option).column_type = DATETIME];        //创建时间
+    optional int64  updated_time    = 5[(column_option).column_type = DATETIME];        //更新时间
+    optional int32  status          = 7 [default = 1];    //状态：1有效 0无效
+    optional int32  version         = 8 [default = 0];    //版本号
+
+	enum PasswordType {
+		UNKNOWN_PASSWORD_TYPE = 0;
+		DEFAULT	= 1;
+	}
+	required PasswordType type 		= 11; //密码类型
+	optional int64 locked_time		= 12; //密码被锁定的时间
+	optional string locked_reason	= 13; //密码被锁定的时间
+	optional string salt			= 14; //加密盐
+	optional string password		= 15; //加密后的密码
+	optional bool 	is_init			= 16; //是否初始密码
+	optional bool   is_changed		= 17; // 是否修改了密码
+	
+}
+
+/**
+ * 公司信息。
+ */
+message Company {
+    option (table_option).table_name = "entity_company";
+    option (table_option).id_no     = 11;
+    optional int64  key             = 1;        //内部主键
+    optional int64  id              = 2;        //业务主键   
+    optional int64  create_time     = 3[(column_option).column_type = DATETIME];        //创建时间
+    optional string create_user     = 4;        //创建用户姓名
+    optional int64  update_time     = 5[(column_option).column_type = DATETIME];        //更新时间
+    optional string update_user     = 6;        //更新用户姓名
+    optional int32  status          = 7 [default = 1];    //状态：1有效 0无效
+    optional int32  version         = 8 [default = 0];    //版本号
+    required string name            = 9;    //名称
+    
+    required EntityType type        = 12;    //类型
+    optional string icon_url        = 13;    //图标
+    optional string contact_name    = 14;    //联系人姓名
+    optional string contact_email   = 15;    //联系人邮箱
+    optional string contact_phone   = 26;    //联系人电话
+}
+
+
