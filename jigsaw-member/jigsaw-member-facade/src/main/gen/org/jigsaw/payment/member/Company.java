@@ -30,7 +30,6 @@ private static final long serialVersionUID = 0L;
     status_ = 1;
     version_ = 0;
     name_ = "";
-    type_ = 0;
     iconUrl_ = "";
     contactName_ = "";
     contactEmail_ = "";
@@ -116,38 +115,27 @@ private static final long serialVersionUID = 0L;
             name_ = bs;
             break;
           }
-          case 96: {
-            int rawValue = input.readEnum();
-            org.jigsaw.payment.model.EntityType value = org.jigsaw.payment.model.EntityType.valueOf(rawValue);
-            if (value == null) {
-              unknownFields.mergeVarintField(12, rawValue);
-            } else {
-              bitField0_ |= 0x00000200;
-              type_ = rawValue;
-            }
-            break;
-          }
           case 106: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00000400;
+            bitField0_ |= 0x00000200;
             iconUrl_ = bs;
             break;
           }
           case 114: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00000800;
+            bitField0_ |= 0x00000400;
             contactName_ = bs;
             break;
           }
           case 122: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00001000;
+            bitField0_ |= 0x00000800;
             contactEmail_ = bs;
             break;
           }
           case 210: {
             com.google.protobuf.ByteString bs = input.readBytes();
-            bitField0_ |= 0x00002000;
+            bitField0_ |= 0x00001000;
             contactPhone_ = bs;
             break;
           }
@@ -476,30 +464,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TYPE_FIELD_NUMBER = 12;
-  private int type_;
-  /**
-   * <pre>
-   *类型
-   * </pre>
-   *
-   * <code>required .EntityType type = 12;</code>
-   */
-  public boolean hasType() {
-    return ((bitField0_ & 0x00000200) == 0x00000200);
-  }
-  /**
-   * <pre>
-   *类型
-   * </pre>
-   *
-   * <code>required .EntityType type = 12;</code>
-   */
-  public org.jigsaw.payment.model.EntityType getType() {
-    org.jigsaw.payment.model.EntityType result = org.jigsaw.payment.model.EntityType.valueOf(type_);
-    return result == null ? org.jigsaw.payment.model.EntityType.UNKNOWN_ENTITY_TYPE : result;
-  }
-
   public static final int ICON_URL_FIELD_NUMBER = 13;
   private volatile java.lang.Object iconUrl_;
   /**
@@ -510,7 +474,7 @@ private static final long serialVersionUID = 0L;
    * <code>optional string icon_url = 13;</code>
    */
   public boolean hasIconUrl() {
-    return ((bitField0_ & 0x00000400) == 0x00000400);
+    return ((bitField0_ & 0x00000200) == 0x00000200);
   }
   /**
    * <pre>
@@ -564,7 +528,7 @@ private static final long serialVersionUID = 0L;
    * <code>optional string contact_name = 14;</code>
    */
   public boolean hasContactName() {
-    return ((bitField0_ & 0x00000800) == 0x00000800);
+    return ((bitField0_ & 0x00000400) == 0x00000400);
   }
   /**
    * <pre>
@@ -618,7 +582,7 @@ private static final long serialVersionUID = 0L;
    * <code>optional string contact_email = 15;</code>
    */
   public boolean hasContactEmail() {
-    return ((bitField0_ & 0x00001000) == 0x00001000);
+    return ((bitField0_ & 0x00000800) == 0x00000800);
   }
   /**
    * <pre>
@@ -672,7 +636,7 @@ private static final long serialVersionUID = 0L;
    * <code>optional string contact_phone = 26;</code>
    */
   public boolean hasContactPhone() {
-    return ((bitField0_ & 0x00002000) == 0x00002000);
+    return ((bitField0_ & 0x00001000) == 0x00001000);
   }
   /**
    * <pre>
@@ -726,10 +690,6 @@ private static final long serialVersionUID = 0L;
       memoizedIsInitialized = 0;
       return false;
     }
-    if (!hasType()) {
-      memoizedIsInitialized = 0;
-      return false;
-    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -764,18 +724,15 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessageV3.writeString(output, 9, name_);
     }
     if (((bitField0_ & 0x00000200) == 0x00000200)) {
-      output.writeEnum(12, type_);
-    }
-    if (((bitField0_ & 0x00000400) == 0x00000400)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 13, iconUrl_);
     }
-    if (((bitField0_ & 0x00000800) == 0x00000800)) {
+    if (((bitField0_ & 0x00000400) == 0x00000400)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 14, contactName_);
     }
-    if (((bitField0_ & 0x00001000) == 0x00001000)) {
+    if (((bitField0_ & 0x00000800) == 0x00000800)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 15, contactEmail_);
     }
-    if (((bitField0_ & 0x00002000) == 0x00002000)) {
+    if (((bitField0_ & 0x00001000) == 0x00001000)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 26, contactPhone_);
     }
     unknownFields.writeTo(output);
@@ -820,19 +777,15 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, name_);
     }
     if (((bitField0_ & 0x00000200) == 0x00000200)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(12, type_);
-    }
-    if (((bitField0_ & 0x00000400) == 0x00000400)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, iconUrl_);
     }
-    if (((bitField0_ & 0x00000800) == 0x00000800)) {
+    if (((bitField0_ & 0x00000400) == 0x00000400)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, contactName_);
     }
-    if (((bitField0_ & 0x00001000) == 0x00001000)) {
+    if (((bitField0_ & 0x00000800) == 0x00000800)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, contactEmail_);
     }
-    if (((bitField0_ & 0x00002000) == 0x00002000)) {
+    if (((bitField0_ & 0x00001000) == 0x00001000)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(26, contactPhone_);
     }
     size += unknownFields.getSerializedSize();
@@ -895,10 +848,6 @@ private static final long serialVersionUID = 0L;
     if (hasName()) {
       result = result && getName()
           .equals(other.getName());
-    }
-    result = result && (hasType() == other.hasType());
-    if (hasType()) {
-      result = result && type_ == other.type_;
     }
     result = result && (hasIconUrl() == other.hasIconUrl());
     if (hasIconUrl()) {
@@ -970,10 +919,6 @@ private static final long serialVersionUID = 0L;
     if (hasName()) {
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
-    }
-    if (hasType()) {
-      hash = (37 * hash) + TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + type_;
     }
     if (hasIconUrl()) {
       hash = (37 * hash) + ICON_URL_FIELD_NUMBER;
@@ -1143,16 +1088,14 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000080);
       name_ = "";
       bitField0_ = (bitField0_ & ~0x00000100);
-      type_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000200);
       iconUrl_ = "";
-      bitField0_ = (bitField0_ & ~0x00000400);
+      bitField0_ = (bitField0_ & ~0x00000200);
       contactName_ = "";
-      bitField0_ = (bitField0_ & ~0x00000800);
+      bitField0_ = (bitField0_ & ~0x00000400);
       contactEmail_ = "";
-      bitField0_ = (bitField0_ & ~0x00001000);
+      bitField0_ = (bitField0_ & ~0x00000800);
       contactPhone_ = "";
-      bitField0_ = (bitField0_ & ~0x00002000);
+      bitField0_ = (bitField0_ & ~0x00001000);
       return this;
     }
 
@@ -1216,21 +1159,17 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
         to_bitField0_ |= 0x00000200;
       }
-      result.type_ = type_;
+      result.iconUrl_ = iconUrl_;
       if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
         to_bitField0_ |= 0x00000400;
       }
-      result.iconUrl_ = iconUrl_;
+      result.contactName_ = contactName_;
       if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
         to_bitField0_ |= 0x00000800;
       }
-      result.contactName_ = contactName_;
+      result.contactEmail_ = contactEmail_;
       if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
         to_bitField0_ |= 0x00001000;
-      }
-      result.contactEmail_ = contactEmail_;
-      if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
-        to_bitField0_ |= 0x00002000;
       }
       result.contactPhone_ = contactPhone_;
       result.bitField0_ = to_bitField0_;
@@ -1308,26 +1247,23 @@ private static final long serialVersionUID = 0L;
         name_ = other.name_;
         onChanged();
       }
-      if (other.hasType()) {
-        setType(other.getType());
-      }
       if (other.hasIconUrl()) {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000200;
         iconUrl_ = other.iconUrl_;
         onChanged();
       }
       if (other.hasContactName()) {
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00000400;
         contactName_ = other.contactName_;
         onChanged();
       }
       if (other.hasContactEmail()) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00000800;
         contactEmail_ = other.contactEmail_;
         onChanged();
       }
       if (other.hasContactPhone()) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00001000;
         contactPhone_ = other.contactPhone_;
         onChanged();
       }
@@ -1338,9 +1274,6 @@ private static final long serialVersionUID = 0L;
 
     public final boolean isInitialized() {
       if (!hasName()) {
-        return false;
-      }
-      if (!hasType()) {
         return false;
       }
       return true;
@@ -1953,58 +1886,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int type_ = 0;
-    /**
-     * <pre>
-     *类型
-     * </pre>
-     *
-     * <code>required .EntityType type = 12;</code>
-     */
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    /**
-     * <pre>
-     *类型
-     * </pre>
-     *
-     * <code>required .EntityType type = 12;</code>
-     */
-    public org.jigsaw.payment.model.EntityType getType() {
-      org.jigsaw.payment.model.EntityType result = org.jigsaw.payment.model.EntityType.valueOf(type_);
-      return result == null ? org.jigsaw.payment.model.EntityType.UNKNOWN_ENTITY_TYPE : result;
-    }
-    /**
-     * <pre>
-     *类型
-     * </pre>
-     *
-     * <code>required .EntityType type = 12;</code>
-     */
-    public Builder setType(org.jigsaw.payment.model.EntityType value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      bitField0_ |= 0x00000200;
-      type_ = value.getNumber();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *类型
-     * </pre>
-     *
-     * <code>required .EntityType type = 12;</code>
-     */
-    public Builder clearType() {
-      bitField0_ = (bitField0_ & ~0x00000200);
-      type_ = 0;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object iconUrl_ = "";
     /**
      * <pre>
@@ -2014,7 +1895,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional string icon_url = 13;</code>
      */
     public boolean hasIconUrl() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <pre>
@@ -2069,7 +1950,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000400;
+  bitField0_ |= 0x00000200;
       iconUrl_ = value;
       onChanged();
       return this;
@@ -2082,7 +1963,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional string icon_url = 13;</code>
      */
     public Builder clearIconUrl() {
-      bitField0_ = (bitField0_ & ~0x00000400);
+      bitField0_ = (bitField0_ & ~0x00000200);
       iconUrl_ = getDefaultInstance().getIconUrl();
       onChanged();
       return this;
@@ -2099,7 +1980,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000400;
+  bitField0_ |= 0x00000200;
       iconUrl_ = value;
       onChanged();
       return this;
@@ -2114,7 +1995,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional string contact_name = 14;</code>
      */
     public boolean hasContactName() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <pre>
@@ -2169,7 +2050,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000800;
+  bitField0_ |= 0x00000400;
       contactName_ = value;
       onChanged();
       return this;
@@ -2182,7 +2063,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional string contact_name = 14;</code>
      */
     public Builder clearContactName() {
-      bitField0_ = (bitField0_ & ~0x00000800);
+      bitField0_ = (bitField0_ & ~0x00000400);
       contactName_ = getDefaultInstance().getContactName();
       onChanged();
       return this;
@@ -2199,7 +2080,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000800;
+  bitField0_ |= 0x00000400;
       contactName_ = value;
       onChanged();
       return this;
@@ -2214,7 +2095,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional string contact_email = 15;</code>
      */
     public boolean hasContactEmail() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
      * <pre>
@@ -2269,7 +2150,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00001000;
+  bitField0_ |= 0x00000800;
       contactEmail_ = value;
       onChanged();
       return this;
@@ -2282,7 +2163,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional string contact_email = 15;</code>
      */
     public Builder clearContactEmail() {
-      bitField0_ = (bitField0_ & ~0x00001000);
+      bitField0_ = (bitField0_ & ~0x00000800);
       contactEmail_ = getDefaultInstance().getContactEmail();
       onChanged();
       return this;
@@ -2299,7 +2180,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00001000;
+  bitField0_ |= 0x00000800;
       contactEmail_ = value;
       onChanged();
       return this;
@@ -2314,7 +2195,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional string contact_phone = 26;</code>
      */
     public boolean hasContactPhone() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
      * <pre>
@@ -2369,7 +2250,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00002000;
+  bitField0_ |= 0x00001000;
       contactPhone_ = value;
       onChanged();
       return this;
@@ -2382,7 +2263,7 @@ private static final long serialVersionUID = 0L;
      * <code>optional string contact_phone = 26;</code>
      */
     public Builder clearContactPhone() {
-      bitField0_ = (bitField0_ & ~0x00002000);
+      bitField0_ = (bitField0_ & ~0x00001000);
       contactPhone_ = getDefaultInstance().getContactPhone();
       onChanged();
       return this;
@@ -2399,7 +2280,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00002000;
+  bitField0_ |= 0x00001000;
       contactPhone_ = value;
       onChanged();
       return this;

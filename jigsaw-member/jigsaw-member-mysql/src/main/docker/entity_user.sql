@@ -32,3 +32,45 @@ CREATE TABLE `entity_user` (
   UNIQUE KEY `idx_user_id` (`id`) USING BTREE,
   UNIQUE KEY `idx_username` (`user_name`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户基本信息(实体)';
+
+-- ----------------------------
+-- Table structure for user_payment_password
+-- ----------------------------
+DROP TABLE IF EXISTS `user_payment_password`;
+CREATE TABLE `user_payment_password` (
+  `key` bigint(20) NOT NULL COMMENT '内部主键，自增型',
+  `user_id` bigint(20) NOT NULL COMMENT '用户id',
+  `password_type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '密码类型',
+  `locked_time` datetime  COMMENT '密码被锁定时间', 
+  `locked_reason` varchar(128)  COMMENT '锁定原因',
+  `salt` char(8) DEFAULT NULL COMMENT '密码加密用的盐值',
+  `password` char(32) NOT NULL COMMENT '加密后密码',
+  `is_init` char(1) DEFAULT 0 COMMENT '是否初始密码',
+  `is_changed` char(1) DEFAULT 0 COMMENT '是否变更了密码',
+  `version` int(11) NOT NULL DEFAULT '1' COMMENT '版本号',
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`key`),
+  UNIQUE KEY `idx_upp_user_id` (`user_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户支付密码';
+
+-- ----------------------------
+-- Table structure for user_login_password
+-- ----------------------------
+DROP TABLE IF EXISTS `user_login_password`;
+CREATE TABLE `user_login_password` (
+  `key` bigint(20) NOT NULL COMMENT '内部主键，自增型',
+  `user_id` bigint(20) NOT NULL COMMENT '用户id',
+  `password_type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '密码类型',
+  `locked_time` datetime  COMMENT '密码被锁定时间', 
+  `locked_reason` varchar(128)  COMMENT '锁定原因',
+  `salt` char(8) DEFAULT NULL COMMENT '密码加密用的盐值',
+  `password` char(32) NOT NULL COMMENT '加密后密码',
+  `is_init` char(1) DEFAULT 0 COMMENT '是否初始密码',
+  `is_changed` char(1) DEFAULT 0 COMMENT '是否变更了密码',
+  `version` int(11) NOT NULL DEFAULT '1' COMMENT '版本号',
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`key`),
+  UNIQUE KEY `idx_upp_user_id` (`user_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户登录密码';

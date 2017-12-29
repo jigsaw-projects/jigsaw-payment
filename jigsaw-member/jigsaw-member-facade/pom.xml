@@ -5,7 +5,7 @@
         <groupId>org.jigsaw.payment</groupId>
         <artifactId>jigsaw-member</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath></relativePath>
+        <relativePath>..</relativePath>
     </parent>
     <artifactId>jigsaw-member-facade</artifactId>
     <packaging>jar</packaging>

@@ -2,7 +2,6 @@ syntax = "proto2";
 option java_package = "org.jigsaw.payment.rpc";
 import "entity.proto";
 import "taglib.proto";
-import "enums.proto";
 
 /**
  * 创建用户。

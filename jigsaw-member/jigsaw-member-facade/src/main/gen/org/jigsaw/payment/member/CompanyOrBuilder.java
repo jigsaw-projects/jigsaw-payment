@@ -189,23 +189,6 @@ public interface CompanyOrBuilder extends
 
   /**
    * <pre>
-   *类型
-   * </pre>
-   *
-   * <code>required .EntityType type = 12;</code>
-   */
-  boolean hasType();
-  /**
-   * <pre>
-   *类型
-   * </pre>
-   *
-   * <code>required .EntityType type = 12;</code>
-   */
-  org.jigsaw.payment.model.EntityType getType();
-
-  /**
-   * <pre>
    *图标
    * </pre>
    *
