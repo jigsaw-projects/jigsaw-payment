@@ -21,8 +21,9 @@
 		<module>jigsaw-payment-docs</module>
 		<module>jigsaw-payment-schema</module>
 		<module>jigsaw-payment-algorithm</module>
+        <module>jigsaw-zookeeper</module>   		
 		<module>jigsaw-rpc</module>
-		<module>jigsaw-zookeeper</module>	
+		<module>jigsaw-id</module>
 		<module>jigsaw-runtime-metrics</module>
 		<module>jigsaw-member</module>
 		<module>jigsaw-rpc-payment</module>

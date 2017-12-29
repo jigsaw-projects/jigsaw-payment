@@ -2,7 +2,6 @@ syntax = "proto2";
 option java_package = "org.jigsaw.payment.member";
 option java_multiple_files = true;//指定生成多个类
 import "taglib.proto";
-import "enums.proto";
 
 
 /**
@@ -87,6 +86,7 @@ message User {
  * 用户密码以及密码的使用记录。
  **/
 message User_Login_Password {
+    option (table_option).table_name = "user_login_password";
     optional int64  key             = 1;        //内部主键
     optional int64  user_id          	= 2;     //用户ID，对应User.Id;
     optional int64  created_time    = 3[(column_option).column_type = DATETIME];        //创建时间
@@ -111,6 +111,7 @@ message User_Login_Password {
  * 用户密码以及密码的使用记录。
  **/
 message User_Payment_Password {
+    option (table_option).table_name = "user_payment_password";
     optional int64  key             = 1;        //内部主键
     optional int64  user_id          	= 2;     //用户ID，对应User.Id;
     optional int64  created_time    = 3[(column_option).column_type = DATETIME];        //创建时间
@@ -147,8 +148,7 @@ message Company {
     optional int32  status          = 7 [default = 1];    //状态：1有效 0无效
     optional int32  version         = 8 [default = 0];    //版本号
     required string name            = 9;    //名称
-    
-    required EntityType type        = 12;    //类型
+
     optional string icon_url        = 13;    //图标
     optional string contact_name    = 14;    //联系人姓名
     optional string contact_email   = 15;    //联系人邮箱

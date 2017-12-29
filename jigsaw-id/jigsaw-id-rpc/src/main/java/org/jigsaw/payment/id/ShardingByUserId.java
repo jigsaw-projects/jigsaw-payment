@@ -54,12 +54,12 @@ public class ShardingByUserId {
 	}
 	
 	public int getDatabaseIndex(long userId){
-		return (int)userId / builder.shardingTableCount
-				% builder.maxShardingDatabaseCount;
+		return (int)(userId / builder.shardingTableCount
+				% builder.maxShardingDatabaseCount);
 	}
 	
 	public int getTableIndex(long userId){
-		return (int)userId % builder.shardingTableCount;
+		return (int)(userId % builder.shardingTableCount);
 	}
 
 	public int getMaxShardingDatabaseCount() {
