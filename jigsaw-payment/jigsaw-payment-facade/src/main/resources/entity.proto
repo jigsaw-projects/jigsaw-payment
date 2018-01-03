@@ -1,0 +1,253 @@
+syntax = "proto2";
+option java_package = "org.jigsaw.payment.model";
+option java_multiple_files = true;//指定生成多个类
+import "taglib.proto";
+import "enums.proto";
+
+
+/**
+ * 支付订单， 指业务方提交到支付平台的订单。
+ *
+**/
+message PayOrder {
+    option (table_option).table_name = "pay_order";
+    option (table_option).id_no = 21;
+	enum Status{
+    	UNKNOWN_PAY_ORDER_STATUS = 0;
+	    PAID = 1;
+	    UNPAID = 2;
+	    PENDING = 3;
+	    CANCEL = 4;
+	    SMS_SUCC = 5;
+	    FROZEN = 6;
+	    CLOSED = 7;
+	    EXCEPTION = 8;
+	    CLOSE_PAYED = 9;
+	}
+    optional int64 key			= 1;  //id，主键， 数据中自增
+    optional int64 id			= 2; //支付订单号， 外部主键
+    optional int64 create_time	= 3[(column_option).column_type = DATETIME];//创建时间，本条记录在服务器上创建的时间。
+    optional int64 update_time	= 4[(column_option).column_type = DATETIME];//更新时间，本条记录最后修改时间；
+    optional int64 expire_time	= 5[(column_option).column_type = DATETIME];//过期时间，由业务方设定的支付有效期。超过这个时间，支付即被判定为过期。在过期时间后不能在发起支付。如果在过期时间前支付已发起但是未完成，
+    optional int64 pay_time		= 6[(column_option).column_type = DATETIME];//支付完成时间
+    optional Status status 		= 7;//状态
+    optional int32 version		= 8;//版本号
+
+	// 支付上下文信息
+    optional int32 source_pay_type	= 11; //支付方式ID，用户选择的交易实体表的代码，与之前一致
+	optional int32 dest_pay_type	= 12; //支付服务ID，经过路由实际执行的交易渠道表的代码，与之前一致
+    optional int32 pay_mode			= 13;// 0:正常订单，1：测试订单
+    optional string app_id			= 14;//发起交易的app id
+    optional int32 pay_scenarios	= 15;//发起交易的场景，api，通用收银台，充值收银台，扫码支付
+	
+	//费用信息
+    optional int64 fee				= 21;	//订单金额
+    optional int64 fee_real 		= 22;	//实际支付金额
+    optional int32 fee_unit 		= 23;	//订单计费单位
+
+	//支付渠道信息；
+    optional string third_trade_code	= 31; //第三方交易号
+    optional int64	third_create_time	= 32 [(column_option).column_type = DATETIME];//第三方创建时间
+    optional int64	third_pay_time		= 33 [(column_option).column_type = DATETIME];//第三方支付时间
+    optional int64	current_key			= 34; //当前密钥ID
+    
+    optional string notify_url			= 35;//异步回调URL
+    optional string return_url			= 36;//同步回调URL
+
+
+	//商品订单信息
+	optional string order_id		= 41;//商品订单号，由商户在请求支付的时候提交， 可以查询到商品信息。
+    optional string order_title		= 42;//商品的名称
+    optional string order_detail	= 43;//商品描述
+    optional string order_show_url	= 44;//订单显示的url地址
+
+	//交易主体信息；
+    optional int64	sub_id			= 51;//主体ID：用户ID;也可以是商户ID
+    optional EntityType sub_type	= 52;//主体类型
+    optional string sub_name		= 53;//主体名称
+    optional string sub_account_id	= 54;//主体帐号
+    optional int32	sub_account_type = 55;//主体帐号类型：银行卡，钱包,支付渠道
+    optional string sub_ip			= 56;// 主体使用的IP
+    optional string sub_mobile		= 57;//主体使用的手机号
+    optional string sub_client_code = 58;//发起交易的客户端代码
+    optional string sub_device_id	= 59;//交易主体实使用的设备号
+    optional string sub_email		= 60;//交易主体的邮箱，预留
+    optional string sub_location	= 61;//交易主体的地理位置，预留
+    optional string sub_country_code = 62;//交易主体的国别，预留，默认为中国
+
+
+	//交易对手信息
+    optional int64 partner_id			= 71;//交易对手的ID，接入方系统ID
+    optional EntityType partner_type	= 72;//交易对手的类型
+    optional int64 partner_account_id	= 73;//交易对手的帐号,商户号ID
+    optional string partner_name		= 74;//交易对手的名称
+
+   	optional string error_code			= 91;//错误码
+    optional string error_detail		= 92;//错误描述
+}
+
+/**
+ * 订单查询过滤器
+**/
+message PayOrderFilter {
+   optional PayOrder.Status status = 5;
+
+    optional int64 create_time_begin = 6;
+    optional int64 create_time_end = 7;
+    optional int64 pay_time_begin = 8;
+    optional int64 pay_time_end = 9;
+
+    optional EntityType sub_type = 10;
+    optional int64 sub_id = 11;
+
+    repeated int32 partner_id = 12[packed=true];
+    repeated int32 partner_account_id = 13[packed=true];
+
+    repeated int32 source_pay_type = 14[packed=true];
+    repeated int32 dest_pay_type = 15[packed=true];
+
+    optional string app_id = 16;
+    optional int32 pay_scenarios = 17;
+    optional int32 gateway = 18;
+    optional int32 pay_mode = 19;
+    optional string order_id = 20;
+
+    optional int32 sub_mobile_status = 21;// for sms trade
+    optional string sub_account_id = 22;
+    optional int32 sub_account_type = 23;
+
+    optional string sub_client_code = 24;
+
+    optional int64 parent_id = 26;
+    optional string sub_mobile = 27;
+    optional string third_trade_code = 28;
+    optional string partner_order_no = 29;
+
+}
+
+
+/**
+ *  外部账户
+ *
+ **/
+message ContractAccount {
+ 	option (table_option).table_name = "pay_contract_account";
+ 	option (table_option).id_no 	= 23;
+ 	
+  	optional int64 	key 			= 1;//内部主键
+	optional int64  id				= 2;//账户ID    	
+    optional int64 	create_time		= 3[(column_option).column_type = DATETIME]; //创建时间
+    optional int64 	update_time		= 5[(column_option).column_type = DATETIME]; //更新时间
+ 
+     /*签约状态*/
+    enum Status {
+    	CONTRACT_STATUS_UNKNOWN = 0;
+    	INITIALIZED = 1; 
+    	VALID = 2; //有效
+        EXPIRED = 3; //已过期
+        INVALID = 4; //无效
+    }
+    optional Status	status 			= 7 [default = INITIALIZED];    //状态：1有效 0无效
+    optional int32 	version 		= 8 [default = 0];    //版本号 
+   
+   	optional int64 owner_id  		= 10; // 所有者的id
+    optional AccountType type 		= 11 [default = FOR_PERSONAL]; //账户类型
+    optional FeeUnit fee_unit  		= 12;// 货币类型
+    optional string contract_account= 13; //签约账号，如银行卡号，第三方平台的账户号；
+    optional string pin  			= 14; //预留的身份证号；
+    optional string mobile_number	= 15; //银行预留手机号；
+    optional string real_name		= 16; //真实姓名；
+    optional string expiration_date = 17; //过期时间；
+    optional string security_code 	= 18; //校验码    
+    
+    optional int64  order_id 		= 20; //签约并支付时关联的订单号	
+    optional string contract_token 			= 21; //渠道侧返回的token；    
+    optional int64 	contract_service_id 	= 22; //签约使用的PaymentService id；
+    optional int64 	contract_channel_id		= 23; //签约时使用的通道。 
+ }
+ 
+/**
+ * 支付服务
+ *
+ */
+message PaymentService {
+	option (table_option).table_name = "payment_service";
+ 	option (table_option).id_no = 24;
+ 	
+    optional int64 	key			= 1;//自动增量，主键
+	optional int64  id			= 2;//编号，对外的ID    
+    optional int64 	create_time = 3[(column_option).column_type = DATETIME];//创建时间
+    optional string create_user	= 4;//创建用户姓名
+    optional int64 	update_time = 5[(column_option).column_type = DATETIME];//更新时间
+    optional string update_user	= 6;//更新用户姓名
+    //服务启动后，将状态置于inline。
+    enum Status {
+    	OFFLINE = 1; //离线
+    	INLINE = 2; //在线；
+    	ABANDON = 3; //废弃，不用了。     	
+    }
+    optional Status	status 		= 7;//状态:1有效2无效
+   	optional int32 	version 	= 8 [default = 1];    //版本号    
+    optional string name	 	= 9;//服务显示名称
+    
+    enum Type{
+     UNKNOWN_PAYMENT_SERVICE_TYPE = 0;
+     SMS = 1;    // 短信支付
+     PLATFORM = 2; //第三方通道
+     BANK = 4; //银行
+	}        
+    optional Type type = 10;        
+    optional string code = 12; //和代码中对应的支付服务实现的bean名字；唯一；  
+}
+
+
+
+/**
+ * 接收到的证书。
+ */
+message Certification {
+	option (table_option).table_name = "payment_certfication";
+	option (table_option).id_no = 26;
+ 	optional int64 key			= 1;//自动增量，主键
+    optional int64 id 			= 2;
+    optional int64 create_time 	= 3[(column_option).column_type = DATETIME];
+    optional int64 update_time 	= 4[(column_option).column_type = DATETIME];
+
+    optional int64 		issuer_id 			= 11; // 发布证书的机构 id
+    optional EntityType issuer_type 		= 12; // 发布证书的机构类型
+    optional string 	channel_account_no 	= 13; //商户号
+      /*文件类型*/
+    enum PKIType {
+        PKI_UNKNOWN = 0;
+        PKI_P12 = 1;
+        PKI_CER = 2;
+        PKI_JKS = 3;
+        PKI_PEM = 4;
+        PKI_PFX = 5;
+        PKI_CRT = 6;
+    }
+    optional PKIType type = 14;                     //文件类型：1.p12, 2.cer, 3.jks
+     /*状态*/
+    enum PKIStatus {
+        PKI_UNKNOWN_STATUS = 0;//未知状态
+        PKI_EFFECTIVE = 1;//有效
+        PKI_INVALID = 2;//无效
+    }
+    
+    optional PKIStatus status = 15;                 //状态
+ 
+    enum PKIUsage {
+        PKI_UNKNOWN_USAGE = 0;      //未定义的用途
+        PKI_SSL = 1;                //支付用来创建ssl
+        PKI_SIGN = 2;               //支付中心签名
+        PKI_ENC = 3;                //支付中心加密
+        PKI_CHANNEL_SSL = 4;        //渠道方SSL
+        PKI_CHANNEL_SIGN = 5;       //渠道方签名
+        PKI_CHANNEL_ENC = 6;        //渠道方加密
+    }
+    optional PKIUsage usage = 16;                   //用途
+    optional string pass_phrase = 17;               //私钥密码
+    optional string digest = 18;                    //校验md5
+    optional bytes data = 19;                       //文件内容
+    optional string memo = 20;                      //描述
+}

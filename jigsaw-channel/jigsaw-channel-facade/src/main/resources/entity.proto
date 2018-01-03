@@ -1,0 +1,31 @@
+syntax = "proto2";
+option java_package = "org.jigsaw.payment.member";
+option java_multiple_files = true;//指定生成多个类
+import "taglib.proto";
+
+/**
+  * 支付通道，即支付 渠道账户，包括银行、第三方平台等。一个公司可以提供多个支付服务，每个服务对应一个通道。 同一个支付服务，比如工行快捷，可以由多个通道来提供，比如总行、北京分行、上海分行。
+  * 支付通道是最终落地支付服务实现的接口。 
+  * 有些通道会有多个商户号，每个商户号对应一个Channel实例。 
+  * 和渠道相关的证书，保存在证书库中。 
+  */
+message Channel {
+	option (table_option).table_name = "payment_channel";
+    optional int64 	key			= 1;//自动增量，主键
+	optional int64  id			= 2;//编号，对外的ID    
+    optional int64 	create_time = 3[(column_option).column_type = DATETIME];//创建时间
+    optional string create_user	= 4;//创建用户姓名
+    optional int64 	update_time = 5[(column_option).column_type = DATETIME];//更新时间
+    optional string update_user	= 6;//更新用户姓名
+    optional int32 	status 		= 7;//状态:1有效2无效
+   	optional int32 	version 	= 8 [default = 0];    //版本号    
+    optional string name	 	= 9;//渠道账户名称
+
+    optional int64 	entity_id 		= 11;//渠道实体id， 参见Company.id
+    optional int64 	service_id 		= 14; //支付服务id，对应PaymentService表的Id
+    optional int64 	sign_corp_id 	= 15; //和该渠道做签约公司id，参见Company.id
+    optional string	fee 			= 16; //收费标准，json串
+    optional bool 	allow_pay 		= 23;//允许支付
+    optional bool 	allow_drawback 	= 24;//允许退款
+    optional string account_no		= 17; //在渠道开通的账户号
+}

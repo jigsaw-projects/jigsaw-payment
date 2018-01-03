@@ -1,0 +1,152 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.jigsaw.payment</groupId>
+		<artifactId>jigsaw-account</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>jigsaw-account-rpc</artifactId>
+	<packaging>jar</packaging>
+	<name>Jigsaw Account RPC Server</name>
+	<properties>
+		<protobuf.version>3.3.1</protobuf.version>
+		<protobuf-java-format.version>1.2</protobuf-java-format.version>
+		<jackson.version>2.7.9</jackson.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jigsaw.payment</groupId>
+			<artifactId>jigsaw-thrift-protobuf</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jigsaw.payment</groupId>
+			<artifactId>jigsaw-protobuf-format</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jigsaw.payment</groupId>
+			<artifactId>jigsaw-runtime-metrics</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jigsaw.payment</groupId>
+			<artifactId>jigsaw-mysql-protobuf</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jigsaw.payment</groupId>
+			<artifactId>jigsaw-account-facade</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-jdbc</artifactId>
+			</dependency>		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+	</dependencies>
+	<build>  
+        <finalName>${project.artifactId}</finalName>  <!--这里一定要定义生成的JAR包文件名-->  
+        <plugins>  
+            <plugin>  
+                <groupId>org.springframework.boot</groupId>  
+                <artifactId>spring-boot-maven-plugin</artifactId>  
+            </plugin>  
+
+            <plugin>  
+                <groupId>io.fabric8</groupId>  
+                <artifactId>docker-maven-plugin</artifactId>  
+                <version>0.20.0</version>  
+                <extensions>true</extensions>  
+                <configuration>  
+                     <dockerHost>tcp://localhost:2375</dockerHost>   
+                    <images>  
+                        <image>  
+                            <name>docker.lixf.cn/${project.artifactId}</name> <!--生成的image名-->  
+                            <alias>${project.artifactId}</alias>  
+                            <build>  
+                                <from>docker.lixf.cn/jigsaw-thrift-protobuf</from>  
+                                <maintainer>shamphone@gmail.com</maintainer>  
+                                <tags>  
+                                    <tag>latest</tag>  
+                                    <tag>${project.version}</tag>  
+                                </tags>  
+                                <ports>  
+                                    <port>7777</port>  
+                                </ports>  							                              
+                                <workdir>/usr/jigsaw</workdir>  
+  
+                                <entryPoint>  
+                                    <!-- exec form for ENTRYPOINT -->  
+                                    <exec>  
+                                        <arg>java</arg>  
+										<arg>-server</arg>
+										<arg>-cp /usr/jigsaw/lib</arg>
+                                        <arg>-jar</arg>  
+										<arg>/usr/jigsaw/${project.artifactId}.jar</arg>  
+                                    </exec>  
+                                </entryPoint>    
+                                <assembly>  
+									<targetDir>/usr/jigsaw/</targetDir>
+									 <descriptor>assembly.xml</descriptor>
+                                    <mode>dir</mode>  
+                                </assembly>  
+                            </build>  
+                            <run>  
+                                <namingStrategy>alias</namingStrategy>  <!--container全名规则-->  
+                                 <privileged>true</privileged>
+                                                        
+                                <ports>  
+                                    <port>0.0.0.0:7777:7777</port> <!--端口映射, host端口: docker端口-->  
+                                </ports>  
+                            </run>  
+                        </image>  
+      
+                    </images>  
+                </configuration>  
+                <executions>  
+                    <!-- 以下为插件与Maven声明周期做绑定，可选择使用 -->  
+                    <execution>  
+                      <id>build-docker-image</id>
+                      <phase>install</phase>  
+                      <goals>
+                         <goal>build</goal>
+                      </goals>
+                    </execution>
+                    <execution>
+                     <id>push-docker-image-to-registry</id>
+                     <phase>deploy</phase>
+                      <goals>  
+                      <goal>push</goal>
+                     </goals>
+                    </execution>
+                </executions>  
+            </plugin>  
+  
+        </plugins>  
+    </build>  
+</project>

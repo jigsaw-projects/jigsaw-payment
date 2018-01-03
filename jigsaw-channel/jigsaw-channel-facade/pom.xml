@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jigsaw.payment</groupId>
+        <artifactId>jigsaw-channel</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
+    <artifactId>jigsaw-channel-facade</artifactId>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <proto.path>protoc</proto.path>
+        <proto.version>3.3.1</proto.version>
+        <idl.folder>${basedir}/src/main/resources</idl.folder>
+        <sonar.exclusions>src/main/gen/**/*</sonar.exclusions>
+  </properties>
+  <dependencies>  
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>${proto.version}</version>
+      <scope>compile</scope>
+    </dependency>  
+  </dependencies>
+  <build>
+    <plugins> 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>generate-sources</id>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <phase>generate-sources</phase>
+            <configuration>
+              <tasks>
+                <echo>Delete folder : ${basedir}/src/main/gen</echo>
+                <delete dir="${basedir}/src/main/gen" quiet="true" />
+                <echo>Create folder : ${basedir}/src/main/gen</echo>
+                <mkdir dir="${basedir}/src/main/gen" />
+                <!-- Compile proto files in all locations -->
+                <echo>Compiling **/*.proto files...</echo>
+                <apply executable="${proto.path}">
+                  <arg value="--proto_path=${idl.folder}" />
+                  <arg value="--java_out=${basedir}/src/main/gen" />
+                  <fileset dir="${idl.folder}" includes="**/*.proto" excludes="google/protobuf/descriptor.proto"/>
+                </apply>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/main/gen</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>    
+    </plugins>
+  </build>
+</project>
+
