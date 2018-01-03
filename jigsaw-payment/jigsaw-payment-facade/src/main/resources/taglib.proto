@@ -1,0 +1,56 @@
+syntax = "proto2";
+option java_package = "org.jigsaw.payment.model";
+option java_multiple_files = true;//指定生成多个类
+import "google/protobuf/descriptor.proto";
+
+
+/**
+ * 存储配置支持，标识对应的表
+ **/
+message TableMessageOption {
+    //标识数据库中的表名
+    required string table_name = 1;
+    //标识id的后缀，三位后缀，从001开始。
+    optional int32 id_no = 2;
+}
+
+extend google.protobuf.MessageOptions {
+    optional TableMessageOption table_option = 60000;
+}
+
+/**
+ * 数据表字段option相关的设置
+ **/
+message ColumnFieldOption {
+    //标识字段在数据表中的列，默认使用field name 作为列名
+    optional string column_name = 1;
+    //标识字段数据库类型，默认使用field类型作为列类型。
+    optional ColumnType column_type = 2;
+    //是否需要加密
+    optional bool need_encrypted_store = 3;
+}
+
+extend google.protobuf.FieldOptions {
+    optional ColumnFieldOption column_option = 60001;
+}
+
+/**
+ * mysql表字段常用类型
+ **/
+enum ColumnType {
+    VARCHAR = 1;
+    INT = 2;
+    BIGINT = 3;
+    DOUBLE = 4;
+    FLOAT = 5;
+    DECIMAL = 6;
+    DATETIME = 7;
+    TIMESTAMP = 8;
+}
+
+/**
+ * 平台终端代码历史版本
+ **/
+extend google.protobuf.EnumValueOptions {
+    optional string alias = 60002;
+}

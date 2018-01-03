@@ -1,0 +1,96 @@
+syntax = "proto2";
+option java_package = "org.jigsaw.payment.member";
+option java_multiple_files = true;//指定生成多个类
+import "taglib.proto";
+
+
+
+/**
+ * 内部账户
+ *sudo 
+ **/
+message Account {
+ 	option (table_option).table_name = "pay_account";
+ 	
+  	optional int64 	key 			= 1;//内部主键
+	optional int64  id				= 2;//业务主键    	
+    optional int64 	created_time	= 3[(column_option).column_type = DATETIME]; //创建时间
+    optional string created_user 	= 4;   //创建用户姓名
+    optional int64 	updated_time	= 5[(column_option).column_type = DATETIME]; //更新时间
+    optional string updated_user 	= 6;   //更新用户姓名
+      /*账户状态*/
+    enum Status {
+    	ACCOUNT_STATUS_UNKNOWN = 0;
+        INITIALIZED = 1;//创建
+        ACTIVATED 	= 2;//激活
+        FROZEN 		= 3;//冻结
+        DESTROYED 	= 4;//销毁
+    }
+    optional Status	status	= 7 [default = INITIALIZED];    //状态：1有效 0无效
+    optional int32 	version 		= 8 [default = 0];    //版本号
+ 
+    optional int64 owner_id  		= 10; // 所有者的id
+	
+	/**
+	 * 账户类型
+	**/
+	enum AccountType {
+    	ACCOUNT_TYPE_UNKNOWN = 0;
+    	FOR_COMPANY 	= 1; //对公
+    	FOR_PERSONAL 	= 2; //对私
+    	FOR_INTERNAL 	= 3; //内部
+    }
+    optional AccountType type 	= 12 [default = FOR_PERSONAL]; //账户类型
+    optional string fee_unit  	= 14;// 货币类型
+    optional int64 balance  	= 15;// 余额
+    optional int64 frozen  		= 16;// 冻结金额
+    optional int64 income  		= 17;// 入账总额
+    optional int64 outcome  	= 18;// 出账总额
+    
+    optional int32 rank  		= 20;// 账户等级，按照权限根据公司的业务来设置。
+    /**
+     *
+     * 账户变更的通知方式
+    **/
+    enum AccountNotification {
+    	NOTIFICATION_NONE = 0; 
+    	EMAIL = 1;
+    	MOBILE = 2; 
+    	EMAIL_MOBILE = 3; //1+2
+    }
+    optional AccountNotification notification  	= 21;// 通知方式：
+    //账户权限，以二进制方式表示在permissions字段中
+    enum AccountPermission {
+    	UNKNOWN_PERMISSION = 0;
+    	BEAR_INTEREST 	= 1;
+		ALLOW_DEPOSITE	= 2;
+		ALLOW_WITHDRAWAL= 4;
+		ALLOW_OVERDRAFT = 8;
+		ALLOW_PAY		= 16;
+		ALLOW_TRANSFER_IN=32;
+		ALLOW_TRANSFER_OUT=64;
+		ALLOW_IN		= 128;
+		ALLOW_OUT		= 256;
+		IS_DELETED		= 512;
+		IS_PROTECTED	= 1024;
+		IS_ACTIVATED	= 2048;
+		IS_FROZEN		= 4096;    
+    }
+    optional uint64 permissions  = 22;// 账户属性，可以bit位扩展
+    /**
+      * 风险等级划分
+      *
+     **/
+    enum RiskLevel {
+    	RISK_LEVEL_UNKNOWN = 0;
+    	LOW 	= 1;
+    	MEDIAN 	= 2;
+    	HIGH 	= 3;
+    }
+    optional RiskLevel risk_level  	= 23;// 安全等级
+ 
+    optional bool sandbox  			= 24[default = false];//是否沙盒账户
+    
+    optional int64 account_title 	= 25[default = 2203001]; //会计科目
+}
+

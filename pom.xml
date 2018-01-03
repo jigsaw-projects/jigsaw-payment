@@ -18,16 +18,13 @@
 		</license>
 	</licenses>
 	<modules>
-		<module>jigsaw-payment-docs</module>
-		<module>jigsaw-payment-schema</module>
-		<module>jigsaw-payment-algorithm</module>
-        <module>jigsaw-zookeeper</module>   		
+		<module>jigsaw-infra</module>
+        	<module>jigsaw-framework</module>   		
 		<module>jigsaw-rpc</module>
 		<module>jigsaw-id</module>
-		<module>jigsaw-runtime-metrics</module>
 		<module>jigsaw-member</module>
-		<module>jigsaw-rpc-payment</module>
-		<module>jigsaw-mode-fastpay</module>
+		<module>jigsaw-channel</module>
+		<module>jigsaw-payment</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
