@@ -4,18 +4,16 @@
 		<groupId>org.jigsaw.payment</groupId>
 		<artifactId>jigsaw-payment-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath></relativePath>
+		<relativePath>..</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>jigsaw-rpc</artifactId>
+	<artifactId>jigsaw-service</artifactId>
 	<packaging>pom</packaging>
-	<name>Jigsaw RPC Server/Client </name>	
+	<name>Jigsaw Payment Services</name>	
 	<modules>
-		<module>jigsaw-thrift-protobuf</module>
-		<module>jigsaw-rpc-example-server</module>
-		<module>jigsaw-rpc-example-client</module>
-		<module>jigsaw-protobuf-format</module>
-		<module>jigsaw-mysql-protobuf</module>
+		<module>jigsaw-service-facade</module>
+		<module>jigsaw-service-rpc</module>
+		<module>jigsaw-mode-fastpay</module>
 	</modules>	
 	
 </project>

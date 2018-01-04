@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.jigsaw.payment</groupId>
-		<artifactId>jigsaw-payment</artifactId>
+		<artifactId>jigsaw-service</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
-    <artifactId>jigsaw-payment-facade</artifactId>
+    <artifactId>jigsaw-service-facade</artifactId>
     <packaging>jar</packaging>
     <url>https://github.com/jigsaw-projects/jigsaw-payment/jigsaw-payment-schema/</url>
     <properties>

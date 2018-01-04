@@ -13,6 +13,11 @@
 	<modules>
 		<module>jigsaw-runtime-metrics</module>
 		<module>jigsaw-payment-algorithm</module>
+		<module>jigsaw-thrift-protobuf</module>
+		<module>jigsaw-rpc-example-client</module>
+		<module>jigsaw-rpc-example-server</module>
+		<module>jigsaw-protobuf-format</module>
+		<module>jigsaw-mysql-protobuf</module>
 	</modules>	
 	
 </project>

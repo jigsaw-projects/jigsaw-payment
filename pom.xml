@@ -19,12 +19,11 @@
 	</licenses>
 	<modules>
 		<module>jigsaw-infra</module>
-        	<module>jigsaw-framework</module>   		
-		<module>jigsaw-rpc</module>
+        <module>jigsaw-framework</module>   		
 		<module>jigsaw-id</module>
 		<module>jigsaw-member</module>
 		<module>jigsaw-channel</module>
-		<module>jigsaw-payment</module>
+		<module>jigsaw-service</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

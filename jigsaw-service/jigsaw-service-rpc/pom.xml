@@ -6,9 +6,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>jigsaw-payment-rpc</artifactId>
+	<artifactId>jigsaw-service-rpc</artifactId>
 	<packaging>jar</packaging>
-	<name>jigsaw-rpc-payment</name>
+	<name>Jigsaw Payment Service RPC </name>
 	<properties>
 		<protobuf.version>3.3.1</protobuf.version>
 		<protobuf-java-format.version>1.2</protobuf-java-format.version>
